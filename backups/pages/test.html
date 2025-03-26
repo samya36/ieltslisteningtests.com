@@ -27,7 +27,7 @@
     </nav>
 
     <!-- 主要内容区 -->
-    <main class="test-container">
+    <main class="test-container" id="test-container">
         <!-- 测试说明 -->
         <div class="test-intro">
             <h2>测试说明</h2>
@@ -41,7 +41,7 @@
         </div>
 
         <!-- 部分切换 -->
-        <div class="section-tabs">
+        <div class="section-tabs" id="section-tabs">
             <button class="section-tab active" data-section="1">Section 1</button>
             <button class="section-tab" data-section="2">Section 2</button>
             <button class="section-tab" data-section="3">Section 3</button>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- 音频播放器容器 -->
-        <div class="audio-players-container">
+        <div class="audio-players-container" id="audio-players">
             <!-- Section 1 音频播放器 -->
             <div class="audio-player" id="section1-player-container">
                 <audio id="section1-player" src="../audio/test1/section1.mp3"></audio>
@@ -156,28 +156,41 @@
         </div>
 
         <!-- 题目区域 -->
-        <form id="test-form">
-            <div class="section-content active" id="section-1" data-section="1">
-                <div class="questions">
-                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
+        <div id="test-content">
+            <form id="test-form">
+                <div class="section-content active" id="section-1" data-section="1">
+                    <div class="questions">
+                        <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
+                    </div>
                 </div>
-            </div>
-            <div class="section-content" id="section-2" data-section="2" style="display: none;">
-                <div class="questions">
-                    <!-- Section 2 题目内容将由 JavaScript 动态生成 -->
+                <div class="section-content" id="section-2" data-section="2" style="display: none;">
+                    <div class="questions">
+                        <!-- Section 2 题目内容将由 JavaScript 动态生成 -->
+                    </div>
                 </div>
-            </div>
-            <div class="section-content" id="section-3" data-section="3" style="display: none;">
-                <div class="questions">
-                    <!-- Section 3 题目内容将由 JavaScript 动态生成 -->
+                <div class="section-content" id="section-3" data-section="3" style="display: none;">
+                    <div class="questions">
+                        <!-- Section 3 题目内容将由 JavaScript 动态生成 -->
+                    </div>
                 </div>
-            </div>
-            <div class="section-content" id="section-4" data-section="4" style="display: none;">
-                <div class="questions">
-                    <!-- Section 4 题目内容将由 JavaScript 动态生成 -->
+                <div class="section-content" id="section-4" data-section="4" style="display: none;">
+                    <div class="questions">
+                        <!-- Section 4 题目内容将由 JavaScript 动态生成 -->
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        
+        <!-- 控制按钮区域 -->
+        <div class="test-controls" id="test-controls">
+            <button id="submit-btn" class="primary-btn">提交测试</button>
+            <button id="reset-btn" class="secondary-btn">重新开始</button>
+        </div>
+        
+        <!-- 评分系统区域 -->
+        <div class="scoring-section">
+            <div id="score-result-container" class="score-result-container"></div>
+        </div>
     </main>
 
     <!-- 结果弹窗 -->
@@ -231,18 +244,23 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- JavaScript -->
+    <!-- 添加评分样式 -->
+    <link rel="stylesheet" href="../css/scoring-styles.css">
+    
+    <!-- JavaScript 依赖 -->
     <script src="../js/test-data.js"></script>
     <script src="../js/test-answers.js"></script>
     <script src="../js/test-player.js"></script>
     <script src="../js/score-display.js"></script>
+    <script src="../js/enhanced-scoring.js"></script>
     <script src="../js/test-ui.js"></script>
     
     <script>
-        // 确保DOM加载完成后初始化
+        // 等待DOM加载完成
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('页面加载完成，开始初始化测试界面...');
             try {
+                console.log('DOM加载完成，开始初始化...');
+                
                 // 检查必要的全局变量
                 if (typeof TEST_DATA === 'undefined') {
                     throw new Error('TEST_DATA 未定义，请确保 test-data.js 已正确加载');
@@ -252,16 +270,16 @@
                     throw new Error('standardAnswers 未定义，请确保 test-answers.js 已正确加载');
                 }
                 
-                if (typeof TestUI === 'undefined') {
+                if (typeof window.TestUI === 'undefined') {
                     throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
                 }
                 
                 // 初始化测试界面
-                window.testUI = new TestUI();
-                console.log('测试界面初始化完成');
+                window.testUI = new window.TestUI();
+                console.log('初始化完成');
             } catch (error) {
                 console.error('初始化失败:', error);
-                // 在页面上显示错误信息而不是简单的弹窗
+                // 在页面上显示错误信息
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'error-message';
                 errorDiv.style.cssText = `

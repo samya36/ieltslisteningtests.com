@@ -1,35 +1,49 @@
 // 测试界面控制类
-class TestUI {
+console.log('加载 test-ui.js...');
+window.TestUI = class TestUI {
     constructor() {
+        console.log('创建 TestUI 实例...');
         this.currentSection = 1;
         this.testData = null;
         this.userAnswers = {};
         this.init();
+        console.log('TestUI 实例创建完成');
     }
 
-    async init() {
+    init() {
+        console.log('正在初始化测试界面...');
         try {
-            await this.loadTestData();
+            this.loadTestData();
+            console.log('开始渲染各部分内容...');
             this.renderSection(1);
             this.renderSection(2);
             this.renderSection(3);
             this.renderSection(4);
             this.bindEvents();
+            console.log('测试界面初始化完成');
         } catch (error) {
-            console.error('Failed to initialize test:', error);
+            console.error('测试初始化失败:', error);
+            alert('初始化失败：' + error.message);
         }
     }
 
-    async loadTestData() {
+    loadTestData() {
         try {
-            this.testData = await getTestData();
+            // 直接使用全局的TEST_DATA变量
+            if (typeof TEST_DATA === 'undefined') {
+                throw new Error('TEST_DATA 未定义，确保已加载 test-data.js');
+            }
+            
+            this.testData = TEST_DATA;
+            console.log('测试数据加载成功', this.testData);
+            
             // 从本地存储加载用户答案
             const savedAnswers = localStorage.getItem('userAnswers');
             if (savedAnswers) {
                 this.userAnswers = JSON.parse(savedAnswers);
             }
         } catch (error) {
-            console.error('Failed to load test data:', error);
+            console.error('加载测试数据失败:', error);
             throw error;
         }
     }
@@ -74,22 +88,61 @@ class TestUI {
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
+            checkbox.addEventListener('change', (e) => {
                 const questionId = checkbox.name.replace('q', '');
-                // 对于复选框，我们需要存储多个选中的值
-                if (!this.userAnswers[questionId]) {
-                    this.userAnswers[questionId] = [];
+                
+                // 处理特殊题号格式，如 "25-26"
+                if (questionId.includes('-')) {
+                    // 复选框组的名称
+                    const checkboxName = `q${questionId}`;
+                    
+                    // 获取同一组的所有复选框
+                    const groupCheckboxes = document.querySelectorAll(`input[name="${checkboxName}"]`);
+                    
+                    // 统计已选中的数量
+                    const checkedCount = Array.from(groupCheckboxes).filter(cb => cb.checked).length;
+                    
+                    // 如果已经选择了2个选项且当前操作是选中，则阻止操作并提示
+                    if (checkedCount > 2 && checkbox.checked) {
+                        e.preventDefault();
+                        checkbox.checked = false;
+                        
+                        // 显示提示信息
+                        alert('多选题每组只能选择两个选项！已选择的选项数量不能超过2个。');
+                        return;
+                    }
+                    
+                    // 对于 "25-26" 这样的题号，答案将被同时保存到这两个题号
+                    const [firstId, secondId] = questionId.split('-');
+                    
+                    // 获取当前所有选中的值
+                    const selectedValues = Array.from(groupCheckboxes)
+                        .filter(cb => cb.checked)
+                        .map(cb => cb.value);
+                    
+                    // 同时更新两个题号的答案
+                    this.userAnswers[firstId] = this.userAnswers[secondId] = selectedValues;
+                } 
+                // 常规题号处理
+                else {
+                    // 如果用户答案对象中没有这个题号的数组，初始化为空数组
+                    if (!this.userAnswers[questionId]) {
+                        this.userAnswers[questionId] = [];
+                    }
+                    
+                    // 如果选中，添加到数组中
+                    if (checkbox.checked) {
+                        if (!this.userAnswers[questionId].includes(checkbox.value)) {
+                            this.userAnswers[questionId].push(checkbox.value);
+                        }
+                    } else {
+                        // 如果取消选中，从数组中移除
+                        this.userAnswers[questionId] = this.userAnswers[questionId].filter(v => v !== checkbox.value);
+                    }
                 }
                 
-                if (checkbox.checked) {
-                    // 如果选中，添加到数组中
-                    if (!this.userAnswers[questionId].includes(checkbox.value)) {
-                        this.userAnswers[questionId].push(checkbox.value);
-                    }
-                } else {
-                    // 如果取消选中，从数组中移除
-                    this.userAnswers[questionId] = this.userAnswers[questionId].filter(v => v !== checkbox.value);
-                }
+                // 更新本地存储
+                localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
             });
         });
 
@@ -135,17 +188,34 @@ class TestUI {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             const questionId = checkbox.name.replace('q', '');
-            if (!checkboxGroups[questionId]) {
-                checkboxGroups[questionId] = [];
+            
+            // 处理特殊题号格式，如 "25-26"
+            if (questionId.includes('-')) {
+                // 对于 "25-26" 这样的题号，分别保存到25和26
+                const [firstId, secondId] = questionId.split('-');
+                
+                if (!checkboxGroups[questionId]) {
+                    checkboxGroups[questionId] = [];
+                }
+                
+                if (checkbox.checked) {
+                    checkboxGroups[questionId].push(checkbox.value);
+                }
+                
+                // 确保同时为两个题号保存相同的答案
+                this.userAnswers[firstId] = this.userAnswers[secondId] = checkboxGroups[questionId];
+            } else {
+                // 常规题号处理
+                if (!checkboxGroups[questionId]) {
+                    checkboxGroups[questionId] = [];
+                }
+                
+                if (checkbox.checked) {
+                    checkboxGroups[questionId].push(checkbox.value);
+                }
+                
+                this.userAnswers[questionId] = checkboxGroups[questionId];
             }
-            if (checkbox.checked) {
-                checkboxGroups[questionId].push(checkbox.value);
-            }
-        });
-
-        // 将复选框组的答案保存到 userAnswers
-        Object.keys(checkboxGroups).forEach(questionId => {
-            this.userAnswers[questionId] = checkboxGroups[questionId];
         });
 
         // 保存到本地存储
@@ -492,14 +562,27 @@ class TestUI {
                         const questionsDiv = document.createElement('div');
                         questionsDiv.className = 'checkbox-questions';
 
+                        // 添加多选题说明提示
+                        const multiChoiceHint = document.createElement('div');
+                        multiChoiceHint.className = 'multi-choice-hint';
+                        multiChoiceHint.innerHTML = `<strong>注意:</strong> 这是两题一组的多选题，您必须<strong>正好选择两个</strong>选项（不能多选或少选）。${part.title.replace(/<[^>]*>/g, '')}为一组，答对得2分，部分正确不得分。`;
+                        questionsDiv.appendChild(multiChoiceHint);
+
                         part.questions.forEach(question => {
                             const questionDiv = document.createElement('div');
                             questionDiv.className = 'question-item';
 
-                            // 问题文本
+                            // 问题文本 - 解析题号范围
                             const questionText = document.createElement('p');
                             questionText.className = 'question-text';
-                            questionText.innerHTML = `${question.text}`;
+                            
+                            // 处理题号范围 (如 "25-26")
+                            let qidDisplay = question.id;
+                            if (question.id.includes('-')) {
+                                qidDisplay = question.id.replace('-', '&');
+                            }
+                            
+                            questionText.innerHTML = `<span class="question-number">${qidDisplay}</span> ${question.text}`;
                             questionDiv.appendChild(questionText);
 
                             // 选项
@@ -800,40 +883,129 @@ class TestUI {
     
     // 计算分数
     calculateScore() {
-        const standardAnswers = getStandardAnswers();
+        // 使用全局变量而不是函数
+        if (typeof standardAnswers === 'undefined') {
+            console.error('standardAnswers未定义，无法计算分数');
+            return { totalCorrect: 0, ieltsScore: 0, sectionResults: {} };
+        }
+        
         const sectionResults = {
             section1: { total: 10, correct: 0 },
             section2: { total: 10, correct: 0 },
             section3: { total: 10, correct: 0 },
             section4: { total: 10, correct: 0 }
         };
+        
+        // 添加详细的分数统计信息
+        const sectionDetailCorrect = {
+            section3: {
+                singleChoice: 0, // 1-4题（21-24）
+                multiChoice: 0   // 5-10题（25-30）
+            }
+        };
+        
         let totalCorrect = 0;
         
-        // 遍历所有题目
-        for (let i = 1; i <= 40; i++) {
-            const userAnswer = this.userAnswers[i];
-            const standardAnswer = standardAnswers[i];
-            let isCorrect = false;
+        // 清晰定义多选题组
+        const multiChoiceGroups = [
+            { first: 25, second: 26 },
+            { first: 27, second: 28 },
+            { first: 29, second: 30 }
+        ];
+        
+        // 专门处理多选题组（Section 3 的多选题）
+        console.log("开始处理多选题组...");
+        
+        // 遍历处理每个多选题组
+        for (const group of multiChoiceGroups) {
+            const firstId = group.first;
+            const secondId = group.second;
             
-            // 如果用户没有回答，则跳过
-            if (userAnswer === undefined || userAnswer === '') {
+            console.log(`处理多选题组 ${firstId}&${secondId}`);
+            
+            // 获取用户答案和标准答案
+            const firstUserAnswer = this.userAnswers[firstId];
+            const secondUserAnswer = this.userAnswers[secondId];
+            const firstStdAnswer = standardAnswers[firstId];
+            const secondStdAnswer = standardAnswers[secondId];
+            
+            // 记录详细日志
+            console.log(`题目${firstId}用户答案:`, firstUserAnswer);
+            console.log(`题目${firstId}标准答案:`, firstStdAnswer);
+            console.log(`题目${secondId}用户答案:`, secondUserAnswer);
+            console.log(`题目${secondId}标准答案:`, secondStdAnswer);
+            
+            // 检查是否为多选题（数组类型答案）
+            if (!Array.isArray(firstStdAnswer) || !Array.isArray(secondStdAnswer)) {
+                console.error(`题目${firstId}或${secondId}不是多选题`);
                 continue;
             }
             
-            // 根据题目类型进行比较
-            if (Array.isArray(standardAnswer)) {
-                // 多选题
-                if (Array.isArray(userAnswer) && userAnswer.length === standardAnswer.length) {
-                    // 检查用户选择的所有选项是否都在标准答案中
-                    isCorrect = userAnswer.every(answer => standardAnswer.includes(answer)) &&
-                                standardAnswer.every(answer => userAnswer.includes(answer));
-                }
-            } else {
-                // 单选题或填空题
-                if (typeof standardAnswer === 'string' && typeof userAnswer === 'string') {
-                    isCorrect = userAnswer.toLowerCase() === standardAnswer.toLowerCase();
-                }
+            // 检查用户是否回答了问题
+            if (!firstUserAnswer || !secondUserAnswer || 
+                !Array.isArray(firstUserAnswer) || !Array.isArray(secondUserAnswer)) {
+                console.log(`多选题组${firstId}&${secondId}：用户未完整回答`);
+                continue;
             }
+            
+            // 使用我们的多选题判断逻辑检查答案是否正确
+            const isFirstCorrect = this.checkMultipleChoiceAnswer(firstUserAnswer, firstStdAnswer);
+            const isSecondCorrect = this.checkMultipleChoiceAnswer(secondUserAnswer, secondStdAnswer);
+            
+            console.log(`多选题${firstId}判断结果:`, isFirstCorrect);
+            console.log(`多选题${secondId}判断结果:`, isSecondCorrect);
+            
+            // 两题都答对，整组才算对
+            if (isFirstCorrect && isSecondCorrect) {
+                console.log(`多选题组${firstId}&${secondId}全部正确，加2分`);
+                
+                // 更新Section 3的得分
+                sectionResults.section3.correct += 2;
+                
+                // 更新多选题得分统计
+                sectionDetailCorrect.section3.multiChoice += 2;
+                
+                // 更新总分
+                totalCorrect += 2;
+            }
+        }
+        
+        // 处理单选题和填空题
+        console.log("开始处理单选题和填空题...");
+        
+        // 记录已处理过的多选题题号
+        const processedMultiChoiceIds = new Set();
+        multiChoiceGroups.forEach(group => {
+            processedMultiChoiceIds.add(group.first);
+            processedMultiChoiceIds.add(group.second);
+        });
+        
+        // 遍历所有题目（跳过已处理的多选题）
+        for (let i = 1; i <= 40; i++) {
+            // 跳过已处理的多选题
+            if (processedMultiChoiceIds.has(i)) {
+                console.log(`跳过已处理的多选题 ${i}`);
+                continue;
+            }
+            
+            const userAnswer = this.userAnswers[i];
+            const stdAnswer = standardAnswers[i];
+            
+            // 如果用户没有回答，则跳过
+            if (userAnswer === undefined || userAnswer === '' || 
+               (Array.isArray(userAnswer) && userAnswer.length === 0)) {
+                console.log(`题目 ${i}: 用户未作答`);
+                continue;
+            }
+            
+            // 检查答案类型
+            console.log(`题目 ${i} 答案类型:`, Array.isArray(stdAnswer) ? '多选题' : '单选/填空题');
+            
+            // 使用增强的答案比较方法
+            const isCorrect = this.enhancedCompareAnswer(userAnswer, stdAnswer);
+            
+            // 调试输出
+            console.log(`题目 ${i}: 用户答案=${JSON.stringify(userAnswer)}, 标准答案=${JSON.stringify(stdAnswer)}, 是否正确=${isCorrect}`);
             
             // 更新分数
             if (isCorrect) {
@@ -846,6 +1018,11 @@ class TestUI {
                     sectionResults.section2.correct++;
                 } else if (i <= 30) {
                     sectionResults.section3.correct++;
+                    
+                    // 针对Section 3，单独统计单选题得分
+                    if (i <= 24) {
+                        sectionDetailCorrect.section3.singleChoice++;
+                    }
                 } else {
                     sectionResults.section4.correct++;
                 }
@@ -853,17 +1030,35 @@ class TestUI {
         }
         
         // 计算雅思分数
-        const ieltsScore = getIeltsScore(totalCorrect);
+        // 使用全局函数或变量
+        let ieltsScore = 0;
+        if (typeof getIeltsScore === 'function') {
+            ieltsScore = getIeltsScore(totalCorrect);
+        } else if (typeof listeningScoreTable !== 'undefined') {
+            ieltsScore = listeningScoreTable[totalCorrect] || 0;
+        }
+        
+        // 输出最终得分信息
+        console.log("===== 最终得分 =====");
+        console.log(`总分: ${totalCorrect}`);
+        console.log(`雅思分数: ${ieltsScore}`);
+        console.log(`Section 1: ${sectionResults.section1.correct}/${sectionResults.section1.total}`);
+        console.log(`Section 2: ${sectionResults.section2.correct}/${sectionResults.section2.total}`);
+        console.log(`Section 3: ${sectionResults.section3.correct}/${sectionResults.section3.total} (单选题: ${sectionDetailCorrect.section3.singleChoice}/4, 多选题: ${sectionDetailCorrect.section3.multiChoice}/6)`);
+        console.log(`Section 4: ${sectionResults.section4.correct}/${sectionResults.section4.total}`);
         
         return {
             totalCorrect,
             ieltsScore,
-            sectionResults
+            sectionResults,
+            sectionDetailCorrect
         };
     }
     
     // 显示结果
     showResults(results) {
+        console.log('显示测试结果:', results);
+
         // 更新正确题数
         const correctCountElement = document.getElementById('correct-count');
         if (correctCountElement) {
@@ -902,9 +1097,20 @@ class TestUI {
             // Section 3
             const section3Result = document.createElement('div');
             section3Result.className = 'section-result';
+            
+            // 获取单选题和多选题的得分情况
+            const singleCorrect = results.sectionDetailCorrect?.section3?.singleChoice || 0;
+            const multiCorrect = results.sectionDetailCorrect?.section3?.multiChoice || 0; 
+            
+            console.log(`Section 3 详细得分 - 单选题: ${singleCorrect}/4, 多选题: ${multiCorrect}/6`);
+            
             section3Result.innerHTML = `
                 <div class="section-name">Section 3</div>
-                <div class="section-score">${results.sectionResults.section3.correct}/${results.sectionResults.section3.total}</div>
+                <div class="section-score">${singleCorrect + multiCorrect}/${results.sectionResults.section3.total}</div>
+                <div class="section-detail">
+                    <div class="detail-item">单选题: ${singleCorrect}/4</div>
+                    <div class="detail-item">多选题: ${multiCorrect}/6 (${multiCorrect/2}组)</div>
+                </div>
             `;
             sectionResultsElement.appendChild(section3Result);
             
@@ -916,6 +1122,18 @@ class TestUI {
                 <div class="section-score">${results.sectionResults.section4.correct}/${results.sectionResults.section4.total}</div>
             `;
             sectionResultsElement.appendChild(section4Result);
+            
+            // 添加详细分数提示
+            const scoreDetail = document.createElement('div');
+            scoreDetail.className = 'score-detail-note';
+            scoreDetail.innerHTML = `
+                <p>总得分: ${results.totalCorrect}/40</p>
+                <p>详细得分: Section 1 (${results.sectionResults.section1.correct}) + 
+                    Section 2 (${results.sectionResults.section2.correct}) + 
+                    Section 3 (${singleCorrect + multiCorrect}) + 
+                    Section 4 (${results.sectionResults.section4.correct})</p>
+            `;
+            sectionResultsElement.appendChild(scoreDetail);
         }
         
         // 显示结果弹窗
@@ -924,9 +1142,121 @@ class TestUI {
             resultModal.classList.add('show');
         }
     }
+
+    // 增强的答案比较方法
+    enhancedCompareAnswer(userAnswer, standardAnswer) {
+        // 如果两者类型不同，尝试转换
+        if (typeof userAnswer !== typeof standardAnswer) {
+            // 将数字转为字符串比较
+            if (typeof userAnswer === 'number') {
+                userAnswer = String(userAnswer);
+            }
+            if (typeof standardAnswer === 'number') {
+                standardAnswer = String(standardAnswer);
+            }
+        }
+        
+        // 处理数组类型（多选题）
+        if (Array.isArray(standardAnswer)) {
+            return this.checkMultipleChoiceAnswer(userAnswer, standardAnswer);
+        }
+        
+        // 处理字符串类型（单选题、填空题）
+        if (typeof standardAnswer === 'string') {
+            if (typeof userAnswer !== 'string' && typeof userAnswer !== 'number') {
+                return false; // 无法比较的类型
+            }
+            
+            // 标准化字符串
+            const stdStr = this.normalizeString(standardAnswer);
+            const userStr = this.normalizeString(String(userAnswer));
+            
+            // 直接比较标准化后的字符串
+            if (stdStr === userStr) {
+                return true;
+            }
+            
+            // 尝试更宽松的比较（去除所有空格和标点符号）
+            const strictNormalize = (str) => {
+                return str.replace(/[\s.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase();
+            };
+            
+            return strictNormalize(stdStr) === strictNormalize(userStr);
+        }
+        
+        // 默认情况，简单的全等比较
+        return userAnswer === standardAnswer;
+    }
+    
+    // 多选题判断逻辑
+    checkMultipleChoiceAnswer(userAnswer, correctAnswer) {
+        console.log('多选题判断开始:', 
+            '用户答案=', JSON.stringify(userAnswer), 
+            '标准答案=', JSON.stringify(correctAnswer));
+        
+        // 1. 验证用户答案是否为数组
+        if (!Array.isArray(userAnswer)) {
+            console.log('用户答案不是数组，多选题判断失败');
+            return false;
+        }
+        
+        // 2. 检查用户答案数量是否与正确答案数量相同
+        if (userAnswer.length !== correctAnswer.length) {
+            console.log(`用户答案数量(${userAnswer.length})与标准答案数量(${correctAnswer.length})不同，多选题判断失败`);
+            return false;
+        }
+        
+        // 3. 标准化答案，转换为小写并去除空格
+        const normalizedStdAnswers = correctAnswer.map(ans => 
+            this.normalizeString(String(ans)));
+        const normalizedUserAnswers = userAnswer.map(ans => 
+            this.normalizeString(String(ans)));
+            
+        console.log('标准化后的标准答案:', normalizedStdAnswers);
+        console.log('标准化后的用户答案:', normalizedUserAnswers);
+            
+        // 4. 检查用户所有选项是否都在正确答案中
+        for (const answer of normalizedUserAnswers) {
+            if (!normalizedStdAnswers.includes(answer)) {
+                console.log('用户选择了错误选项:', answer);
+                return false;
+            }
+        }
+        
+        // 5. 检查正确答案是否都被用户选择
+        for (const answer of normalizedStdAnswers) {
+            if (!normalizedUserAnswers.includes(answer)) {
+                console.log('用户漏选了正确选项:', answer);
+                return false;
+            }
+        }
+        
+        // 6. 无序比较：排序后检查是否完全一致
+        const sortedStdAnswers = [...normalizedStdAnswers].sort();
+        const sortedUserAnswers = [...normalizedUserAnswers].sort();
+        
+        // 转换为字符串进行比较
+        const stdAnswerStr = sortedStdAnswers.join(',');
+        const userAnswerStr = sortedUserAnswers.join(',');
+        
+        if (stdAnswerStr !== userAnswerStr) {
+            console.log('排序后答案不一致:',
+                '标准答案=', stdAnswerStr,
+                '用户答案=', userAnswerStr);
+            return false;
+        }
+        
+        console.log('多选题判断通过');
+        return true;
+    }
+    
+    // 标准化字符串（转小写、去除前后空格）
+    normalizeString(str) {
+        return str.toLowerCase().trim();
+    }
 }
 
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', () => {
+// 不需要这个初始化代码，因为我们在test.html中已经添加了初始化代码
+/* document.addEventListener('DOMContentLoaded', () => {
     new TestUI();
-}); 
+}); */ 
