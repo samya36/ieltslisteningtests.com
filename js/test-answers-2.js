@@ -103,3 +103,11 @@ function getStandardAnswers2() {
 function getIeltsScore2(correctCount) {
     return listeningScoreTable2[correctCount] || 0;
 }
+
+// 为兼容性提供全局函数和变量
+function getIeltsScore(correctCount) {
+    return listeningScoreTable2[correctCount] || 0;
+}
+
+// 设置全局评分表
+window.listeningScoreTable = listeningScoreTable2;

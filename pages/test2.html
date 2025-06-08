@@ -274,8 +274,12 @@
                     throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
                 }
                 
-                // 为Test 2初始化测试界面，使用特定的数据
-                window.testUI = new TestUI(TEST_DATA_2, standardAnswers2);
+                // 设置Test 2的全局数据变量
+                window.TEST_DATA = TEST_DATA_2;
+                window.standardAnswers = standardAnswers2;
+                
+                // 初始化测试界面
+                window.testUI = new TestUI();
                 console.log('Test 2 测试界面初始化完成');
             } catch (error) {
                 console.error('Test 2 初始化失败:', error);
