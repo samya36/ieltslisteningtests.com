@@ -19,13 +19,12 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="../index.html">首页</a></li>
+                <li><a href="practice.html" class="active">听力练习</a></li>
                 <li><a href="test.html">Test 1</a></li>
                 <li><a href="test2.html">Test 2</a></li>
-                <li><a href="test3.html" class="active">Test 3</a></li>
-                <li><a href="progress.html">学习进度</a></li>
+                <li><a href="test3.html" class="current-test">Test 3</a></li>
                 <li><a href="scoring.html">评分详解</a></li>
                 <li><a href="cases.html">案例分析</a></li>
-                <li><a href="practice.html">听力练习</a></li>
             </ul>
         </div>
     </nav>
@@ -386,6 +385,19 @@
             background: #e53935;
             color: white;
             border-radius: 4px;
+        }
+        
+        .nav-menu a.current-test {
+            background: #d32f2f;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .nav-menu a.current-test::after {
+            content: ' ✓';
+            font-size: 0.8em;
         }
         
         .completion-badge {
