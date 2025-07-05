@@ -1,0 +1,181 @@
+/* 响应式布局样式 */
+
+/* 平板设备 (768px 及以下) */
+@media screen and (max-width: 768px) {
+    /* 导航栏响应式 */
+    .nav-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-menu li {
+        margin: 10px 0;
+    }
+    
+    /* 主要内容区响应式 */
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .calculator-section,
+    .feedback-form {
+        margin: 2rem 1rem;
+    }
+
+    /* 测试区域适配 */
+    .test-container {
+        padding: 10px;
+    }
+    
+    .section-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .section-tab {
+        flex: 1 1 40%;
+        margin: 5px;
+        font-size: 14px;
+    }
+    
+    /* 音频播放器适配 */
+    .player-controls {
+        flex-direction: column;
+    }
+    
+    .custom-player {
+        width: 100%;
+    }
+    
+    .progress-bar {
+        width: 100%;
+    }
+    
+    /* 答题区域适配 */
+    .question-item {
+        padding: 15px 10px;
+    }
+    
+    .options-list {
+        flex-direction: column;
+    }
+    
+    .option-item {
+        margin: 5px 0;
+    }
+    
+    /* 结果展示区域适配 */
+    .section-scores {
+        flex-wrap: wrap;
+    }
+    
+    .section-score {
+        flex: 1 1 45%;
+        margin: 5px;
+    }
+    
+    /* 返回顶部按钮 */
+    .back-to-top {
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+/* 手机设备 (480px 及以下) */
+@media screen and (max-width: 480px) {
+    /* 导航栏响应式 */
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    /* 主要内容区响应式 */
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .calculator-section,
+    .feedback-form {
+        padding: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    /* 页脚响应式 */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* 大屏幕设备 (1200px 以上) */
+@media screen and (min-width: 1200px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .nav-bar,
+    .feedback-form,
+    .footer {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+    }
+
+    .hero {
+        background: none;
+        color: black;
+        padding: 1rem 0;
+    }
+
+    .calculator-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* 平板设备适配 */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .test-container {
+        padding: 20px;
+    }
+    
+    .section-tab {
+        font-size: 16px;
+    }
+}
+
+/* 高分辨率屏幕优化 */
+@media screen and (min-width: 1920px) {
+    .test-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+} 

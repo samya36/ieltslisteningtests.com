@@ -1,0 +1,369 @@
+ffmpeg压缩日志 - 2025年 7月 5日 星期六 22时18分27秒 CST
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频 Test1/Section2.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-27T11:33:06.000000Z
+  Duration: 00:08:34.59, start: 0.000000, bitrate: 2221 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 75 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-27T11:33:06.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2141 kb/s, 30 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-27T11:33:06.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频 Test1/Section2_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-27T11:33:06.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     768KiB time=00:01:45.74 bitrate=  59.5kbits/s speed= 209x    size=    1280KiB time=00:02:59.88 bitrate=  58.3kbits/s speed= 178x    size=    1792KiB time=00:04:14.28 bitrate=  57.7kbits/s speed= 168x    size=    2560KiB time=00:05:42.88 bitrate=  61.2kbits/s speed= 170x    size=    3072KiB time=00:06:55.61 bitrate=  60.6kbits/s speed= 165x    size=    3840KiB time=00:08:23.80 bitrate=  62.4kbits/s speed= 166x    [out#0/mp3 @ 0x600000eb40c0] video:0KiB audio:4019KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.008480%
+size=    4019KiB time=00:08:34.49 bitrate=  64.0kbits/s speed= 168x    
+✅ 成功压缩: Section2.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频 Test1/Section1.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-27T11:22:42.000000Z
+  Duration: 00:08:21.36, start: 0.000000, bitrate: 2395 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 66 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-27T11:22:42.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2324 kb/s, 29.99 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-27T11:22:42.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频 Test1/Section1_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-27T11:22:42.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     768KiB time=00:01:38.65 bitrate=  63.8kbits/s speed= 195x    size=    1280KiB time=00:02:54.14 bitrate=  60.2kbits/s speed= 172x    size=    1792KiB time=00:04:08.96 bitrate=  59.0kbits/s speed= 164x    size=    2560KiB time=00:05:44.20 bitrate=  60.9kbits/s speed= 170x    size=    3072KiB time=00:06:58.41 bitrate=  60.1kbits/s speed= 166x    [out#0/mp3 @ 0x600001f70000] video:0KiB audio:3914KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.008707%
+size=    3915KiB time=00:08:21.26 bitrate=  64.0kbits/s speed= 180x    
+✅ 成功压缩: Section1.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频Test2/Section2.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-28T02:17:57.000000Z
+  Duration: 00:07:08.97, start: 0.000000, bitrate: 2676 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 71 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:17:57.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2600 kb/s, 29.57 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:17:57.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频Test2/Section2_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:17:57.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     512KiB time=00:01:36.54 bitrate=  43.4kbits/s speed= 191x    size=    1280KiB time=00:02:49.19 bitrate=  62.0kbits/s speed= 168x    size=    2048KiB time=00:04:25.08 bitrate=  63.3kbits/s speed= 175x    size=    2560KiB time=00:05:40.08 bitrate=  61.7kbits/s speed= 168x    [out#0/mp3 @ 0x600002c18000] video:0KiB audio:3350KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.010174%
+size=    3350KiB time=00:07:08.85 bitrate=  64.0kbits/s speed= 173x    
+✅ 成功压缩: Section2.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频Test2/Section1.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-28T02:10:10.000000Z
+  Duration: 00:06:48.31, start: 0.000000, bitrate: 2121 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 61 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:10:10.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2055 kb/s, 29.78 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:10:10.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频Test2/Section1_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:10:10.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     512KiB time=00:01:38.19 bitrate=  42.7kbits/s speed= 194x    size=    1280KiB time=00:02:49.51 bitrate=  61.9kbits/s speed= 168x    size=    2048KiB time=00:04:23.94 bitrate=  63.6kbits/s speed= 174x    size=    2560KiB time=00:05:38.99 bitrate=  61.9kbits/s speed= 168x    [out#0/mp3 @ 0x6000025b8000] video:0KiB audio:3189KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.010688%
+size=    3189KiB time=00:06:48.22 bitrate=  64.0kbits/s speed= 185x    
+✅ 成功压缩: Section1.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频Test4/Section2.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-28T04:17:34.000000Z
+  Duration: 00:08:28.52, start: 0.000000, bitrate: 1989 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 71 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T04:17:34.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 1912 kb/s, 29.99 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-28T04:17:34.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频Test4/Section2_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T04:17:34.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     512KiB time=00:01:34.15 bitrate=  44.5kbits/s speed= 188x    size=    1024KiB time=00:02:43.45 bitrate=  51.3kbits/s speed= 162x    size=    1792KiB time=00:04:14.54 bitrate=  57.7kbits/s speed= 168x    size=    2304KiB time=00:05:26.15 bitrate=  57.9kbits/s speed= 162x    size=    3072KiB time=00:06:35.74 bitrate=  63.6kbits/s speed= 157x    size=    3840KiB time=00:08:16.52 bitrate=  63.4kbits/s speed= 164x    [out#0/mp3 @ 0x600003108000] video:0KiB audio:3972KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.008581%
+size=    3972KiB time=00:08:28.44 bitrate=  64.0kbits/s speed= 166x    
+✅ 成功压缩: Section2.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频Test4/Section1.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-28T04:09:39.000000Z
+  Duration: 00:07:22.37, start: 0.000000, bitrate: 2187 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 69 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T04:09:39.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2113 kb/s, 29.98 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-28T04:09:39.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频Test4/Section1_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T04:09:39.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     768KiB time=00:01:47.58 bitrate=  58.5kbits/s speed= 213x    size=    1280KiB time=00:02:58.06 bitrate=  58.9kbits/s speed= 176x    size=    1792KiB time=00:04:08.22 bitrate=  59.1kbits/s speed= 164x    size=    2560KiB time=00:05:35.81 bitrate=  62.4kbits/s speed= 166x    size=    3328KiB time=00:07:19.31 bitrate=  62.1kbits/s speed= 174x    [out#0/mp3 @ 0x6000032743c0] video:0KiB audio:3455KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.009865%
+size=    3455KiB time=00:07:22.28 bitrate=  64.0kbits/s speed= 175x    
+✅ 成功压缩: Section1.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频Test3/Section2.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-28T02:56:29.000000Z
+  Duration: 00:08:45.47, start: 0.000000, bitrate: 2738 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 60 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:56:29.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2673 kb/s, 29.32 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:56:29.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频Test3/Section2_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:56:29.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     768KiB time=00:01:49.01 bitrate=  57.7kbits/s speed= 216x    size=    1280KiB time=00:03:02.91 bitrate=  57.3kbits/s speed= 181x    size=    1792KiB time=00:04:20.36 bitrate=  56.4kbits/s speed= 172x    size=    2560KiB time=00:05:55.13 bitrate=  59.1kbits/s speed= 176x    size=    3328KiB time=00:07:13.32 bitrate=  62.9kbits/s speed= 172x    [out#0/mp3 @ 0x60000079c000] video:0KiB audio:4104KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.008305%
+size=    4104KiB time=00:08:45.36 bitrate=  64.0kbits/s speed= 188x    
+✅ 成功压缩: Section2.mp3
+ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 17.0.0 (clang-1700.0.13.3)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from './剑桥雅思20/剑20 听力音频Test3/Section1.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2025-06-28T02:48:31.000000Z
+  Duration: 00:07:19.74, start: 0.000000, bitrate: 2468 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:48:31.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x3](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2399 kb/s, 29.54 fps, 30 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:48:31.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to './剑桥雅思20/剑20 听力音频Test3/Section1_temp.mp3':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    TSSE            : Lavf61.7.100
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+      Metadata:
+        creation_time   : 2025-06-28T02:48:31.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libmp3lame
+size=     768KiB time=00:01:45.66 bitrate=  59.5kbits/s speed= 209x    size=    1280KiB time=00:02:56.43 bitrate=  59.4kbits/s speed= 175x    size=    1792KiB time=00:04:10.93 bitrate=  58.5kbits/s speed= 166x    size=    2560KiB time=00:05:46.49 bitrate=  60.5kbits/s speed= 172x    [out#0/mp3 @ 0x600001828000] video:0KiB audio:3434KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.009924%
+size=    3435KiB time=00:07:19.65 bitrate=  64.0kbits/s speed= 180x    
+✅ 成功压缩: Section1.mp3
