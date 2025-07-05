@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雅思听力测试评分结果 | IELTS Listening</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/scoring-styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html" class="home-link">
+                    <img src="../images/logo.png" alt="IELTS听力评分解析" class="logo-img">
+                    IELTS听力评分解析
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="scoring.html">评分详解</a></li>
+                <li><a href="cases.html">案例分析</a></li>
+                <li><a href="practice.html">听力练习</a></li>
+                <li><a href="test.html">模拟测试</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="content-container">
+        <div class="page-header">
+            <h1>雅思听力测试评分结果</h1>
+            <p>以下是您的测试得分详情及分析</p>
+        </div>
+        
+        <!-- 快速操作按钮 -->
+        <div class="quick-actions">
+            <button id="retry-test-btn" class="action-button">重新测试</button>
+            <button id="print-result-btn" class="action-button primary">打印结果</button>
+        </div>
+        
+        <!-- 评分结果容器 -->
+        <div id="score-result-container" class="score-result-container">
+            <div class="loading-indicator">正在加载评分结果，请稍候...</div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>关于我们</h4>
+                <p>专注雅思听力评分解析，助力考生科学备考</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="scoring.html">评分详解</a></li>
+                    <li><a href="cases.html">案例分析</a></li>
+                    <li><a href="practice.html">练习题</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 评分系统引入 -->
+    <script type="module">
+        import { initIELTSScoringSystem, resetTest } from '../js/ielts-scoring-integration.js';
+        
+        // 初始化评分系统
+        initIELTSScoringSystem();
+        
+        // 添加重新测试按钮事件
+        document.getElementById('retry-test-btn').addEventListener('click', resetTest);
+        
+        // 添加打印结果按钮事件
+        document.getElementById('print-result-btn').addEventListener('click', () => {
+            window.print();
+        });
+    </script>
+</body>
+</html> 
