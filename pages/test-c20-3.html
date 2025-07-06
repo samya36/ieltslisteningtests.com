@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剑桥雅思20 Test 3 - IELTS Listening Test</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/test.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html" class="home-link">
+                    <img src="../images/logo.png" alt="IELTS听力评分解析" class="logo-img">
+                    IELTS听力评分解析
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="practice.html" class="active">听力练习</a></li>
+                <li><a href="test.html">Test 1</a></li>
+                <li><a href="test-c20-3.html" class="current-test">剑20-T3</a></li>
+                <li><a href="test3.html">Test 3</a></li>
+                <li><a href="scoring.html">评分详解</a></li>
+                <li><a href="cases.html">案例分析</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="test-container">
+        <!-- 测试说明 -->
+        <div class="test-intro">
+            <h2>剑桥雅思20 Test 3</h2>
+            <div class="test-themes">
+                <h3>本次测试主题：</h3>
+                <ul class="theme-list">
+                    <li><strong>Section 1:</strong> 剑桥雅思20官方听力测试第一部分</li>
+                    <li><strong>Section 2:</strong> 剑桥雅思20官方听力测试第二部分</li>
+                    <li><strong>Section 3:</strong> 剑桥雅思20官方听力测试第三部分</li>
+                    <li><strong>Section 4:</strong> 剑桥雅思20官方听力测试第四部分</li>
+                </ul>
+            </div>
+            <ul class="test-instructions">
+                <li>时长：30分钟</li>
+                <li>题量：40题</li>
+                <li>难度：中等</li>
+                <li>每个部分有独立的音频播放器，可调整播放速度</li>
+                <li>在听力过程中完成答题</li>
+            </ul>
+        </div>
+
+        <!-- 部分切换 -->
+        <div class="section-tabs">
+            <button class="section-tab active" data-section="1">Section 1</button>
+            <button class="section-tab" data-section="2">Section 2</button>
+            <button class="section-tab" data-section="3">Section 3</button>
+            <button class="section-tab" data-section="4">Section 4</button>
+        </div>
+
+        <!-- 音频播放器容器 -->
+        <div class="audio-players-container">
+            <!-- Section 1 音频播放器 -->
+            <div class="audio-player" id="section1-player-container">
+                <audio id="section1-player" src="../剑桥雅思20/剑20 听力音频Test3/Section1.mp3"></audio>
+                <div class="custom-player">
+                    <div class="player-main">
+                        <button class="play-btn" id="section1-play">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <input type="range" class="progress" id="section1-progress" min="0" max="100" value="0">
+                        </div>
+                        <div class="time" id="section1-time">00:00 / 00:00</div>
+                    </div>
+                    <div class="speed-control">
+                        <select class="playback-speed" id="section1-speed">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 音频播放器 -->
+            <div class="audio-player" id="section2-player-container" style="display: none;">
+                <audio id="section2-player" src="../剑桥雅思20/剑20 听力音频Test3/Section2.mp3"></audio>
+                <div class="custom-player">
+                    <div class="player-main">
+                        <button class="play-btn" id="section2-play">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <input type="range" class="progress" id="section2-progress" min="0" max="100" value="0">
+                        </div>
+                        <div class="time" id="section2-time">00:00 / 00:00</div>
+                    </div>
+                    <div class="speed-control">
+                        <select class="playback-speed" id="section2-speed">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 音频播放器 -->
+            <div class="audio-player" id="section3-player-container" style="display: none;">
+                <audio id="section3-player" src="../剑桥雅思20/剑20 听力音频Test3/Section3.mp3"></audio>
+                <div class="custom-player">
+                    <div class="player-main">
+                        <button class="play-btn" id="section3-play">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <input type="range" class="progress" id="section3-progress" min="0" max="100" value="0">
+                        </div>
+                        <div class="time" id="section3-time">00:00 / 00:00</div>
+                    </div>
+                    <div class="speed-control">
+                        <select class="playback-speed" id="section3-speed">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4 音频播放器 -->
+            <div class="audio-player" id="section4-player-container" style="display: none;">
+                <audio id="section4-player" src="../剑桥雅思20/剑20 听力音频Test3/Section4.mp3"></audio>
+                <div class="custom-player">
+                    <div class="player-main">
+                        <button class="play-btn" id="section4-play">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0">
+                        </div>
+                        <div class="time" id="section4-time">00:00 / 00:00</div>
+                    </div>
+                    <div class="speed-control">
+                        <select class="playback-speed" id="section4-speed">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 题目区域 -->
+        <form id="test-form">
+            <div class="section-content active" id="section-1" data-section="1">
+                <div class="questions">
+                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+            <div class="section-content" id="section-2" data-section="2" style="display: none;">
+                <div class="questions">
+                    <!-- Section 2 题目内容将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+            <div class="section-content" id="section-3" data-section="3" style="display: none;">
+                <div class="questions">
+                    <!-- Section 3 题目内容将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+            <div class="section-content" id="section-4" data-section="4" style="display: none;">
+                <div class="questions">
+                    <!-- Section 4 题目内容将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- 结果弹窗 -->
+    <div class="result-modal" id="result-modal">
+        <div class="result-content">
+            <span class="close-result" id="close-result">&times;</span>
+            <div class="result-header">
+                <h2>测试结果 - 剑桥雅思20 Test 3</h2>
+                <p>您已完成剑桥雅思20听力测试3，以下是您的成绩：</p>
+            </div>
+            <div class="result-score">
+                <div class="score-circle correct">
+                    <div class="score-value" id="correct-count">0</div>
+                    <div class="score-label">正确题数</div>
+                </div>
+                <div class="score-circle ielts">
+                    <div class="score-value" id="ielts-score">0.0</div>
+                    <div class="score-label">雅思分数</div>
+                </div>
+            </div>
+            <div class="result-details">
+                <h3>各部分得分</h3>
+                <div class="section-results" id="section-results">
+                    <!-- 各部分得分将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+            <div class="test-navigation">
+                <a href="test.html" class="nav-test-btn">← Test 1</a>
+                <button class="retry-btn" id="retry-btn">重新测试</button>
+                <a href="test3.html" class="nav-test-btn">Test 3 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>关于我们</h4>
+                <p>专注雅思听力评分解析，助力考生科学备考</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="scoring.html">评分详解</a></li>
+                    <li><a href="cases.html">案例分析</a></li>
+                    <li><a href="practice.html">练习题</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- JavaScript -->
+    <script src="../js/multi-test-progress.js"></script>
+    <script src="../剑桥雅思20/cambridge20_test3_data.js"></script>
+    <script src="../剑桥雅思20/cambridge20_test3_answers.js"></script>
+    <script src="../js/test-player.js"></script>
+    <script src="../js/score-display.js"></script>
+    <script src="../js/test-ui.js"></script>
+    
+    <script>
+        // 确保DOM加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('剑桥雅思20 Test 3 页面加载完成，开始初始化测试界面...');
+            try {
+                // 检查必要的全局变量
+                if (typeof CAMBRIDGE20_TEST3_DATA === 'undefined') {
+                    throw new Error('CAMBRIDGE20_TEST3_DATA 未定义，请确保 cambridge20_test3_data.js 已正确加载');
+                }
+                
+                if (typeof cambridge20Test3Answers === 'undefined') {
+                    throw new Error('cambridge20Test3Answers 未定义，请确保 cambridge20_test3_answers.js 已正确加载');
+                }
+                
+                if (typeof TestUI === 'undefined') {
+                    throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
+                }
+                
+                // 设置剑桥雅思20 Test 3的全局数据变量
+                window.TEST_DATA = CAMBRIDGE20_TEST3_DATA;
+                window.standardAnswers = cambridge20Test3Answers;
+                
+                // 初始化测试界面
+                window.testUI = new TestUI();
+                console.log('剑桥雅思20 Test 3 测试界面初始化完成');
+            } catch (error) {
+                console.error('剑桥雅思20 Test 3 初始化失败:', error);
+                // 在页面上显示错误信息
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                    z-index: 1000;
+                    text-align: center;
+                    border: 2px solid #ff4444;
+                `;
+                errorDiv.innerHTML = `
+                    <h3 style="color: #ff4444; margin-bottom: 10px;">剑桥雅思20 Test 3 初始化失败</h3>
+                    <p style="margin-bottom: 15px;">${error.message}</p>
+                    <button onclick="location.reload()" style="
+                        padding: 8px 16px;
+                        background-color: #4CAF50;
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        margin-right: 10px;
+                    ">刷新页面</button>
+                    <a href="test.html" style="
+                        padding: 8px 16px;
+                        background-color: #2196F3;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 4px;
+                    ">返回 Test 1</a>
+                `;
+                document.body.appendChild(errorDiv);
+            }
+        });
+    </script>
+    
+    <style>
+        /* Test 2 特有样式 */
+        .test-themes {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e53935;
+        }
+        
+        .test-themes h3 {
+            margin: 0 0 10px 0;
+            color: #e53935;
+            font-size: 1.1em;
+        }
+        
+        .theme-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .theme-list li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .theme-list strong {
+            color: #d32f2f;
+        }
+        
+        .test-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .nav-test-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-test-btn:hover {
+            background: linear-gradient(135deg, #1976D2, #1565C0);
+            transform: translateY(-1px);
+        }
+        
+        .nav-menu a.active {
+            background: #e53935;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a.current-test {
+            background: #d32f2f;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .nav-menu a.current-test::after {
+            content: ' ✓';
+            font-size: 0.8em;
+        }
+    </style>
+</body>
+</html>
