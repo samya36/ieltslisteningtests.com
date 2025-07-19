@@ -13,20 +13,20 @@ const AUDIO_CONFIG = {
         basePath: '../audio/test 3/',
         sections: ['Part 1 .mp3', 'Part 2 .m4a', 'Part 3 (2).mp3', 'Part 4 .mp3']
     },
-    // 新增剑桥雅思20配置
-    test4: {
+    // 剑桥雅思20配置
+    'cambridge20-test1': {
         basePath: '../剑桥雅思20/剑20 听力音频 Test1/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     },
-    test5: {
+    'cambridge20-test2': {
         basePath: '../剑桥雅思20/剑20 听力音频Test2/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     },
-    test6: {
+    'cambridge20-test3': {
         basePath: '../剑桥雅思20/剑20 听力音频Test3/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     },
-    test7: {
+    'cambridge20-test4': {
         basePath: '../剑桥雅思20/剑20 听力音频Test4/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     }
@@ -78,12 +78,14 @@ class AudioPlayer {
     // 检测当前测试ID
     detectTestId() {
         const path = window.location.pathname;
+        // 剑桥雅思20测试页面检测
+        if (path.includes('test-c20-1.html')) return 'cambridge20-test1';
+        if (path.includes('test-c20-2.html')) return 'cambridge20-test2';
+        if (path.includes('test-c20-3.html')) return 'cambridge20-test3';
+        if (path.includes('test-c20-4.html')) return 'cambridge20-test4';
+        // 原有测试页面检测
         if (path.includes('test2.html')) return 'test2';
         if (path.includes('test3.html')) return 'test3';
-        if (path.includes('test4.html')) return 'test4';
-        if (path.includes('test5.html')) return 'test5';
-        if (path.includes('test6.html')) return 'test6';
-        if (path.includes('test7.html')) return 'test7';
         return 'test1'; // 默认为test1
     }
     

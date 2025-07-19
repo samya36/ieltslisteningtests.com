@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剑桥雅思20测试数据验证</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .question-count {
+            margin: 5px 0;
+            padding: 5px 10px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .data-structure {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        .fix-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .fix-button:hover {
+            background-color: #218838;
+        }
+        .loading {
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>剑桥雅思20测试数据验证</h1>
+    
+    <div id="results"></div>
+
+    <!-- 加载所有数据文件 -->
+    <script src="剑桥雅思20/cambridge20_test1_data.js"></script>
+    <script src="剑桥雅思20/cambridge20_test2_data.js"></script>
+    <script src="剑桥雅思20/cambridge20_test3_data.js"></script>
+    <script src="剑桥雅思20/cambridge20_test4_data.js"></script>
+    
+    <script>
+        const resultsDiv = document.getElementById('results');
+        
+        // 要验证的测试数据
+        const testsToValidate = [
+            { 
+                name: 'Test 1', 
+                data: typeof CAMBRIDGE20_TEST1_DATA !== 'undefined' ? CAMBRIDGE20_TEST1_DATA : null,
+                varName: 'CAMBRIDGE20_TEST1_DATA'
+            },
+            { 
+                name: 'Test 2', 
+                data: typeof CAMBRIDGE20_TEST2_DATA !== 'undefined' ? CAMBRIDGE20_TEST2_DATA : null,
+                varName: 'CAMBRIDGE20_TEST2_DATA'
+            },
+            { 
+                name: 'Test 3', 
+                data: typeof CAMBRIDGE20_TEST3_DATA !== 'undefined' ? CAMBRIDGE20_TEST3_DATA : null,
+                varName: 'CAMBRIDGE20_TEST3_DATA'
+            },
+            { 
+                name: 'Test 4', 
+                data: typeof CAMBRIDGE20_TEST4_DATA !== 'undefined' ? CAMBRIDGE20_TEST4_DATA : null,
+                varName: 'CAMBRIDGE20_TEST4_DATA'
+            }
+        ];
+        
+        // 验证每个测试
+        testsToValidate.forEach(test => {
+            const container = document.createElement('div');
+            container.className = 'test-container';
+            
+            const title = document.createElement('div');
+            title.className = 'test-title';
+            title.textContent = `剑桥雅思20 ${test.name}`;
+            container.appendChild(title);
+            
+            if (!test.data) {
+                const error = document.createElement('div');
+                error.className = 'error';
+                error.textContent = `错误：${test.varName} 未定义！数据文件可能未正确加载。`;
+                container.appendChild(error);
+            } else {
+                // 检查基本结构
+                const hasTestInfo = test.data.testInfo ? '✓' : '✗';
+                const hasSections = test.data.sections ? '✓' : '✗';
+                
+                const structureDiv = document.createElement('div');
+                structureDiv.innerHTML = `
+                    <div>数据结构检查：</div>
+                    <div>${hasTestInfo} testInfo</div>
+                    <div>${hasSections} sections</div>
+                `;
+                container.appendChild(structureDiv);
+                
+                // 检查每个section
+                if (test.data.sections && Array.isArray(test.data.sections)) {
+                    test.data.sections.forEach((section, index) => {
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.className = 'section';
+                        
+                        const sectionTitle = document.createElement('div');
+                        sectionTitle.className = 'section-title';
+                        sectionTitle.textContent = `Section ${section.id || index + 1}`;
+                        sectionDiv.appendChild(sectionTitle);
+                        
+                        // 检查questions_list
+                        if (section.questions_list && Array.isArray(section.questions_list)) {
+                            const questionsCount = document.createElement('div');
+                            questionsCount.className = 'question-count success';
+                            questionsCount.textContent = `题目数量: ${section.questions_list.length}`;
+                            sectionDiv.appendChild(questionsCount);
+                            
+                            // 显示题目类型分布
+                            const typeCount = {};
+                            section.questions_list.forEach(q => {
+                                typeCount[q.type] = (typeCount[q.type] || 0) + 1;
+                            });
+                            
+                            const typeDiv = document.createElement('div');
+                            typeDiv.innerHTML = '题目类型: ' + Object.entries(typeCount)
+                                .map(([type, count]) => `${type} (${count})`)
+                                .join(', ');
+                            sectionDiv.appendChild(typeDiv);
+                        } else {
+                            const error = document.createElement('div');
+                            error.className = 'error';
+                            error.textContent = `错误：Section ${section.id} 没有 questions_list！`;
+                            sectionDiv.appendChild(error);
+                            
+                            // 显示实际的数据结构
+                            const structureDiv = document.createElement('div');
+                            structureDiv.className = 'data-structure';
+                            structureDiv.textContent = 'Section 数据结构:\n' + JSON.stringify(Object.keys(section), null, 2);
+                            sectionDiv.appendChild(structureDiv);
+                        }
+                        
+                        container.appendChild(sectionDiv);
+                    });
+                } else {
+                    // 检查是否使用了旧格式 (section1, section2, etc.)
+                    const oldFormatSections = [];
+                    for (let i = 1; i <= 4; i++) {
+                        if (test.data[`section${i}`]) {
+                            oldFormatSections.push(i);
+                        }
+                    }
+                    
+                    if (oldFormatSections.length > 0) {
+                        const warning = document.createElement('div');
+                        warning.className = 'warning';
+                        warning.innerHTML = `警告：使用了旧的数据格式！<br>
+                            发现 section${oldFormatSections.join(', section')} 属性<br>
+                            应该使用 sections 数组格式`;
+                        container.appendChild(warning);
+                    }
+                }
+            }
+            
+            resultsDiv.appendChild(container);
+        });
+        
+        // 显示修复建议
+        const suggestionDiv = document.createElement('div');
+        suggestionDiv.className = 'test-container';
+        suggestionDiv.innerHTML = `
+            <div class="test-title">修复建议</div>
+            <div>
+                <p><strong>问题分析：</strong></p>
+                <ul>
+                    <li>数据文件存在，但部分section缺少questions_list</li>
+                    <li>test-ui.js 在尝试遍历questions_list时遇到undefined错误</li>
+                    <li>需要检查并修复数据文件中的section结构</li>
+                </ul>
+                <p><strong>解决方案：</strong></p>
+                <ol>
+                    <li>确保每个section都有questions_list数组</li>
+                    <li>检查questions_list中的每个题目都有正确的格式</li>
+                    <li>在test-ui.js中添加更多的错误处理</li>
+                </ol>
+            </div>
+        `;
+        resultsDiv.appendChild(suggestionDiv);
+    </script>
+</body>
+</html>

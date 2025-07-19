@@ -1,6 +1,6 @@
 // js/test-data-c20-1.js - 剑桥雅思20 Test1 数据文件
 
-const testDataC20_1 = {
+const CAMBRIDGE20_TEST1_DATA = {
     testInfo: {
         title: "剑桥雅思20 Test 1",
         sections: 4,
@@ -161,7 +161,7 @@ const testDataC20_1 = {
                 {
                     id: 17,
                     type: "multi_select",
-                    text: "Which TWO things does Heather explain about kilns? (Questions 17-18)",
+                    text: "Which TWO things does Heather explain about kilns?",
                     options: [
                         "A. what their function is",
                         "B. when they were invented", 
@@ -169,12 +169,25 @@ const testDataC20_1 = {
                         "D. where to put one in your home",
                         "E. what some people use instead of one"
                     ],
-                    answer: ["A", "E"]
+                    answer: "A"
+                },
+                {
+                    id: 18,
+                    type: "multi_select",
+                    text: "Which TWO things does Heather explain about kilns?",
+                    options: [
+                        "A. what their function is",
+                        "B. when they were invented", 
+                        "C. ways of keeping them safe",
+                        "D. where to put one in your home",
+                        "E. what some people use instead of one"
+                    ],
+                    answer: "E"
                 },
                 {
                     id: 19,
                     type: "multi_select", 
-                    text: "Which TWO points does Heather make about a potter's tools? (Questions 19-20)",
+                    text: "Which TWO points does Heather make about a potter's tools?",
                     options: [
                         "A. Some are hard to hold.",
                         "B. Some are worth buying.",
@@ -182,7 +195,20 @@ const testDataC20_1 = {
                         "D. Some have memorable names.",
                         "E. Some are available for use by participants."
                     ],
-                    answer: ["C", "E"]
+                    answer: "C"
+                },
+                {
+                    id: 20,
+                    type: "multi_select", 
+                    text: "Which TWO points does Heather make about a potter's tools?",
+                    options: [
+                        "A. Some are hard to hold.",
+                        "B. Some are worth buying.",
+                        "C. Some are essential items.",
+                        "D. Some have memorable names.",
+                        "E. Some are available for use by participants."
+                    ],
+                    answer: "E"
                 }
             ]
         },
@@ -200,7 +226,7 @@ const testDataC20_1 = {
                 {
                     id: 21,
                     type: "multi_select",
-                    text: "Which TWO things do the students both believe are responsible for the increase in loneliness? (Questions 21-22)",
+                    text: "Which TWO things do the students both believe are responsible for the increase in loneliness?",
                     options: [
                         "A. social media",
                         "B. smaller nuclear families",
@@ -208,12 +234,25 @@ const testDataC20_1 = {
                         "D. longer lifespans",
                         "E. a mobile workforce"
                     ],
-                    answer: ["C", "E"]
+                    answer: "C"
+                },
+                {
+                    id: 22,
+                    type: "multi_select",
+                    text: "Which TWO things do the students both believe are responsible for the increase in loneliness?",
+                    options: [
+                        "A. social media",
+                        "B. smaller nuclear families",
+                        "C. urban design", 
+                        "D. longer lifespans",
+                        "E. a mobile workforce"
+                    ],
+                    answer: "E"
                 },
                 {
                     id: 23,
                     type: "multi_select",
-                    text: "Which TWO health risks associated with loneliness do the students agree are based on solid evidence? (Questions 23-24)",
+                    text: "Which TWO health risks associated with loneliness do the students agree are based on solid evidence?",
                     options: [
                         "A. a weakened immune system",
                         "B. dementia",
@@ -221,12 +260,25 @@ const testDataC20_1 = {
                         "D. obesity", 
                         "E. cardiovascular disease"
                     ],
-                    answer: ["A", "C"]
+                    answer: "A"
+                },
+                {
+                    id: 24,
+                    type: "multi_select",
+                    text: "Which TWO health risks associated with loneliness do the students agree are based on solid evidence?",
+                    options: [
+                        "A. a weakened immune system",
+                        "B. dementia",
+                        "C. cancer",
+                        "D. obesity", 
+                        "E. cardiovascular disease"
+                    ],
+                    answer: "C"
                 },
                 {
                     id: 25,
                     type: "multi_select",
-                    text: "Which TWO opinions do both the students express about the evolutionary theory of loneliness? (Questions 25-26)",
+                    text: "Which TWO opinions do both the students express about the evolutionary theory of loneliness?",
                     options: [
                         "A. It has little practical relevance.",
                         "B. It needs further investigation.",
@@ -234,38 +286,51 @@ const testDataC20_1 = {
                         "D. It should be more widely accepted.", 
                         "E. It is difficult to understand."
                     ],
-                    answer: ["A", "B"]
+                    answer: "A"
+                },
+                {
+                    id: 26,
+                    type: "multi_select",
+                    text: "Which TWO opinions do both the students express about the evolutionary theory of loneliness?",
+                    options: [
+                        "A. It has little practical relevance.",
+                        "B. It needs further investigation.",
+                        "C. It is misleading.",
+                        "D. It should be more widely accepted.", 
+                        "E. It is difficult to understand."
+                    ],
+                    answer: "B"
                 },
                 {
                     id: 27,
                     type: "multiple_choice",
-                    text: "When comparing loneliness to depression, the students",
+                    text: "What does Marcus think about the research on social media?",
                     options: [
-                        "A. doubt that there will ever be a medical cure for loneliness.",
-                        "B. claim that the link between loneliness and mental health is overstated.",
-                        "C. express frustration that loneliness is not taken more seriously."
+                        "A. It shows that older people get greater benefits.",
+                        "B. It hasn't produced very reliable results.",
+                        "C. It shows social media is less harmful than expected."
                     ],
                     answer: "A"
                 },
                 {
                     id: 28,
                     type: "multiple_choice",
-                    text: "Why do the students decide to start their presentation with an example from their own experience?",
+                    text: "What surprises the students about the research on dogs?",
                     options: [
-                        "A. to explain how difficult loneliness can be",
-                        "B. to highlight a situation that most students will recognise", 
-                        "C. to emphasise that feeling lonely is more common for men than women"
+                        "A. People who keep dogs tend to be lonely.",
+                        "B. Dogs can help with depression in children.",
+                        "C. Dogs provide emotional support for their owners."
                     ],
                     answer: "B"
                 },
                 {
                     id: 29,
                     type: "multiple_choice",
-                    text: "The students agree that talking to strangers is a good strategy for dealing with loneliness because",
+                    text: "What do the students think about meditation?",
                     options: [
-                        "A. it creates a sense of belonging.",
-                        "B. it builds self-confidence.",
-                        "C. it makes people feel more positive."
+                        "A. Too few people make an effort to learn it.",
+                        "B. Too many people expect rapid results from it.",
+                        "C. Too many claims are made about its benefits."
                     ],
                     answer: "A"
                 },
@@ -296,49 +361,49 @@ const testDataC20_1 = {
                 {
                     id: 31,
                     type: "fill_blank",
-                    text: "pollution from ____ on the river bank.",
+                    text: "In the past, the Cheonggyecheon was hidden under roads and ____",
                     answer: "factories"
                 },
                 {
                     id: 32,
                     type: "fill_blank",
-                    text: "In 1957, the River Thames in London was declared biologically ____.",
+                    text: "The stream was ____ and polluted",
                     answer: "dead"
                 },
                 {
                     id: 33,
-                    type: "fill_blank", 
-                    text: "Seals and even a ____ have been seen in the River Thames.",
+                    type: "fill_blank",
+                    text: "The mayor's plan was compared to feeding a ____",
                     answer: "whale"
                 },
                 {
                     id: 34,
                     type: "fill_blank",
-                    text: "Riverside warehouses are converted to restaurants and ____.",
+                    text: "New ____ were built on the cleared land",
                     answer: "apartments"
                 },
                 {
                     id: 35,
                     type: "fill_blank",
-                    text: "build a riverside ____.",
+                    text: "The stream is now the centrepiece of a linear ____",
                     answer: "park"
                 },
                 {
                     id: 36,
                     type: "fill_blank",
-                    text: "display ____ projects.",
+                    text: "The local ____ galleries and restaurants have been revitalised",
                     answer: "art"
                 },
                 {
                     id: 37,
                     type: "fill_blank",
-                    text: "In Paris, ____ are created on the sides of the river every summer.",
+                    text: "The nearby ____ have been restored as well",
                     answer: "beaches"
                 },
                 {
                     id: 38,
                     type: "fill_blank",
-                    text: "Over 2 billion passengers already travel by ____ in cities round the world.",
+                    text: "There's now a regular ____ service on the river",
                     answer: "ferry"
                 },
                 {
@@ -360,13 +425,13 @@ const testDataC20_1 = {
     // 答案汇总
     answers: [
         "fish", "roof", "Spanish", "vegetarian", "Audley", "hotel", "reviews", "local", "30/thirty", "average",
-        "A", "B", "C", "A", "B", "C", "AE", "CE", 
-        "CE", "AC", "AB", "A", "B", "A", "C",
+        "A", "B", "C", "A", "B", "C", "A", "E", "C", "E",
+        "C", "E", "A", "C", "A", "B", "A", "B", "A", "C",
         "factories", "dead", "whale", "apartments", "park", "art", "beaches", "ferry", "bikes", "drone"
     ]
 };
 
 // 导出数据供测试页面使用
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = testDataC20_1;
+    module.exports = CAMBRIDGE20_TEST1_DATA;
 }

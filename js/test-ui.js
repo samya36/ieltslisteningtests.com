@@ -37,6 +37,9 @@ window.TestUI = class TestUI {
             this.testData = TEST_DATA;
             console.log('测试数据加载成功', this.testData);
             
+            // 检查数据格式并进行适配
+            this.adaptDataFormat();
+            
             // 从本地存储加载用户答案
             const savedAnswers = localStorage.getItem('userAnswers');
             if (savedAnswers) {
@@ -48,96 +51,214 @@ window.TestUI = class TestUI {
         }
     }
 
+    // 数据格式适配方法
+    adaptDataFormat() {
+        // 检查是否为剑桥雅思20格式 (sections数组)
+        if (this.testData.sections && Array.isArray(this.testData.sections)) {
+            console.log('检测到剑桥雅思20数据格式，正在转换...');
+            
+            // 将sections数组转换为section1, section2的格式
+            if (Array.isArray(this.testData.sections)) {
+                this.testData.sections.forEach((section, index) => {
+                    const sectionKey = `section${section.id || (index + 1)}`;
+                    this.testData[sectionKey] = this.convertCambridgeSection(section);
+                });
+            } else {
+                console.error('sections 不是数组:', this.testData.sections);
+            }
+            
+            console.log('剑桥雅思20数据格式转换完成');
+        } else {
+            console.log('使用标准测试数据格式');
+        }
+    }
+
+    // 转换剑桥雅思20的section数据为标准格式
+    convertCambridgeSection(section) {
+        console.log(`转换Section ${section.id}:`, section);
+        
+        const convertedSection = {
+            title: section.title,
+            subtitle: section.subtitle,
+            instructions: section.instructions,
+            questions: section.questions,
+            questions_list: section.questions_list  // 保留原始的questions_list
+        };
+
+        // 根据section数据结构进行不同的转换
+        if (section.questions_list && section.questions_list.length > 0) {
+            // Test 1-4格式：使用questions_list
+            console.log(`Section ${section.id} 有 ${section.questions_list.length} 个题目`);
+            convertedSection.parts = [{
+                title: `Questions ${section.questions}`,
+                instructions: section.instructions,
+                questions: section.questions_list.map(q => this.convertQuestion(q))
+            }];
+        } else if (section.content && Array.isArray(section.content)) {
+            // Test 4格式：使用content数组
+            convertedSection.parts = section.content && Array.isArray(section.content) ? section.content.map(content => {
+                const part = {
+                    title: content.title || `Questions ${section.questions}`,
+                    instructions: content.subtitle || section.instructions,
+                    questions: []
+                };
+
+                if (content.type === 'form') {
+                    // 处理填空题格式
+                    part.questions = content.items && Array.isArray(content.items) ? content.items.map(item => ({
+                        id: item.question,
+                        type: 'text',
+                        text: item.text.replace('________', '____'), // 标准化填空符号
+                        answer: item.answer
+                    })) : [];
+                } else if (content.type === 'multiple_choice') {
+                    // 处理选择题格式
+                    part.questions = content.items && Array.isArray(content.items) ? content.items.map(item => ({
+                        id: item.question,
+                        type: 'radio',
+                        text: item.text,
+                        options: item.options.map(opt => ({
+                            value: opt.value,
+                            text: opt.text
+                        })),
+                        answer: item.answer
+                    })) : [];
+                } else if (content.type === 'matching') {
+                    // 处理匹配题格式
+                    part.questions = content.items && Array.isArray(content.items) ? content.items.map(item => ({
+                        id: item.question,
+                        type: 'radio',
+                        text: item.text,
+                        options: content.options.map(opt => ({
+                            value: opt.value,
+                            text: opt.text
+                        })),
+                        answer: item.answer
+                    })) : [];
+                }
+
+                return part;
+            }).filter(part => part.questions.length > 0) : []; // 过滤掉没有题目的部分
+        } else {
+            console.warn(`Section ${section.id} 没有questions_list或content`, section);
+            // 创建一个空的parts数组，避免后续错误
+            convertedSection.parts = [];
+        }
+
+        return convertedSection;
+    }
+
+    // 转换单个题目格式
+    convertQuestion(question) {
+        const converted = {
+            id: question.id,
+            type: this.mapQuestionType(question.type),
+            text: question.text
+        };
+
+        if (question.options) {
+            converted.options = question.options.map(opt => {
+                if (typeof opt === 'string') {
+                    return {
+                        value: opt.charAt(0),
+                        text: opt.substring(3) // 去掉 "A. " 部分
+                    };
+                }
+                return opt;
+            });
+        }
+
+        if (question.answer) {
+            converted.answer = question.answer;
+        }
+
+        return converted;
+    }
+
+    // 映射题目类型
+    mapQuestionType(type) {
+        const typeMap = {
+            'fill_blank': 'text',
+            'multiple_choice': 'radio',
+            'multi_select': 'checkbox',
+            'matching': 'radio',
+            'map_labeling': 'radio'
+        };
+        return typeMap[type] || type;
+    }
+
     bindEvents() {
-        // 绑定部分切换事件
+        // 绑定答案输入事件
+        this.bindAnswerInputs();
+        
+        // 绑定Section切换标签事件
         const sectionTabs = document.querySelectorAll('.section-tab');
         sectionTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const sectionNumber = parseInt(tab.dataset.section);
+            tab.addEventListener('click', (e) => {
+                const sectionNumber = parseInt(e.target.dataset.section);
                 this.switchSection(sectionNumber);
             });
         });
 
-        // 绑定表单提交事件
-        const form = document.getElementById('test-form');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                this.saveUserAnswers();
-                alert('您的答案已保存！');
-            });
-        }
-
-        // 绑定保存按钮事件
-        const saveButtons = document.querySelectorAll('.submit-btn');
-        saveButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.saveUserAnswers();
-                alert('您的答案已保存！');
-            });
-        });
-
-        // 绑定单选按钮和复选框事件
+        // 绑定单选按钮事件
         const radioButtons = document.querySelectorAll('input[type="radio"]');
         radioButtons.forEach(radio => {
-            radio.addEventListener('change', () => {
-                const questionId = radio.name.replace('q', '');
-                this.userAnswers[questionId] = radio.value;
+            radio.addEventListener('change', (e) => {
+                const questionId = parseInt(e.target.name.replace('q', ''));
+                this.userAnswers[questionId] = e.target.value;
+                
+                // 更新本地存储
+                localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
             });
         });
 
+        // 绑定多选框事件（支持多选题）
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', (e) => {
-                const questionId = checkbox.name.replace('q', '');
+                const questionName = e.target.name;
+                const questionId = String(questionName.replace('q', '')); // 确保转换为字符串
                 
-                // 处理特殊题号格式，如 "25-26"
+                // 检查是否为多选题组（如"q25-26"）
                 if (questionId.includes('-')) {
-                    // 复选框组的名称
-                    const checkboxName = `q${questionId}`;
+                    // 多选题组处理
+                    const groupIds = questionId.split('-');
+                    const firstId = parseInt(groupIds[0]);
+                    const secondId = parseInt(groupIds[1]);
                     
-                    // 获取同一组的所有复选框
-                    const groupCheckboxes = document.querySelectorAll(`input[name="${checkboxName}"]`);
+                    if (!this.userAnswers[firstId]) this.userAnswers[firstId] = [];
+                    if (!this.userAnswers[secondId]) this.userAnswers[secondId] = [];
                     
-                    // 统计已选中的数量
-                    const checkedCount = Array.from(groupCheckboxes).filter(cb => cb.checked).length;
-                    
-                    // 如果已经选择了2个选项且当前操作是选中，则阻止操作并提示
-                    if (checkedCount > 2 && checkbox.checked) {
-                        e.preventDefault();
-                        checkbox.checked = false;
-                        
-                        // 显示提示信息
-                        alert('多选题每组只能选择两个选项！已选择的选项数量不能超过2个。');
-                        return;
+                    if (checkbox.checked) {
+                        // 添加到两个题目的答案中
+                        if (!this.userAnswers[firstId].includes(checkbox.value)) {
+                            this.userAnswers[firstId].push(checkbox.value);
+                        }
+                        if (!this.userAnswers[secondId].includes(checkbox.value)) {
+                            this.userAnswers[secondId].push(checkbox.value);
+                        }
+                    } else {
+                        // 从两个题目的答案中移除
+                        this.userAnswers[firstId] = this.userAnswers[firstId].filter(v => v !== checkbox.value);
+                        this.userAnswers[secondId] = this.userAnswers[secondId].filter(v => v !== checkbox.value);
                     }
-                    
-                    // 对于 "25-26" 这样的题号，答案将被同时保存到这两个题号
-                    const [firstId, secondId] = questionId.split('-');
-                    
-                    // 获取当前所有选中的值
-                    const selectedValues = Array.from(groupCheckboxes)
-                        .filter(cb => cb.checked)
-                        .map(cb => cb.value);
-                    
-                    // 同时更新两个题号的答案
-                    this.userAnswers[firstId] = this.userAnswers[secondId] = selectedValues;
                 } 
                 // 常规题号处理
                 else {
+                    const qId = parseInt(questionId); // 转换为数字作为键
                     // 如果用户答案对象中没有这个题号的数组，初始化为空数组
-                    if (!this.userAnswers[questionId]) {
-                        this.userAnswers[questionId] = [];
+                    if (!this.userAnswers[qId]) {
+                        this.userAnswers[qId] = [];
                     }
                     
                     // 如果选中，添加到数组中
                     if (checkbox.checked) {
-                        if (!this.userAnswers[questionId].includes(checkbox.value)) {
-                            this.userAnswers[questionId].push(checkbox.value);
+                        if (!this.userAnswers[qId].includes(checkbox.value)) {
+                            this.userAnswers[qId].push(checkbox.value);
                         }
                     } else {
                         // 如果取消选中，从数组中移除
-                        this.userAnswers[questionId] = this.userAnswers[questionId].filter(v => v !== checkbox.value);
+                        this.userAnswers[qId] = this.userAnswers[qId].filter(v => v !== checkbox.value);
                     }
                 }
                 
@@ -164,6 +285,22 @@ window.TestUI = class TestUI {
                 this.resetTest();
             });
         }
+    }
+
+    // 绑定答案输入事件
+    bindAnswerInputs() {
+        // 使用事件委托监听答案输入
+        document.addEventListener('input', (e) => {
+            if (e.target.classList.contains('answer-input')) {
+                const questionId = parseInt(e.target.dataset.question);
+                this.userAnswers[questionId] = e.target.value.trim();
+                
+                // 更新本地存储
+                localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
+                
+                console.log(`题目${questionId}答案已保存: ${e.target.value}`);
+            }
+        });
     }
 
     saveUserAnswers() {
@@ -225,7 +362,20 @@ window.TestUI = class TestUI {
     renderSection(sectionNumber) {
         const sectionData = this.testData[`section${sectionNumber}`];
         if (!sectionData) {
-            console.error(`Section ${sectionNumber} not found`);
+            console.error(`Section ${sectionNumber} not found in testData`, this.testData);
+            // 显示错误信息给用户
+            const sectionElement = document.getElementById(`section-${sectionNumber}`);
+            if (sectionElement) {
+                const questionsContainer = sectionElement.querySelector('.questions');
+                if (questionsContainer) {
+                    questionsContainer.innerHTML = `
+                        <div class="error-message">
+                            <h3>Section ${sectionNumber} 数据加载失败</h3>
+                            <p>请刷新页面重试，或联系管理员。</p>
+                        </div>
+                    `;
+                }
+            }
             return;
         }
 
@@ -250,8 +400,42 @@ window.TestUI = class TestUI {
         titleElement.innerHTML = sectionData.title;
         questionsContainer.appendChild(titleElement);
 
+        // 如果有subtitle，也渲染出来
+        if (sectionData.subtitle) {
+            const subtitleElement = document.createElement('h3');
+            subtitleElement.className = 'section-subtitle';
+            subtitleElement.innerHTML = sectionData.subtitle;
+            questionsContainer.appendChild(subtitleElement);
+        }
+
+        // 检查是否为剑桥雅思20格式 - 直接检查questions_list
+        if (sectionData.questions_list && Array.isArray(sectionData.questions_list)) {
+            this.renderCambridgeQuestions(sectionData, questionsContainer);
+        }
+        // 检查是否为剑桥雅思20格式的填空题
+        else if (sectionData.parts && sectionData.parts[0] && sectionData.parts[0].questions && 
+            sectionData.parts[0].questions[0] && 
+            (sectionData.parts[0].questions[0].type === 'text' || 
+             sectionData.parts[0].questions[0].type === 'fill_blank' ||
+             sectionData.parts[0].questions[0].text.includes('____'))) {
+            this.renderCambridgeFillBlanks(sectionData, questionsContainer);
+        }
+        // 检查是否为剑桥雅思20格式的选择题
+        else if (sectionData.parts && sectionData.parts[0] && sectionData.parts[0].questions && 
+            sectionData.parts[0].questions[0] && 
+            (sectionData.parts[0].questions[0].type === 'radio' || 
+             sectionData.parts[0].questions[0].type === 'multiple_choice')) {
+            this.renderSection2(sectionData, questionsContainer);
+        }
+        // 检查是否为剑桥雅思20格式的多选题
+        else if (sectionData.parts && sectionData.parts[0] && sectionData.parts[0].questions && 
+            sectionData.parts[0].questions[0] && 
+            (sectionData.parts[0].questions[0].type === 'multi_select' || 
+             sectionData.parts[0].questions[0].type === 'matching')) {
+            this.renderSection3(sectionData, questionsContainer);
+        }
         // Section 1 渲染逻辑
-        if (sectionNumber === 1) {
+        else if (sectionNumber === 1) {
             this.renderSection1(sectionData, questionsContainer);
         } 
         // Section 2 渲染逻辑
@@ -525,7 +709,14 @@ window.TestUI = class TestUI {
                             // 问题文本
                             const questionText = document.createElement('p');
                             questionText.className = 'question-text';
-                            questionText.innerHTML = `<span class="question-number">${question.id}</span> ${question.text}`;
+                            
+                            // 处理题号范围 (如 "25-26")
+                            let qidDisplay = String(question.id); // 确保转换为字符串
+                            if (qidDisplay.includes('-')) {
+                                qidDisplay = qidDisplay.replace('-', '&');
+                            }
+                            
+                            questionText.innerHTML = `<span class="question-number">${qidDisplay}</span> ${question.text}`;
                             questionDiv.appendChild(questionText);
 
                             // 选项
@@ -577,9 +768,9 @@ window.TestUI = class TestUI {
                             questionText.className = 'question-text';
                             
                             // 处理题号范围 (如 "25-26")
-                            let qidDisplay = question.id;
-                            if (question.id.includes('-')) {
-                                qidDisplay = question.id.replace('-', '&');
+                            let qidDisplay = String(question.id); // 确保转换为字符串
+                            if (qidDisplay.includes('-')) {
+                                qidDisplay = qidDisplay.replace('-', '&');
                             }
                             
                             questionText.innerHTML = `<span class="question-number">${qidDisplay}</span> ${question.text}`;
@@ -760,6 +951,47 @@ window.TestUI = class TestUI {
 
             boxContainer.appendChild(boxContent);
             container.appendChild(boxContainer);
+        }
+    }
+
+    // 渲染剑桥雅思20格式的填空题
+    renderCambridgeFillBlanks(sectionData, container) {
+        if (sectionData.parts && sectionData.parts[0]) {
+            const part = sectionData.parts[0];
+            
+            // 渲染说明
+            if (part.instructions) {
+                const instructionsDiv = document.createElement('div');
+                instructionsDiv.className = 'instructions';
+                instructionsDiv.innerHTML = part.instructions;
+                container.appendChild(instructionsDiv);
+            }
+
+            // 渲染题目
+            const questionsDiv = document.createElement('div');
+            questionsDiv.className = 'fill-blank-questions';
+
+            part.questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-item';
+
+                const questionP = document.createElement('p');
+                // 处理不同的填空符号格式：____ 或 ________
+                let questionText = question.text.replace(/____+/g, 
+                    `<input type="text" class="answer-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="您的答案">`);
+                
+                // 如果没有找到填空符号，检查是否在题目末尾需要添加输入框
+                if (!questionText.includes('<input') && questionText.includes('Question ' + question.id + ':')) {
+                    questionText = questionText.replace(':', ': <input type="text" class="answer-input" data-question="' + question.id + '" value="' + (this.userAnswers[question.id] || '') + '" placeholder="您的答案">');
+                }
+                
+                questionP.innerHTML = `<span class="question-number">${question.id}</span> ${questionText}`;
+                
+                questionDiv.appendChild(questionP);
+                questionsDiv.appendChild(questionDiv);
+            });
+
+            container.appendChild(questionsDiv);
         }
     }
 
@@ -1253,6 +1485,199 @@ window.TestUI = class TestUI {
     // 标准化字符串（转小写、去除前后空格）
     normalizeString(str) {
         return str.toLowerCase().trim();
+    }
+
+    // 新增：渲染剑桥雅思20格式的题目
+    renderCambridgeQuestions(sectionData, container) {
+        // 渲染说明
+        if (sectionData.instructions) {
+            const instructionsDiv = document.createElement('div');
+            instructionsDiv.className = 'instructions';
+            instructionsDiv.innerHTML = sectionData.instructions;
+            container.appendChild(instructionsDiv);
+        }
+
+        // 按题目类型分组渲染
+        const questions = sectionData.questions_list;
+        if (!questions || questions.length === 0) {
+            console.warn('No questions found in section', sectionData);
+            // 显示错误信息给用户
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.innerHTML = '<p>该部分暂无题目数据。</p>';
+            container.appendChild(errorDiv);
+            return;
+        }
+
+        // 检查第一个题目的类型来决定渲染方式
+        const firstQuestion = questions[0];
+        
+        if (firstQuestion.type === 'fill_blank') {
+            // 填空题渲染
+            const questionsDiv = document.createElement('div');
+            questionsDiv.className = 'fill-blank-questions';
+
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-item';
+
+                const questionText = document.createElement('p');
+                questionText.className = 'question-text';
+                
+                // 将答案位置替换为输入框
+                const textWithInput = question.text.replace(/____+/g, 
+                    `<span class="answer-placeholder">
+                        <span class="question-number">${question.id}</span>
+                        <input type="text" class="answer-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="输入答案">
+                    </span>`
+                );
+                
+                questionText.innerHTML = textWithInput;
+                questionDiv.appendChild(questionText);
+                questionsDiv.appendChild(questionDiv);
+            });
+
+            container.appendChild(questionsDiv);
+        } 
+        else if (firstQuestion.type === 'multiple_choice' || firstQuestion.type === 'matching') {
+            // 选择题和匹配题渲染
+            const questionsDiv = document.createElement('div');
+            questionsDiv.className = 'radio-questions';
+
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-item';
+
+                // 问题文本
+                const questionText = document.createElement('p');
+                questionText.className = 'question-text';
+                questionText.innerHTML = `<span class="question-number">${question.id}</span> ${question.text}`;
+                questionDiv.appendChild(questionText);
+
+                // 选项
+                if (question.options && question.options.length > 0) {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.className = 'options-list';
+
+                    question.options.forEach(option => {
+                        const label = document.createElement('label');
+                        label.className = 'option-item';
+
+                        const radio = document.createElement('input');
+                        radio.type = 'radio';
+                        radio.name = `q${question.id}`;
+                        
+                        // 提取选项值 (A, B, C, etc.)
+                        let optionValue = '';
+                        let optionText = '';
+                        
+                        if (typeof option === 'string') {
+                            // 格式如 "A. text"
+                            optionValue = option.charAt(0);
+                            optionText = option;
+                        } else if (option.value && option.text) {
+                            optionValue = option.value;
+                            optionText = `${option.value}. ${option.text}`;
+                        } else {
+                            optionValue = option;
+                            optionText = option;
+                        }
+                        
+                        radio.value = optionValue;
+                        
+                        // 如果有保存的答案，设置选中状态
+                        if (this.userAnswers[question.id] === optionValue) {
+                            radio.checked = true;
+                        }
+
+                        const optionTextNode = document.createTextNode(` ${optionText}`);
+                        
+                        label.appendChild(radio);
+                        label.appendChild(optionTextNode);
+                        optionsDiv.appendChild(label);
+                    });
+
+                    questionDiv.appendChild(optionsDiv);
+                }
+
+                questionsDiv.appendChild(questionDiv);
+            });
+
+            container.appendChild(questionsDiv);
+        }
+        else if (firstQuestion.type === 'multi_select') {
+            // 多选题渲染
+            const questionsDiv = document.createElement('div');
+            questionsDiv.className = 'checkbox-questions';
+
+            // 添加多选题说明提示
+            const multiChoiceHint = document.createElement('div');
+            multiChoiceHint.className = 'multi-choice-hint';
+            multiChoiceHint.innerHTML = `<strong>注意:</strong> 这是多选题，请选择正确的选项。每题可能需要选择多个答案。`;
+            questionsDiv.appendChild(multiChoiceHint);
+
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-item';
+
+                // 问题文本
+                const questionText = document.createElement('p');
+                questionText.className = 'question-text';
+                questionText.innerHTML = `<span class="question-number">${question.id}</span> ${question.text}`;
+                questionDiv.appendChild(questionText);
+
+                // 选项
+                if (question.options && question.options.length > 0) {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.className = 'options-list';
+
+                    question.options.forEach(option => {
+                        const label = document.createElement('label');
+                        label.className = 'option-item';
+
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = `q${question.id}`;
+                        
+                        // 提取选项值
+                        let optionValue = '';
+                        let optionText = '';
+                        
+                        if (typeof option === 'string') {
+                            optionValue = option.charAt(0);
+                            optionText = option;
+                        } else if (option.value && option.text) {
+                            optionValue = option.value;
+                            optionText = `${option.value}. ${option.text}`;
+                        } else {
+                            optionValue = option;
+                            optionText = option;
+                        }
+                        
+                        checkbox.value = optionValue;
+                        
+                        // 如果有保存的答案，设置选中状态
+                        if (this.userAnswers[question.id] && 
+                            Array.isArray(this.userAnswers[question.id]) && 
+                            this.userAnswers[question.id].includes(optionValue)) {
+                            checkbox.checked = true;
+                        }
+
+                        const optionTextNode = document.createTextNode(` ${optionText}`);
+                        
+                        label.appendChild(checkbox);
+                        label.appendChild(optionTextNode);
+                        optionsDiv.appendChild(label);
+                    });
+
+                    questionDiv.appendChild(optionsDiv);
+                }
+
+                questionsDiv.appendChild(questionDiv);
+            });
+
+            container.appendChild(questionsDiv);
+        }
     }
 }
 

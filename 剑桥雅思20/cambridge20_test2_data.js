@@ -1,6 +1,6 @@
 // js/test-data-c20-2.js - 剑桥雅思20 Test2 数据文件
 
-const testDataC20_2 = {
+const CAMBRIDGE20_TEST2_DATA = {
     testInfo: {
         title: "剑桥雅思20 Test 2",
         sections: 4,
@@ -103,36 +103,102 @@ const testDataC20_2 = {
                     id: 11,
                     type: "matching",
                     text: "11. walking around the town centre",
+                    options: [
+                        "A. talking to members of the public",
+                        "B. designing posters", 
+                        "C. planning events",
+                        "D. accompanying someone to look at the area",
+                        "E. writing articles",
+                        "F. taking photographs",
+                        "G. attending training sessions",
+                        "H. making contact with organizers",
+                        "I. helping with equipment"
+                    ],
                     answer: "D"
                 },
                 {
                     id: 12,
                     type: "matching",
                     text: "12. helping at concerts",
+                    options: [
+                        "A. talking to members of the public",
+                        "B. designing posters", 
+                        "C. planning events",
+                        "D. accompanying someone to look at the area",
+                        "E. writing articles",
+                        "F. taking photographs",
+                        "G. attending training sessions",
+                        "H. making contact with organizers",
+                        "I. helping with equipment"
+                    ],
                     answer: "I"
                 },
                 {
                     id: 13,
                     type: "matching",
                     text: "13. getting involved with community groups",
+                    options: [
+                        "A. talking to members of the public",
+                        "B. designing posters", 
+                        "C. planning events",
+                        "D. accompanying someone to look at the area",
+                        "E. writing articles",
+                        "F. taking photographs",
+                        "G. attending training sessions",
+                        "H. making contact with organizers",
+                        "I. helping with equipment"
+                    ],
                     answer: "H"
                 },
                 {
                     id: 14,
                     type: "matching",
                     text: "14. helping with a magazine",
+                    options: [
+                        "A. talking to members of the public",
+                        "B. designing posters", 
+                        "C. planning events",
+                        "D. accompanying someone to look at the area",
+                        "E. writing articles",
+                        "F. taking photographs",
+                        "G. attending training sessions",
+                        "H. making contact with organizers",
+                        "I. helping with equipment"
+                    ],
                     answer: "E"
                 },
                 {
                     id: 15,
                     type: "matching",
                     text: "15. participating at lunches for retired people",
+                    options: [
+                        "A. talking to members of the public",
+                        "B. designing posters", 
+                        "C. planning events",
+                        "D. accompanying someone to look at the area",
+                        "E. writing articles",
+                        "F. taking photographs",
+                        "G. attending training sessions",
+                        "H. making contact with organizers",
+                        "I. helping with equipment"
+                    ],
                     answer: "A"
                 },
                 {
                     id: 16,
                     type: "matching",
                     text: "16. helping with the website",
+                    options: [
+                        "A. talking to members of the public",
+                        "B. designing posters", 
+                        "C. planning events",
+                        "D. accompanying someone to look at the area",
+                        "E. writing articles",
+                        "F. taking photographs",
+                        "G. attending training sessions",
+                        "H. making contact with organizers",
+                        "I. helping with equipment"
+                    ],
                     answer: "B"
                 },
                 {
@@ -196,30 +262,75 @@ const testDataC20_2 = {
                     id: 21,
                     type: "matching",
                     text: "21. Population",
+                    options: [
+                        "A. needs more research to be done",
+                        "B. is an area that the course should focus on more",
+                        "C. has been covered well in the course",
+                        "D. is a topic that students know little about",
+                        "E. relates strongly to the economy",
+                        "F. is increasing too rapidly",
+                        "G. has had considerable effects on the environment"
+                    ],
                     answer: "D"
                 },
                 {
                     id: 22,
                     type: "matching",
                     text: "22. Health",
+                    options: [
+                        "A. needs more research to be done",
+                        "B. is an area that the course should focus on more",
+                        "C. has been covered well in the course",
+                        "D. is a topic that students know little about",
+                        "E. relates strongly to the economy",
+                        "F. is increasing too rapidly",
+                        "G. has had considerable effects on the environment"
+                    ],
                     answer: "G"
                 },
                 {
                     id: 23,
                     type: "matching",
                     text: "23. Economies",
+                    options: [
+                        "A. needs more research to be done",
+                        "B. is an area that the course should focus on more",
+                        "C. has been covered well in the course",
+                        "D. is a topic that students know little about",
+                        "E. relates strongly to the economy",
+                        "F. is increasing too rapidly",
+                        "G. has had considerable effects on the environment"
+                    ],
                     answer: "B"
                 },
                 {
                     id: 24,
                     type: "matching",
                     text: "24. Culture",
+                    options: [
+                        "A. needs more research to be done",
+                        "B. is an area that the course should focus on more",
+                        "C. has been covered well in the course",
+                        "D. is a topic that students know little about",
+                        "E. relates strongly to the economy",
+                        "F. is increasing too rapidly",
+                        "G. has had considerable effects on the environment"
+                    ],
                     answer: "A"
                 },
                 {
                     id: 25,
                     type: "matching",
                     text: "25. Poverty",
+                    options: [
+                        "A. needs more research to be done",
+                        "B. is an area that the course should focus on more",
+                        "C. has been covered well in the course",
+                        "D. is a topic that students know little about",
+                        "E. relates strongly to the economy",
+                        "F. is increasing too rapidly",
+                        "G. has had considerable effects on the environment"
+                    ],
                     answer: "E"
                 },
                 {
@@ -365,5 +476,5 @@ const testDataC20_2 = {
 
 // 导出数据供测试页面使用
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = testDataC20_2;
+    module.exports = CAMBRIDGE20_TEST2_DATA;
 }

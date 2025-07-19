@@ -1,6 +1,6 @@
 // js/test-data-c20-3.js - 剑桥雅思20 Test3 数据文件
 
-const testDataC20_3 = {
+const CAMBRIDGE20_TEST3_DATA = {
     testInfo: {
         title: "剑桥雅思20 Test 3",
         sections: 4,
@@ -272,24 +272,60 @@ const testDataC20_3 = {
                     id: 27,
                     type: "matching",
                     text: "27. Ruy Blas",
+                    options: [
+                        "A. included a reference to the author's life",
+                        "B. mentioned royal events",
+                        "C. contained a summary of the plot",
+                        "D. featured promotional material for food",
+                        "E. showed a building's architectural features", 
+                        "F. described a poet's work",
+                        "G. advertised local shops"
+                    ],
                     answer: "F"
                 },
                 {
                     id: 28,
                     type: "matching",
                     text: "28. Man of La Mancha",
+                    options: [
+                        "A. included a reference to the author's life",
+                        "B. mentioned royal events",
+                        "C. contained a summary of the plot",
+                        "D. featured promotional material for food",
+                        "E. showed a building's architectural features", 
+                        "F. described a poet's work",
+                        "G. advertised local shops"
+                    ],
                     answer: "E"
                 },
                 {
                     id: 29,
                     type: "matching",
                     text: "29. The Tragedy of Jane Shore",
+                    options: [
+                        "A. included a reference to the author's life",
+                        "B. mentioned royal events",
+                        "C. contained a summary of the plot",
+                        "D. featured promotional material for food",
+                        "E. showed a building's architectural features", 
+                        "F. described a poet's work",
+                        "G. advertised local shops"
+                    ],
                     answer: "B"
                 },
                 {
                     id: 30,
                     type: "matching",
                     text: "30. The Sailors' Festival",
+                    options: [
+                        "A. included a reference to the author's life",
+                        "B. mentioned royal events",
+                        "C. contained a summary of the plot",
+                        "D. featured promotional material for food",
+                        "E. showed a building's architectural features", 
+                        "F. described a poet's work",
+                        "G. advertised local shops"
+                    ],
                     answer: "D"
                 }
             ]
@@ -380,5 +416,5 @@ const testDataC20_3 = {
 
 // 导出数据供测试页面使用
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = testDataC20_3;
+    module.exports = CAMBRIDGE20_TEST3_DATA;
 }
