@@ -95,8 +95,8 @@ const CAMBRIDGE20_TEST3_DATA = {
             subtitle: "考古挖掘项目介绍",
             audioPath: "剑桥雅思20/剑20 听力音频Test3/Section2.mp3",
             questions: "11-20",
-            type: "选择题 + 地图题",
-            instructions: "Choose the correct letter, A, B or C.",
+            type: "选择题 + 配对题",
+            instructions: "Questions 11-16: Choose the correct letter, A, B or C.\nQuestions 17-20: Choose the correct letter, A-G.",
             
             questions_list: [
                 {
@@ -167,26 +167,30 @@ const CAMBRIDGE20_TEST3_DATA = {
                 },
                 {
                     id: 17,
-                    type: "map_labeling",
-                    text: "17. bridge foundations",
+                    type: "matching",
+                    text: "bridge foundations",
+                    options: ["A", "B", "C", "D", "E", "F", "G"],
                     answer: "B"
                 },
                 {
                     id: 18,
-                    type: "map_labeling",
-                    text: "18. rubbish pit",
+                    type: "matching",
+                    text: "rubbish pit",
+                    options: ["A", "B", "C", "D", "E", "F", "G"],
                     answer: "A"
                 },
                 {
                     id: 19,
-                    type: "map_labeling",
-                    text: "19. meeting hall",
+                    type: "matching",
+                    text: "meeting hall",
+                    options: ["A", "B", "C", "D", "E", "F", "G"],
                     answer: "G"
                 },
                 {
                     id: 20,
-                    type: "map_labeling",
-                    text: "20. fish pond",
+                    type: "matching",
+                    text: "fish pond",
+                    options: ["A", "B", "C", "D", "E", "F", "G"],
                     answer: "E"
                 }
             ]

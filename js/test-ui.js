@@ -20,6 +20,9 @@ window.TestUI = class TestUI {
             this.renderSection(3);
             this.renderSection(4);
             this.bindEvents();
+            
+            // 默认显示第一个section
+            this.switchSection(1);
             console.log('测试界面初始化完成');
         } catch (error) {
             console.error('测试初始化失败:', error);
@@ -53,23 +56,51 @@ window.TestUI = class TestUI {
 
     // 数据格式适配方法
     adaptDataFormat() {
+        console.log('开始适配数据格式...', this.testData);
+        
         // 检查是否为剑桥雅思20格式 (sections数组)
         if (this.testData.sections && Array.isArray(this.testData.sections)) {
             console.log('检测到剑桥雅思20数据格式，正在转换...');
             
-            // 将sections数组转换为section1, section2的格式
-            if (Array.isArray(this.testData.sections)) {
-                this.testData.sections.forEach((section, index) => {
-                    const sectionKey = `section${section.id || (index + 1)}`;
-                    this.testData[sectionKey] = this.convertCambridgeSection(section);
-                });
-            } else {
-                console.error('sections 不是数组:', this.testData.sections);
-            }
+            // 保留原始的sections数组
+            const originalSections = this.testData.sections;
             
-            console.log('剑桥雅思20数据格式转换完成');
+            // 将sections数组转换为section1, section2的格式
+            originalSections.forEach((section, index) => {
+                const sectionKey = `section${section.id || (index + 1)}`;
+                console.log(`转换 ${sectionKey}...`);
+                
+                // 直接复制section数据，保留questions_list
+                const convertedSection = {
+                    title: section.title,
+                    subtitle: section.subtitle,
+                    instructions: section.instructions,
+                    questions: section.questions,
+                    type: section.type,
+                    questions_list: section.questions_list // 保留原始的questions_list
+                };
+                
+                // 如果有content数组，也保留它
+                if (section.content) {
+                    convertedSection.content = section.content;
+                }
+                
+                // 尝试转换为parts格式（可选）
+                if (section.questions_list && section.questions_list.length > 0) {
+                    convertedSection.parts = [{
+                        title: `Questions ${section.questions}`,
+                        instructions: section.instructions,
+                        questions: section.questions_list.map(q => this.convertQuestion(q))
+                    }];
+                }
+                
+                this.testData[sectionKey] = convertedSection;
+                console.log(`${sectionKey} 转换完成:`, convertedSection);
+            });
+            
+            console.log('剑桥雅思20数据格式转换完成，可用sections:', Object.keys(this.testData).filter(k => k.startsWith('section')));
         } else {
-            console.log('使用标准测试数据格式');
+            console.log('使用标准测试数据格式，当前数据结构:', Object.keys(this.testData));
         }
     }
 
@@ -360,6 +391,8 @@ window.TestUI = class TestUI {
     }
 
     renderSection(sectionNumber) {
+        console.log(`开始渲染Section ${sectionNumber}...`);
+        
         const sectionData = this.testData[`section${sectionNumber}`];
         if (!sectionData) {
             console.error(`Section ${sectionNumber} not found in testData`, this.testData);
@@ -372,12 +405,15 @@ window.TestUI = class TestUI {
                         <div class="error-message">
                             <h3>Section ${sectionNumber} 数据加载失败</h3>
                             <p>请刷新页面重试，或联系管理员。</p>
+                            <p>调试信息：${JSON.stringify(Object.keys(this.testData))}</p>
                         </div>
                     `;
                 }
             }
             return;
         }
+
+        console.log(`Section ${sectionNumber} 数据:`, sectionData);
 
         // 查找问题容器
         const sectionElement = document.getElementById(`section-${sectionNumber}`);
@@ -397,7 +433,7 @@ window.TestUI = class TestUI {
         // 渲染标题
         const titleElement = document.createElement('h2');
         titleElement.className = 'section-title';
-        titleElement.innerHTML = sectionData.title;
+        titleElement.innerHTML = sectionData.title || `Section ${sectionNumber}`;
         questionsContainer.appendChild(titleElement);
 
         // 如果有subtitle，也渲染出来
@@ -408,47 +444,63 @@ window.TestUI = class TestUI {
             questionsContainer.appendChild(subtitleElement);
         }
 
-        // 检查是否为剑桥雅思20格式 - 直接检查questions_list
-        if (sectionData.questions_list && Array.isArray(sectionData.questions_list)) {
+        console.log(`检查Section ${sectionNumber}的数据格式...`);
+        console.log(`有questions_list: ${!!(sectionData.questions_list)}`);
+        console.log(`有parts: ${!!(sectionData.parts)}`);
+
+        // 优先检查是否为剑桥雅思20格式 - 直接检查questions_list
+        if (sectionData.questions_list && Array.isArray(sectionData.questions_list) && sectionData.questions_list.length > 0) {
+            console.log(`使用剑桥雅思20格式渲染Section ${sectionNumber}`);
             this.renderCambridgeQuestions(sectionData, questionsContainer);
         }
-        // 检查是否为剑桥雅思20格式的填空题
-        else if (sectionData.parts && sectionData.parts[0] && sectionData.parts[0].questions && 
-            sectionData.parts[0].questions[0] && 
-            (sectionData.parts[0].questions[0].type === 'text' || 
-             sectionData.parts[0].questions[0].type === 'fill_blank' ||
-             sectionData.parts[0].questions[0].text.includes('____'))) {
-            this.renderCambridgeFillBlanks(sectionData, questionsContainer);
+        // 检查是否为转换后的parts格式
+        else if (sectionData.parts && Array.isArray(sectionData.parts) && sectionData.parts.length > 0) {
+            console.log(`使用parts格式渲染Section ${sectionNumber}`);
+            
+            const firstPartFirstQuestion = sectionData.parts[0]?.questions?.[0];
+            if (firstPartFirstQuestion) {
+                if (firstPartFirstQuestion.type === 'text' || 
+                    firstPartFirstQuestion.type === 'fill_blank' ||
+                    (firstPartFirstQuestion.text && firstPartFirstQuestion.text.includes('____'))) {
+                    this.renderCambridgeFillBlanks(sectionData, questionsContainer);
+                } else if (firstPartFirstQuestion.type === 'radio' || 
+                          firstPartFirstQuestion.type === 'multiple_choice') {
+                    this.renderSection2(sectionData, questionsContainer);
+                } else if (firstPartFirstQuestion.type === 'checkbox' ||
+                          firstPartFirstQuestion.type === 'multi_select' || 
+                          firstPartFirstQuestion.type === 'matching') {
+                    this.renderSection3(sectionData, questionsContainer);
+                } else {
+                    console.log(`使用默认Section${sectionNumber}渲染方法`);
+                    this[`renderSection${sectionNumber}`](sectionData, questionsContainer);
+                }
+            } else {
+                console.log(`使用默认Section${sectionNumber}渲染方法`);
+                this[`renderSection${sectionNumber}`](sectionData, questionsContainer);
+            }
         }
-        // 检查是否为剑桥雅思20格式的选择题
-        else if (sectionData.parts && sectionData.parts[0] && sectionData.parts[0].questions && 
-            sectionData.parts[0].questions[0] && 
-            (sectionData.parts[0].questions[0].type === 'radio' || 
-             sectionData.parts[0].questions[0].type === 'multiple_choice')) {
-            this.renderSection2(sectionData, questionsContainer);
-        }
-        // 检查是否为剑桥雅思20格式的多选题
-        else if (sectionData.parts && sectionData.parts[0] && sectionData.parts[0].questions && 
-            sectionData.parts[0].questions[0] && 
-            (sectionData.parts[0].questions[0].type === 'multi_select' || 
-             sectionData.parts[0].questions[0].type === 'matching')) {
-            this.renderSection3(sectionData, questionsContainer);
-        }
-        // Section 1 渲染逻辑
-        else if (sectionNumber === 1) {
-            this.renderSection1(sectionData, questionsContainer);
-        } 
-        // Section 2 渲染逻辑
-        else if (sectionNumber === 2) {
-            this.renderSection2(sectionData, questionsContainer);
-        }
-        // Section 3 渲染逻辑
-        else if (sectionNumber === 3) {
-            this.renderSection3(sectionData, questionsContainer);
-        }
-        // Section 4 渲染逻辑
-        else if (sectionNumber === 4) {
-            this.renderSection4(sectionData, questionsContainer);
+        // 回退到原始渲染逻辑
+        else {
+            console.log(`使用默认Section${sectionNumber}渲染方法`);
+            if (sectionNumber === 1) {
+                this.renderSection1(sectionData, questionsContainer);
+            } else if (sectionNumber === 2) {
+                this.renderSection2(sectionData, questionsContainer);
+            } else if (sectionNumber === 3) {
+                this.renderSection3(sectionData, questionsContainer);
+            } else if (sectionNumber === 4) {
+                this.renderSection4(sectionData, questionsContainer);
+            } else {
+                // 如果都没有匹配，显示错误信息
+                questionsContainer.innerHTML = `
+                    <div class="error-message">
+                        <h3>Section ${sectionNumber} 渲染失败</h3>
+                        <p>无法识别数据格式，请联系开发者。</p>
+                        <pre>${JSON.stringify(sectionData, null, 2).substring(0, 500)}...</pre>
+                    </div>
+                `;
+                return;
+            }
         }
 
         // 添加提交按钮
@@ -460,6 +512,8 @@ window.TestUI = class TestUI {
             submitBtn.addEventListener('click', () => this.submitAnswers());
             questionsContainer.appendChild(submitBtn);
         }
+
+        console.log(`Section ${sectionNumber} 渲染完成`);
     }
 
     renderSection1(sectionData, container) {
@@ -550,7 +604,8 @@ window.TestUI = class TestUI {
                             const optionsDiv = document.createElement('div');
                             optionsDiv.className = 'options-list';
 
-                            question.options.forEach(option => {
+                            if (question.options && Array.isArray(question.options)) {
+                                question.options.forEach(option => {
                                 const label = document.createElement('label');
                                 label.className = 'option-item';
 
@@ -570,6 +625,7 @@ window.TestUI = class TestUI {
                                 label.appendChild(optionText);
                                 optionsDiv.appendChild(label);
                             });
+                            }
 
                             questionDiv.appendChild(optionsDiv);
                             questionsDiv.appendChild(questionDiv);
@@ -594,7 +650,8 @@ window.TestUI = class TestUI {
                             const optionsDiv = document.createElement('div');
                             optionsDiv.className = 'options-list';
 
-                            question.options.forEach(option => {
+                            if (question.options && Array.isArray(question.options)) {
+                                question.options.forEach(option => {
                                 const label = document.createElement('label');
                                 label.className = 'option-item';
 
@@ -616,6 +673,7 @@ window.TestUI = class TestUI {
                                 label.appendChild(optionText);
                                 optionsDiv.appendChild(label);
                             });
+                            }
 
                             questionDiv.appendChild(optionsDiv);
                             questionsDiv.appendChild(questionDiv);
@@ -723,7 +781,8 @@ window.TestUI = class TestUI {
                             const optionsDiv = document.createElement('div');
                             optionsDiv.className = 'options-list';
 
-                            question.options.forEach(option => {
+                            if (question.options && Array.isArray(question.options)) {
+                                question.options.forEach(option => {
                                 const label = document.createElement('label');
                                 label.className = 'option-item';
 
@@ -743,6 +802,7 @@ window.TestUI = class TestUI {
                                 label.appendChild(optionText);
                                 optionsDiv.appendChild(label);
                             });
+                            }
 
                             questionDiv.appendChild(optionsDiv);
                             questionsDiv.appendChild(questionDiv);
@@ -780,7 +840,8 @@ window.TestUI = class TestUI {
                             const optionsDiv = document.createElement('div');
                             optionsDiv.className = 'options-list';
 
-                            question.options.forEach(option => {
+                            if (question.options && Array.isArray(question.options)) {
+                                question.options.forEach(option => {
                                 const label = document.createElement('label');
                                 label.className = 'option-item';
 
@@ -802,6 +863,7 @@ window.TestUI = class TestUI {
                                 label.appendChild(optionText);
                                 optionsDiv.appendChild(label);
                             });
+                            }
 
                             questionDiv.appendChild(optionsDiv);
                             questionsDiv.appendChild(questionDiv);
@@ -959,6 +1021,9 @@ window.TestUI = class TestUI {
         if (sectionData.parts && sectionData.parts[0]) {
             const part = sectionData.parts[0];
             
+            // 添加进度指示器
+            this.addProgressIndicator(container, part.questions || []);
+            
             // 渲染说明
             if (part.instructions) {
                 const instructionsDiv = document.createElement('div');
@@ -971,28 +1036,189 @@ window.TestUI = class TestUI {
             const questionsDiv = document.createElement('div');
             questionsDiv.className = 'fill-blank-questions';
 
-            part.questions.forEach(question => {
+            if (part.questions && Array.isArray(part.questions)) {
+                part.questions.forEach(question => {
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'question-item';
+                
+                // 检查是否已回答
+                if (this.userAnswers[question.id]) {
+                    questionDiv.classList.add('answered');
+                }
 
                 const questionP = document.createElement('p');
                 // 处理不同的填空符号格式：____ 或 ________
                 let questionText = question.text.replace(/____+/g, 
-                    `<input type="text" class="answer-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="您的答案">`);
+                    `<input type="text" class="answer-input fill-blank-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="您的答案">`);
                 
                 // 如果没有找到填空符号，检查是否在题目末尾需要添加输入框
                 if (!questionText.includes('<input') && questionText.includes('Question ' + question.id + ':')) {
-                    questionText = questionText.replace(':', ': <input type="text" class="answer-input" data-question="' + question.id + '" value="' + (this.userAnswers[question.id] || '') + '" placeholder="您的答案">');
+                    questionText = questionText.replace(':', ': <input type="text" class="answer-input fill-blank-input" data-question="' + question.id + '" value="' + (this.userAnswers[question.id] || '') + '" placeholder="您的答案">');
                 }
                 
-                questionP.innerHTML = `<span class="question-number">${question.id}</span> ${questionText}`;
+                questionP.innerHTML = `
+                    <span class="question-number">${question.id}</span>
+                    <span class="question-type-badge fill-blank">填空</span>
+                    ${questionText}
+                `;
                 
                 questionDiv.appendChild(questionP);
                 questionsDiv.appendChild(questionDiv);
             });
+            }
 
             container.appendChild(questionsDiv);
+            
+            // 绑定输入框事件
+            this.bindFillBlankEvents(container);
         }
+    }
+
+    // 添加进度指示器
+    addProgressIndicator(container, questions) {
+        const progressDiv = document.createElement('div');
+        progressDiv.className = 'section-progress';
+        
+        const answeredCount = questions.filter(q => this.userAnswers[q.id]).length;
+        const totalCount = questions.length;
+        const progressPercent = totalCount > 0 ? (answeredCount / totalCount) * 100 : 0;
+        
+        progressDiv.innerHTML = `
+            <div class="progress-text">已完成: ${answeredCount}/${totalCount}</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" style="width: ${progressPercent}%"></div>
+            </div>
+            <div class="progress-text">${Math.round(progressPercent)}%</div>
+        `;
+        
+        container.appendChild(progressDiv);
+    }
+    
+    // 绑定填空题事件
+    bindFillBlankEvents(container) {
+        const inputs = container.querySelectorAll('.fill-blank-input');
+        inputs.forEach(input => {
+            input.addEventListener('input', (e) => {
+                const questionId = e.target.dataset.question;
+                const value = e.target.value.trim();
+                
+                // 更新用户答案
+                if (value) {
+                    this.userAnswers[questionId] = value;
+                    e.target.classList.add('answered');
+                    e.target.closest('.question-item').classList.add('answered');
+                } else {
+                    delete this.userAnswers[questionId];
+                    e.target.classList.remove('answered');
+                    e.target.closest('.question-item').classList.remove('answered');
+                }
+                
+                // 更新进度指示器
+                this.updateProgressIndicator(container);
+                
+                // 保存答案
+                this.saveUserAnswers();
+            });
+            
+            input.addEventListener('blur', (e) => {
+                // 失去焦点时自动保存
+                this.saveUserAnswers();
+            });
+        });
+    }
+    
+    // 绑定选择题事件
+    bindChoiceEvents(container) {
+        // 绑定单选题
+        const radioInputs = container.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                const questionId = e.target.name.replace('q', '');
+                const value = e.target.value;
+                
+                // 更新用户答案
+                this.userAnswers[questionId] = value;
+                
+                // 更新视觉状态
+                const questionItem = e.target.closest('.question-item');
+                questionItem.classList.add('answered');
+                
+                // 更新进度指示器
+                this.updateProgressIndicator(container);
+                
+                // 保存答案
+                this.saveUserAnswers();
+            });
+        });
+        
+        // 绑定多选题
+        const checkboxInputs = container.querySelectorAll('input[type="checkbox"]');
+        checkboxInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                const questionId = e.target.name.replace('q', '');
+                const value = e.target.value;
+                
+                // 获取当前答案数组
+                let currentAnswers = this.userAnswers[questionId];
+                if (!Array.isArray(currentAnswers)) {
+                    currentAnswers = [];
+                }
+                
+                // 更新答案数组
+                if (e.target.checked) {
+                    if (!currentAnswers.includes(value)) {
+                        currentAnswers.push(value);
+                    }
+                } else {
+                    const index = currentAnswers.indexOf(value);
+                    if (index > -1) {
+                        currentAnswers.splice(index, 1);
+                    }
+                }
+                
+                // 更新用户答案
+                if (currentAnswers.length > 0) {
+                    this.userAnswers[questionId] = currentAnswers;
+                } else {
+                    delete this.userAnswers[questionId];
+                }
+                
+                // 更新视觉状态
+                const questionItem = e.target.closest('.question-item');
+                if (currentAnswers.length > 0) {
+                    questionItem.classList.add('answered');
+                } else {
+                    questionItem.classList.remove('answered');
+                }
+                
+                // 更新进度指示器
+                this.updateProgressIndicator(container);
+                
+                // 保存答案
+                this.saveUserAnswers();
+            });
+        });
+        
+        // 绑定填空题（如果有的话）
+        this.bindFillBlankEvents(container);
+    }
+    
+    // 更新进度指示器
+    updateProgressIndicator(container) {
+        const progressDiv = container.querySelector('.section-progress');
+        if (!progressDiv) return;
+        
+        const inputs = container.querySelectorAll('.answer-input');
+        const answeredCount = Array.from(inputs).filter(input => input.value.trim()).length;
+        const totalCount = inputs.length;
+        const progressPercent = totalCount > 0 ? (answeredCount / totalCount) * 100 : 0;
+        
+        const progressText = progressDiv.querySelectorAll('.progress-text');
+        const progressBar = progressDiv.querySelector('.progress-bar-fill');
+        
+        if (progressText[0]) progressText[0].textContent = `已完成: ${answeredCount}/${totalCount}`;
+        if (progressText[1]) progressText[1].textContent = `${Math.round(progressPercent)}%`;
+        if (progressBar) progressBar.style.width = `${progressPercent}%`;
     }
 
     showError(message) {
@@ -1024,8 +1250,10 @@ window.TestUI = class TestUI {
         const sectionContents = document.querySelectorAll('.section-content');
         sectionContents.forEach(content => {
             if (parseInt(content.dataset.section) === sectionNumber) {
+                content.classList.add('active');
                 content.style.display = 'block';
             } else {
+                content.classList.remove('active');
                 content.style.display = 'none';
             }
         });
@@ -1115,176 +1343,107 @@ window.TestUI = class TestUI {
     
     // 计算分数
     calculateScore() {
-        // 使用全局变量而不是函数
-        if (typeof standardAnswers === 'undefined') {
-            console.error('standardAnswers未定义，无法计算分数');
+        // 使用全局变量或测试数据中的答案
+        let correctAnswers = null;
+        
+        if (typeof standardAnswers !== 'undefined') {
+            correctAnswers = standardAnswers;
+        } else if (this.testData && this.testData.answers) {
+            correctAnswers = this.testData.answers;
+        } else {
+            console.error('标准答案未定义，无法计算分数');
             return { totalCorrect: 0, ieltsScore: 0, sectionResults: {} };
         }
         
-        const sectionResults = {
-            section1: { total: 10, correct: 0 },
-            section2: { total: 10, correct: 0 },
-            section3: { total: 10, correct: 0 },
-            section4: { total: 10, correct: 0 }
-        };
+        console.log('开始计算分数...', { correctAnswers, userAnswers: this.userAnswers });
         
-        // 添加详细的分数统计信息
-        const sectionDetailCorrect = {
-            section3: {
-                singleChoice: 0, // 1-4题（21-24）
-                multiChoice: 0   // 5-10题（25-30）
-            }
+        const sectionResults = {
+            section1: { total: 10, correct: 0, details: [] },
+            section2: { total: 10, correct: 0, details: [] },
+            section3: { total: 10, correct: 0, details: [] },
+            section4: { total: 10, correct: 0, details: [] }
         };
         
         let totalCorrect = 0;
         
-        // 清晰定义多选题组
-        const multiChoiceGroups = [
-            { first: 25, second: 26 },
-            { first: 27, second: 28 },
-            { first: 29, second: 30 }
-        ];
-        
-        // 专门处理多选题组（Section 3 的多选题）
-        console.log("开始处理多选题组...");
-        
-        // 遍历处理每个多选题组
-        for (const group of multiChoiceGroups) {
-            const firstId = group.first;
-            const secondId = group.second;
-            
-            console.log(`处理多选题组 ${firstId}&${secondId}`);
-            
-            // 获取用户答案和标准答案
-            const firstUserAnswer = this.userAnswers[firstId];
-            const secondUserAnswer = this.userAnswers[secondId];
-            const firstStdAnswer = standardAnswers[firstId];
-            const secondStdAnswer = standardAnswers[secondId];
-            
-            // 记录详细日志
-            console.log(`题目${firstId}用户答案:`, firstUserAnswer);
-            console.log(`题目${firstId}标准答案:`, firstStdAnswer);
-            console.log(`题目${secondId}用户答案:`, secondUserAnswer);
-            console.log(`题目${secondId}标准答案:`, secondStdAnswer);
-            
-            // 检查是否为多选题（数组类型答案）
-            if (!Array.isArray(firstStdAnswer) || !Array.isArray(secondStdAnswer)) {
-                console.error(`题目${firstId}或${secondId}不是多选题`);
-                continue;
-            }
-            
-            // 检查用户是否回答了问题
-            if (!firstUserAnswer || !secondUserAnswer || 
-                !Array.isArray(firstUserAnswer) || !Array.isArray(secondUserAnswer)) {
-                console.log(`多选题组${firstId}&${secondId}：用户未完整回答`);
-                continue;
-            }
-            
-            // 使用我们的多选题判断逻辑检查答案是否正确
-            const isFirstCorrect = this.checkMultipleChoiceAnswer(firstUserAnswer, firstStdAnswer);
-            const isSecondCorrect = this.checkMultipleChoiceAnswer(secondUserAnswer, secondStdAnswer);
-            
-            console.log(`多选题${firstId}判断结果:`, isFirstCorrect);
-            console.log(`多选题${secondId}判断结果:`, isSecondCorrect);
-            
-            // 两题都答对，整组才算对
-            if (isFirstCorrect && isSecondCorrect) {
-                console.log(`多选题组${firstId}&${secondId}全部正确，加2分`);
-                
-                // 更新Section 3的得分
-                sectionResults.section3.correct += 2;
-                
-                // 更新多选题得分统计
-                sectionDetailCorrect.section3.multiChoice += 2;
-                
-                // 更新总分
-                totalCorrect += 2;
-            }
-        }
-        
-        // 处理单选题和填空题
-        console.log("开始处理单选题和填空题...");
-        
-        // 记录已处理过的多选题题号
-        const processedMultiChoiceIds = new Set();
-        multiChoiceGroups.forEach(group => {
-            processedMultiChoiceIds.add(group.first);
-            processedMultiChoiceIds.add(group.second);
-        });
-        
-        // 遍历所有题目（跳过已处理的多选题）
+        // 遍历所有40题进行通用评分
         for (let i = 1; i <= 40; i++) {
-            // 跳过已处理的多选题
-            if (processedMultiChoiceIds.has(i)) {
-                console.log(`跳过已处理的多选题 ${i}`);
-                continue;
-            }
-            
             const userAnswer = this.userAnswers[i];
-            const stdAnswer = standardAnswers[i];
+            const correctAnswer = correctAnswers[i - 1]; // 数组索引从0开始
             
-            // 如果用户没有回答，则跳过
-            if (userAnswer === undefined || userAnswer === '' || 
-               (Array.isArray(userAnswer) && userAnswer.length === 0)) {
-                console.log(`题目 ${i}: 用户未作答`);
-                continue;
-            }
+            // 确定题目所属section
+            let sectionKey = 'section1';
+            if (i >= 11 && i <= 20) sectionKey = 'section2';
+            else if (i >= 21 && i <= 30) sectionKey = 'section3';
+            else if (i >= 31 && i <= 40) sectionKey = 'section4';
             
-            // 检查答案类型
-            console.log(`题目 ${i} 答案类型:`, Array.isArray(stdAnswer) ? '多选题' : '单选/填空题');
+            let isCorrect = false;
             
-            // 使用增强的答案比较方法
-            const isCorrect = this.enhancedCompareAnswer(userAnswer, stdAnswer);
-            
-            // 调试输出
-            console.log(`题目 ${i}: 用户答案=${JSON.stringify(userAnswer)}, 标准答案=${JSON.stringify(stdAnswer)}, 是否正确=${isCorrect}`);
-            
-            // 更新分数
-            if (isCorrect) {
-                totalCorrect++;
-                
-                // 更新各部分分数
-                if (i <= 10) {
-                    sectionResults.section1.correct++;
-                } else if (i <= 20) {
-                    sectionResults.section2.correct++;
-                } else if (i <= 30) {
-                    sectionResults.section3.correct++;
-                    
-                    // 针对Section 3，单独统计单选题得分
-                    if (i <= 24) {
-                        sectionDetailCorrect.section3.singleChoice++;
+            if (userAnswer !== undefined && userAnswer !== null && userAnswer !== '') {
+                // 处理不同类型的答案比较
+                if (Array.isArray(userAnswer)) {
+                    // 多选题答案
+                    if (Array.isArray(correctAnswer)) {
+                        isCorrect = this.compareArrayAnswers(userAnswer, correctAnswer);
+                    } else {
+                        // 用户给出数组但标准答案是单个值，检查是否包含
+                        isCorrect = userAnswer.includes(correctAnswer);
                     }
+                } else if (Array.isArray(correctAnswer)) {
+                    // 标准答案是数组但用户答案是单个值
+                    isCorrect = correctAnswer.includes(userAnswer);
                 } else {
-                    sectionResults.section4.correct++;
+                    // 单选题或填空题答案
+                    isCorrect = this.compareAnswers(userAnswer, correctAnswer);
                 }
             }
+            
+            // 记录详细结果
+            sectionResults[sectionKey].details.push({
+                questionId: i,
+                userAnswer: userAnswer,
+                correctAnswer: correctAnswer,
+                isCorrect: isCorrect
+            });
+            
+            if (isCorrect) {
+                sectionResults[sectionKey].correct++;
+                totalCorrect++;
+            }
+            
+            console.log(`题目${i} (${sectionKey}): 用户答案=${userAnswer}, 标准答案=${correctAnswer}, 正确=${isCorrect}`);
         }
         
-        // 计算雅思分数
-        // 使用全局函数或变量
-        let ieltsScore = 0;
-        if (typeof getIeltsScore === 'function') {
-            ieltsScore = getIeltsScore(totalCorrect);
-        } else if (typeof listeningScoreTable !== 'undefined') {
-            ieltsScore = listeningScoreTable[totalCorrect] || 0;
-        }
+        // 计算雅思分数（简化的分数表）
+        const ieltsScore = this.calculateIeltsScore(totalCorrect);
         
         // 输出最终得分信息
         console.log("===== 最终得分 =====");
-        console.log(`总分: ${totalCorrect}`);
+        console.log(`总分: ${totalCorrect}/40`);
         console.log(`雅思分数: ${ieltsScore}`);
-        console.log(`Section 1: ${sectionResults.section1.correct}/${sectionResults.section1.total}`);
-        console.log(`Section 2: ${sectionResults.section2.correct}/${sectionResults.section2.total}`);
-        console.log(`Section 3: ${sectionResults.section3.correct}/${sectionResults.section3.total} (单选题: ${sectionDetailCorrect.section3.singleChoice}/4, 多选题: ${sectionDetailCorrect.section3.multiChoice}/6)`);
-        console.log(`Section 4: ${sectionResults.section4.correct}/${sectionResults.section4.total}`);
+        console.log('各部分详情:', sectionResults);
         
         return {
             totalCorrect,
             ieltsScore,
             sectionResults,
-            sectionDetailCorrect
+            maxScore: 40
         };
+    }
+    
+    // 计算雅思听力分数
+    calculateIeltsScore(correctCount) {
+        // 雅思听力评分表（简化版）
+        const scoreTable = {
+            39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0,
+            34: 7.5, 33: 7.5, 32: 7.0, 31: 7.0, 30: 6.5,
+            29: 6.5, 28: 6.0, 27: 6.0, 26: 6.0, 25: 5.5,
+            24: 5.5, 23: 5.5, 22: 5.0, 21: 5.0, 20: 5.0,
+            19: 4.5, 18: 4.5, 17: 4.0, 16: 4.0, 15: 4.0,
+            14: 3.5, 13: 3.5, 12: 3.0, 11: 3.0, 10: 3.0
+        };
+        
+        return scoreTable[correctCount] || (correctCount < 10 ? 2.5 : 2.5);
     }
     
     // 显示结果
@@ -1489,6 +1648,8 @@ window.TestUI = class TestUI {
 
     // 新增：渲染剑桥雅思20格式的题目
     renderCambridgeQuestions(sectionData, container) {
+        console.log('开始渲染剑桥雅思20格式题目:', sectionData);
+        
         // 渲染说明
         if (sectionData.instructions) {
             const instructionsDiv = document.createElement('div');
@@ -1504,15 +1665,22 @@ window.TestUI = class TestUI {
             // 显示错误信息给用户
             const errorDiv = document.createElement('div');
             errorDiv.className = 'error-message';
-            errorDiv.innerHTML = '<p>该部分暂无题目数据。</p>';
+            errorDiv.innerHTML = `
+                <p>该部分暂无题目数据。</p>
+                <p>调试信息：questions_list长度=${questions ? questions.length : 'undefined'}</p>
+            `;
             container.appendChild(errorDiv);
             return;
         }
 
+        console.log(`找到 ${questions.length} 个题目`);
+
         // 检查第一个题目的类型来决定渲染方式
         const firstQuestion = questions[0];
+        console.log('第一个题目:', firstQuestion);
         
         if (firstQuestion.type === 'fill_blank') {
+            console.log('渲染填空题');
             // 填空题渲染
             const questionsDiv = document.createElement('div');
             questionsDiv.className = 'fill-blank-questions';
@@ -1525,14 +1693,23 @@ window.TestUI = class TestUI {
                 questionText.className = 'question-text';
                 
                 // 将答案位置替换为输入框
-                const textWithInput = question.text.replace(/____+/g, 
-                    `<span class="answer-placeholder">
-                        <span class="question-number">${question.id}</span>
-                        <input type="text" class="answer-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="输入答案">
-                    </span>`
-                );
+                let textWithInput = question.text;
                 
-                questionText.innerHTML = textWithInput;
+                // 处理不同的填空符号格式
+                if (textWithInput.includes('____')) {
+                    textWithInput = textWithInput.replace(/____+/g, 
+                        `<span class="answer-placeholder">
+                            <input type="text" class="answer-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="输入答案">
+                        </span>`
+                    );
+                } else {
+                    // 如果没有填空符，在题目末尾添加输入框
+                    textWithInput += ` <span class="answer-placeholder">
+                        <input type="text" class="answer-input" data-question="${question.id}" value="${this.userAnswers[question.id] || ''}" placeholder="输入答案">
+                    </span>`;
+                }
+                
+                questionText.innerHTML = `<span class="question-number">${question.id}</span> ${textWithInput}`;
                 questionDiv.appendChild(questionText);
                 questionsDiv.appendChild(questionDiv);
             });
@@ -1540,6 +1717,7 @@ window.TestUI = class TestUI {
             container.appendChild(questionsDiv);
         } 
         else if (firstQuestion.type === 'multiple_choice' || firstQuestion.type === 'matching') {
+            console.log('渲染选择题');
             // 选择题和匹配题渲染
             const questionsDiv = document.createElement('div');
             questionsDiv.className = 'radio-questions';
@@ -1598,6 +1776,8 @@ window.TestUI = class TestUI {
                     });
 
                     questionDiv.appendChild(optionsDiv);
+                } else {
+                    console.warn(`题目 ${question.id} 没有选项`);
                 }
 
                 questionsDiv.appendChild(questionDiv);
@@ -1606,6 +1786,7 @@ window.TestUI = class TestUI {
             container.appendChild(questionsDiv);
         }
         else if (firstQuestion.type === 'multi_select') {
+            console.log('渲染多选题');
             // 多选题渲染
             const questionsDiv = document.createElement('div');
             questionsDiv.className = 'checkbox-questions';
@@ -1671,13 +1852,142 @@ window.TestUI = class TestUI {
                     });
 
                     questionDiv.appendChild(optionsDiv);
+                } else {
+                    console.warn(`题目 ${question.id} 没有选项`);
                 }
 
                 questionsDiv.appendChild(questionDiv);
             });
 
             container.appendChild(questionsDiv);
+        } else {
+            console.warn(`未识别的题目类型: ${firstQuestion.type}`);
+            // 通用渲染逻辑
+            const questionsDiv = document.createElement('div');
+            questionsDiv.className = 'generic-questions';
+            
+            // 添加进度指示器
+            this.addProgressIndicator(container, questions);
+            
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-item';
+                
+                // 检查是否已回答
+                if (this.userAnswers[question.id]) {
+                    questionDiv.classList.add('answered');
+                }
+                
+                // 确定题目类型徽章
+                const questionType = question.type || (question.options ? 'multiple-choice' : 'fill-blank');
+                const typeText = {
+                    'fill_blank': '填空',
+                    'multiple_choice': '单选',
+                    'multi_select': '多选',
+                    'matching': '匹配'
+                }[questionType] || '未知';
+                const typeClass = {
+                    'fill_blank': 'fill-blank',
+                    'multiple_choice': 'multiple-choice',
+                    'multi_select': 'multi-select',
+                    'matching': 'matching'
+                }[questionType] || 'multiple-choice';
+                
+                const questionText = document.createElement('p');
+                questionText.innerHTML = `
+                    <span class="question-number">${question.id}</span>
+                    <span class="question-type-badge ${typeClass}">${typeText}</span>
+                    ${question.text}
+                `;
+                questionDiv.appendChild(questionText);
+                
+                // 如果有选项，显示为选择题
+                if (question.options && question.options.length > 0) {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.className = question.type === 'matching' ? 'options-list matching-questions' : 'options-list';
+                    
+                    question.options.forEach(option => {
+                        const label = document.createElement('label');
+                        label.className = 'option-item';
+                        
+                        const input = document.createElement('input');
+                        input.type = question.type === 'multi_select' ? 'checkbox' : 'radio';
+                        input.name = `q${question.id}`;
+                        input.value = typeof option === 'string' ? option.charAt(0) : option;
+                        
+                        // 设置已选中的答案
+                        if (question.type === 'multi_select') {
+                            const userAnswer = this.userAnswers[question.id];
+                            if (userAnswer && userAnswer.includes(input.value)) {
+                                input.checked = true;
+                            }
+                        } else {
+                            if (this.userAnswers[question.id] === input.value) {
+                                input.checked = true;
+                            }
+                        }
+                        
+                        const span = document.createElement('span');
+                        span.textContent = ` ${option}`;
+                        
+                        label.appendChild(input);
+                        label.appendChild(span);
+                        optionsDiv.appendChild(label);
+                    });
+                    
+                    questionDiv.appendChild(optionsDiv);
+                } else {
+                    // 没有选项，显示为填空题
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.className = 'answer-input fill-blank-input';
+                    input.setAttribute('data-question', question.id);
+                    input.value = this.userAnswers[question.id] || '';
+                    input.placeholder = '输入答案';
+                    if (this.userAnswers[question.id]) {
+                        input.classList.add('answered');
+                    }
+                    questionDiv.appendChild(input);
+                }
+                
+                questionsDiv.appendChild(questionDiv);
+            });
+            
+            container.appendChild(questionsDiv);
+            
+            // 绑定选择题事件
+            this.bindChoiceEvents(container);
         }
+        
+        console.log('剑桥雅思20格式题目渲染完成');
+    }
+    
+    // 答案比较辅助函数
+    compareAnswers(userAnswer, correctAnswer) {
+        if (typeof userAnswer === 'string' && typeof correctAnswer === 'string') {
+            // 字符串比较（忽略大小写和前后空格）
+            return userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
+        }
+        // 其他类型直接比较
+        return userAnswer === correctAnswer;
+    }
+    
+    compareArrayAnswers(userAnswers, correctAnswers) {
+        if (!Array.isArray(userAnswers) || !Array.isArray(correctAnswers)) {
+            return false;
+        }
+        
+        if (userAnswers.length !== correctAnswers.length) {
+            return false;
+        }
+        
+        // 排序后比较，忽略顺序
+        const sortedUser = [...userAnswers].sort();
+        const sortedCorrect = [...correctAnswers].sort();
+        
+        return sortedUser.every((answer, index) => 
+            this.compareAnswers(answer, sortedCorrect[index])
+        );
     }
 }
 

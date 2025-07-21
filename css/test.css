@@ -1048,3 +1048,218 @@
     display: block;
     text-align: center;
 } 
+/* 通用题目渲染样式 */
+.generic-questions {
+    margin: 20px 0;
+}
+
+.generic-questions .question-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.generic-questions h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.generic-questions .question-number {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 8px;
+}
+
+/* 题目类型指示器 */
+.question-type-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: top;
+}
+
+.question-type-badge.fill-blank {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+.question-type-badge.multiple-choice {
+    background-color: #e8f5e8;
+    color: #388e3c;
+    border: 1px solid #c8e6c9;
+}
+
+.question-type-badge.multi-select {
+    background-color: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #ffcc02;
+}
+
+.question-type-badge.matching {
+    background-color: #fce4ec;
+    color: #c2185b;
+    border: 1px solid #f8bbd9;
+}
+
+/* 改进的题目容器 */
+.question-item {
+    position: relative;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.question-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #007bff;
+}
+
+.question-item.answered {
+    border-left-color: #28a745;
+    background-color: #f8fff8;
+}
+
+/* 填空题优化 */
+.fill-blank-input {
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    border-radius: 3px;
+    min-width: 120px;
+    transition: border-color 0.2s ease;
+}
+
+.fill-blank-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.fill-blank-input.answered {
+    border-color: #28a745;
+    background-color: #f8fff8;
+}
+
+/* 选择题选项优化 */
+.option-item {
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.option-item:hover {
+    background-color: #f0f0f0;
+}
+
+.option-item input[type="radio"]:checked + span,
+.option-item input[type="checkbox"]:checked + span {
+    font-weight: 500;
+    color: #007bff;
+}
+
+/* 匹配题特殊样式 */
+.matching-questions .question-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.matching-questions .question-text {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.matching-questions .options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.matching-questions .option-item {
+    margin: 0;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 32px;
+    text-align: center;
+}
+
+.matching-questions .option-item:hover {
+    border-color: #007bff;
+}
+
+.matching-questions .option-item input[type="radio"]:checked + span {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 进度指示器 */
+.section-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.progress-text {
+    color: #666;
+}
+
+.progress-bar-container {
+    flex: 1;
+    margin: 0 15px;
+    height: 6px;
+    background-color: #e9ecef;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .question-type-badge {
+        font-size: 8px;
+        padding: 1px 6px;
+    }
+    
+    .matching-questions .question-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .matching-questions .question-text {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .section-progress {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .progress-bar-container {
+        margin: 0;
+        width: 100%;
+    }
+}
+

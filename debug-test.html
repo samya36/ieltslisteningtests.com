@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调试测试 - 剑桥雅思20</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .debug-info { background-color: #e2e3e5; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>🔧 剑桥雅思20调试测试</h1>
+    <div id="results"></div>
+
+    <!-- 加载依赖文件 -->
+    <script src="js/test-ui.js"></script>
+    <script src="剑桥雅思20/cambridge20_test1_data.js"></script>
+    <script src="剑桥雅思20/cambridge20_test1_answers.js"></script>
+
+    <script>
+        function debugTest() {
+            const resultsDiv = document.getElementById('results');
+            
+            // 测试1: 检查数据是否加载
+            try {
+                if (typeof CAMBRIDGE20_TEST1_DATA === 'undefined') {
+                    throw new Error('CAMBRIDGE20_TEST1_DATA 未定义');
+                }
+                
+                addResult('success', '✅ 数据文件加载成功');
+                
+                // 测试2: 检查数据结构
+                const data = CAMBRIDGE20_TEST1_DATA;
+                if (!data.sections || !Array.isArray(data.sections)) {
+                    throw new Error('sections 数据格式错误');
+                }
+                
+                addResult('success', `✅ 找到 ${data.sections.length} 个sections`);
+                
+                // 测试3: 检查每个section的数据
+                data.sections.forEach((section, index) => {
+                    const sectionNum = index + 1;
+                    if (!section.questions_list) {
+                        addResult('error', `❌ Section ${sectionNum} 缺少 questions_list`);
+                    } else if (!Array.isArray(section.questions_list)) {
+                        addResult('error', `❌ Section ${sectionNum} 的 questions_list 不是数组`);
+                    } else {
+                        addResult('success', `✅ Section ${sectionNum}: ${section.questions_list.length} 题`);
+                    }
+                });
+                
+                // 测试4: 尝试初始化TestUI
+                try {
+                    window.TEST_DATA = CAMBRIDGE20_TEST1_DATA;
+                    window.standardAnswers = cambridge20Test1Answers;
+                    
+                    // 模拟页面元素
+                    createMockElements();
+                    
+                    const testUI = new TestUI();
+                    addResult('success', '✅ TestUI 初始化成功');
+                    
+                } catch (uiError) {
+                    addResult('error', `❌ TestUI 初始化失败: ${uiError.message}`);
+                    console.error('TestUI Error:', uiError);
+                }
+                
+            } catch (error) {
+                addResult('error', `❌ 测试失败: ${error.message}`);
+                console.error('Test Error:', error);
+            }
+        }
+        
+        function addResult(type, message) {
+            const resultsDiv = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.innerHTML = message;
+            resultsDiv.appendChild(div);
+        }
+        
+        function createMockElements() {
+            // 创建测试所需的DOM元素
+            const sections = [1, 2, 3, 4];
+            sections.forEach(num => {
+                if (!document.getElementById(`section-${num}`)) {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.id = `section-${num}`;
+                    sectionDiv.dataset.section = num;
+                    
+                    const questionsDiv = document.createElement('div');
+                    questionsDiv.className = 'questions';
+                    
+                    sectionDiv.appendChild(questionsDiv);
+                    document.body.appendChild(sectionDiv);
+                    
+                    sectionDiv.style.display = 'none'; // 隐藏模拟元素
+                }
+            });
+            
+            // 创建section tabs
+            sections.forEach(num => {
+                if (!document.querySelector(`.section-tab[data-section="${num}"]`)) {
+                    const tab = document.createElement('button');
+                    tab.className = 'section-tab';
+                    tab.dataset.section = num;
+                    tab.style.display = 'none'; // 隐藏模拟元素
+                    document.body.appendChild(tab);
+                }
+            });
+        }
+        
+        // 页面加载完成后运行测试
+        window.addEventListener('load', () => {
+            setTimeout(debugTest, 100); // 稍等一下确保所有脚本加载完成
+        });
+    </script>
+</body>
+</html>

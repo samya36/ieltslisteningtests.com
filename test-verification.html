@@ -3,241 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>剑桥雅思20测试数据验证</title>
+    <title>剑桥雅思20数据验证测试</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            margin: 20px;
+            line-height: 1.6;
         }
-        .test-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .test-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .section {
+        .test-section {
+            border: 1px solid #ccc;
             margin: 20px 0;
             padding: 15px;
-            background-color: #f8f9fa;
             border-radius: 5px;
-            border-left: 4px solid #007bff;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        .error {
-            color: #dc3545;
-            font-weight: bold;
         }
         .success {
-            color: #28a745;
-            font-weight: bold;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
         }
-        .warning {
-            color: #ffc107;
-            font-weight: bold;
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
         }
-        .question-count {
-            margin: 5px 0;
-            padding: 5px 10px;
-            background-color: #e9ecef;
-            border-radius: 3px;
-            display: inline-block;
+        .info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
         }
-        .data-structure {
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            background-color: #f4f4f4;
+        pre {
+            background-color: #f8f9fa;
             padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin-top: 10px;
-        }
-        .fix-button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 8px 16px;
             border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
+            overflow-x: auto;
         }
-        .fix-button:hover {
-            background-color: #218838;
-        }
-        .loading {
-            color: #6c757d;
-            font-style: italic;
+        .question-sample {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <h1>剑桥雅思20测试数据验证</h1>
+    <h1>剑桥雅思20数据验证测试</h1>
     
-    <div id="results"></div>
+    <div id="test-results"></div>
+    
+    <div class="test-section info">
+        <h2>测试说明</h2>
+        <p>这个页面用于验证剑桥雅思20的数据文件是否能正确加载和解析。</p>
+    </div>
 
-    <!-- 加载所有数据文件 -->
+    <!-- 加载数据文件 -->
     <script src="剑桥雅思20/cambridge20_test1_data.js"></script>
-    <script src="剑桥雅思20/cambridge20_test2_data.js"></script>
-    <script src="剑桥雅思20/cambridge20_test3_data.js"></script>
-    <script src="剑桥雅思20/cambridge20_test4_data.js"></script>
+    <script src="剑桥雅思20/cambridge20_test1_answers.js"></script>
+    <script src="js/test-ui.js"></script>
     
+    <!-- 添加一些基本的CSS样式 -->
+    <style>
+        .error-message {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .question-item {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+        
+        .answer-input {
+            padding: 5px 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-left: 5px;
+        }
+        
+        .option-item {
+            display: block;
+            margin: 5px 0;
+            padding: 5px;
+        }
+        
+        .submit-answers-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .submit-answers-btn:hover {
+            background-color: #218838;
+        }
+        
+        #test-container {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+        }
+    </style>
+
     <script>
-        const resultsDiv = document.getElementById('results');
-        
-        // 要验证的测试数据
-        const testsToValidate = [
-            { 
-                name: 'Test 1', 
-                data: typeof CAMBRIDGE20_TEST1_DATA !== 'undefined' ? CAMBRIDGE20_TEST1_DATA : null,
-                varName: 'CAMBRIDGE20_TEST1_DATA'
-            },
-            { 
-                name: 'Test 2', 
-                data: typeof CAMBRIDGE20_TEST2_DATA !== 'undefined' ? CAMBRIDGE20_TEST2_DATA : null,
-                varName: 'CAMBRIDGE20_TEST2_DATA'
-            },
-            { 
-                name: 'Test 3', 
-                data: typeof CAMBRIDGE20_TEST3_DATA !== 'undefined' ? CAMBRIDGE20_TEST3_DATA : null,
-                varName: 'CAMBRIDGE20_TEST3_DATA'
-            },
-            { 
-                name: 'Test 4', 
-                data: typeof CAMBRIDGE20_TEST4_DATA !== 'undefined' ? CAMBRIDGE20_TEST4_DATA : null,
-                varName: 'CAMBRIDGE20_TEST4_DATA'
-            }
-        ];
-        
-        // 验证每个测试
-        testsToValidate.forEach(test => {
-            const container = document.createElement('div');
-            container.className = 'test-container';
-            
-            const title = document.createElement('div');
-            title.className = 'test-title';
-            title.textContent = `剑桥雅思20 ${test.name}`;
-            container.appendChild(title);
-            
-            if (!test.data) {
-                const error = document.createElement('div');
-                error.className = 'error';
-                error.textContent = `错误：${test.varName} 未定义！数据文件可能未正确加载。`;
-                container.appendChild(error);
-            } else {
-                // 检查基本结构
-                const hasTestInfo = test.data.testInfo ? '✓' : '✗';
-                const hasSections = test.data.sections ? '✓' : '✗';
-                
-                const structureDiv = document.createElement('div');
-                structureDiv.innerHTML = `
-                    <div>数据结构检查：</div>
-                    <div>${hasTestInfo} testInfo</div>
-                    <div>${hasSections} sections</div>
-                `;
-                container.appendChild(structureDiv);
-                
-                // 检查每个section
-                if (test.data.sections && Array.isArray(test.data.sections)) {
-                    test.data.sections.forEach((section, index) => {
-                        const sectionDiv = document.createElement('div');
-                        sectionDiv.className = 'section';
-                        
-                        const sectionTitle = document.createElement('div');
-                        sectionTitle.className = 'section-title';
-                        sectionTitle.textContent = `Section ${section.id || index + 1}`;
-                        sectionDiv.appendChild(sectionTitle);
-                        
-                        // 检查questions_list
-                        if (section.questions_list && Array.isArray(section.questions_list)) {
-                            const questionsCount = document.createElement('div');
-                            questionsCount.className = 'question-count success';
-                            questionsCount.textContent = `题目数量: ${section.questions_list.length}`;
-                            sectionDiv.appendChild(questionsCount);
-                            
-                            // 显示题目类型分布
-                            const typeCount = {};
-                            section.questions_list.forEach(q => {
-                                typeCount[q.type] = (typeCount[q.type] || 0) + 1;
-                            });
-                            
-                            const typeDiv = document.createElement('div');
-                            typeDiv.innerHTML = '题目类型: ' + Object.entries(typeCount)
-                                .map(([type, count]) => `${type} (${count})`)
-                                .join(', ');
-                            sectionDiv.appendChild(typeDiv);
-                        } else {
-                            const error = document.createElement('div');
-                            error.className = 'error';
-                            error.textContent = `错误：Section ${section.id} 没有 questions_list！`;
-                            sectionDiv.appendChild(error);
-                            
-                            // 显示实际的数据结构
-                            const structureDiv = document.createElement('div');
-                            structureDiv.className = 'data-structure';
-                            structureDiv.textContent = 'Section 数据结构:\n' + JSON.stringify(Object.keys(section), null, 2);
-                            sectionDiv.appendChild(structureDiv);
-                        }
-                        
-                        container.appendChild(sectionDiv);
-                    });
-                } else {
-                    // 检查是否使用了旧格式 (section1, section2, etc.)
-                    const oldFormatSections = [];
-                    for (let i = 1; i <= 4; i++) {
-                        if (test.data[`section${i}`]) {
-                            oldFormatSections.push(i);
-                        }
+        function runTests() {
+            const resultsContainer = document.getElementById('test-results');
+            let testResults = [];
+
+            // 测试1: 检查数据文件是否加载
+            function testDataLoading() {
+                try {
+                    if (typeof CAMBRIDGE20_TEST1_DATA === 'undefined') {
+                        return {
+                            name: '数据文件加载测试',
+                            success: false,
+                            message: 'CAMBRIDGE20_TEST1_DATA 未定义',
+                            details: '请检查 cambridge20_test1_data.js 文件是否正确加载'
+                        };
                     }
-                    
-                    if (oldFormatSections.length > 0) {
-                        const warning = document.createElement('div');
-                        warning.className = 'warning';
-                        warning.innerHTML = `警告：使用了旧的数据格式！<br>
-                            发现 section${oldFormatSections.join(', section')} 属性<br>
-                            应该使用 sections 数组格式`;
-                        container.appendChild(warning);
+
+                    if (typeof cambridge20Test1Answers === 'undefined') {
+                        return {
+                            name: '答案文件加载测试',
+                            success: false,
+                            message: 'cambridge20Test1Answers 未定义',
+                            details: '请检查 cambridge20_test1_answers.js 文件是否正确加载'
+                        };
                     }
+
+                    return {
+                        name: '数据文件加载测试',
+                        success: true,
+                        message: '数据文件和答案文件都已正确加载',
+                        details: `数据结构: ${Object.keys(CAMBRIDGE20_TEST1_DATA).join(', ')}`
+                    };
+                } catch (error) {
+                    return {
+                        name: '数据文件加载测试',
+                        success: false,
+                        message: '数据文件加载时发生错误',
+                        details: error.message
+                    };
                 }
             }
-            
-            resultsDiv.appendChild(container);
-        });
+
+            // 测试2: 检查数据结构
+            function testDataStructure() {
+                try {
+                    if (!CAMBRIDGE20_TEST1_DATA.sections || !Array.isArray(CAMBRIDGE20_TEST1_DATA.sections)) {
+                        return {
+                            name: '数据结构测试',
+                            success: false,
+                            message: 'sections数组不存在或格式不正确',
+                            details: JSON.stringify(CAMBRIDGE20_TEST1_DATA, null, 2).substring(0, 500) + '...'
+                        };
+                    }
+
+                    const sectionsCount = CAMBRIDGE20_TEST1_DATA.sections.length;
+                    if (sectionsCount !== 4) {
+                        return {
+                            name: '数据结构测试',
+                            success: false,
+                            message: `应该有4个sections，但实际有${sectionsCount}个`,
+                            details: `Sections: ${CAMBRIDGE20_TEST1_DATA.sections.map(s => s.id || s.title).join(', ')}`
+                        };
+                    }
+
+                    return {
+                        name: '数据结构测试',
+                        success: true,
+                        message: `数据结构正确，包含${sectionsCount}个sections`,
+                        details: `Sections: ${CAMBRIDGE20_TEST1_DATA.sections.map(s => `${s.id}: ${s.title}`).join(', ')}`
+                    };
+                } catch (error) {
+                    return {
+                        name: '数据结构测试',
+                        success: false,
+                        message: '检查数据结构时发生错误',
+                        details: error.message
+                    };
+                }
+            }
+
+            // 测试3: 检查Section 1题目
+            function testSection1Questions() {
+                try {
+                    const section1 = CAMBRIDGE20_TEST1_DATA.sections.find(s => s.id === 1);
+                    if (!section1) {
+                        return {
+                            name: 'Section 1题目测试',
+                            success: false,
+                            message: '找不到Section 1',
+                            details: '数据中缺少id为1的section'
+                        };
+                    }
+
+                    if (!section1.questions_list || !Array.isArray(section1.questions_list)) {
+                        return {
+                            name: 'Section 1题目测试',
+                            success: false,
+                            message: 'Section 1缺少questions_list',
+                            details: JSON.stringify(section1, null, 2).substring(0, 300) + '...'
+                        };
+                    }
+
+                    const questionsCount = section1.questions_list.length;
+                    if (questionsCount !== 10) {
+                        return {
+                            name: 'Section 1题目测试',
+                            success: false,
+                            message: `Section 1应该有10个题目，但实际有${questionsCount}个`,
+                            details: `题目ID: ${section1.questions_list.map(q => q.id).join(', ')}`
+                        };
+                    }
+
+                    return {
+                        name: 'Section 1题目测试',
+                        success: true,
+                        message: `Section 1包含${questionsCount}个题目`,
+                        details: `题目类型: ${section1.questions_list.map(q => q.type).join(', ')}`
+                    };
+                } catch (error) {
+                    return {
+                        name: 'Section 1题目测试',
+                        success: false,
+                        message: '检查Section 1题目时发生错误',
+                        details: error.message
+                    };
+                }
+            }
+
+            // 测试4: 测试TestUI类初始化
+            function testTestUIInitialization() {
+                try {
+                    if (typeof TestUI === 'undefined') {
+                        return {
+                            name: 'TestUI类测试',
+                            success: false,
+                            message: 'TestUI类未定义',
+                            details: '请确保test-ui.js文件正确加载'
+                        };
+                    }
+
+                    // 设置全局变量
+                    window.TEST_DATA = CAMBRIDGE20_TEST1_DATA;
+                    window.standardAnswers = cambridge20Test1Answers;
+
+                    // 创建TestUI实例
+                    const testUI = new TestUI();
+                    
+                    return {
+                        name: 'TestUI类测试',
+                        success: true,
+                        message: 'TestUI类初始化成功',
+                        details: `当前section: ${testUI.currentSection}, 数据已加载: ${testUI.testData ? 'Yes' : 'No'}`
+                    };
+                } catch (error) {
+                    return {
+                        name: 'TestUI类测试',
+                        success: false,
+                        message: 'TestUI类初始化失败',
+                        details: error.message
+                    };
+                }
+            }
+
+            // 测试5: 测试数据转换
+            function testDataConversion() {
+                try {
+                    // 设置全局变量
+                    window.TEST_DATA = CAMBRIDGE20_TEST1_DATA;
+                    window.standardAnswers = cambridge20Test1Answers;
+
+                    // 创建TestUI实例
+                    const testUI = new TestUI();
+                    
+                    // 检查转换后的数据
+                    const section1Data = testUI.testData.section1;
+                    if (!section1Data) {
+                        return {
+                            name: '数据转换测试',
+                            success: false,
+                            message: '数据转换失败，section1未生成',
+                            details: `可用的sections: ${Object.keys(testUI.testData).filter(k => k.startsWith('section')).join(', ')}`
+                        };
+                    }
+
+                    return {
+                        name: '数据转换测试',
+                        success: true,
+                        message: '数据转换成功',
+                        details: `Section1标题: ${section1Data.title}, 有parts: ${section1Data.parts ? 'Yes' : 'No'}, 有questions_list: ${section1Data.questions_list ? 'Yes' : 'No'}`
+                    };
+                } catch (error) {
+                    return {
+                        name: '数据转换测试',
+                        success: false,
+                        message: '数据转换测试失败',
+                        details: error.message
+                    };
+                }
+            }
+
+            // 运行所有测试
+            testResults.push(testDataLoading());
+            testResults.push(testDataStructure());
+            testResults.push(testSection1Questions());
+            testResults.push(testTestUIInitialization());
+            testResults.push(testDataConversion());
+
+            // 显示测试结果
+            testResults.forEach(result => {
+                const div = document.createElement('div');
+                div.className = `test-section ${result.success ? 'success' : 'error'}`;
+                div.innerHTML = `
+                    <h3>${result.name} - ${result.success ? '✅ 通过' : '❌ 失败'}</h3>
+                    <p><strong>结果:</strong> ${result.message}</p>
+                    <details>
+                        <summary>详细信息</summary>
+                        <pre>${result.details}</pre>
+                    </details>
+                `;
+                resultsContainer.appendChild(div);
+            });
+
+            // 如果所有测试都通过，显示一些示例数据并进行实际渲染测试
+            const allPassed = testResults.every(r => r.success);
+            if (allPassed) {
+                const sampleDiv = document.createElement('div');
+                sampleDiv.className = 'test-section info';
+                sampleDiv.innerHTML = `
+                    <h3>数据示例</h3>
+                    <div class="question-sample">
+                        <h4>Section 1 - 第一题示例:</h4>
+                        <pre>${JSON.stringify(CAMBRIDGE20_TEST1_DATA.sections[0].questions_list[0], null, 2)}</pre>
+                    </div>
+                    <div class="question-sample">
+                        <h4>答案示例:</h4>
+                        <pre>题目1答案: ${cambridge20Test1Answers[1]}
+题目2答案: ${cambridge20Test1Answers[2]}
+题目3答案: ${cambridge20Test1Answers[3]}</pre>
+                    </div>
+                `;
+                resultsContainer.appendChild(sampleDiv);
+                
+                // 进行实际渲染测试
+                performRenderingTest();
+            }
+        }
         
-        // 显示修复建议
-        const suggestionDiv = document.createElement('div');
-        suggestionDiv.className = 'test-container';
-        suggestionDiv.innerHTML = `
-            <div class="test-title">修复建议</div>
-            <div>
-                <p><strong>问题分析：</strong></p>
-                <ul>
-                    <li>数据文件存在，但部分section缺少questions_list</li>
-                    <li>test-ui.js 在尝试遍历questions_list时遇到undefined错误</li>
-                    <li>需要检查并修复数据文件中的section结构</li>
-                </ul>
-                <p><strong>解决方案：</strong></p>
-                <ol>
-                    <li>确保每个section都有questions_list数组</li>
-                    <li>检查questions_list中的每个题目都有正确的格式</li>
-                    <li>在test-ui.js中添加更多的错误处理</li>
-                </ol>
-            </div>
-        `;
-        resultsDiv.appendChild(suggestionDiv);
+        // 实际渲染测试
+        function performRenderingTest() {
+            const resultsContainer = document.getElementById('test-results');
+            
+            try {
+                // 创建测试容器
+                const testContainer = document.createElement('div');
+                testContainer.className = 'test-section info';
+                testContainer.innerHTML = `
+                    <h3>渲染测试</h3>
+                    <p>正在测试实际的题目渲染...</p>
+                    <div id="test-container">
+                        <div class="section-content" id="section-1" data-section="1">
+                            <div class="questions">
+                                <!-- Section 1 题目内容将在这里渲染 -->
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultsContainer.appendChild(testContainer);
+                
+                // 设置全局变量
+                window.TEST_DATA = CAMBRIDGE20_TEST1_DATA;
+                window.standardAnswers = cambridge20Test1Answers;
+                
+                // 创建TestUI实例并渲染Section 1
+                const testUI = new TestUI();
+                
+                // 检查是否成功渲染
+                setTimeout(() => {
+                    const questionsContainer = document.querySelector('#section-1 .questions');
+                    const renderedQuestions = questionsContainer.children.length;
+                    
+                    if (renderedQuestions > 1) { // 至少有标题和一些题目
+                        testContainer.querySelector('p').innerHTML = `✅ 渲染测试成功！已渲染 ${renderedQuestions} 个元素`;
+                        testContainer.className = 'test-section success';
+                    } else {
+                        testContainer.querySelector('p').innerHTML = `❌ 渲染测试失败！只渲染了 ${renderedQuestions} 个元素`;
+                        testContainer.className = 'test-section error';
+                        
+                        // 显示错误信息
+                        const errorInfo = document.createElement('pre');
+                        errorInfo.textContent = questionsContainer.innerHTML || '容器为空';
+                        testContainer.appendChild(errorInfo);
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'test-section error';
+                errorDiv.innerHTML = `
+                    <h3>渲染测试失败</h3>
+                    <p>错误: ${error.message}</p>
+                    <pre>${error.stack}</pre>
+                `;
+                resultsContainer.appendChild(errorDiv);
+            }
+        }
+
+        // 页面加载完成后运行测试
+        document.addEventListener('DOMContentLoaded', runTests);
     </script>
 </body>
 </html>

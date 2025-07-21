@@ -3,398 +3,1037 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>剑桥雅思20 Test 1 - IELTS Listening Test</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/test.css">
+    <title>剑桥雅思20 Test 1 听力测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .test-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .timer-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 2em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #38a169;
+        }
+
+        .btn-warning {
+            background: #ed8936;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #dd6b20;
+        }
+
+        .section-container {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .section-content {
+            padding: 30px;
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .option {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .option label:hover {
+            background-color: #e9ecef;
+        }
+
+        .fill-blank {
+            display: inline-block;
+            border-bottom: 2px solid #667eea;
+            min-width: 100px;
+            margin: 0 5px;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .fill-blank input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1em;
+            text-align: center;
+            width: 100%;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .info-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .completion-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .completion-text {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(72, 187, 120, 0.3);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .results {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .test-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="../index.html" class="home-link">
-                    <img src="../images/logo.png" alt="IELTS听力评分解析" class="logo-img">
-                    IELTS听力评分解析
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="../index.html">首页</a></li>
-                <li><a href="practice.html" class="active">听力练习</a></li>
-                <li><a href="test.html">Test 1</a></li>
-                <li><a href="test-c20-1.html" class="current-test">剑20-T1</a></li>
-                <li><a href="test3.html">Test 3</a></li>
-                <li><a href="scoring.html">评分详解</a></li>
-                <li><a href="cases.html">案例分析</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- 主要内容区 -->
-    <main class="test-container">
-        <!-- 测试说明 -->
-        <div class="test-intro">
-            <h2>剑桥雅思20 Test 1</h2>
-            <div class="test-themes">
-                <h3>本次测试主题：</h3>
-                <ul class="theme-list">
-                    <li><strong>Section 1:</strong> 剑桥雅思20官方听力测试第一部分</li>
-                    <li><strong>Section 2:</strong> 剑桥雅思20官方听力测试第二部分</li>
-                    <li><strong>Section 3:</strong> 剑桥雅思20官方听力测试第三部分</li>
-                    <li><strong>Section 4:</strong> 剑桥雅思20官方听力测试第四部分</li>
-                </ul>
-            </div>
-            <ul class="test-instructions">
-                <li>时长：30分钟</li>
-                <li>题量：40题</li>
-                <li>难度：中等</li>
-                <li>每个部分有独立的音频播放器，可调整播放速度</li>
-                <li>在听力过程中完成答题</li>
-            </ul>
-        </div>
-
-        <!-- 部分切换 -->
-        <div class="section-tabs">
-            <button class="section-tab active" data-section="1">Section 1</button>
-            <button class="section-tab" data-section="2">Section 2</button>
-            <button class="section-tab" data-section="3">Section 3</button>
-            <button class="section-tab" data-section="4">Section 4</button>
-        </div>
-
-        <!-- 音频播放器容器 -->
-        <div class="audio-players-container">
-            <!-- Section 1 音频播放器 -->
-            <div class="audio-player" id="section1-player-container">
-                <audio id="section1-player" src="../剑桥雅思20/剑20 听力音频 Test1/Section1.mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section1-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section1-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section1-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section1-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
+    <div class="container">
+        <div class="header">
+            <h1>剑桥雅思20 Test 1 听力测试</h1>
+            <p>Cambridge IELTS 20 Test 1 Listening</p>
+            <div class="test-info">
+                <div class="info-card">
+                    <strong>测试时间</strong><br>30分钟 + 10分钟誊写
                 </div>
-            </div>
-
-            <!-- Section 2 音频播放器 -->
-            <div class="audio-player" id="section2-player-container" style="display: none;">
-                <audio id="section2-player" src="../剑桥雅思20/剑20 听力音频 Test1/Section2.mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section2-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section2-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section2-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section2-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
+                <div class="info-card">
+                    <strong>题目数量</strong><br>40题
                 </div>
-            </div>
-
-            <!-- Section 3 音频播放器 -->
-            <div class="audio-player" id="section3-player-container" style="display: none;">
-                <audio id="section3-player" src="../剑桥雅思20/剑20 听力音频 Test1/Section3.mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section3-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section3-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section3-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section3-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
+                <div class="info-card">
+                    <strong>测试部分</strong><br>4个部分
                 </div>
-            </div>
-
-            <!-- Section 4 音频播放器 -->
-            <div class="audio-player" id="section4-player-container" style="display: none;">
-                <audio id="section4-player" src="../剑桥雅思20/剑20 听力音频 Test1/Section4.mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section4-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section4-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section4-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
+                <div class="info-card">
+                    <strong>音频播放</strong><br>仅播放一次
                 </div>
             </div>
         </div>
 
-        <!-- 题目区域 -->
-        <form id="test-form">
-            <div class="section-content active" id="section-1" data-section="1">
-                <div class="questions">
-                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
-                </div>
+        <div class="timer-container">
+            <div class="timer" id="timer">30:00</div>
+            <div class="controls">
+                <button class="btn btn-primary" onclick="startTest()">开始测试</button>
+                <button class="btn btn-warning" onclick="pauseTest()">暂停</button>
+                <button class="btn btn-success" onclick="submitTest()">提交答案</button>
             </div>
-            <div class="section-content" id="section-2" data-section="2" style="display: none;">
-                <div class="questions">
-                    <!-- Section 2 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-3" data-section="3" style="display: none;">
-                <div class="questions">
-                    <!-- Section 3 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-4" data-section="4" style="display: none;">
-                <div class="questions">
-                    <!-- Section 4 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-        </form>
-    </main>
+        </div>
 
-    <!-- 结果弹窗 -->
-    <div class="result-modal" id="result-modal">
-        <div class="result-content">
-            <span class="close-result" id="close-result">&times;</span>
-            <div class="result-header">
-                <h2>测试结果 - 剑桥雅思20 Test 1</h2>
-                <p>您已完成剑桥雅思20听力测试1，以下是您的成绩：</p>
-            </div>
-            <div class="result-score">
-                <div class="score-circle correct">
-                    <div class="score-value" id="correct-count">0</div>
-                    <div class="score-label">正确题数</div>
-                </div>
-                <div class="score-circle ielts">
-                    <div class="score-value" id="ielts-score">0.0</div>
-                    <div class="score-label">雅思分数</div>
+        <!-- Audio Player -->
+        <div class="timer-container">
+            <h3>音频播放器</h3>
+            <div id="audioPlayer">
+                <audio id="currentAudio" controls style="width: 100%; margin: 10px 0;">
+                    您的浏览器不支持音频播放
+                </audio>
+                <div class="audio-sections" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 15px;">
+                    <button class="btn btn-primary" onclick="playSection(1)">Part 1 - 餐厅推荐</button>
+                    <button class="btn btn-primary" onclick="playSection(2)">Part 2 - 陶艺课程</button>
+                    <button class="btn btn-primary" onclick="playSection(3)">Part 3 - 孤独感研究</button>
+                    <button class="btn btn-primary" onclick="playSection(4)">Part 4 - 城市河流改造</button>
                 </div>
             </div>
-            <div class="result-details">
-                <h3>各部分得分</h3>
-                <div class="section-results" id="section-results">
-                    <!-- 各部分得分将由 JavaScript 动态生成 -->
+        </div>
+
+        <!-- Section 1 -->
+        <div class="section-container">
+            <div class="section-header">
+                Part 1 - 餐厅推荐 (Questions 1-10)
+            </div>
+            <div class="section-content">
+                <p><strong>说明：</strong>你将听到一段关于餐厅推荐的对话。请完成下面的表格，每个空格写1-2个单词和/或数字。</p>
+                
+                <div class="table-container">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Name of restaurant</th>
+                                <th>Location</th>
+                                <th>Reason for recommendation</th>
+                                <th>Other comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>The Junction</td>
+                                <td>Greyham Street, near the station</td>
+                                <td>Good for people who are especially keen on <span class="fill-blank"><input type="text" name="q1" placeholder="1"></span></td>
+                                <td>
+                                    Quite expensive<br><br>
+                                    The <span class="fill-blank"><input type="text" name="q2" placeholder="2"></span> is a good place for a drink
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Paloma</td>
+                                <td>In Bow Street next to the cinema</td>
+                                <td><span class="fill-blank"><input type="text" name="q3" placeholder="3"></span> food, good for sharing</td>
+                                <td>
+                                    Staff are very friendly<br><br>
+                                    Need to pay £50 deposit<br><br>
+                                    A limited selection of <span class="fill-blank"><input type="text" name="q4" placeholder="4"></span> food on the menu
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    The <span class="fill-blank"><input type="text" name="q5" placeholder="5"></span>
+                                </td>
+                                <td>
+                                    At the top of a <span class="fill-blank"><input type="text" name="q6" placeholder="6"></span>
+                                </td>
+                                <td>
+                                    A famous chef<br><br>
+                                    All the <span class="fill-blank"><input type="text" name="q7" placeholder="7"></span> are very good<br><br>
+                                    Only uses <span class="fill-blank"><input type="text" name="q8" placeholder="8"></span> ingredients
+                                </td>
+                                <td>
+                                    Set lunch costs £ <span class="fill-blank"><input type="text" name="q9" placeholder="9"></span> per person<br><br>
+                                    Portions probably of <span class="fill-blank"><input type="text" name="q10" placeholder="10"></span> size
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="test-navigation">
-                <a href="test.html" class="nav-test-btn">← Test 1</a>
-                <button class="retry-btn" id="retry-btn">重新测试</button>
-                <a href="test3.html" class="nav-test-btn">Test 3 →</a>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section-container">
+            <div class="section-header">
+                Part 2 - 陶艺课程 (Questions 11-20)
+            </div>
+            <div class="section-content">
+                <div class="question-group">
+                    <h3>Questions 11-16</h3>
+                    <p><strong>选择正确答案 A、B 或 C</strong></p>
+                    
+                    <div class="question">
+                        <div class="question-title">11. Heather says pottery differs from other art forms because</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q11" value="A" id="q11a">
+                                <label for="q11a">A. it lasts longer in the ground.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q11" value="B" id="q11b">
+                                <label for="q11b">B. it is practised by more people.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q11" value="C" id="q11c">
+                                <label for="q11c">C. it can be repaired more easily.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">12. Archaeologists sometimes identify the use of ancient pottery from</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q12" value="A" id="q12a">
+                                <label for="q12a">A. the clay it was made with.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q12" value="B" id="q12b">
+                                <label for="q12b">B. the marks that are on it.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q12" value="C" id="q12c">
+                                <label for="q12c">C. the basic shape of it.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">13. Some people join Heather's pottery class because they want to</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q13" value="A" id="q13a">
+                                <label for="q13a">A. create an item that looks very old.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q13" value="B" id="q13b">
+                                <label for="q13b">B. find something that they are good at.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q13" value="C" id="q13c">
+                                <label for="q13c">C. make something that will outlive them.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">14. What does Heather value most about being a potter?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q14" value="A" id="q14a">
+                                <label for="q14a">A. its calming effect</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q14" value="B" id="q14b">
+                                <label for="q14b">B. its messy nature</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q14" value="C" id="q14c">
+                                <label for="q14c">C. its physical benefits</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">15. Most of the visitors to Edelman Pottery</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q15" value="A" id="q15a">
+                                <label for="q15a">A. bring friends to join courses.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q15" value="B" id="q15b">
+                                <label for="q15b">B. have never made a pot before.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q15" value="C" id="q15c">
+                                <label for="q15c">C. try to learn techniques too quickly.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">16. Heather reminds her visitors that they should</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q16" value="A" id="q16a">
+                                <label for="q16a">A. put on their aprons.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q16" value="B" id="q16b">
+                                <label for="q16b">B. change their clothes.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q16" value="C" id="q16c">
+                                <label for="q16c">C. take off their jewellery.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <h3>Questions 17-18</h3>
+                    <p><strong>选择两个字母 A-E</strong></p>
+                    <div class="question">
+                        <div class="question-title">Which TWO things does Heather explain about kilns?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="checkbox" name="q17_18" value="A" id="q17_18a">
+                                <label for="q17_18a">A. what their function is</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q17_18" value="B" id="q17_18b">
+                                <label for="q17_18b">B. when they were invented</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q17_18" value="C" id="q17_18c">
+                                <label for="q17_18c">C. ways of keeping them safe</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q17_18" value="D" id="q17_18d">
+                                <label for="q17_18d">D. where to put one in your home</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q17_18" value="E" id="q17_18e">
+                                <label for="q17_18e">E. what some people use instead of one</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <h3>Questions 19-20</h3>
+                    <p><strong>选择两个字母 A-E</strong></p>
+                    <div class="question">
+                        <div class="question-title">Which TWO points does Heather make about a potter's tools?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="checkbox" name="q19_20" value="A" id="q19_20a">
+                                <label for="q19_20a">A. Some are hard to hold.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q19_20" value="B" id="q19_20b">
+                                <label for="q19_20b">B. Some are worth buying.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q19_20" value="C" id="q19_20c">
+                                <label for="q19_20c">C. Some are essential items.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q19_20" value="D" id="q19_20d">
+                                <label for="q19_20d">D. Some have memorable names.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q19_20" value="E" id="q19_20e">
+                                <label for="q19_20e">E. Some are available for use by participants.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section-container">
+            <div class="section-header">
+                Part 3 - 孤独感研究 (Questions 21-30)
+            </div>
+            <div class="section-content">
+                <div class="question-group">
+                    <h3>Questions 21-22</h3>
+                    <p><strong>选择两个字母 A-E</strong></p>
+                    <div class="question">
+                        <div class="question-title">Which TWO things do the students both believe are responsible for the increase in loneliness?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="checkbox" name="q21_22" value="A" id="q21_22a">
+                                <label for="q21_22a">A. social media</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q21_22" value="B" id="q21_22b">
+                                <label for="q21_22b">B. smaller nuclear families</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q21_22" value="C" id="q21_22c">
+                                <label for="q21_22c">C. urban design</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q21_22" value="D" id="q21_22d">
+                                <label for="q21_22d">D. longer lifespans</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q21_22" value="E" id="q21_22e">
+                                <label for="q21_22e">E. a mobile workforce</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <h3>Questions 23-24</h3>
+                    <p><strong>选择两个字母 A-E</strong></p>
+                    <div class="question">
+                        <div class="question-title">Which TWO health risks associated with loneliness do the students agree are based on solid evidence?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="checkbox" name="q23_24" value="A" id="q23_24a">
+                                <label for="q23_24a">A. a weakened immune system</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q23_24" value="B" id="q23_24b">
+                                <label for="q23_24b">B. dementia</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q23_24" value="C" id="q23_24c">
+                                <label for="q23_24c">C. cancer</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q23_24" value="D" id="q23_24d">
+                                <label for="q23_24d">D. obesity</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q23_24" value="E" id="q23_24e">
+                                <label for="q23_24e">E. cardiovascular disease</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <h3>Questions 25-26</h3>
+                    <p><strong>选择两个字母 A-E</strong></p>
+                    <div class="question">
+                        <div class="question-title">Which TWO opinions do both the students express about the evolutionary theory of loneliness?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="checkbox" name="q25_26" value="A" id="q25_26a">
+                                <label for="q25_26a">A. It has little practical relevance.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q25_26" value="B" id="q25_26b">
+                                <label for="q25_26b">B. It needs further investigation.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q25_26" value="C" id="q25_26c">
+                                <label for="q25_26c">C. It is misleading.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q25_26" value="D" id="q25_26d">
+                                <label for="q25_26d">D. It should be more widely accepted.</label>
+                            </div>
+                            <div class="option">
+                                <input type="checkbox" name="q25_26" value="E" id="q25_26e">
+                                <label for="q25_26e">E. It is difficult to understand.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <h3>Questions 27-30</h3>
+                    <p><strong>选择正确答案 A、B 或 C</strong></p>
+                    <h4 style="text-align: center; margin: 20px 0; font-size: 1.2em;">Loneliness and mental health</h4>
+                    
+                    <div class="question">
+                        <div class="question-title">27. When comparing loneliness to depression, the students</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q27" value="A" id="q27a">
+                                <label for="q27a">A. doubt that there will ever be a medical cure for loneliness.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q27" value="B" id="q27b">
+                                <label for="q27b">B. claim that the link between loneliness and mental health is overstated.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q27" value="C" id="q27c">
+                                <label for="q27c">C. express frustration that loneliness is not taken more seriously.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">28. Why do the students decide to start their presentation with an example from their own experience?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q28" value="A" id="q28a">
+                                <label for="q28a">A. to explain how difficult loneliness can be</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q28" value="B" id="q28b">
+                                <label for="q28b">B. to highlight a situation that most students will recognise</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q28" value="C" id="q28c">
+                                <label for="q28c">C. to emphasise that feeling lonely is more common for men than women</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">29. The students agree that talking to strangers is a good strategy for dealing with loneliness because</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q29" value="A" id="q29a">
+                                <label for="q29a">A. it creates a sense of belonging.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q29" value="B" id="q29b">
+                                <label for="q29b">B. it builds self-confidence.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q29" value="C" id="q29c">
+                                <label for="q29c">C. it makes people feel more positive.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-title">30. The students find it difficult to understand why solitude is considered to be</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q30" value="A" id="q30a">
+                                <label for="q30a">A. similar to loneliness.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q30" value="B" id="q30b">
+                                <label for="q30b">B. necessary for mental health.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q30" value="C" id="q30c">
+                                <label for="q30c">C. an enjoyable experience.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section-container">
+            <div class="section-header">
+                Part 4 - 城市河流改造 (Questions 31-40)
+            </div>
+            <div class="section-content">
+                <p><strong>说明：</strong>你将听到一段关于城市河流改造的讲座。请完成下面的笔记，每个空格写不超过两个单词和/或数字。</p>
+                
+                <div class="completion-section">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Reclaiming urban rivers</h3>
+                    
+                    <div class="completion-text">
+                        <h4>Historical background</h4>
+                        <p>Nearly all major cities were built on a river.</p>
+                        <p>Rivers were traditionally used by city dwellers for transport, fishing and recreation.</p>
+                        <p>Industrial development and rising populations later led to:</p>
+                        <ul>
+                            <li>-more sewage from houses being discharged into the river</li>
+                            <li>-pollution from <span class="fill-blank"><input type="text" name="q31" placeholder="31"></span> on the river bank.</li>
+                        </ul>
+                        <p>In 1957, the River Thames in London was declared biologically <span class="fill-blank"><input type="text" name="q32" placeholder="32"></span>.</p>
+                        
+                        <h4>Recent improvements</h4>
+                        <p>Seals and even a <span class="fill-blank"><input type="text" name="q33" placeholder="33"></span> have been seen in the River Thames.</p>
+                        <p>Riverside warehouses are converted to restaurants and <span class="fill-blank"><input type="text" name="q34" placeholder="34"></span>.</p>
+                        <p>In Los Angeles, there are plans to:</p>
+                        <ul>
+                            <li>-build a riverside <span class="fill-blank"><input type="text" name="q35" placeholder="35"></span>.</li>
+                            <li>-display <span class="fill-blank"><input type="text" name="q36" placeholder="36"></span> projects.</li>
+                        </ul>
+                        <p>In Paris, <span class="fill-blank"><input type="text" name="q37" placeholder="37"></span> are created on the sides of the river every summer.</p>
+                        
+                        <h4>Transport possibilities</h4>
+                        <p>Over 2 billion passengers already travel by <span class="fill-blank"><input type="text" name="q38" placeholder="38"></span> in cities round the world.</p>
+                        <p>Changes in shopping habits mean the number of deliveries that are made is increasing.</p>
+                        <p>Instead of road transport, goods could be transported by large freight barges and electric <span class="fill-blank"><input type="text" name="q39" placeholder="39"></span> or, in future, by <span class="fill-blank"><input type="text" name="q40" placeholder="40"></span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="submitTest()">提交测试</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h2>测试结果</h2>
+            <div class="score-display" id="scoreDisplay">
+                <!-- 结果将在这里显示 -->
+            </div>
+            <div id="detailedResults">
+                <!-- 详细结果将在这里显示 -->
             </div>
         </div>
     </div>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>关于我们</h4>
-                <p>专注雅思听力评分解析，助力考生科学备考</p>
-            </div>
-            <div class="footer-section">
-                <h4>快速导航</h4>
-                <ul>
-                    <li><a href="scoring.html">评分详解</a></li>
-                    <li><a href="cases.html">案例分析</a></li>
-                    <li><a href="practice.html">练习题</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- JavaScript -->
-    <script src="../js/multi-test-progress.js"></script>
-    <script src="../剑桥雅思20/cambridge20_test1_data.js"></script>
-    <script src="../剑桥雅思20/cambridge20_test1_answers.js"></script>
-    <script src="../js/test-player.js"></script>
-    <script src="../js/score-display.js"></script>
-    <script src="../js/test-ui.js"></script>
-    
     <script>
-        // 确保DOM加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('剑桥雅思20 Test 1 页面加载完成，开始初始化测试界面...');
-            try {
-                // 检查必要的全局变量
-                if (typeof CAMBRIDGE20_TEST1_DATA === 'undefined') {
-                    throw new Error('CAMBRIDGE20_TEST1_DATA 未定义，请确保 cambridge20_test1_data.js 已正确加载');
+        let testTimer;
+        let timeLeft = 30 * 60; // 30 minutes in seconds
+        let testStarted = false;
+
+        // Audio configuration for Test 1
+        const audioSections = {
+            1: '../剑桥雅思20/剑20 听力音频 Test1/Section1.mp3',
+            2: '../剑桥雅思20/剑20 听力音频 Test1/Section2.mp3',
+            3: '../剑桥雅思20/剑20 听力音频 Test1/Section3.mp3',
+            4: '../剑桥雅思20/剑20 听力音频 Test1/Section4.mp3'
+        };
+
+        function playSection(sectionNumber) {
+            const audio = document.getElementById('currentAudio');
+            const audioPath = audioSections[sectionNumber];
+            
+            if (audioPath) {
+                audio.src = audioPath;
+                audio.load();
+                audio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    console.warn('音频播放失败，请检查音频文件是否存在。');
+                });
+            }
+        }
+
+        // 正确答案
+        const correctAnswers = {
+            'q1': 'fish',
+            'q2': 'roof',
+            'q3': 'Spanish',
+            'q4': 'vegetarian',
+            'q5': 'Audley',
+            'q6': 'hotel',
+            'q7': 'reviews',
+            'q8': 'local',
+            'q9': '30',
+            'q10': 'average',
+            'q11': 'A',
+            'q12': 'B',
+            'q13': 'C',
+            'q14': 'A',
+            'q15': 'B',
+            'q16': 'C',
+            'q17_18': ['A', 'E'],
+            'q19_20': ['C', 'E'],
+            'q21_22': ['C', 'E'],
+            'q23_24': ['A', 'C'],
+            'q25_26': ['A', 'B'],
+            'q27': 'A',
+            'q28': 'B',
+            'q29': 'A',
+            'q30': 'C',
+            'q31': 'factories',
+            'q32': 'dead',
+            'q33': 'whale',
+            'q34': 'apartments',
+            'q35': 'park',
+            'q36': 'art',
+            'q37': 'beaches',
+            'q38': 'ferry',
+            'q39': 'bikes',
+            'q40': 'drone'
+        };
+
+        function startTest() {
+            if (!testStarted) {
+                testStarted = true;
+                testTimer = setInterval(updateTimer, 1000);
+                console.log('Test started');
+            }
+        }
+
+        function pauseTest() {
+            if (testTimer) {
+                clearInterval(testTimer);
+                testTimer = null;
+                console.log('Test paused');
+            } else if (testStarted) {
+                testTimer = setInterval(updateTimer, 1000);
+                console.log('Test resumed');
+            }
+        }
+
+        function updateTimer() {
+            if (timeLeft <= 0) {
+                clearInterval(testTimer);
+                submitTest();
+                return;
+            }
+
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function submitTest() {
+            clearInterval(testTimer);
+            
+            let score = 0;
+            let totalQuestions = 40;
+            let results = [];
+
+            // 检查所有答案
+            for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
+                let userAnswer = getUserAnswer(question);
+                let isCorrect = false;
+
+                if (Array.isArray(correctAnswer)) {
+                    // 多选题
+                    isCorrect = arraysEqual(userAnswer.sort(), correctAnswer.sort());
+                } else {
+                    // 单选题或填空题
+                    isCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase();
                 }
+
+                if (isCorrect) score++;
                 
-                if (typeof cambridge20Test1Answers === 'undefined') {
-                    throw new Error('cambridge20Test1Answers 未定义，请确保 cambridge20_test1_answers.js 已正确加载');
-                }
-                
-                if (typeof TestUI === 'undefined') {
-                    throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
-                }
-                
-                // 设置剑桥雅思20 Test 1的全局数据变量
-                window.TEST_DATA = CAMBRIDGE20_TEST1_DATA;
-                window.standardAnswers = cambridge20Test1Answers;
-                
-                // 初始化测试界面
-                window.testUI = new TestUI();
-                console.log('剑桥雅思20 Test 1 测试界面初始化完成');
-            } catch (error) {
-                console.error('剑桥雅思20 Test 1 初始化失败:', error);
-                // 在页面上显示错误信息
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background-color: #fff;
-                    padding: 20px;
-                    border-radius: 5px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    z-index: 1000;
-                    text-align: center;
-                    border: 2px solid #ff4444;
+                results.push({
+                    question: question,
+                    userAnswer: userAnswer,
+                    correctAnswer: correctAnswer,
+                    isCorrect: isCorrect
+                });
+            }
+
+            // 计算IELTS分数
+            const ieltsScore = calculateIELTSScore(score, totalQuestions);
+            
+            // 显示结果
+            displayResults(score, totalQuestions, ieltsScore, results);
+        }
+
+        function getUserAnswer(questionName) {
+            if (questionName.includes('_')) {
+                // 多选题
+                const checkboxes = document.querySelectorAll(`input[name="${questionName}"]:checked`);
+                return Array.from(checkboxes).map(cb => cb.value);
+            } else {
+                // 单选题或填空题
+                const element = document.querySelector(`input[name="${questionName}"]:checked`) || 
+                               document.querySelector(`input[name="${questionName}"]`);
+                return element ? element.value : '';
+            }
+        }
+
+        function arraysEqual(a, b) {
+            return Array.isArray(a) && Array.isArray(b) && 
+                   a.length === b.length && a.every((val, i) => val === b[i]);
+        }
+
+        function calculateIELTSScore(score, total) {
+            const percentage = score / total;
+            if (percentage >= 0.9) return 9;
+            if (percentage >= 0.825) return 8.5;
+            if (percentage >= 0.75) return 8;
+            if (percentage >= 0.675) return 7.5;
+            if (percentage >= 0.6) return 7;
+            if (percentage >= 0.525) return 6.5;
+            if (percentage >= 0.45) return 6;
+            if (percentage >= 0.375) return 5.5;
+            if (percentage >= 0.3) return 5;
+            if (percentage >= 0.225) return 4.5;
+            if (percentage >= 0.15) return 4;
+            if (percentage >= 0.075) return 3.5;
+            return 3;
+        }
+
+        function displayResults(score, total, ieltsScore, results) {
+            document.getElementById('results').classList.remove('hidden');
+            
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.innerHTML = `
+                <div>正确答案: ${score}/${total}</div>
+                <div>IELTS分数: ${ieltsScore}</div>
+                <div>正确率: ${(score/total*100).toFixed(1)}%</div>
+            `;
+
+            const detailedResults = document.getElementById('detailedResults');
+            let detailsHTML = '<h3>详细结果</h3>';
+            
+            results.forEach((result, index) => {
+                const status = result.isCorrect ? '✓' : '✗';
+                const statusClass = result.isCorrect ? 'correct' : 'incorrect';
+                detailsHTML += `
+                    <div style="margin: 10px 0; padding: 10px; border-left: 4px solid ${result.isCorrect ? '#48bb78' : '#e74c3c'}; background: #f8f9fa;">
+                        <strong>${status} 第${index + 1}题</strong><br>
+                        你的答案: ${Array.isArray(result.userAnswer) ? result.userAnswer.join(', ') : result.userAnswer}<br>
+                        正确答案: ${Array.isArray(result.correctAnswer) ? result.correctAnswer.join(', ') : result.correctAnswer}
+                    </div>
                 `;
-                errorDiv.innerHTML = `
-                    <h3 style="color: #ff4444; margin-bottom: 10px;">剑桥雅思20 Test 1 初始化失败</h3>
-                    <p style="margin-bottom: 15px;">${error.message}</p>
-                    <button onclick="location.reload()" style="
-                        padding: 8px 16px;
-                        background-color: #4CAF50;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        margin-right: 10px;
-                    ">刷新页面</button>
-                    <a href="test.html" style="
-                        padding: 8px 16px;
-                        background-color: #2196F3;
-                        color: white;
-                        text-decoration: none;
-                        border-radius: 4px;
-                    ">返回 Test 1</a>
-                `;
-                document.body.appendChild(errorDiv);
+            });
+            
+            detailedResults.innerHTML = detailsHTML;
+            
+            // 滚动到结果
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 防止页面刷新时丢失答案
+        window.addEventListener('beforeunload', function(e) {
+            if (testStarted && timeLeft > 0) {
+                e.preventDefault();
+                e.returnValue = '测试正在进行中，确定要离开吗？';
             }
         });
     </script>
-    
-    <style>
-        /* Test 2 特有样式 */
-        .test-themes {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #e53935;
-        }
-        
-        .test-themes h3 {
-            margin: 0 0 10px 0;
-            color: #e53935;
-            font-size: 1.1em;
-        }
-        
-        .theme-list {
-            margin: 0;
-            padding-left: 20px;
-        }
-        
-        .theme-list li {
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .theme-list strong {
-            color: #d32f2f;
-        }
-        
-        .test-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .nav-test-btn {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-test-btn:hover {
-            background: linear-gradient(135deg, #1976D2, #1565C0);
-            transform: translateY(-1px);
-        }
-        
-        .nav-menu a.active {
-            background: #e53935;
-            color: white;
-            border-radius: 4px;
-        }
-        
-        .nav-menu a.current-test {
-            background: #d32f2f;
-            color: white;
-            border-radius: 4px;
-            font-weight: bold;
-            position: relative;
-        }
-        
-        .nav-menu a.current-test::after {
-            content: ' ✓';
-            font-size: 0.8em;
-        }
-    </style>
 </body>
 </html>
