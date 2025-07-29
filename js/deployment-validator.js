@@ -438,7 +438,8 @@ class DeploymentValidator {
                 name: 'ES6特性支持',
                 test: () => {
                     try {
-                        eval('class Test {}; const arrow = () => {}; let test = { ...{} };');
+                        // 使用Function构造函数替代eval()以避免代码注入风险
+                        new Function('class Test {}; const arrow = () => {}; let test = { ...{} };')();
                         return true;
                     } catch (e) {
                         return false;

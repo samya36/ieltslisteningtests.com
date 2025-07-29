@@ -3,11 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 安全HTTP头 -->
+    <!-- Content Security Policy - 针对测试页面优化 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        font-src 'self' https://cdnjs.cloudflare.com data:;
+        img-src 'self' data: blob:;
+        audio-src 'self' data: blob:;
+        connect-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+    ">
+    
+    <!-- X-Frame-Options - 防止点击劫持攻击 -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <!-- X-Content-Type-Options - 防止MIME类型嗅探攻击 -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- Referrer Policy - 控制引用信息泄露 -->
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- X-XSS-Protection - 启用XSS过滤器 -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Permissions Policy - 测试页面需要音频权限 -->
+    <meta http-equiv="Permissions-Policy" content="
+        geolocation=(),
+        microphone=(),
+        camera=(),
+        payment=(),
+        usb=(),
+        magnetometer=(),
+        gyroscope=(),
+        accelerometer=()
+    ">
+    
     <title>IELTS Listening Test 1</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <link rel="stylesheet" href="../css/mobile-optimizations.css">
+    <link rel="stylesheet" href="../css/visual-feedback.css">
+    <link rel="stylesheet" href="../css/mobile-performance-optimizations.css">
 </head>
 <body>
+    <!-- 跳过导航链接 -->
+    <a href="#main-content" class="skip-link">跳过导航，直接到主要内容</a>
+    
     <!-- 导航栏 -->
     <nav class="nav-bar">
         <div class="nav-container">
@@ -17,6 +66,9 @@
                     IELTS听力评分解析
                 </a>
             </div>
+            <button class="nav-toggle" aria-label="切换导航菜单" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-menu">
                 <li><a href="../index.html">首页</a></li>
                 <li><a href="scoring.html">评分详解</a></li>
@@ -27,7 +79,7 @@
     </nav>
 
     <!-- 主要内容区 -->
-    <main class="test-container">
+    <main class="test-container" id="main-content">
         <!-- 测试说明 -->
         <div class="test-intro">
             <h2>测试说明</h2>
@@ -41,11 +93,11 @@
         </div>
 
         <!-- 部分切换 -->
-        <div class="section-tabs">
-            <button class="section-tab active" data-section="1">Section 1</button>
-            <button class="section-tab" data-section="2">Section 2</button>
-            <button class="section-tab" data-section="3">Section 3</button>
-            <button class="section-tab" data-section="4">Section 4</button>
+        <div class="section-tabs" role="tablist" aria-label="测试部分选择">
+            <button class="section-tab active" data-section="1" role="tab" aria-selected="true" aria-controls="section1-content" id="section1-tab" tabindex="0">Section 1</button>
+            <button class="section-tab" data-section="2" role="tab" aria-selected="false" aria-controls="section2-content" id="section2-tab" tabindex="-1">Section 2</button>
+            <button class="section-tab" data-section="3" role="tab" aria-selected="false" aria-controls="section3-content" id="section3-tab" tabindex="-1">Section 3</button>
+            <button class="section-tab" data-section="4" role="tab" aria-selected="false" aria-controls="section4-content" id="section4-tab" tabindex="-1">Section 4</button>
         </div>
 
         <!-- 音频播放器容器 -->
@@ -55,16 +107,17 @@
                 <audio id="section1-player" src="../audio/test1/section1.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
-                        <button class="play-btn" id="section1-play">
-                            <i class="fas fa-play"></i>
+                        <button class="play-btn" id="section1-play" aria-label="播放Section 1音频" aria-pressed="false" tabindex="0">
+                            <i class="fas fa-play" aria-hidden="true"></i>
                         </button>
                         <div class="progress-bar">
-                            <input type="range" class="progress" id="section1-progress" min="0" max="100" value="0">
+                            <input type="range" class="progress" id="section1-progress" min="0" max="100" value="0" aria-label="音频播放进度" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         </div>
                         <div class="time" id="section1-time">00:00 / 00:00</div>
                     </div>
                     <div class="speed-control">
-                        <select class="playback-speed" id="section1-speed">
+                        <label for="section1-speed" class="visually-hidden">播放速度选择</label>
+                        <select class="playback-speed" id="section1-speed" aria-label="播放速度选择">
                             <option value="0.5">0.5x</option>
                             <option value="0.75">0.75x</option>
                             <option value="1" selected>1.0x</option>
@@ -81,16 +134,17 @@
                 <audio id="section2-player" src="../audio/test1/section2.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
-                        <button class="play-btn" id="section2-play">
-                            <i class="fas fa-play"></i>
+                        <button class="play-btn" id="section2-play" aria-label="播放Section 2音频" aria-pressed="false" tabindex="0">
+                            <i class="fas fa-play" aria-hidden="true"></i>
                         </button>
                         <div class="progress-bar">
-                            <input type="range" class="progress" id="section2-progress" min="0" max="100" value="0">
+                            <input type="range" class="progress" id="section2-progress" min="0" max="100" value="0" aria-label="音频播放进度" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         </div>
                         <div class="time" id="section2-time">00:00 / 00:00</div>
                     </div>
                     <div class="speed-control">
-                        <select class="playback-speed" id="section2-speed">
+                        <label for="section2-speed" class="visually-hidden">播放速度选择</label>
+                        <select class="playback-speed" id="section2-speed" aria-label="播放速度选择">
                             <option value="0.5">0.5x</option>
                             <option value="0.75">0.75x</option>
                             <option value="1" selected>1.0x</option>
@@ -107,16 +161,17 @@
                 <audio id="section3-player" src="../audio/test1/section3.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
-                        <button class="play-btn" id="section3-play">
-                            <i class="fas fa-play"></i>
+                        <button class="play-btn" id="section3-play" aria-label="播放Section 3音频" aria-pressed="false" tabindex="0">
+                            <i class="fas fa-play" aria-hidden="true"></i>
                         </button>
                         <div class="progress-bar">
-                            <input type="range" class="progress" id="section3-progress" min="0" max="100" value="0">
+                            <input type="range" class="progress" id="section3-progress" min="0" max="100" value="0" aria-label="音频播放进度" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         </div>
                         <div class="time" id="section3-time">00:00 / 00:00</div>
                     </div>
                     <div class="speed-control">
-                        <select class="playback-speed" id="section3-speed">
+                        <label for="section3-speed" class="visually-hidden">播放速度选择</label>
+                        <select class="playback-speed" id="section3-speed" aria-label="播放速度选择">
                             <option value="0.5">0.5x</option>
                             <option value="0.75">0.75x</option>
                             <option value="1" selected>1.0x</option>
@@ -133,16 +188,17 @@
                 <audio id="section4-player" src="../audio/test1/section4.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
-                        <button class="play-btn" id="section4-play">
-                            <i class="fas fa-play"></i>
+                        <button class="play-btn" id="section4-play" aria-label="播放Section 4音频" aria-pressed="false" tabindex="0">
+                            <i class="fas fa-play" aria-hidden="true"></i>
                         </button>
                         <div class="progress-bar">
-                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0">
+                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0" aria-label="音频播放进度" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         </div>
                         <div class="time" id="section4-time">00:00 / 00:00</div>
                     </div>
                     <div class="speed-control">
-                        <select class="playback-speed" id="section4-speed">
+                        <label for="section4-speed" class="visually-hidden">播放速度选择</label>
+                        <select class="playback-speed" id="section4-speed" aria-label="播放速度选择">
                             <option value="0.5">0.5x</option>
                             <option value="0.75">0.75x</option>
                             <option value="1" selected>1.0x</option>
@@ -157,7 +213,7 @@
 
         <!-- 题目区域 -->
         <form id="test-form">
-            <div class="section-content active" id="section-1" data-section="1">
+            <div class="section-content active" id="section1-content" data-section="1" role="tabpanel" aria-labelledby="section1-tab">
                 <div class="questions">
                     <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
                 </div>
@@ -229,14 +285,41 @@
         </div>
     </footer>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome with SRI integrity check -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
     <!-- JavaScript -->
+    <script src="../js/secure-storage.js"></script>
+    <script src="../js/sw-manager.js"></script>
+    
+    <!-- 移动端性能优化系统 -->
+    <script src="../js/mobile-audio-optimizer.js"></script>
+    <script src="../js/mobile-touch-controls.js"></script>
+    <script src="../js/mobile-gesture-audio.js"></script>
+    <script src="../js/battery-performance-manager.js"></script>
+    <script src="../js/mobile-performance-integration.js"></script>
+    
+    <!-- 现代音频系统 -->
+    <script src="../js/network-speed-detector.js"></script>
+    <script src="../js/enhanced-audio.js"></script>
+    <script src="../js/progressive-audio-loader.js"></script>
+    <script src="../js/modern-audio-manager.js"></script>
+    <script src="../js/modern-audio-integration.js"></script>
+    
+    <!-- 原有系统 -->
     <script src="../js/test-data.js"></script>
     <script src="../js/test-answers.js"></script>
     <script src="../js/test-player.js"></script>
     <script src="../js/score-display.js"></script>
     <script src="../js/test-ui.js"></script>
+    <script src="../js/keyboard-navigation.js"></script>
+    <script src="../js/mobile-navigation.js"></script>
+    <script src="../js/audio-lazy-loader.js"></script>
+    <script src="../js/progress-manager.js"></script>
+    <script src="../js/visual-feedback.js"></script>
     
     <script>
         // 确保DOM加载完成后初始化
@@ -276,18 +359,30 @@
                     z-index: 1000;
                     text-align: center;
                 `;
-                errorDiv.innerHTML = `
-                    <h3 style="color: #ff4444; margin-bottom: 10px;">初始化失败</h3>
-                    <p style="margin-bottom: 15px;">${error.message}</p>
-                    <button onclick="location.reload()" style="
-                        padding: 8px 16px;
-                        background-color: #4CAF50;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    ">刷新页面</button>
+                // 安全地创建错误信息，避免XSS攻击
+                const h3 = document.createElement('h3');
+                h3.style.cssText = 'color: #ff4444; margin-bottom: 10px;';
+                h3.textContent = '初始化失败';
+                
+                const p = document.createElement('p');
+                p.style.cssText = 'margin-bottom: 15px;';
+                p.textContent = error.message;
+                
+                const button = document.createElement('button');
+                button.style.cssText = `
+                    padding: 8px 16px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
                 `;
+                button.textContent = '刷新页面';
+                button.onclick = () => location.reload();
+                
+                errorDiv.appendChild(h3);
+                errorDiv.appendChild(p);
+                errorDiv.appendChild(button);
                 document.body.appendChild(errorDiv);
             }
         });

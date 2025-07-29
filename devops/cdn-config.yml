@@ -1,0 +1,70 @@
+# 音频文件CDN配置方案
+audio_cdn_config:
+  primary_provider: "Cloudflare"
+  fallback_provider: "AWS CloudFront"
+  
+  # 音频文件特化配置
+  audio_settings:
+    # 支持断点续传
+    range_requests: true
+    # 音频文件缓存策略
+    cache_ttl: "7d"
+    browser_cache: "1d"
+    # 压缩设置
+    compression:
+      enabled: true
+      algorithms: ["gzip", "brotli"]
+      min_size: "1MB"
+    
+    # 地理分布优化
+    edge_locations:
+      asia_pacific:
+        - "tokyo"
+        - "singapore" 
+        - "hong_kong"
+        - "sydney"
+      north_america:
+        - "us_east_1"
+        - "us_west_1"
+        - "canada_central"
+      europe:
+        - "london"
+        - "frankfurt"
+        - "paris"
+    
+    # 智能路由配置
+    routing:
+      china_mainland: "china_cdn" # 国内CDN加速
+      global: "cloudflare_global"
+      fallback: "aws_cloudfront"
+
+  # 静态资源配置
+  static_assets:
+    cache_ttl: "30d"
+    compression: true
+    optimization:
+      css_minify: true
+      js_minify: true
+      image_optimize: true
+      webp_conversion: true
+
+  # 成本优化
+  cost_optimization:
+    # 分层存储
+    storage_tiers:
+      hot: "frequently_accessed" # 当前测试音频
+      warm: "monthly_accessed"   # 历史测试音频
+      cold: "archive"            # 备份音频
+    
+    # 带宽优化
+    bandwidth_optimization:
+      adaptive_bitrate: true
+      smart_compression: true
+      request_coalescing: true
+
+  # 监控和分析
+  monitoring:
+    real_time_metrics: true
+    cache_hit_ratio_target: ">95%"
+    latency_target: "<200ms"
+    availability_target: "99.9%"

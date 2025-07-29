@@ -44,9 +44,10 @@ window.TestUI = class TestUI {
             this.adaptDataFormat();
             
             // 从本地存储加载用户答案
-            const savedAnswers = localStorage.getItem('userAnswers');
+            // 使用安全存储读取用户答案（已经是解析后的对象）
+            const savedAnswers = window.secureStorage.getItem('userAnswers');
             if (savedAnswers) {
-                this.userAnswers = JSON.parse(savedAnswers);
+                this.userAnswers = savedAnswers;
             }
         } catch (error) {
             console.error('加载测试数据失败:', error);
@@ -239,7 +240,8 @@ window.TestUI = class TestUI {
                 this.userAnswers[questionId] = e.target.value;
                 
                 // 更新本地存储
-                localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
+                // 使用安全存储保存用户答案
+window.secureStorage.setItem('userAnswers', this.userAnswers);
             });
         });
 
@@ -294,7 +296,8 @@ window.TestUI = class TestUI {
                 }
                 
                 // 更新本地存储
-                localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
+                // 使用安全存储保存用户答案
+window.secureStorage.setItem('userAnswers', this.userAnswers);
             });
         });
 
@@ -327,7 +330,8 @@ window.TestUI = class TestUI {
                 this.userAnswers[questionId] = e.target.value.trim();
                 
                 // 更新本地存储
-                localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
+                // 使用安全存储保存用户答案
+window.secureStorage.setItem('userAnswers', this.userAnswers);
                 
                 console.log(`题目${questionId}答案已保存: ${e.target.value}`);
             }
@@ -387,7 +391,8 @@ window.TestUI = class TestUI {
         });
 
         // 保存到本地存储
-        localStorage.setItem('userAnswers', JSON.stringify(this.userAnswers));
+        // 使用安全存储保存用户答案
+window.secureStorage.setItem('userAnswers', this.userAnswers);
     }
 
     renderSection(sectionNumber) {

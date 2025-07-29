@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 安全HTTP头 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        font-src 'self' https://cdnjs.cloudflare.com data:;
+        img-src 'self' data: blob:;
+        audio-src 'self' data: blob:;
+        connect-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+    ">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+    
     <title>IELTS Listening Test 3 - 客户投诉、春节庆典、冰岛地质、轮胎回收</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="../css/mobile-performance-optimizations.css">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -249,9 +272,31 @@
         </div>
     </footer>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome with SRI integrity check -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
     <!-- JavaScript -->
+    <script src="../js/secure-storage.js"></script>
+    <script src="../js/sw-manager.js"></script>
+    
+    <!-- 移动端性能优化系统 -->
+    <script src="../js/mobile-audio-optimizer.js"></script>
+    <script src="../js/mobile-touch-controls.js"></script>
+    <script src="../js/mobile-gesture-audio.js"></script>
+    <script src="../js/battery-performance-manager.js"></script>
+    <script src="../js/mobile-performance-integration.js"></script>
+    
+    <!-- 现代音频系统 -->
+    <script src="../js/network-speed-detector.js"></script>
+    <script src="../js/enhanced-audio.js"></script>
+    <script src="../js/progressive-audio-loader.js"></script>
+    <script src="../js/modern-audio-manager.js"></script>
+    <script src="../js/modern-audio-integration.js"></script>
+    
+    <!-- 原有系统 -->
     <script src="../js/multi-test-progress.js"></script>
     <script src="../js/test-data-3.js"></script>
     <script src="../js/test-answers-3.js"></script>
