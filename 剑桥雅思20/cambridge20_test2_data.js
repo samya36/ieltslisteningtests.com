@@ -9,10 +9,10 @@ const CAMBRIDGE20_TEST2_DATA = {
     },
     
     audioConfig: {
-        section1: "剑桥雅思20/剑20 听力音频Test2/Section1.mp3",
-        section2: "剑桥雅思20/剑20 听力音频Test2/Section2.mp3",
-        section3: "剑桥雅思20/剑20 听力音频Test2/Section3.mp3",
-        section4: "剑桥雅思20/剑20 听力音频Test2/Section4.mp3"
+        section1: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section1.mp3",
+        section2: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section2.mp3",
+        section3: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section3.mp3",
+        section4: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section4.mp3"
     },
     
     sections: [
@@ -20,7 +20,7 @@ const CAMBRIDGE20_TEST2_DATA = {
             id: 1,
             title: "Section 1",
             subtitle: "照护老人支持服务咨询",
-            audioPath: "剑桥雅思20/剑20 听力音频Test2/Section1.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section1.mp3",
             questions: "1-10",
             type: "填空题",
             instructions: "Complete the table below. Write ONE WORD AND/OR A NUMBER for each answer.",
@@ -93,7 +93,7 @@ const CAMBRIDGE20_TEST2_DATA = {
             id: 2,
             title: "Section 2",
             subtitle: "志愿者活动介绍",
-            audioPath: "剑桥雅思20/剑20 听力音频Test2/Section2.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section2.mp3",
             questions: "11-20",
             type: "匹配题 + 选择题",
             instructions: "What is the role of the volunteers in each of the following activities? Choose SIX answers from the box.",
@@ -252,7 +252,7 @@ const CAMBRIDGE20_TEST2_DATA = {
             id: 3,
             title: "Section 3",
             subtitle: "人文地理学讨论",
-            audioPath: "剑桥雅思20/剑20 听力音频Test2/Section3.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section3.mp3",
             questions: "21-30",
             type: "匹配题 + 选择题",
             instructions: "What is Rosie and Colin's opinion about each of the following aspects of human geography?",
@@ -395,7 +395,7 @@ const CAMBRIDGE20_TEST2_DATA = {
             id: 4,
             title: "Section 4",
             subtitle: "食品流行趋势发展讲座",
-            audioPath: "剑桥雅思20/剑20 听力音频Test2/Section4.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/Section4.mp3",
             questions: "31-40",
             type: "填空题",
             instructions: "Complete the notes below. Write ONE WORD ONLY for each answer.",

@@ -1,33 +1,49 @@
-// 音频路径配置
+// 音频路径配置 - 使用jsDelivr CDN
 const AUDIO_CONFIG = {
     // 现有测试路径配置
     test1: {
-        basePath: '../audio/test1/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/',
         sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
     },
     test2: {
-        basePath: '../audio/test 2/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test 2/',
         sections: ['Part 1 Winsham Farm.m4a', 'Part 2 Queensland Festival.m4a', 'Part 3 Environmental science course.mp3', 'Part 4-Photic sneezing.m4a']
     },
     test3: {
-        basePath: '../audio/test 3/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test 3/',
         sections: ['Part 1 .mp3', 'Part 2 .m4a', 'Part 3 (2).mp3', 'Part 4 .mp3']
+    },
+    test4: {
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test4/',
+        sections: ['section1_compressed_256k.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+    },
+    test5: {
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test5/',
+        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+    },
+    test6: {
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test6/',
+        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+    },
+    test7: {
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test7/',
+        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
     },
     // 剑桥雅思20配置
     'cambridge20-test1': {
-        basePath: '../剑桥雅思20/剑20 听力音频 Test1/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频 Test1/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     },
     'cambridge20-test2': {
-        basePath: '../剑桥雅思20/剑20 听力音频Test2/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test2/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     },
     'cambridge20-test3': {
-        basePath: '../剑桥雅思20/剑20 听力音频Test3/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     },
     'cambridge20-test4': {
-        basePath: '../剑桥雅思20/剑20 听力音频Test4/',
+        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test4/',
         sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     }
 };
@@ -100,8 +116,8 @@ class AudioPlayer {
         if (this.audioConfig && this.audioConfig.sections[sectionIndex]) {
             return this.audioConfig.basePath + this.audioConfig.sections[sectionIndex];
         }
-        // 向后兼容：如果没有配置，使用默认路径
-        return `../audio/test1/section${section}.mp3`;
+        // 向后兼容：如果没有配置，使用CDN默认路径
+        return `https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/section${section}.mp3`;
     }
     
     // 更新音频源路径

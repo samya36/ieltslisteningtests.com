@@ -9,10 +9,10 @@ const CAMBRIDGE20_TEST3_DATA = {
     },
     
     audioConfig: {
-        section1: "剑桥雅思20/剑20 听力音频Test3/Section1.mp3",
-        section2: "剑桥雅思20/剑20 听力音频Test3/Section2.mp3",
-        section3: "剑桥雅思20/剑20 听力音频Test3/Section3.mp3",
-        section4: "剑桥雅思20/剑20 听力音频Test3/Section4.mp3"
+        section1: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section1.mp3",
+        section2: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section2.mp3",
+        section3: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section3.mp3",
+        section4: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section4.mp3"
     },
     
     sections: [
@@ -20,7 +20,7 @@ const CAMBRIDGE20_TEST3_DATA = {
             id: 1,
             title: "Section 1",
             subtitle: "家具租赁公司咨询",
-            audioPath: "剑桥雅思20/剑20 听力音频Test3/Section1.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section1.mp3",
             questions: "1-10",
             type: "填空题",
             instructions: "Complete the table below. Write ONE WORD AND/OR A NUMBER for each answer.",
@@ -93,7 +93,7 @@ const CAMBRIDGE20_TEST3_DATA = {
             id: 2,
             title: "Section 2",
             subtitle: "考古挖掘项目介绍",
-            audioPath: "剑桥雅思20/剑20 听力音频Test3/Section2.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section2.mp3",
             questions: "11-20",
             type: "选择题 + 配对题",
             instructions: "Questions 11-16: Choose the correct letter, A, B or C.\nQuestions 17-20: Choose the correct letter, A-G.",
@@ -200,7 +200,7 @@ const CAMBRIDGE20_TEST3_DATA = {
             id: 3,
             title: "Section 3",
             subtitle: "戏剧项目学术讨论",
-            audioPath: "剑桥雅思20/剑20 听力音频Test3/Section3.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section3.mp3",
             questions: "21-30",
             type: "选择题 + 匹配题",
             instructions: "Choose the correct letter, A, B or C.",
@@ -339,7 +339,7 @@ const CAMBRIDGE20_TEST3_DATA = {
             id: 4,
             title: "Section 4",
             subtitle: "包容性设计讲座",
-            audioPath: "剑桥雅思20/剑20 听力音频Test3/Section4.mp3",
+            audioPath: "https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/剑桥雅思20/剑20 听力音频Test3/Section4.mp3",
             questions: "31-40",
             type: "填空题",
             instructions: "Complete the notes below. Write ONE WORD ONLY for each answer.",

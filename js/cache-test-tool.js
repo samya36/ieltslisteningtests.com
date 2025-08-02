@@ -103,8 +103,8 @@ class CacheTestTool {
         console.log('🎵 测试音频文件缓存策略...');
         
         const audioFiles = [
-            '/audio/test1/section1.mp3',
-            '/audio/test2/section1.mp3'
+            'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/section1.mp3',
+            'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test 2/Part 1 Winsham Farm.m4a'
         ];
         
         for (const audioFile of audioFiles) {
