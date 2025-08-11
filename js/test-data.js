@@ -2,21 +2,25 @@
 const TEST_DATA = {
     section1: {
         title: "<strong>Section 1</strong>",
-        instructions: "<strong>Questions 1-10</strong>\n\nComplete the form below.\n\nWrite <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.",
+        instructions: "<strong>Questions 1-10</strong>\n\nComplete the form below.\n\nWrite <strong>ONE WORD /OR A NUMBER</strong> for each answer.",
         formContent: {
-            title: "AMATEUR DRAMATIC SOCIETY",
+            title: "Amateur Dramatic Society",
+            subtitle: "Secretary: Jane Caulfield\n\nMailing address: 117 Green Road, Prestwin",
             items: [
-                { text: "Location for rehearsals: The [1] House, Wynn" },
-                { text: "No experience necessary\nThey need actors and [2] singers" },
-                { text: "Also need people who can [3]" },
-                { text: "Meetings 6–8 p.m. every [4]" },
-                { text: "Closed in [5] (for 2 weeks)" },
-                { text: "Membership costs:\nStandard: £40 (includes a [6] once a year)" },
-                { text: "Over 60s or unemployed: £ [7]" },
-                { text: "Youth group: for people aged [8] years old and under" },
-                { text: "Shows:", type: "text" },
-                { text: "• mostly plays by [9] authors", type: "bullet" },
-                { text: "• family show in December\n(raises money for children's [10])", type: "bullet" }
+                { text: "Location for rehearsals: The [1]........................House, Wynn" },
+                { text: "No experience necessary" },
+                { text: "They need actors and [2]........................ singers" },
+                { text: "Also need people who can [3]........................" },
+                { text: "Meetings 6–8 p.m. every [4]........................" },
+                { text: "Closed in [5]........................ (for 2 weeks)" },
+                { text: "Membership costs:" },
+                { text: "Standard: £ 40 (includes a [6]........................ once a year)" },
+                { text: "Over 60s or unemployed: £ [7]........................" },
+                { text: "Youth group: for people aged [8]........................ years old and under" },
+                { text: "Shows:" },
+                { text: "• mostly plays by [9]........................ authors", type: "bullet" },
+                { text: "• family show in December", type: "bullet" },
+                { text: "(raises money for children's [10]........................)", type: "bullet" }
             ]
         }
     },
@@ -214,9 +218,9 @@ const TEST_DATA = {
                         options: [
                             { value: "A", text: "Ensure that terminology is correctly used in the notes." },
                             { value: "B", text: "Check your notes every evening." },
-                            { value: "C", text: "Be highly selective." },
-                            { value: "D", text: "Record the source of all information." },
-                            { value: "E", text: "Use a digital device rather than paper." }
+                            { value: "C", text: "Be highly selective in what you write down." },
+                            { value: "D", text: "Have only one member's a team to write notes." },
+                            { value: "E", text: "Keep your notes in an organised fashion." }
                         ]
                     }
                 ]
@@ -225,7 +229,7 @@ const TEST_DATA = {
     },
     section4: {
         title: "<strong>Section 4</strong>",
-        instructions: "<strong>Questions 31-40</strong>\n\nComplete the notes below.",
+        instructions: "<strong>Questions 31- 40</strong>\n\nComplete the notes below.\n\nWrite <strong>ONE WORD ONLY</strong> for each answer.",
         boxContent: {
             title: "Development and use of plastics",
             content: [

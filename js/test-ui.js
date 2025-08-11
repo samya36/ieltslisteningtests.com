@@ -420,17 +420,34 @@ window.secureStorage.setItem('userAnswers', this.userAnswers);
 
         console.log(`Section ${sectionNumber} 数据:`, sectionData);
 
-        // 查找问题容器
-        const sectionElement = document.getElementById(`section-${sectionNumber}`);
+        // 查找问题容器（兼容不同页面结构）
+        let sectionElement = document.querySelector(`.section-content[data-section="${sectionNumber}"]`);
         if (!sectionElement) {
-            console.error(`Section element ${sectionNumber} not found`);
+            // 回退1：id=section-<n>
+            sectionElement = document.getElementById(`section-${sectionNumber}`);
+        }
+        if (!sectionElement) {
+            // 回退2：id=section<n>-content
+            sectionElement = document.getElementById(`section${sectionNumber}-content`);
+        }
+        if (!sectionElement) {
+            console.error(`Section container not found for section ${sectionNumber}`);
             return;
         }
 
-        const questionsContainer = sectionElement.querySelector('.questions');
-        if (!questionsContainer) {
-            console.error(`Questions container for section ${sectionNumber} not found`);
+        // 如果页面已内置旧版静态题目结构，则跳过动态渲染，防止重复
+        const hasPreRenderedQuestions = !!sectionElement.querySelector('.test-panel__item, .test-panel__question, .test-panel__answer, .iot-lr-question');
+        if (hasPreRenderedQuestions) {
+            console.log(`检测到 Section ${sectionNumber} 已存在静态题目结构，跳过动态渲染。`);
             return;
+        }
+
+        let questionsContainer = sectionElement.querySelector('.questions');
+        if (!questionsContainer) {
+            // 兼容旧页面：为现有容器补充一个.questions容器
+            questionsContainer = document.createElement('div');
+            questionsContainer.className = 'questions';
+            sectionElement.appendChild(questionsContainer);
         }
 
         questionsContainer.innerHTML = '';
@@ -508,8 +525,8 @@ window.secureStorage.setItem('userAnswers', this.userAnswers);
             }
         }
 
-        // 添加提交按钮
-        if (!sectionElement.querySelector('.submit-answers-btn')) {
+        // 添加提交按钮（避免与旧页面已存在的“提交答案”按钮冲突）
+        if (!questionsContainer.querySelector('.submit-answers-btn')) {
             const submitBtn = document.createElement('button');
             submitBtn.className = 'submit-answers-btn';
             submitBtn.textContent = '提交答案';
@@ -517,6 +534,10 @@ window.secureStorage.setItem('userAnswers', this.userAnswers);
             submitBtn.addEventListener('click', () => this.submitAnswers());
             questionsContainer.appendChild(submitBtn);
         }
+
+        // 确保当前section的所有题目一次性展示：展开所有parts并滚动容器自适应
+        sectionElement.style.display = '';
+        sectionElement.classList.add('active');
 
         console.log(`Section ${sectionNumber} 渲染完成`);
     }
@@ -1993,6 +2014,193 @@ window.secureStorage.setItem('userAnswers', this.userAnswers);
         return sortedUser.every((answer, index) => 
             this.compareAnswers(answer, sortedCorrect[index])
         );
+    }
+
+    // 初始化静态test-panel结构
+    initStaticTestPanels() {
+        console.log('初始化静态test-panel结构...');
+        
+        // 恢复已保存的答案到HTML表单中
+        this.restoreAnswersToHTML();
+        
+        // 绑定题目导航面板事件
+        this.bindQuestionPalette();
+        
+        // 添加提交按钮如果不存在
+        this.ensureSubmitButton();
+        
+        console.log('静态test-panel结构初始化完成');
+    }
+    
+    // 恢复已保存的答案到HTML表单中
+    restoreAnswersToHTML() {
+        console.log('恢复已保存的答案到HTML表单...', this.userAnswers);
+        
+        // 恢复填空题答案
+        const textInputs = document.querySelectorAll('.test-panel__input-answer[type="text"]');
+        textInputs.forEach(input => {
+            const questionId = parseInt(input.dataset.num);
+            if (questionId && this.userAnswers[questionId]) {
+                input.value = this.userAnswers[questionId];
+            }
+        });
+        
+        // 恢复单选题答案
+        const radioInputs = document.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach(input => {
+            const questionId = parseInt(input.dataset.num);
+            if (questionId && this.userAnswers[questionId] === input.value) {
+                input.checked = true;
+            }
+        });
+        
+        // 恢复多选题答案
+        const checkboxInputs = document.querySelectorAll('input[type="checkbox"]');
+        checkboxInputs.forEach(input => {
+            const questionId = input.dataset.num;
+            if (questionId) {
+                if (questionId.includes('-')) {
+                    // 处理题组（如25-26）
+                    const [firstId, secondId] = questionId.split('-').map(id => parseInt(id));
+                    const firstAnswer = this.userAnswers[firstId];
+                    const secondAnswer = this.userAnswers[secondId];
+                    
+                    if ((Array.isArray(firstAnswer) && firstAnswer.includes(input.value)) ||
+                        (Array.isArray(secondAnswer) && secondAnswer.includes(input.value))) {
+                        input.checked = true;
+                    }
+                } else {
+                    const qId = parseInt(questionId);
+                    const userAnswer = this.userAnswers[qId];
+                    if (Array.isArray(userAnswer) && userAnswer.includes(input.value)) {
+                        input.checked = true;
+                    }
+                }
+            }
+        });
+        
+        console.log('答案恢复完成');
+    }
+    
+    // 绑定题目导航面板事件
+    bindQuestionPalette() {
+        const paletteItems = document.querySelectorAll('.question-palette__item');
+        paletteItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const questionNum = e.target.dataset.num;
+                if (questionNum) {
+                    this.scrollToQuestion(questionNum);
+                }
+            });
+        });
+    }
+    
+    // 滚动到指定题目
+    scrollToQuestion(questionNum) {
+        const questionElement = document.querySelector(`[data-num="${questionNum}"]`);
+        if (questionElement) {
+            questionElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // 高亮显示题目
+            questionElement.classList.add('highlight');
+            setTimeout(() => {
+                questionElement.classList.remove('highlight');
+            }, 2000);
+        }
+    }
+    
+    // 确保提交按钮存在
+    ensureSubmitButton() {
+        let submitBtn = document.querySelector('.submit-answers-btn');
+        if (!submitBtn) {
+            // 如果不存在提交按钮，创建一个
+            submitBtn = document.createElement('button');
+            submitBtn.className = 'submit-answers-btn';
+            submitBtn.textContent = '提交答案';
+            submitBtn.type = 'button';
+            
+            // 添加到最后一个test-panel的末尾
+            const lastPanel = document.querySelector('.test-panel:last-child');
+            if (lastPanel) {
+                lastPanel.appendChild(submitBtn);
+            }
+        }
+        
+        // 确保绑定了事件
+        if (submitBtn && !submitBtn._eventBound) {
+            submitBtn.addEventListener('click', () => this.submitAnswers());
+            submitBtn._eventBound = true;
+        }
+    }
+    
+    // 更新题目导航面板状态
+    updateQuestionPalette() {
+        const paletteItems = document.querySelectorAll('.question-palette__item');
+        paletteItems.forEach(item => {
+            const questionNum = item.dataset.num;
+            if (questionNum) {
+                if (questionNum.includes('-')) {
+                    // 处理题组
+                    const [firstId, secondId] = questionNum.split('-').map(id => parseInt(id));
+                    const hasFirstAnswer = this.userAnswers[firstId] && 
+                        (typeof this.userAnswers[firstId] === 'string' ? 
+                         this.userAnswers[firstId].trim() !== '' : 
+                         Array.isArray(this.userAnswers[firstId]) && this.userAnswers[firstId].length > 0);
+                    const hasSecondAnswer = this.userAnswers[secondId] && 
+                        (typeof this.userAnswers[secondId] === 'string' ? 
+                         this.userAnswers[secondId].trim() !== '' : 
+                         Array.isArray(this.userAnswers[secondId]) && this.userAnswers[secondId].length > 0);
+                    
+                    if (hasFirstAnswer || hasSecondAnswer) {
+                        item.classList.add('answered');
+                    } else {
+                        item.classList.remove('answered');
+                    }
+                } else {
+                    const qId = parseInt(questionNum);
+                    const hasAnswer = this.userAnswers[qId] && 
+                        (typeof this.userAnswers[qId] === 'string' ? 
+                         this.userAnswers[qId].trim() !== '' : 
+                         Array.isArray(this.userAnswers[qId]) && this.userAnswers[qId].length > 0);
+                    
+                    if (hasAnswer) {
+                        item.classList.add('answered');
+                    } else {
+                        item.classList.remove('answered');
+                    }
+                }
+            }
+        });
+        
+        // 更新各部分的统计数据
+        const paletteParts = document.querySelectorAll('.question-palette__part');
+        paletteParts.forEach(part => {
+            const partNum = part.dataset.part;
+            const totalQuestions = parseInt(part.dataset.questions);
+            
+            // 计算该部分已回答的题目数
+            let answeredCount = 0;
+            const startId = (partNum - 1) * 10 + 1;
+            const endId = partNum * 10;
+            
+            for (let i = startId; i <= endId; i++) {
+                if (this.userAnswers[i] && 
+                    (typeof this.userAnswers[i] === 'string' ? 
+                     this.userAnswers[i].trim() !== '' : 
+                     Array.isArray(this.userAnswers[i]) && this.userAnswers[i].length > 0)) {
+                    answeredCount++;
+                }
+            }
+            
+            // 更新显示
+            const numberSpan = part.querySelector('.number');
+            if (numberSpan) {
+                numberSpan.textContent = answeredCount;
+            }
+        });
     }
 }
 

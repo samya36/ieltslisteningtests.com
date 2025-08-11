@@ -20,18 +20,18 @@ const cambridge20Test1Answers = {
     14: "A",  // its calming effect
     15: "B",  // have never made a pot before
     16: "C",  // take off their jewellery
-    17: "A",  // what their function is (多选题第一个答案)
-    18: "E",  // what some people use instead of one (多选题第二个答案)
-    19: "C",  // Some are essential items (多选题第一个答案)
-    20: "E",  // Some are available for use by participants (多选题第二个答案)
+    17: ["A", "E"], // Questions 17&18 多选题 - A&E
+    18: ["A", "E"],
+    19: ["C", "E"], // Questions 19&20 多选题 - C&E
+    20: ["C", "E"]
     
     // Section 3 (Questions 21-30) - 学生讨论：孤独感研究
-    21: "C",  // urban design (多选题第一个答案)
-    22: "E",  // a mobile workforce (多选题第二个答案)
-    23: "A",  // a weakened immune system (多选题第一个答案)
-    24: "C",  // cancer (多选题第二个答案)
-    25: "A",  // It has little practical relevance (多选题第一个答案)
-    26: "B",  // It needs further investigation (多选题第二个答案)
+    21: ["C", "E"], // Questions 21&22 多选题 - C&E
+    22: ["C", "E"],
+    23: ["A", "C"], // Questions 23&24 多选题 - A&C
+    24: ["A", "C"],
+    25: ["A", "B"], // Questions 25&26 多选题 - A&B
+    26: ["A", "B"]
     27: "A",  // It shows that older people get greater benefits
     28: "B",  // Dogs can help with depression in children
     29: "A",  // Too few people make an effort to learn it
