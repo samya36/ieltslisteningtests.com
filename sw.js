@@ -8,7 +8,7 @@
 
 // ==================== 配置常量 ====================
 
-const SW_VERSION = '2.1.0';
+const SW_VERSION = '2.1.2';
 const SW_NAME = `ielts-sw-${SW_VERSION}`;
 
 // 缓存名称配置
@@ -44,9 +44,15 @@ const PRECACHE_RESOURCES = [
     // 核心HTML文件
     '/',
     '/index.html',
-    '/pages/test.html',
+    '/pages/test1.html',
     '/pages/test2.html',
     '/pages/test3.html',
+    '/pages/enhanced-test1.html',
+    '/pages/test-c20-1.html',
+    '/pages/test-c20-2.html',
+    '/pages/test-c20-3.html',
+    '/pages/test-c20-4.html',
+    '/pages/optimization-demo.html',
     '/pages/scoring.html',
     
     // 核心CSS文件

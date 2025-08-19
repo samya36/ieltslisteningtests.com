@@ -6,11 +6,11 @@
   <title>系统健康检查 - Cambridge IELTS 20</title>
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
     style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
     font-src 'self' https://cdnjs.cloudflare.com data:;
     img-src 'self' data: blob:;
-    audio-src 'self' data: blob:;
+    audio-src 'self' https://cdn.jsdelivr.net data: blob:;
     connect-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -19,6 +19,13 @@
     upgrade-insecure-requests;
   " />
   <link rel="stylesheet" href="../css/main.css" />
+  <!-- Preload critical scripts used in health checks -->
+  <link rel="preload" href="../js/test-system-validator.js" as="script">
+  <link rel="preload" href="../js/test-player.js" as="script">
+  <link rel="preload" href="../js/test-data-4.js" as="script">
+  <link rel="preload" href="../js/test-data-5.js" as="script">
+  <link rel="preload" href="../js/test-data-6.js" as="script">
+  <link rel="preload" href="../js/test-data-7.js" as="script">
   <style>
     body { padding: 20px; }
     .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin: 12px 0; }
@@ -41,14 +48,53 @@
   <div id="summary" class="card"></div>
   <div id="perf" class="card"></div>
   <div id="tips" class="card warn" style="display:none;"></div>
+  <div id="resources" class="card">
+    <h2>资源检查</h2>
+    <p class="muted">点击下方按钮检查关键脚本与数据资源的可用性。</p>
+    <button id="btn-validate" class="btn-primary">运行资源检查</button>
+    <div id="resources-log" style="margin-top:12px"></div>
+  </div>
 
   <!-- 依赖脚本：音频配置、验证器、测试数据4-7 -->
-  <script src="../js/test-player.js"></script>
-  <script src="../js/test-system-validator.js"></script>
-  <script src="../js/test-data-4.js"></script>
-  <script src="../js/test-data-5.js"></script>
-  <script src="../js/test-data-6.js"></script>
-  <script src="../js/test-data-7.js"></script>
+  <script src="../js/test-player.js" defer></script>
+  <script src="../js/test-system-validator.js" defer></script>
+  <script src="../js/test-data-4.js" defer></script>
+  <script src="../js/test-data-5.js" defer></script>
+  <script src="../js/test-data-6.js" defer></script>
+  <script src="../js/test-data-7.js" defer></script>
+  <script type="module">
+    import { validateResources } from '../js/resource-validator.js';
+    const list = [
+      '../js/score-engine.js',
+      '../js/test-ui.js',
+      '../js/test-player.js',
+      '../js/test-system-validator.js',
+      '../js/test-data-4.js',
+      '../js/test-data-5.js',
+      '../js/test-data-6.js',
+      '../js/test-data-7.js',
+      '../docs/c20_test1/cambridge20_test1_answers.js',
+      '../docs/c20_test2/cambridge20_test2_answers.js',
+      '../docs/c20_test3/cambridge20_test3_answers.js',
+      '../docs/c20_test4/cambridge20_test4_answers.js'
+    ];
+    document.getElementById('btn-validate').addEventListener('click', async () => {
+      const logDiv = document.getElementById('resources-log');
+      logDiv.textContent = '检查中...';
+      const results = await validateResources(list);
+      const ok = results.filter(r => r.ok);
+      const miss = results.filter(r => !r.ok);
+      logDiv.innerHTML = `
+        <div class="grid">
+          <div class="kpi"><div class="muted">资源总数</div><div><strong>${results.length}</strong></div></div>
+          <div class="kpi"><div class="muted">可用</div><div><strong style="color:#16a34a">${ok.length}</strong></div></div>
+          <div class="kpi"><div class="muted">缺失</div><div><strong style="color:#dc2626">${miss.length}</strong></div></div>
+        </div>
+        ${miss.length ? `<h3 style="margin-top:10px">缺失清单</h3><pre>${miss.map(m => m.src).join('\n')}</pre>` : '<div class="meta" style="margin-top:10px">所有关键资源均可用</div>'}
+      `;
+      console.log('[Resource Check]', results);
+    });
+  </script>
 
   <script>
     // 运行健康检查与系统测试，并在页面渲染结果
@@ -120,4 +166,3 @@
   </script>
 </body>
 </html>
-

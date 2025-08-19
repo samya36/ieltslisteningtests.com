@@ -1,0 +1,321 @@
+{
+  "test_info": {
+    "test_id": "IELTS_Cambridge_20_Test_1",
+    "section": "Listening",
+    "total_questions": 40,
+    "parts": 4
+  },
+  "parts": [
+    {
+      "part_number": 1,
+      "title": "Restaurant Recommendations",
+      "question_range": "1-10",
+      "instruction": "Complete the table below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "format": "table_completion",
+      "context": "Restaurant recommendation table with information about local restaurants",
+      "questions": [
+        {
+          "question_number": 1,
+          "text": "Good for people who are especially keen on ___",
+          "answer": "fish"
+        },
+        {
+          "question_number": 2,
+          "text": "The ___ is a good place for a drink",
+          "answer": "roof"
+        },
+        {
+          "question_number": 3,
+          "text": "___ food, good for sharing",
+          "answer": "Spanish"
+        },
+        {
+          "question_number": 4,
+          "text": "A limited selection of ___ food on the menu",
+          "answer": "vegetarian"
+        },
+        {
+          "question_number": 5,
+          "text": "The ___ At the top of a ___",
+          "answer": "Audley"
+        },
+        {
+          "question_number": 6,
+          "text": "At the top of a ___",
+          "answer": "hotel"
+        },
+        {
+          "question_number": 7,
+          "text": "All the ___ are very good",
+          "answer": "reviews"
+        },
+        {
+          "question_number": 8,
+          "text": "Only uses ___ ingredients",
+          "answer": "local"
+        },
+        {
+          "question_number": 9,
+          "text": "Set lunch costs: £ ___ per person",
+          "answer": "30"
+        },
+        {
+          "question_number": 10,
+          "text": "Portions probably of ___ size",
+          "answer": "thirty/average"
+        }
+      ]
+    },
+    {
+      "part_number": 2,
+      "title": "Pottery Class Information",
+      "question_range": "11-20",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "format": "multiple_choice",
+      "context": "Information about pottery classes and techniques",
+      "questions": [
+        {
+          "question_number": 11,
+          "text": "Heather says pottery differs from other art forms because",
+          "options": {
+            "A": "it lasts longer in the ground.",
+            "B": "it is practised by more people.",
+            "C": "it can be repaired more easily."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 12,
+          "text": "Archaeologists sometimes identify the use of ancient pottery from",
+          "options": {
+            "A": "the clay it was made with.",
+            "B": "the marks that are on it.",
+            "C": "the basic shape of it."
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 13,
+          "text": "Some people join Heather's pottery class because they want to",
+          "options": {
+            "A": "create an item that looks very old.",
+            "B": "find something that they are good at.",
+            "C": "make something that will outlive them."
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 14,
+          "text": "What does Heather value most about being a potter?",
+          "options": {
+            "A": "its calming effect",
+            "B": "its messy nature",
+            "C": "its physical benefits"
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 15,
+          "text": "Most of the visitors to Edelman Pottery",
+          "options": {
+            "A": "bring friends to join courses.",
+            "B": "have never made a pot before.",
+            "C": "try to learn techniques too quickly."
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 16,
+          "text": "Heather reminds her visitors that they should",
+          "options": {
+            "A": "put on their aprons.",
+            "B": "change their clothes.",
+            "C": "take off their jewellery."
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": "17-18",
+          "text": "Which TWO things does Heather explain about kilns?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "what their function is",
+            "B": "when they were invented",
+            "C": "ways of keeping them safe",
+            "D": "where to put one in your home",
+            "E": "what some people use instead of one"
+          },
+          "answer": ["A", "E"]
+        },
+        {
+          "question_number": "19-20",
+          "text": "Which TWO points does Heather make about a potter's tools?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "Some are hard to hold.",
+            "B": "Some are worth buying.",
+            "C": "Some are essential items.",
+            "D": "Some have memorable names.",
+            "E": "Some are available for use by participants."
+          },
+          "answer": ["C", "E"]
+        }
+      ]
+    },
+    {
+      "part_number": 3,
+      "title": "Loneliness and Mental Health Research",
+      "question_range": "21-30",
+      "instruction": "Choose TWO letters, A-E for questions 21-26, Choose the correct letter, A, B or C for questions 27-30.",
+      "format": "mixed_multiple_choice",
+      "context": "Student discussion about loneliness research project",
+      "questions": [
+        {
+          "question_number": "21-22",
+          "text": "Which TWO things do the students both believe are responsible for the increase in loneliness?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "social media",
+            "B": "smaller nuclear families",
+            "C": "urban design",
+            "D": "longer lifespans",
+            "E": "a mobile workforce"
+          },
+          "answer": ["C", "E"]
+        },
+        {
+          "question_number": "23-24",
+          "text": "Which TWO health risks associated with loneliness do the students agree are based on solid evidence?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "a weakened immune system",
+            "B": "dementia",
+            "C": "cancer",
+            "D": "obesity",
+            "E": "cardiovascular disease"
+          },
+          "answer": ["A", "C"]
+        },
+        {
+          "question_number": "25-26",
+          "text": "Which TWO opinions do both the students express about the evolutionary theory of loneliness?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "It has little practical relevance.",
+            "B": "It needs further investigation.",
+            "C": "It is misleading.",
+            "D": "It should be more widely accepted.",
+            "E": "It is difficult to understand."
+          },
+          "answer": ["A", "B"]
+        },
+        {
+          "question_number": 27,
+          "text": "When comparing loneliness to depression, the students",
+          "options": {
+            "A": "doubt that there will ever be a medical cure for loneliness.",
+            "B": "claim that the link between loneliness and mental health is overstated.",
+            "C": "express frustration that loneliness is not taken more seriously."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 28,
+          "text": "Why do the students decide to start their presentation with an example from their own experience?",
+          "options": {
+            "A": "to explain how difficult loneliness can be",
+            "B": "to highlight a situation that most students will recognise",
+            "C": "to emphasise that feeling lonely is more common for men than women"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 29,
+          "text": "The students agree that talking to strangers is a good strategy for dealing with loneliness because",
+          "options": {
+            "A": "it creates a sense of belonging.",
+            "B": "it builds self-confidence.",
+            "C": "it makes people feel more positive."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 30,
+          "text": "The students find it difficult to understand why solitude is considered to be",
+          "options": {
+            "A": "similar to loneliness.",
+            "B": "necessary for mental health.",
+            "C": "an enjoyable experience."
+          },
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "part_number": 4,
+      "title": "Reclaiming Urban Rivers",
+      "question_range": "31-40",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "format": "note_completion",
+      "context": "Lecture about urban river restoration projects",
+      "questions": [
+        {
+          "question_number": 31,
+          "text": "pollution from ___ on the river bank.",
+          "answer": "factories"
+        },
+        {
+          "question_number": 32,
+          "text": "In 1957, the River Thames in London was declared biologically ___.",
+          "answer": "dead"
+        },
+        {
+          "question_number": 33,
+          "text": "Seals and even a ___ have been seen in the River Thames.",
+          "answer": "whale"
+        },
+        {
+          "question_number": 34,
+          "text": "Riverside warehouses are converted to restaurants and ___.",
+          "answer": "apartments"
+        },
+        {
+          "question_number": 35,
+          "text": "build a riverside ___.",
+          "answer": "park"
+        },
+        {
+          "question_number": 36,
+          "text": "display ___ projects.",
+          "answer": "art"
+        },
+        {
+          "question_number": 37,
+          "text": "In Paris, ___ are created on the sides of the river every summer.",
+          "answer": "beaches"
+        },
+        {
+          "question_number": 38,
+          "text": "Over 2 billion passengers already travel by ___ in cities round the world.",
+          "answer": "ferry"
+        },
+        {
+          "question_number": 39,
+          "text": "Instead of road transport, goods could be transported by large freight barges and electric ___, or, in future, by ___.",
+          "answer": "bikes"
+        },
+        {
+          "question_number": 40,
+          "text": "or, in future, by ___.",
+          "answer": "drone"
+        }
+      ]
+    }
+  ],
+  "answer_key": {
+    "part_1": ["fish", "roof", "Spanish", "vegetarian", "Audley", "hotel", "reviews", "local", "30", "thirty/average"],
+    "part_2": ["A", "B", "C", "A", "B", "C", "AE", "CE"],
+    "part_3": ["CE", "AC", "AB", "A", "B", "A", "C"],
+    "part_4": ["factories", "dead", "whale", "apartments", "park", "art", "beaches", "ferry", "bikes", "drone"]
+  }
+}

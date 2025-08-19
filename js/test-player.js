@@ -1,8 +1,28 @@
 // 音频路径配置 - 使用jsDelivr CDN
+// 预先提供一个全局 testPlayer 桥接（防止其他模块在 DOMContentLoaded 之前调用）
+if (!window.testPlayer) {
+    window.__pendingSwitchSectionQueue = [];
+    window.testPlayer = {
+        switchSection: (sectionNumber) => {
+            try {
+                const n = parseInt(sectionNumber, 10);
+                if (!Number.isNaN(n)) window.__pendingSwitchSectionQueue.push(n);
+            } catch (_) {}
+        },
+        loadAudio: () => {},
+        playSection: (sectionId) => {
+            try {
+                const n = typeof sectionId === 'string' ? parseInt(String(sectionId).replace(/[^0-9]/g, ''), 10) : Number(sectionId);
+                if (!Number.isNaN(n)) window.__pendingSwitchSectionQueue.push(n);
+            } catch (_) {}
+        }
+    };
+}
 const AUDIO_CONFIG = {
     // 现有测试路径配置
     test1: {
-        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/',
+        // 优先本地音频（页面在 pages/ 下，因此使用 ../audio/ 相对路径）
+        basePath: '../audio/test1/',
         sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
     },
     test2: {
@@ -122,9 +142,10 @@ class AudioPlayer {
     getAudioPath(section) {
         const sectionIndex = section - 1;
         if (this.audioConfig && this.audioConfig.sections[sectionIndex]) {
+            // 优先返回本地路径
             return this.audioConfig.basePath + this.audioConfig.sections[sectionIndex];
         }
-        // 向后兼容：如果没有配置，使用CDN默认路径
+        // 兜底：CDN 地址
         return `https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/section${section}.mp3`;
     }
     
@@ -209,13 +230,18 @@ class AudioPlayer {
             this.updateTimeDisplay(section);
         });
 
-        // 出错时自动回退到本地音频
+        // 出错时自动在本地与CDN间回退
         player.audio.addEventListener('error', () => {
             const localSrc = this.localFallback[section];
-            if (localSrc && player.audio.src !== localSrc) {
-                console.warn(`CDN音频加载失败，回退到本地: Section ${section}`);
-                player.audio.src = localSrc;
-                player.audio.load();
+            const cdnSrc = `https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/section${section}.mp3`;
+            const current = player.audio.src;
+            const trySrc = (src) => { player.audio.src = src; player.audio.load(); };
+            if (current.includes('/audio/test1/') && current !== cdnSrc) {
+                console.warn(`本地音频加载失败，回退CDN: Section ${section}`);
+                trySrc(cdnSrc);
+            } else if (localSrc && current !== localSrc) {
+                console.warn(`CDN音频加载失败，回退本地: Section ${section}`);
+                trySrc(localSrc);
             }
         });
         
@@ -417,6 +443,15 @@ document.addEventListener('DOMContentLoaded', () => {
         window.testPlayer.switchSection(num);
         window.audioPlayerInstance.playAudio(num);
     };
+
+    // 回放挂起的切换请求（如果其他模块在播放器准备前调用了 switchSection）
+    if (Array.isArray(window.__pendingSwitchSectionQueue) && window.__pendingSwitchSectionQueue.length) {
+        const last = window.__pendingSwitchSectionQueue[window.__pendingSwitchSectionQueue.length - 1];
+        try {
+            window.testPlayer.switchSection(last);
+        } catch (_) {}
+        window.__pendingSwitchSectionQueue = [];
+    }
 
     console.log('音频播放器初始化完成，测试ID:', window.audioPlayerInstance.testId);
 }); 

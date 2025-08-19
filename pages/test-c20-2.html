@@ -6,12 +6,12 @@
     
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+        script-src 'self' https://cdnjs.cloudflare.com;
         style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
         font-src 'self' https://cdnjs.cloudflare.com data:;
         img-src 'self' data: blob:;
-        audio-src 'self' data: blob:;
-        connect-src 'self';
+        audio-src 'self' https://cdn.jsdelivr.net data: blob:;
+        connect-src 'self' https://cdn.jsdelivr.net;
         object-src 'none';
         base-uri 'self';
         form-action 'self';
@@ -248,73 +248,34 @@
           crossorigin="anonymous" 
           referrerpolicy="no-referrer">
 
-    <script src="../js/secure-storage.js"></script>
-    <script src="../js/sw-manager.js"></script>
-    <script src="../js/mobile-audio-optimizer.js"></script>
-    <script src="../js/mobile-touch-controls.js"></script>
-    <script src="../js/mobile-gesture-audio.js"></script>
-    <script src="../js/battery-performance-manager.js"></script>
-    <script src="../js/mobile-performance-integration.js"></script>
-    <script src="../js/network-speed-detector.js"></script>
-    <script src="../js/enhanced-audio.js"></script>
-    <script src="../js/progressive-audio-loader.js"></script>
-    <script src="../js/modern-audio-manager.js"></script>
-    <script src="../js/modern-audio-integration.js"></script>
+    <script src="../js/secure-storage.js" defer></script>
+    <script src="../js/sw-manager.js" defer></script>
+    <script src="../js/mobile-audio-optimizer.js" defer></script>
+    <script src="../js/mobile-touch-controls.js" defer></script>
+    <script src="../js/mobile-gesture-audio.js" defer></script>
+    <script src="../js/battery-performance-manager.js" defer></script>
+    <script src="../js/mobile-performance-integration.js" defer></script>
+    <script src="../js/network-speed-detector.js" defer></script>
+    <script src="../js/enhanced-audio.js" defer></script>
+    <script src="../js/progressive-audio-loader.js" defer></script>
+    <script src="../js/modern-audio-manager.js" defer></script>
+    <script src="../js/modern-audio-integration.js" defer></script>
 
-    <script src="../js/test-data-5.js"></script>
-    <script src="../剑桥雅思20/cambridge20_test2_answers.js"></script>
+    <script src="../js/test-data-5.js" defer></script>
+    <script src="../docs/c20_test2/cambridge20_test2_answers.js" defer></script>
 
-    <script src="../js/test-player.js"></script>
-    <script src="../js/score-display.js"></script>
-    <script src="../js/test-ui.js"></script>
-    <script src="../js/keyboard-navigation.js"></script>
-    <script src="../js/mobile-navigation.js"></script>
-    <script src="../js/audio-lazy-loader.js"></script>
-    <script src="../js/progress-manager.js"></script>
-    <script src="../js/visual-feedback.js"></script>
+    <script src="../js/test-player.js" defer></script>
+    <script src="../js/score-display.js" defer></script>
+    <script src="../js/test-ui.js" defer></script>
+    <script src="../js/keyboard-navigation.js" defer></script>
+    <script src="../js/mobile-navigation.js" defer></script>
+    <script src="../js/audio-lazy-loader.js" defer></script>
+    <script src="../js/progress-manager.js" defer></script>
+    <script src="../js/visual-feedback.js" defer></script>
+    <script src="../js/c20-audio-controls.js" defer></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                if (typeof TEST_DATA_5 === 'undefined') {
-                    throw new Error('TEST_DATA_5 未定义，请确保 test-data-5.js 已正确加载');
-                }
-                if (typeof cambridge20Test2Answers === 'undefined') {
-                    throw new Error('cambridge20Test2Answers 未定义，请确保 cambridge20_test2_answers.js 已正确加载');
-                }
-                if (typeof TestUI === 'undefined') {
-                    throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
-                }
-
-                window.TEST_DATA = TEST_DATA_5;
-                window.standardAnswers = cambridge20Test2Answers;
-
-                window.testUI = new TestUI();
-
-                if (typeof AudioPlayer !== 'undefined') {
-                    window.audioConfig = 'cambridge20-test2';
-                }
-            } catch (error) {
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); z-index: 1000; text-align: center; border-left: 4px solid #e74c3c;';
-                const h3 = document.createElement('h3');
-                h3.style.cssText = 'color: #e74c3c; margin-bottom: 10px;';
-                h3.textContent = '初始化失败';
-                const p = document.createElement('p');
-                p.style.cssText = 'margin-bottom: 15px; color: #666;';
-                p.textContent = error.message;
-                const button = document.createElement('button');
-                button.style.cssText = 'padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;';
-                button.textContent = '刷新页面';
-                button.onclick = () => location.reload();
-                errorDiv.appendChild(h3);
-                errorDiv.appendChild(p);
-                errorDiv.appendChild(button);
-                document.body.appendChild(errorDiv);
-            }
-        });
-    </script>
+    <script src="../js/c20-test2-init.js" defer></script>
+    
 </body>
 </html>
 <!DOCTYPE html>
@@ -1172,7 +1133,7 @@
         </div>
 
         <div class="submit-container">
-            <button class="submit-btn" onclick="submitTest()">提交测试</button>
+            <button class="submit-btn" data-action="submit-test">提交测试</button>
         </div>
 
         <div id="results" class="results hidden">
@@ -1186,221 +1147,9 @@
         </div>
     </div>
 
-    <script>
-        let testTimer;
-        let timeLeft = 30 * 60; // 30 minutes in seconds
-        let testStarted = false;
 
-        // Audio configuration for Test 2
-        const audioSections = {
-            1: '../剑桥雅思20/剑20 听力音频Test2/Section1.mp3',
-            2: '../剑桥雅思20/剑20 听力音频Test2/Section2.mp3',
-            3: '../剑桥雅思20/剑20 听力音频Test2/Section3.mp3',
-            4: '../剑桥雅思20/剑20 听力音频Test2/Section4.mp3'
-        };
-
-        function playSection(sectionNumber) {
-            const audio = document.getElementById('currentAudio');
-            const audioPath = audioSections[sectionNumber];
-            
-            if (audioPath) {
-                audio.src = audioPath;
-                audio.load();
-                audio.play().catch(error => {
-                    console.error('Audio playback failed:', error);
-                    console.warn('音频播放失败，请检查音频文件是否存在。');
-                });
-            }
-        }
-
-        // 正确答案 - 基于图片中的答案
-        const correctAnswers = {
-            'q1': 'break',
-            'q2': 'time',
-            'q3': 'shower',
-            'q4': 'money',
-            'q5': 'memory',
-            'q6': 'lifting',
-            'q7': 'fall',
-            'q8': 'taxi',
-            'q9': 'insurance',
-            'q10': 'stress',
-            'q11': 'D',
-            'q12': 'I',
-            'q13': 'H',
-            'q14': 'E',
-            'q15': 'A',
-            'q16': 'B',
-            'q17': 'B',
-            'q18': 'A',
-            'q19': 'B',
-            'q20': 'A',
-            'q21': 'D',
-            'q22': 'G',
-            'q23': 'B',
-            'q24': 'A',
-            'q25': 'E',
-            'q26': 'C',
-            'q27': 'A',
-            'q28': 'A',
-            'q29': 'B',
-            'q30': 'C',
-            'q31': 'photos',
-            'q32': 'vegan',
-            'q33': 'chefs',
-            'q34': 'journalists',
-            'q35': 'health',
-            'q36': 'coffee',
-            'q37': 'environment',
-            'q38': 'reputation',
-            'q39': 'price',
-            'q40': 'soil'
-        };
-
-        function startTest() {
-            if (!testStarted) {
-                testStarted = true;
-                testTimer = setInterval(updateTimer, 1000);
-                console.log('Test started');
-            }
-        }
-
-        function pauseTest() {
-            if (testTimer) {
-                clearInterval(testTimer);
-                testTimer = null;
-                console.log('Test paused');
-            } else if (testStarted) {
-                testTimer = setInterval(updateTimer, 1000);
-                console.log('Test resumed');
-            }
-        }
-
-        function updateTimer() {
-            if (timeLeft <= 0) {
-                clearInterval(testTimer);
-                submitTest();
-                return;
-            }
-
-            timeLeft--;
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            document.getElementById('timer').textContent = 
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-
-        function submitTest() {
-            clearInterval(testTimer);
-            
-            let score = 0;
-            let totalQuestions = 40;
-            let results = [];
-
-            // 检查所有答案
-            for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
-                let userAnswer = getUserAnswer(question);
-                let isCorrect = false;
-
-                if (Array.isArray(correctAnswer)) {
-                    // 多选题
-                    isCorrect = arraysEqual(userAnswer.sort(), correctAnswer.sort());
-                } else {
-                    // 单选题或填空题
-                    isCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase();
-                }
-
-                if (isCorrect) score++;
-                
-                results.push({
-                    question: question,
-                    userAnswer: userAnswer,
-                    correctAnswer: correctAnswer,
-                    isCorrect: isCorrect
-                });
-            }
-
-            // 计算IELTS分数
-            const ieltsScore = calculateIELTSScore(score, totalQuestions);
-            
-            // 显示结果
-            displayResults(score, totalQuestions, ieltsScore, results);
-        }
-
-        function getUserAnswer(questionName) {
-            if (questionName.includes('_')) {
-                // 多选题
-                const checkboxes = document.querySelectorAll(`input[name="${questionName}"]:checked`);
-                return Array.from(checkboxes).map(cb => cb.value);
-            } else {
-                // 单选题或填空题或下拉选择
-                const element = document.querySelector(`input[name="${questionName}"]:checked`) || 
-                               document.querySelector(`input[name="${questionName}"]`) ||
-                               document.querySelector(`select[name="${questionName}"]`);
-                return element ? element.value : '';
-            }
-        }
-
-        function arraysEqual(a, b) {
-            return Array.isArray(a) && Array.isArray(b) && 
-                   a.length === b.length && a.every((val, i) => val === b[i]);
-        }
-
-        function calculateIELTSScore(score, total) {
-            const percentage = score / total;
-            if (percentage >= 0.9) return 9;
-            if (percentage >= 0.825) return 8.5;
-            if (percentage >= 0.75) return 8;
-            if (percentage >= 0.675) return 7.5;
-            if (percentage >= 0.6) return 7;
-            if (percentage >= 0.525) return 6.5;
-            if (percentage >= 0.45) return 6;
-            if (percentage >= 0.375) return 5.5;
-            if (percentage >= 0.3) return 5;
-            if (percentage >= 0.225) return 4.5;
-            if (percentage >= 0.15) return 4;
-            if (percentage >= 0.075) return 3.5;
-            return 3;
-        }
-
-        function displayResults(score, total, ieltsScore, results) {
-            document.getElementById('results').classList.remove('hidden');
-            
-            const scoreDisplay = document.getElementById('scoreDisplay');
-            scoreDisplay.innerHTML = `
-                <div>正确答案: ${score}/${total}</div>
-                <div>IELTS分数: ${ieltsScore}</div>
-                <div>正确率: ${(score/total*100).toFixed(1)}%</div>
-            `;
-
-            const detailedResults = document.getElementById('detailedResults');
-            let detailsHTML = '<h3>详细结果</h3>';
-            
-            results.forEach((result, index) => {
-                const status = result.isCorrect ? '✓' : '✗';
-                const statusClass = result.isCorrect ? 'correct' : 'incorrect';
-                detailsHTML += `
-                    <div style="margin: 10px 0; padding: 10px; border-left: 4px solid ${result.isCorrect ? '#4ecdc4' : '#ff6b6b'}; background: #f8f9fa;">
-                        <strong>${status} 第${index + 1}题</strong><br>
-                        你的答案: ${Array.isArray(result.userAnswer) ? result.userAnswer.join(', ') : result.userAnswer}<br>
-                        正确答案: ${Array.isArray(result.correctAnswer) ? result.correctAnswer.join(', ') : result.correctAnswer}
-                    </div>
-                `;
-            });
-            
-            detailedResults.innerHTML = detailsHTML;
-            
-            // 滚动到结果
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // 防止页面刷新时丢失答案
-        window.addEventListener('beforeunload', function(e) {
-            if (testStarted && timeLeft > 0) {
-                e.preventDefault();
-                e.returnValue = '测试正在进行中，确定要离开吗？';
-            }
-        });
-    </script>
+    
+    <script src="../js/score-engine.js" defer></script>
+    <script src="../js/test-page-events.js" defer></script>
 </body>
 </html>

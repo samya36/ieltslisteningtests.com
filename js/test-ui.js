@@ -1272,21 +1272,43 @@ window.secureStorage.setItem('userAnswers', this.userAnswers);
             }
         });
         
-        // 更新部分内容的显示状态
-        const sectionContents = document.querySelectorAll('.section-content');
-        sectionContents.forEach(content => {
-            if (parseInt(content.dataset.section) === sectionNumber) {
-                content.classList.add('active');
-                content.style.display = 'block';
-            } else {
-                content.classList.remove('active');
-                content.style.display = 'none';
+        // 更新部分内容显示（兼容两种结构）
+        const containers = document.querySelectorAll('.section-content, .test-panel');
+        const getSectionNumber = (el) => {
+            if (el.dataset && el.dataset.section) return parseInt(el.dataset.section);
+            if (el.id) {
+                const m1 = el.id.match(/section(\d+)-content/); // section1-content
+                if (m1) return parseInt(m1[1]);
+                const m2 = el.id.match(/section-(\d+)/); // section-1
+                if (m2) return parseInt(m2[1]);
+            }
+            return NaN;
+        };
+        containers.forEach(el => {
+            const num = getSectionNumber(el);
+            if (!Number.isNaN(num)) {
+                if (num === sectionNumber) {
+                    el.classList.add('active');
+                    el.style.display = '';
+                } else {
+                    el.classList.remove('active');
+                    el.style.display = 'none';
+                }
             }
         });
         
-        // 切换音频播放器
-        if (window.testPlayer) {
+        // 切换音频播放器（健壮性保护）
+        if (window.testPlayer && typeof window.testPlayer.switchSection === 'function') {
             window.testPlayer.switchSection(sectionNumber);
+        } else if (window.audioPlayerInstance) {
+            // 直接调用音频实例的显示更新，避免初始化失败
+            try {
+                window.audioPlayerInstance.currentSection = sectionNumber;
+                window.audioPlayerInstance.updatePlayerVisibility();
+                window.audioPlayerInstance.updateSectionVisibility();
+            } catch (e) {
+                console.warn('音频切换兼容调用失败:', e);
+            }
         }
         
         // 渲染当前部分的内容

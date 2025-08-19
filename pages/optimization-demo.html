@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>优化对比演示 - IELTS 听力</title>
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    img-src 'self' data:;
+    connect-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests
+  ">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="../css/mobile-optimizations.css" />
+  <link rel="stylesheet" href="../css/visual-feedback.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">跳过导航</a>
+
+  <nav class="nav-bar" role="navigation" aria-label="主导航">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="../index.html" class="home-link">
+          <img src="../images/logo.png" alt="IELTS听力评分解析" class="logo-img" />
+          IELTS听力评分解析
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="scoring.html">评分详解</a></li>
+        <li><a href="practice.html">听力练习</a></li>
+        <li><a href="system-health.html">系统健康</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main" class="container" style="padding: 24px 16px;">
+    <section class="hero" style="margin-bottom: 24px;">
+      <div class="hero-content">
+        <h1>优化对比演示</h1>
+        <p>对比标准版与增强版在加载性能、交互和音频体验上的改进。</p>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-large">🧪</div>
+          <h3>标准版测试</h3>
+          <p>基础音频播放与题目作答体验，便于与增强版做直接对比。</p>
+          <a class="feature-link" href="test1.html">打开 Test 1（标准版）</a>
+        </div>
+        <div class="feature-card enhanced-highlight">
+          <div class="feature-icon-large">🚀</div>
+          <h3>增强版测试</h3>
+          <p>断点跳转、变速播放、键盘快捷键、自动保存、移动端优化等增强能力。</p>
+          <a class="feature-link featured" href="enhanced-test1.html">打开 Test 1（增强版）</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="version-announcement">
+      <div class="container">
+        <div class="announcement-card">
+          <div class="announcement-header">
+            <h2>对比维度</h2>
+            <p>从核心指标出发观察改进效果。</p>
+          </div>
+          <ul class="feature-list" style="margin: 0 16px 16px;">
+            <li>首屏可交互时间（TTI）与输入延迟</li>
+            <li>音频启动速度与跳转响应</li>
+            <li>离线可用性与缓存命中率</li>
+            <li>移动端触控与键盘可达性</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // 轻量提示：如注册了 Service Worker，将加速二次访问
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(() => {
+        console.log('[Optimization Demo] Service Worker 就绪');
+      }).catch(() => {});
+    }
+  </script>
+</body>
+</html>
+

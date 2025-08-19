@@ -7,12 +7,12 @@
     <!-- 安全HTTP头 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+        script-src 'self' https://cdnjs.cloudflare.com;
         style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
         font-src 'self' https://cdnjs.cloudflare.com data:;
         img-src 'self' data: blob:;
-        audio-src 'self' data: blob:;
-        connect-src 'self';
+        audio-src 'self' https://cdn.jsdelivr.net data: blob:;
+        connect-src 'self' https://cdn.jsdelivr.net;
         object-src 'none';
         base-uri 'self';
         form-action 'self';
@@ -281,38 +281,40 @@
           referrerpolicy="no-referrer">
     
     <!-- JavaScript模块 -->
-    <script src="../js/secure-storage.js"></script>
-    <script src="../js/sw-manager.js"></script>
+    <script src="../js/secure-storage.js" defer></script>
+    <script src="../js/sw-manager.js" defer></script>
     
     <!-- 移动端性能优化系统 -->
-    <script src="../js/mobile-audio-optimizer.js"></script>
-    <script src="../js/mobile-touch-controls.js"></script>
-    <script src="../js/mobile-gesture-audio.js"></script>
-    <script src="../js/battery-performance-manager.js"></script>
-    <script src="../js/mobile-performance-integration.js"></script>
+    <script src="../js/mobile-audio-optimizer.js" defer></script>
+    <script src="../js/mobile-touch-controls.js" defer></script>
+    <script src="../js/mobile-gesture-audio.js" defer></script>
+    <script src="../js/battery-performance-manager.js" defer></script>
+    <script src="../js/mobile-performance-integration.js" defer></script>
     
     <!-- 现代音频系统 -->
-    <script src="../js/network-speed-detector.js"></script>
-    <script src="../js/enhanced-audio.js"></script>
-    <script src="../js/progressive-audio-loader.js"></script>
-    <script src="../js/modern-audio-manager.js"></script>
-    <script src="../js/modern-audio-integration.js"></script>
+    <script src="../js/network-speed-detector.js" defer></script>
+    <script src="../js/enhanced-audio.js" defer></script>
+    <script src="../js/progressive-audio-loader.js" defer></script>
+    <script src="../js/modern-audio-manager.js" defer></script>
+    <script src="../js/modern-audio-integration.js" defer></script>
     
     <!-- 测试数据和答案 -->
-    <script src="../js/test-data-4.js"></script>
-    <script src="../剑桥雅思20/cambridge20_test1_answers.js"></script>
+    <script src="../js/test-data-4.js" defer></script>
+    <script src="../docs/c20_test1/cambridge20_test1_answers.js" defer></script>
     
     <!-- 核心测试系统 -->
-    <script src="../js/test-player.js"></script>
-    <script src="../js/score-display.js"></script>
-    <script src="../js/test-ui.js"></script>
-    <script src="../js/keyboard-navigation.js"></script>
-    <script src="../js/mobile-navigation.js"></script>
-    <script src="../js/audio-lazy-loader.js"></script>
-    <script src="../js/progress-manager.js"></script>
-    <script src="../js/visual-feedback.js"></script>
+    <script src="../js/test-player.js" defer></script>
+    <script src="../js/score-display.js" defer></script>
+    <script src="../js/test-ui.js" defer></script>
+    <script src="../js/keyboard-navigation.js" defer></script>
+    <script src="../js/mobile-navigation.js" defer></script>
+    <script src="../js/audio-lazy-loader.js" defer></script>
+    <script src="../js/progress-manager.js" defer></script>
+    <script src="../js/visual-feedback.js" defer></script>
+    <script src="../js/c20-audio-controls.js" defer></script>
     
-    <script>
+    <!-- removed inline: moved to ../js/c20-test1-init.js -->
+    <!--
         // 确保DOM加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Cambridge IELTS 20 Test 1 页面加载完成，开始初始化测试界面...');
@@ -388,6 +390,7 @@
                 document.body.appendChild(errorDiv);
             }
         });
-    </script>
+    -->
+    <script src="../js/c20-test1-init.js" defer></script>
 </body>
 </html>

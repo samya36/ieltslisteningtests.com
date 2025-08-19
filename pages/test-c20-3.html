@@ -6,12 +6,12 @@
     
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+        script-src 'self' https://cdnjs.cloudflare.com;
         style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
         font-src 'self' https://cdnjs.cloudflare.com data:;
         img-src 'self' data: blob:;
-        audio-src 'self' data: blob:;
-        connect-src 'self';
+        audio-src 'self' https://cdn.jsdelivr.net data: blob:;
+        connect-src 'self' https://cdn.jsdelivr.net;
         object-src 'none';
         base-uri 'self';
         form-action 'self';
@@ -248,32 +248,34 @@
           crossorigin="anonymous" 
           referrerpolicy="no-referrer">
 
-    <script src="../js/secure-storage.js"></script>
-    <script src="../js/sw-manager.js"></script>
-    <script src="../js/mobile-audio-optimizer.js"></script>
-    <script src="../js/mobile-touch-controls.js"></script>
-    <script src="../js/mobile-gesture-audio.js"></script>
-    <script src="../js/battery-performance-manager.js"></script>
-    <script src="../js/mobile-performance-integration.js"></script>
-    <script src="../js/network-speed-detector.js"></script>
-    <script src="../js/enhanced-audio.js"></script>
-    <script src="../js/progressive-audio-loader.js"></script>
-    <script src="../js/modern-audio-manager.js"></script>
-    <script src="../js/modern-audio-integration.js"></script>
+    <script src="../js/secure-storage.js" defer></script>
+    <script src="../js/sw-manager.js" defer></script>
+    <script src="../js/mobile-audio-optimizer.js" defer></script>
+    <script src="../js/mobile-touch-controls.js" defer></script>
+    <script src="../js/mobile-gesture-audio.js" defer></script>
+    <script src="../js/battery-performance-manager.js" defer></script>
+    <script src="../js/mobile-performance-integration.js" defer></script>
+    <script src="../js/network-speed-detector.js" defer></script>
+    <script src="../js/enhanced-audio.js" defer></script>
+    <script src="../js/progressive-audio-loader.js" defer></script>
+    <script src="../js/modern-audio-manager.js" defer></script>
+    <script src="../js/modern-audio-integration.js" defer></script>
 
-    <script src="../js/test-data-6.js"></script>
-    <script src="../剑桥雅思20/cambridge20_test3_answers.js"></script>
+    <script src="../js/test-data-6.js" defer></script>
+    <script src="../docs/c20_test3/cambridge20_test3_answers.js" defer></script>
 
-    <script src="../js/test-player.js"></script>
-    <script src="../js/score-display.js"></script>
-    <script src="../js/test-ui.js"></script>
-    <script src="../js/keyboard-navigation.js"></script>
-    <script src="../js/mobile-navigation.js"></script>
-    <script src="../js/audio-lazy-loader.js"></script>
-    <script src="../js/progress-manager.js"></script>
-    <script src="../js/visual-feedback.js"></script>
+    <script src="../js/test-player.js" defer></script>
+    <script src="../js/score-display.js" defer></script>
+    <script src="../js/test-ui.js" defer></script>
+    <script src="../js/keyboard-navigation.js" defer></script>
+    <script src="../js/mobile-navigation.js" defer></script>
+    <script src="../js/audio-lazy-loader.js" defer></script>
+    <script src="../js/progress-manager.js" defer></script>
+    <script src="../js/visual-feedback.js" defer></script>
+    <script src="../js/c20-audio-controls.js" defer></script>
 
-    <script>
+    <!-- removed inline: moved to ../js/c20-test3-init.js -->
+    <!--
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 if (typeof TEST_DATA_6 === 'undefined') {
@@ -314,7 +316,8 @@
                 document.body.appendChild(errorDiv);
             }
         });
-    </script>
+    -->
+    <script src="../js/c20-test3-init.js" defer></script>
 </body>
 </html>
 <!DOCTYPE html>
@@ -725,7 +728,7 @@
             <div class="controls">
                 <button class="btn btn-primary" onclick="startTest()">开始测试</button>
                 <button class="btn btn-warning" onclick="pauseTest()">暂停</button>
-                <button class="btn btn-success" onclick="submitTest()">提交答案</button>
+                <button class="btn btn-success" data-action="submit-test">提交答案</button>
             </div>
         </div>
 
@@ -1294,7 +1297,7 @@
         </div>
 
         <div class="submit-container">
-            <button class="submit-btn" onclick="submitTest()">提交测试</button>
+            <button class="submit-btn" data-action="submit-test">提交测试</button>
         </div>
 
         <div id="results" class="results hidden">
@@ -1308,7 +1311,8 @@
         </div>
     </div>
 
-    <script>
+    <!-- removed inline: timer/audio helpers not required for ScoreEngine flow -->
+    <!--
         let testTimer;
         let timeLeft = 30 * 60; // 30 minutes in seconds
         let testStarted = false;
@@ -1414,39 +1418,37 @@
 
         function submitTest() {
             clearInterval(testTimer);
-            
-            let score = 0;
-            let totalQuestions = 40;
-            let results = [];
 
-            // 检查所有答案
-            for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
-                let userAnswer = getUserAnswer(question);
-                let isCorrect = false;
-
-                if (Array.isArray(correctAnswer)) {
-                    // 多选题
-                    isCorrect = arraysEqual(userAnswer.sort(), correctAnswer.sort());
-                } else {
-                    // 单选题或填空题
-                    isCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase();
-                }
-
-                if (isCorrect) score++;
-                
-                results.push({
-                    question: question,
-                    userAnswer: userAnswer,
-                    correctAnswer: correctAnswer,
-                    isCorrect: isCorrect
-                });
+            const userAnswers = {};
+            const toKey = (n) => {
+                const num = parseInt(String(n), 10);
+                const section = Math.min(4, Math.max(1, Math.ceil(num / 10)));
+                return `section${section}_${num}`;
+            };
+            for (let q of Object.keys(correctAnswers)) {
+                const m = q.match(/q(\d{1,2})/);
+                if (!m) continue;
+                const num = m[1];
+                const ans = getUserAnswer(q);
+                userAnswers[toKey(num)] = ans;
             }
 
-            // 计算IELTS分数
-            const ieltsScore = calculateIELTSScore(score, totalQuestions);
-            
-            // 显示结果
-            displayResults(score, totalQuestions, ieltsScore, results);
+            const answerKey = {};
+            for (let [q, value] of Object.entries(correctAnswers)) {
+                const m = q.match(/q(\d{1,2})/);
+                if (!m) continue;
+                answerKey[toKey(m[1])] = value;
+            }
+
+            try { localStorage.setItem('userAnswers', JSON.stringify(userAnswers)); } catch (_) {}
+            if (window.ScoreEngine && typeof window.ScoreEngine.calculate === 'function') {
+                const scoreResult = window.ScoreEngine.calculate(userAnswers, answerKey);
+                try {
+                    localStorage.setItem('latestScoreResult', JSON.stringify(scoreResult));
+                    localStorage.setItem('latestAnswerKey', JSON.stringify(answerKey));
+                } catch (_) {}
+            }
+            window.location.href = 'score-validator.html';
         }
 
         function getUserAnswer(questionName) {
@@ -1523,6 +1525,8 @@
                 e.returnValue = '测试正在进行中，确定要离开吗？';
             }
         });
-    </script>
+    -->
+    <script src="../js/score-engine.js" defer></script>
+    <script src="../js/test-page-events.js" defer></script>
 </body>
 </html>

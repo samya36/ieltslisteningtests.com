@@ -1,468 +1,766 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Listening Test 3 - Complete Practice Test</title>
     
-    <!-- 安全HTTP头 -->
+    <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
+        script-src 'self' https://cdnjs.cloudflare.com;
         style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
-        font-src 'self' https://cdnjs.cloudflare.com data:;
         img-src 'self' data: blob:;
-        audio-src 'self' data: blob:;
-        connect-src 'self';
+        audio-src 'self' https://cdn.jsdelivr.net data: blob:;
+        connect-src 'self' https://cdn.jsdelivr.net;
         object-src 'none';
         base-uri 'self';
-        form-action 'self';
         frame-ancestors 'none';
         upgrade-insecure-requests;
     ">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
     
-    <title>IELTS Listening Test 3 - 客户投诉、春节庆典、冰岛地质、轮胎回收</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/test.css">
-    <link rel="stylesheet" href="../css/mobile-performance-optimizations.css">
-</head>
-<body>
-    <!-- 导航栏 -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="../index.html" class="home-link">
-                    <img src="../images/logo.png" alt="IELTS听力评分解析" class="logo-img">
-                    IELTS听力评分解析
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="../index.html">首页</a></li>
-                <li><a href="practice.html" class="active">听力练习</a></li>
-                <li><a href="test.html">Test 1</a></li>
-                <li><a href="test2.html">Test 2</a></li>
-                <li><a href="test3.html" class="current-test">Test 3</a></li>
-                <li><a href="scoring.html">评分详解</a></li>
-                <li><a href="cases.html">案例分析</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- 主要内容区 -->
-    <main class="test-container">
-        <!-- 测试说明 -->
-        <div class="test-intro">
-            <h2>IELTS听力测试 3</h2>
-            <div class="test-themes">
-                <h3>本次测试主题：</h3>
-                <ul class="theme-list">
-                    <li><strong>Section 1:</strong> 奇异航空 - 客户投诉表格</li>
-                    <li><strong>Section 2:</strong> 春节庆典 - 活动安排与信息</li>
-                    <li><strong>Section 3:</strong> 冰岛地质实地考察 - 学术研讨</li>
-                    <li><strong>Section 4:</strong> 澳大利亚轮胎回收 - 环保讲座</li>
-                </ul>
-            </div>
-            <ul class="test-instructions">
-                <li>时长：30分钟</li>
-                <li>题量：40题</li>
-                <li>难度：中等偏上</li>
-                <li>每个部分有独立的音频播放器，可调整播放速度</li>
-                <li>在听力过程中完成答题</li>
-            </ul>
-        </div>
-
-        <!-- 部分切换 -->
-        <div class="section-tabs">
-            <button class="section-tab active" data-section="1">Section 1</button>
-            <button class="section-tab" data-section="2">Section 2</button>
-            <button class="section-tab" data-section="3">Section 3</button>
-            <button class="section-tab" data-section="4">Section 4</button>
-        </div>
-
-        <!-- 音频播放器容器 -->
-        <div class="audio-players-container">
-            <!-- Section 1 音频播放器 -->
-            <div class="audio-player" id="section1-player-container">
-                <audio id="section1-player" src="../audio/test 3/Part 1 .mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section1-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section1-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section1-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section1-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 2 音频播放器 -->
-            <div class="audio-player" id="section2-player-container" style="display: none;">
-                <audio id="section2-player" src="../audio/test 3/Part 2 .m4a"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section2-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section2-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section2-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section2-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3 音频播放器 -->
-            <div class="audio-player" id="section3-player-container" style="display: none;">
-                <audio id="section3-player" src="../audio/test 3/Part 3 (2).mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section3-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section3-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section3-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section3-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 4 音频播放器 -->
-            <div class="audio-player" id="section4-player-container" style="display: none;">
-                <audio id="section4-player" src="../audio/test 3/Part 4 .mp3"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section4-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section4-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section4-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 题目区域 -->
-        <form id="test-form">
-            <div class="section-content active" id="section-1" data-section="1">
-                <div class="questions">
-                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-2" data-section="2" style="display: none;">
-                <div class="questions">
-                    <!-- Section 2 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-3" data-section="3" style="display: none;">
-                <div class="questions">
-                    <!-- Section 3 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-4" data-section="4" style="display: none;">
-                <div class="questions">
-                    <!-- Section 4 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-        </form>
-    </main>
-
-    <!-- 结果弹窗 -->
-    <div class="result-modal" id="result-modal">
-        <div class="result-content">
-            <span class="close-result" id="close-result">&times;</span>
-            <div class="result-header">
-                <h2>测试结果 - Test 3</h2>
-                <p>您已完成雅思听力测试3，以下是您的成绩：</p>
-            </div>
-            <div class="result-score">
-                <div class="score-circle correct">
-                    <div class="score-value" id="correct-count">0</div>
-                    <div class="score-label">正确题数</div>
-                </div>
-                <div class="score-circle ielts">
-                    <div class="score-value" id="ielts-score">0.0</div>
-                    <div class="score-label">雅思分数</div>
-                </div>
-            </div>
-            <div class="result-details">
-                <h3>各部分得分</h3>
-                <div class="section-results" id="section-results">
-                    <!-- 各部分得分将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="test-navigation">
-                <a href="test2.html" class="nav-test-btn">← Test 2</a>
-                <button class="retry-btn" id="retry-btn">重新测试</button>
-                <a href="test.html" class="nav-test-btn">Test 1 →</a>
-            </div>
-            <div class="completion-badge">
-                <h4>🎉 恭喜完成全部测试！</h4>
-                <p>您已完成所有3套IELTS听力测试，可以对比不同测试的表现。</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>关于我们</h4>
-                <p>专注雅思听力评分解析，助力考生科学备考</p>
-            </div>
-            <div class="footer-section">
-                <h4>快速导航</h4>
-                <ul>
-                    <li><a href="scoring.html">评分详解</a></li>
-                    <li><a href="cases.html">案例分析</a></li>
-                    <li><a href="practice.html">练习题</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Font Awesome with SRI integrity check -->
-    <link rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-          crossorigin="anonymous" 
-          referrerpolicy="no-referrer">
-    <!-- JavaScript -->
-    <script src="../js/secure-storage.js"></script>
-    <script src="../js/sw-manager.js"></script>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Complete IELTS Listening Test 3 with audio, questions, and enhanced features. Practice with real test format and get instant feedback.">
+    <meta name="keywords" content="IELTS, listening test, practice, English test, audio">
+    <meta name="author" content="IELTS Listening Tests">
     
-    <!-- 移动端性能优化系统 -->
-    <script src="../js/mobile-audio-optimizer.js"></script>
-    <script src="../js/mobile-touch-controls.js"></script>
-    <script src="../js/mobile-gesture-audio.js"></script>
-    <script src="../js/battery-performance-manager.js"></script>
-    <script src="../js/mobile-performance-integration.js"></script>
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="IELTS Listening Test 3 - Complete Practice">
+    <meta property="og:description" content="Practice IELTS Listening Test 3 with enhanced audio player and smart answer tracking">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ieltslisteningtests.com/pages/test3.html">
     
-    <!-- 现代音频系统 -->
-    <script src="../js/network-speed-detector.js"></script>
-    <script src="../js/enhanced-audio.js"></script>
-    <script src="../js/progressive-audio-loader.js"></script>
-    <script src="../js/modern-audio-manager.js"></script>
-    <script src="../js/modern-audio-integration.js"></script>
+    <!-- Enhanced Styles -->
+    <link rel="stylesheet" href="../css/enhanced-components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- 原有系统 -->
-    <script src="../js/multi-test-progress.js"></script>
-    <script src="../js/test-data-3.js"></script>
-    <script src="../js/test-answers-3.js"></script>
-    <script src="../js/test-player.js"></script>
-    <script src="../js/score-display.js"></script>
-    <script src="../js/test-ui.js"></script>
+    <!-- Original Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
     
-    <script>
-        // 确保DOM加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Test 3 页面加载完成，开始初始化测试界面...');
-            try {
-                // 检查必要的全局变量
-                if (typeof TEST_DATA_3 === 'undefined') {
-                    throw new Error('TEST_DATA_3 未定义，请确保 test-data-3.js 已正确加载');
-                }
-                
-                if (typeof standardAnswers3 === 'undefined') {
-                    throw new Error('standardAnswers3 未定义，请确保 test-answers-3.js 已正确加载');
-                }
-                
-                if (typeof TestUI === 'undefined') {
-                    throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
-                }
-                
-                // 设置Test 3的全局数据变量
-                window.TEST_DATA = TEST_DATA_3;
-                window.standardAnswers = standardAnswers3;
-                
-                // 初始化测试界面
-                window.testUI = new TestUI();
-                console.log('Test 3 测试界面初始化完成');
-            } catch (error) {
-                console.error('Test 3 初始化失败:', error);
-                // 在页面上显示错误信息
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background-color: #fff;
-                    padding: 20px;
-                    border-radius: 5px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    z-index: 1000;
-                    text-align: center;
-                    border: 2px solid #ff4444;
-                `;
-                errorDiv.innerHTML = `
-                    <h3 style="color: #ff4444; margin-bottom: 10px;">Test 3 初始化失败</h3>
-                    <p style="margin-bottom: 15px;">${error.message}</p>
-                    <button onclick="location.reload()" style="
-                        padding: 8px 16px;
-                        background-color: #4CAF50;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        margin-right: 10px;
-                    ">刷新页面</button>
-                    <a href="test2.html" style="
-                        padding: 8px 16px;
-                        background-color: #2196F3;
-                        color: white;
-                        text-decoration: none;
-                        border-radius: 4px;
-                    ">返回 Test 2</a>
-                `;
-                document.body.appendChild(errorDiv);
-            }
-        });
-    </script>
+    <!-- Answers for scoring -->
+    <script src="../js/test3-answers.js" defer></script>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#e53935">
     
     <style>
-        /* Test 3 特有样式 */
-        .test-themes {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #e53935;
+        .test-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
         }
         
-        .test-themes h3 {
-            margin: 0 0 10px 0;
-            color: #e53935;
-            font-size: 1.1em;
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
         
-        .theme-list {
-            margin: 0;
-            padding-left: 20px;
+        .test-sidebar {
+            position: sticky;
+            top: 1rem;
+            height: fit-content;
         }
         
-        .theme-list li {
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .theme-list strong {
-            color: #d32f2f;
-        }
-        
-        .test-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .nav-test-btn {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #2196F3, #1976D2);
+        .enhanced-audio-player {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .section-content {
+            padding: 2rem;
+        }
+        
+        .section-nav {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .section-nav button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
         }
         
-        .nav-test-btn:hover {
-            background: linear-gradient(135deg, #1976D2, #1565C0);
-            transform: translateY(-1px);
+        .section-nav button.active {
+            background: white;
+            color: #e53935;
+            border-bottom: 3px solid #e53935;
         }
         
-        .nav-menu a.active {
-            background: #e53935;
-            color: white;
-            border-radius: 4px;
+        .section-nav button:hover:not(.active) {
+            background: #e9ecef;
         }
         
-        .nav-menu a.current-test {
-            background: #d32f2f;
-            color: white;
-            border-radius: 4px;
-            font-weight: bold;
-            position: relative;
-        }
-        
-        .nav-menu a.current-test::after {
-            content: ' ✓';
-            font-size: 0.8em;
-        }
-        
-        .completion-badge {
-            background: linear-gradient(135deg, #4CAF50, #388E3C);
-            color: white;
-            padding: 15px;
+        .question-block {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e9ecef;
             border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .question {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #e53935;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #e53935;
+            margin-right: 0.5rem;
+        }
+        
+        .options {
+            margin-top: 0.5rem;
+        }
+        
+        .option {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        
+        .form-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .form-content h3 {
             text-align: center;
-            margin-top: 20px;
+            color: #495057;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
         
-        .completion-badge h4 {
-            margin: 0 0 8px 0;
-            font-size: 1.2em;
+        .form-item {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
         }
         
-        .completion-badge p {
-            margin: 0;
-            opacity: 0.9;
+        .form-item.bullet {
+            margin-left: 1rem;
+        }
+        
+        .form-item input[type="text"] {
+            border: none;
+            border-bottom: 2px solid #e53935;
+            background: transparent;
+            padding: 0.25rem;
+            margin: 0 0.25rem;
+            min-width: 120px;
+            font-weight: bold;
+        }
+        
+        .table-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            overflow-x: auto;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #dee2e6;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        
+        .schedule-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .schedule-table input[type="text"] {
+            border: none;
+            border-bottom: 2px solid #e53935;
+            background: transparent;
+            padding: 0.25rem;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .summary-content {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px solid #dee2e6;
+            line-height: 1.8;
+        }
+        
+        .summary-content h4 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        
+        .summary-content input[type="text"] {
+            border: none;
+            border-bottom: 2px solid #e53935;
+            background: transparent;
+            padding: 0.25rem;
+            margin: 0 0.25rem;
+            min-width: 100px;
+            font-weight: bold;
+        }
+        
+        .box-content {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px solid #dee2e6;
+        }
+        
+        .box-content h4 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        
+        .notes-section {
+            line-height: 1.8;
+        }
+        
+        .notes-section .header {
+            font-weight: bold;
+            color: #e53935;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .notes-section .subheader {
+            font-weight: bold;
+            margin: 0.8rem 0 0.3rem 0;
+            color: #495057;
+        }
+        
+        .notes-section .text {
+            margin: 0.3rem 0;
+        }
+        
+        .notes-section input[type="text"] {
+            border: none;
+            border-bottom: 2px solid #e53935;
+            background: transparent;
+            padding: 0.25rem;
+            margin: 0 0.25rem;
+            min-width: 100px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 1024px) {
+            .test-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .test-sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 0.5rem;
+            }
+            
+            .section-content {
+                padding: 1rem;
+            }
+            
+            .enhanced-audio-player {
+                padding: 1rem;
+            }
+            
+            .schedule-table {
+                font-size: 0.9rem;
+            }
         }
     </style>
+</head>
+<body>
+    <div class="test-container">
+        <main class="main-content">
+            <!-- Enhanced Audio Player -->
+            <div class="enhanced-audio-player">
+                <div class="audio-section">
+                    <h2 style="margin: 0 0 1rem 0; display: flex; align-items: center;">
+                        <i class="fas fa-headphones" style="margin-right: 0.5rem;"></i>
+                        IELTS Listening Test 3
+                    </h2>
+                    
+                    <!-- Section Audio Players -->
+                    <div class="audio-players">
+                        <div class="audio-player-section" data-section="1">
+                            <audio id="section1-player" preload="metadata"
+                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section1.mp3"
+                                   data-local-src="../audio/test3/section1.mp3">
+                            </audio>
+                        </div>
+                        <div class="audio-player-section" data-section="2">
+                            <audio id="section2-player" preload="metadata"
+                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section2.mp3"
+                                   data-local-src="../audio/test3/section2.mp3">
+                            </audio>
+                        </div>
+                        <div class="audio-player-section" data-section="3">
+                            <audio id="section3-player" preload="metadata"
+                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section3.mp3"
+                                   data-local-src="../audio/test3/section3.mp3">
+                            </audio>
+                        </div>
+                        <div class="audio-player-section" data-section="4">
+                            <audio id="section4-player" preload="metadata"
+                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section4.mp3"
+                                   data-local-src="../audio/test3/section4.mp3">
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <!-- Audio Controls -->
+                    <div class="audio-controls" id="audio-controls">
+                        <!-- Controls will be dynamically generated -->
+                    </div>
+                    
+                    <!-- Breakpoint Controls -->
+                    <div class="breakpoint-controls" id="breakpoint-controls">
+                        <!-- Breakpoints will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section Navigation -->
+            <div class="section-nav">
+                <button class="section-btn active" data-section="1">
+                    <i class="fas fa-play-circle"></i> Section 1 (Q1-10)
+                </button>
+                <button class="section-btn" data-section="2">
+                    <i class="fas fa-play-circle"></i> Section 2 (Q11-20)
+                </button>
+                <button class="section-btn" data-section="3">
+                    <i class="fas fa-play-circle"></i> Section 3 (Q21-30)
+                </button>
+                <button class="section-btn" data-section="4">
+                    <i class="fas fa-play-circle"></i> Section 4 (Q31-40)
+                </button>
+            </div>
+            
+            <!-- Test Content -->
+            <div class="section-content">
+
+                <!-- Section 1 -->
+                <div class="test-section active" data-section="1">
+                    <h3>Section 1</h3>
+                    <div class="question-block">
+                        <h4><strong>Questions 1-10</strong></h4>
+                        <p><strong>Complete the form below.</strong></p>
+                        <p><em>Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</em></p>
+                        
+                        <div class="form-content">
+                            <h3>KIWI AIR - CUSTOMER COMPLAINT FORM</h3>
+                            <div class="form-item">
+                                Passenger name: Ms Sarah <input type="text" id="q1" name="q1" placeholder="1"> .......................
+                            </div>
+                            <div class="form-item">
+                                Flight number: KA <input type="text" id="q2" name="q2" placeholder="2"> .......................
+                            </div>
+                            <div class="form-item">
+                                Date of flight: <input type="text" id="q3" name="q3" placeholder="3"> ....................... March
+                            </div>
+                            <div class="form-item">
+                                Destination: <input type="text" id="q4" name="q4" placeholder="4"> .......................
+                            </div>
+                            <div class="form-item">
+                                Type of complaint: <input type="text" id="q5" name="q5" placeholder="5"> ....................... delay
+                            </div>
+                            <div class="form-item">
+                                Delay duration: <input type="text" id="q6" name="q6" placeholder="6"> ....................... hours
+                            </div>
+                            <div class="form-item">
+                                Reason given by airline:
+                            </div>
+                            <div class="form-item bullet">
+                                • <input type="text" id="q7" name="q7" placeholder="7"> ....................... conditions
+                            </div>
+                            <div class="form-item">
+                                Compensation requested:
+                            </div>
+                            <div class="form-item bullet">
+                                • <input type="text" id="q8" name="q8" placeholder="8"> ....................... for meals
+                            </div>
+                            <div class="form-item bullet">
+                                • Voucher for <input type="text" id="q9" name="q9" placeholder="9"> ....................... flight
+                            </div>
+                            <div class="form-item">
+                                Contact method: <input type="text" id="q10" name="q10" placeholder="10"> .......................
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 2 -->
+                <div class="test-section" data-section="2">
+                    <h3>Section 2</h3>
+                    
+                    <div class="question-block">
+                        <h4><strong>Questions 11-16</strong></h4>
+                        <p><strong>Complete the table below.</strong></p>
+                        <p><em>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</em></p>
+                        
+                        <div class="table-content">
+                            <h4>Spring Festival Events Schedule</h4>
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Event</th>
+                                        <th>Location</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10:00</td>
+                                        <td><input type="text" id="q11" name="q11" placeholder="11"></td>
+                                        <td>Main Stage</td>
+                                        <td>Free</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12:30</td>
+                                        <td>Cultural Exhibition</td>
+                                        <td><input type="text" id="q12" name="q12" placeholder="12"></td>
+                                        <td>$5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" id="q13" name="q13" placeholder="13"></td>
+                                        <td>Children's Workshop</td>
+                                        <td>Arts Centre</td>
+                                        <td>$10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15:00</td>
+                                        <td><input type="text" id="q14" name="q14" placeholder="14"></td>
+                                        <td>Food Court</td>
+                                        <td>Various</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18:00</td>
+                                        <td>Evening Concert</td>
+                                        <td><input type="text" id="q15" name="q15" placeholder="15"></td>
+                                        <td>$<input type="text" id="q16" name="q16" placeholder="16" style="width: 60px;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <h4><strong>Questions 17-20</strong></h4>
+                        <p><strong>Choose the correct letter, A, B or C.</strong></p>
+                        
+                        <div class="question">
+                            <span class="question-number">17.</span>
+                            The Spring Festival celebrates
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q17a" name="q17" value="A">
+                                    <label for="q17a">A. the beginning of spring season</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q17b" name="q17" value="B">
+                                    <label for="q17b">B. Chinese New Year traditions</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q17c" name="q17" value="C">
+                                    <label for="q17c">C. local community heritage</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">18.</span>
+                            This year's festival is special because
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q18a" name="q18" value="A">
+                                    <label for="q18a">A. it's the 25th anniversary</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q18b" name="q18" value="B">
+                                    <label for="q18b">B. there are international performers</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q18c" name="q18" value="C">
+                                    <label for="q18c">C. it lasts for a longer period</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">19.</span>
+                            Food stalls will mainly offer
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q19a" name="q19" value="A">
+                                    <label for="q19a">A. traditional Asian cuisine</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q19b" name="q19" value="B">
+                                    <label for="q19b">B. fusion food options</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q19c" name="q19" value="C">
+                                    <label for="q19c">C. local Australian dishes</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">20.</span>
+                            Advanced booking is required for
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q20a" name="q20" value="A">
+                                    <label for="q20a">A. all events</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q20b" name="q20" value="B">
+                                    <label for="q20b">B. workshop activities only</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q20c" name="q20" value="C">
+                                    <label for="q20c">C. the evening concert only</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 3 -->
+                <div class="test-section" data-section="3">
+                    <h3>Section 3</h3>
+                    
+                    <div class="question-block">
+                        <h4><strong>Questions 21-25</strong></h4>
+                        <p><strong>Choose the correct letter, A, B or C.</strong></p>
+                        
+                        <div class="question">
+                            <span class="question-number">21.</span>
+                            The main purpose of the Iceland field trip is to study
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q21a" name="q21" value="A">
+                                    <label for="q21a">A. volcanic activity</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q21b" name="q21" value="B">
+                                    <label for="q21b">B. glacial formations</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q21c" name="q21" value="C">
+                                    <label for="q21c">C. geological structures</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">22.</span>
+                            The field trip will last for
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q22a" name="q22" value="A">
+                                    <label for="q22a">A. one week</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q22b" name="q22" value="B">
+                                    <label for="q22b">B. ten days</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q22c" name="q22" value="C">
+                                    <label for="q22c">C. two weeks</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">23.</span>
+                            Students need to bring
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q23a" name="q23" value="A">
+                                    <label for="q23a">A. sleeping bags</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q23b" name="q23" value="B">
+                                    <label for="q23b">B. cooking equipment</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q23c" name="q23" value="C">
+                                    <label for="q23c">C. warm clothing</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">24.</span>
+                            The most challenging aspect will be
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q24a" name="q24" value="A">
+                                    <label for="q24a">A. the weather conditions</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q24b" name="q24" value="B">
+                                    <label for="q24b">B. the physical demands</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q24c" name="q24" value="C">
+                                    <label for="q24c">C. the technical requirements</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <span class="question-number">25.</span>
+                            Safety briefings will cover
+                            <div class="options">
+                                <div class="option">
+                                    <input type="radio" id="q25a" name="q25" value="A">
+                                    <label for="q25a">A. emergency procedures only</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q25b" name="q25" value="B">
+                                    <label for="q25b">B. equipment usage only</label>
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="q25c" name="q25" value="C">
+                                    <label for="q25c">C. both emergency and equipment procedures</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <h4><strong>Questions 26-30</strong></h4>
+                        <p><strong>Complete the summary below.</strong></p>
+                        <p><em>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</em></p>
+                        
+                        <div class="summary-content">
+                            <h4>Iceland Field Trip Itinerary</h4>
+                            <p>Day 1-2: Arrival and <input type="text" id="q26" name="q26" placeholder="26"> ....................... in Reykjavik. Visit to the National Museum and geology department briefing.</p>
+                            
+                            <p>Day 3-5: Travel to the <input type="text" id="q27" name="q27" placeholder="27"> ....................... region to study recent volcanic formations and collect rock samples.</p>
+                            
+                            <p>Day 6-8: Examination of <input type="text" id="q28" name="q28" placeholder="28"> ....................... near Vatnajökull glacier and analysis of ice-carved landscapes.</p>
+                            
+                            <p>Day 9-10: Return to Reykjavik for <input type="text" id="q29" name="q29" placeholder="29"> ....................... work and preparation of field reports.</p>
+                            
+                            <p>All students must submit their <input type="text" id="q30" name="q30" placeholder="30"> ....................... within two weeks of return.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 4 -->
+                <div class="test-section" data-section="4">
+                    <h3>Section 4</h3>
+                    <div class="question-block">
+                        <h4><strong>Questions 31-40</strong></h4>
+                        <p><strong>Complete the notes below.</strong></p>
+                        <p><em>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</em></p>
+                        
+                        <div class="box-content">
+                            <h4>Recycling Tyres in Australia</h4>
+                            <div class="notes-section">
+                                <div class="header">Current Situation</div>
+                                <div class="text">• Australia produces <input type="text" id="q31" name="q31" placeholder="31"> ....................... million waste tyres annually</div>
+                                <div class="text">• Previously, most tyres were <input type="text" id="q32" name="q32" placeholder="32"> ....................... overseas</div>
+                                <div class="text">• New regulations require <input type="text" id="q33" name="q33" placeholder="33"> ....................... processing</div>
+                                
+                                <div class="header">Recycling Methods</div>
+                                <div class="text">• <input type="text" id="q34" name="q34" placeholder="34"> ....................... recycling: tyres are shredded into small pieces</div>
+                                <div class="text">• Used for playground surfaces and <input type="text" id="q35" name="q35" placeholder="35"> .......................</div>
+                                <div class="text">• <input type="text" id="q36" name="q36" placeholder="36"> ....................... recycling: tyres burned for energy production</div>
+                                
+                                <div class="header">New Applications</div>
+                                <div class="text">• Road construction: crumb rubber improves <input type="text" id="q37" name="q37" placeholder="37"> .......................</div>
+                                <div class="text">• Building materials: rubber mixed with <input type="text" id="q38" name="q38" placeholder="38"> .......................</div>
+                                <div class="text">• Agricultural uses: <input type="text" id="q39" name="q39" placeholder="39"> ....................... for livestock areas</div>
+                                
+                                <div class="header">Future Challenges</div>
+                                <div class="text">• Need for increased <input type="text" id="q40" name="q40" placeholder="40"> ....................... investment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Enhanced Answer Sheet Sidebar -->
+        <aside class="test-sidebar">
+            <div class="answer-sheet-container" id="answer-sheet-container">
+                <!-- Enhanced Answer Sheet will be dynamically generated here -->
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Submit Actions -->
+    <div class="submit-container" style="max-width: 1200px; margin: 16px auto; text-align: right;">
+      <button class="submit-btn" data-action="submit-test" style="padding: 10px 16px; background:#e53935; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+        提交测试
+      </button>
+    </div>
+    
+    <!-- Test Data -->
+    <script src="../js/test-data-3.js" defer></script>
+    
+    <!-- Enhanced Components -->
+    <script src="../js/enhanced-audio-player.js" defer></script>
+    <script src="../js/enhanced-answer-sheet.js" defer></script>
+    <script src="../js/enhanced-keyboard-navigation.js" defer></script>
+    
+    <!-- Test Initialization -->
+    <script src="../js/test3-init.js" defer></script>
+    <script src="../js/score-engine.js" defer></script>
+    <script src="../js/test-page-events.js" defer></script>
 </body>
 </html>
