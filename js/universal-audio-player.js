@@ -33,28 +33,28 @@ const UNIVERSAL_AUDIO_CONFIG = {
     test4: {
         basePath: '../audio/test4/',
         sections: [
-            'Part1_Windward Apartments .m4a',
-            'Part2 .m4a',
-            'Part 3 .m4a',
-            'Part 4.m4a'
+            'Part1_Windward_Apartments.m4a',
+            'Part2.m4a',
+            'Part3.m4a',
+            'Part4.m4a'
         ]
     },
     test5: {
         basePath: '../audio/test5/',
         sections: [
-            'test5_Part 1 Winsham Farm.m4a',
-            'test5_Part 2 Queensland Festival.m4a',
-            'test5_Part 3 Environmental science course.m4a',
-            'test5_Part 4-Photic sneezing.m4a'
+            'test5_Part1_Winsham_Farm.m4a',
+            'test5_Part2_Queensland_Festival.m4a',
+            'test5_Part3_Environmental_Science_Course.m4a',
+            'test5_Part4_Photic_Sneezing.m4a'
         ]
     },
     test6: {
         basePath: '../audio/test6/',
         sections: [
-            'Part 1_Amateur Dramatic Society.m4a',
-            'Part2_Clifton Bird Park .m4a',
-            'Part 3.m4a',
-            'Part 4 .m4a'
+            'Part1_Amateur_Dramatic_Society.m4a',
+            'Part2_Clifton_Bird_Park.m4a',
+            'Part3.m4a',
+            'Part4.m4a'
         ]
     },
     test7: {
@@ -167,11 +167,14 @@ class UniversalAudioPlayer {
         }
     }
 
-    // 获取音频路径
+    // 获取音频路径（对文件名进行URL编码，防止空格等特殊字符导致404）
     getAudioPath(section) {
         const sectionIndex = section - 1;
         if (this.audioConfig && this.audioConfig.sections[sectionIndex]) {
-            return this.audioConfig.basePath + this.audioConfig.sections[sectionIndex];
+            const fileName = this.audioConfig.sections[sectionIndex];
+            // 对文件名进行URL编码（空格→%20），basePath不编码
+            const encodedFileName = encodeURIComponent(fileName);
+            return this.audioConfig.basePath + encodedFileName;
         }
         // 备用路径
         return `audio/test1/section${section}.mp3`;
@@ -440,19 +443,23 @@ class UniversalAudioPlayer {
         });
     }
 
-    // 显示音频错误
+    // 显示音频错误（增加详细调试信息）
     showAudioError(section) {
+        const audioPath = this.getAudioPath(section);
+        console.error(`❌ Section ${section} 音频加载失败，路径: ${audioPath}`);
+        
         const errorMsg = document.createElement('div');
         errorMsg.style.cssText = `
             position: fixed; bottom: 20px; right: 20px;
             background: #dc3545; color: white; padding: 15px;
             border-radius: 5px; z-index: 9999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 400px;
         `;
-        errorMsg.innerHTML = `❌ Section ${section} 音频加载失败<br><small>请检查音频文件是否存在</small>`;
+        errorMsg.innerHTML = `❌ Section ${section} 音频加载失败<br><small>路径: ${audioPath}</small><br><small>请检查音频文件是否存在</small>`;
         document.body.appendChild(errorMsg);
         
-        setTimeout(() => errorMsg.remove(), 5000);
+        setTimeout(() => errorMsg.remove(), 8000);
     }
 
     // 检查音频可用性
