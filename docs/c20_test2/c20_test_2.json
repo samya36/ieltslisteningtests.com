@@ -1,0 +1,291 @@
+{
+  "test_info": {
+    "test_id": "IELTS_Cambridge_20_Test_2",
+    "section": "Listening",
+    "total_questions": 40,
+    "parts": 4
+  },
+  "parts": [
+    {
+      "part_number": 1,
+      "title": "Caring for Elderly People",
+      "question_range": "1-10",
+      "instruction": "Complete the table below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "format": "table_completion",
+      "context": "Local councils can arrange practical support to help those caring for elderly people at home",
+      "questions": [
+        {
+          "question_number": 1,
+          "text": "This can give the carer: time for other responsibilities, a ___",
+          "answer": "break"
+        },
+        {
+          "question_number": 2,
+          "text": "how much ___ the caring involves",
+          "answer": "time"
+        },
+        {
+          "question_number": 3,
+          "text": "helping her have a ___",
+          "answer": "shower"
+        },
+        {
+          "question_number": 4,
+          "text": "dealing with ___",
+          "answer": "bills"
+        },
+        {
+          "question_number": 5,
+          "text": "loss of ___",
+          "answer": "independence"
+        },
+        {
+          "question_number": 6,
+          "text": "___ her",
+          "answer": "lifting"
+        },
+        {
+          "question_number": 7,
+          "text": "preventing a ___",
+          "answer": "fall"
+        },
+        {
+          "question_number": 8,
+          "text": "transport costs, e.g. cost of a ___",
+          "answer": "taxi"
+        },
+        {
+          "question_number": 9,
+          "text": "car-related costs, e.g. fuel and ___",
+          "answer": "parking"
+        },
+        {
+          "question_number": 10,
+          "text": "help to reduce ___",
+          "answer": "isolation"
+        }
+      ]
+    },
+    {
+      "part_number": 2,
+      "title": "Volunteering Activities",
+      "question_range": "11-20",
+      "instruction": "Questions 11-16: Choose SIX answers from the box A-I. Questions 17-20: Choose correct letter A, B or C.",
+      "format": "mixed_matching_multiple_choice",
+      "context": "Information about volunteer roles and festival requirements",
+      "questions": [
+        {
+          "question_number": "11-16",
+          "text": "What is the role of the volunteers in each of the following activities? Choose SIX answers from the box and write the correct letter, A-I, next to Questions 11-16.",
+          "activities": [
+            "11. walking around the town centre",
+            "12. helping at concerts",
+            "13. getting involved with community groups",
+            "14. helping with a magazine", 
+            "15. participating at lunches for retired people",
+            "16. helping with the website"
+          ],
+          "options": {
+            "A": "providing entertainment",
+            "B": "providing publicity about a council service",
+            "C": "contacting local businesses",
+            "D": "giving advice to visitors",
+            "E": "collecting feedback on events",
+            "F": "selling tickets",
+            "G": "introducing guest speakers at an event",
+            "H": "encouraging cooperation between local organisations",
+            "I": "helping people find their seats"
+          },
+          "answer": ["D", "I", "H", "C", "A", "B"]
+        },
+        {
+          "question_number": 17,
+          "text": "Which event requires the largest number of volunteers?",
+          "options": {
+            "A": "the music festival",
+            "B": "the science festival", 
+            "C": "the book festival"
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 18,
+          "text": "What is the most important requirement for volunteers at the festivals?",
+          "options": {
+            "A": "interpersonal skills",
+            "B": "personal interest in the event",
+            "C": "flexibility"
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 19,
+          "text": "New volunteers will start working in the week beginning",
+          "options": {
+            "A": "2 September",
+            "B": "9 September", 
+            "C": "23 September"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 20,
+          "text": "What is the next annual event for volunteers?",
+          "options": {
+            "A": "a boat trip",
+            "B": "a barbecue",
+            "C": "a party"
+          },
+          "answer": "A"
+        }
+      ]
+    },
+    {
+      "part_number": 3,
+      "title": "Human Geography Opinions",
+      "question_range": "21-30",
+      "instruction": "Questions 21-25: Choose FIVE answers from the box A-G. Questions 26-30: Choose correct letter A, B or C.",
+      "format": "mixed_matching_multiple_choice",
+      "context": "Rosie and Colin's opinions about different aspects of human geography",
+      "questions": [
+        {
+          "question_number": "21-25",
+          "text": "What is Rosie and Colin's opinion about each of the following aspects of human geography? Choose FIVE answers from the box and write the correct letter, A-G, next to Questions 21-25.",
+          "aspects": [
+            "21. Population",
+            "22. Health",
+            "23. Economies", 
+            "24. Culture",
+            "25. Poverty"
+          ],
+          "options": {
+            "A": "The information given about this was too vague.",
+            "B": "This may not be relevant to their course.",
+            "C": "This will involve only a small number of statistics.",
+            "D": "It will be easy to find facts about this.",
+            "E": "The facts about this may not be reliable.",
+            "F": "No useful research has been done on this.",
+            "G": "The information provided about this was interesting."
+          },
+          "answer": ["A", "B", "C", "D", "E"]
+        },
+        {
+          "question_number": 26,
+          "text": "Rosie says that in her own city the main problem is",
+          "options": {
+            "A": "crime",
+            "B": "housing",
+            "C": "unemployment"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 27,
+          "text": "What recent additions to the outskirts of their cities are both students happy about?",
+          "options": {
+            "A": "conference centres",
+            "B": "sports centres",
+            "C": "retail centres"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 28,
+          "text": "The students agree that developing disused industrial sites may",
+          "options": {
+            "A": "have unexpected costs",
+            "B": "damage the urban environment",
+            "C": "destroy valuable historical buildings"
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 29,
+          "text": "The students will mention Masdar City as an example of an attempt to achieve",
+          "options": {
+            "A": "daily collections for waste recycling",
+            "B": "sustainable energy use",
+            "C": "free transport for everyone"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 30,
+          "text": "When discussing the ecotown of Greenhill Abbots, Colin is uncertain about",
+          "options": {
+            "A": "what its objectives were",
+            "B": "why there was opposition to it",
+            "C": "how much of it has actually been built"
+          },
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "part_number": 4,
+      "title": "Developing Food Trends",
+      "question_range": "31-40",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "format": "note_completion",
+      "context": "Information about developing food trends and marketing campaigns",
+      "questions": [
+        {
+          "question_number": 31,
+          "text": "The growth in interest in food fashions started with ___ of food being shared on social media.",
+          "answer": "photos"
+        },
+        {
+          "question_number": 32,
+          "text": "Sales of ___ food brands have grown rapidly this way.",
+          "answer": "artisan"
+        },
+        {
+          "question_number": 33,
+          "text": "Famous ___ are influential.",
+          "answer": "chefs"
+        },
+        {
+          "question_number": 34,
+          "text": "___ were invited to visit growers in South Africa.",
+          "answer": "Bloggers"
+        },
+        {
+          "question_number": 35,
+          "text": "Advertising focused on its ___ benefits.",
+          "answer": "health"
+        },
+        {
+          "question_number": 36,
+          "text": "Promotion in the USA through ___ shops reduced the need for advertising.",
+          "answer": "coffee"
+        },
+        {
+          "question_number": 37,
+          "text": "It appealed to consumers who are concerned about the ___",
+          "answer": "environment"
+        },
+        {
+          "question_number": 38,
+          "text": "has helped strengthen the ___ of Norwegian seafood.",
+          "answer": "reputation"
+        },
+        {
+          "question_number": 39,
+          "text": "Its success led to an increase in its ___",
+          "answer": "price"
+        },
+        {
+          "question_number": 40,
+          "text": "Overuse of resources resulted in poor quality ___",
+          "answer": "soil"
+        }
+      ]
+    }
+  ],
+  "answer_key": {
+    "part_1": ["break", "time", "shower", "bills", "independence", "lifting", "fall", "taxi", "parking", "isolation"],
+    "part_2": ["D", "I", "H", "C", "A", "B", "A", "C", "B", "A"],
+    "part_3": ["A", "B", "C", "D", "E", "B", "B", "A", "B", "C"],
+    "part_4": ["photos", "artisan", "chefs", "bloggers", "health", "coffee", "environment", "reputation", "price", "soil"]
+  }
+}

@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 安全HTTP头 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        font-src 'self' https://cdnjs.cloudflare.com data:;
+        img-src 'self' data: blob:;
+        audio-src 'self' https://cdn.jsdelivr.net data: blob:;
+        connect-src 'self' https://cdn.jsdelivr.net;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+    ">
+    
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <title>IELTS Listening Test 1</title>
+    
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    <link rel="stylesheet" href="../css/mobile-optimizations.css">
+    <link rel="stylesheet" href="../css/enhanced-components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 跳过导航链接 -->
+    <a href="#main-content" class="skip-link">跳过导航，直接到主要内容</a>
+    
+    <!-- 屏幕阅读器通告区域 -->
+    <div id="sr-announcements" aria-live="polite" aria-atomic="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
+    
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html" class="home-link">
+                    <img src="../images/logo.png" alt="IELTS听力评分解析" class="logo-img">
+                    IELTS听力评分解析
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="切换导航菜单" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="scoring.html">评分详解</a></li>
+                <li><a href="cases.html">案例分析</a></li>
+                <li><a href="practice.html">听力练习</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="test-container" id="main-content">
+        <!-- 测试说明 -->
+        <div class="test-intro">
+            <div class="test-header">
+                <h1>📝 IELTS Listening Test 1</h1>
+                <div class="test-badges">
+                    <span class="badge standard">模拟测试</span>
+                    <span class="badge difficulty">中等</span>
+                    <span class="badge duration">30分钟</span>
+                    <span class="badge questions">40题</span>
+                </div>
+            </div>
+            
+            <div class="test-themes">
+                <h3>测试主题</h3>
+                <div class="themes-grid">
+                    <div class="theme-item">
+                        <span class="section-num">Section 1</span>
+                        <span class="theme-text">业余戏剧社团</span>
+                    </div>
+                    <div class="theme-item">
+                        <span class="section-num">Section 2</span>
+                        <span class="theme-text">草莓农场工作指导</span>
+                    </div>
+                    <div class="theme-item">
+                        <span class="section-num">Section 3</span>
+                        <span class="theme-text">博尔顿岛实地考察</span>
+                    </div>
+                    <div class="theme-item">
+                        <span class="section-num">Section 4</span>
+                        <span class="theme-text">塑料的发展与应用</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="enhancement-notice">
+                <div class="notice-icon">🚀</div>
+                <div class="notice-content">
+                    <h3>增强特性</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-keyboard"></i> 全面键盘快捷键支持</li>
+                        <li><i class="fas fa-play-circle"></i> 音频断点跳转功能</li>
+                        <li><i class="fas fa-star"></i> 智能题目标记系统</li>
+                        <li><i class="fas fa-mobile-alt"></i> 移动端优化体验</li>
+                        <li><i class="fas fa-save"></i> 自动进度保存</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-layout">
+            <!-- 左侧主要内容 -->
+            <div class="test-main">
+                <!-- 增强音频播放器 -->
+                <div class="enhanced-audio-player" data-test-id="test1">
+                    <div class="audio-section" id="audio-section-1">
+                        <div class="audio-player-main">
+                            <audio id="section1-player" 
+                                   src="../audio/test1/Part1 Amateur Dramatic Society.m4a"
+                                   data-cdn-src="https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/Part1 Amateur Dramatic Society.m4a"
+                                   preload="metadata"></audio>
+                        </div>
+                        <div class="audio-controls">
+                            <button id="section1-play" class="play-btn" aria-label="播放/暂停Section 1">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="speed-control">
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedDown()">−</button>
+                                <span class="speed-display">1.00x</span>
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedUp()">+</button>
+                            </div>
+                        </div>
+                        <div class="breakpoint-controls" id="breakpoint-controls-1">
+                            <!-- 断点按钮将由JS动态生成 -->
+                        </div>
+                    </div>
+                    <div class="audio-section" id="audio-section-2" style="display: none;">
+                        <div class="audio-player-main">
+                            <audio id="section2-player" 
+                                   src="../audio/test1/Part2 Talk to new employees at a strawberry farm.m4a"
+                                   data-cdn-src="https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/Part2 Talk to new employees at a strawberry farm.m4a"
+                                   preload="metadata"></audio>
+                        </div>
+                        <div class="audio-controls">
+                            <button id="section2-play" class="play-btn" aria-label="播放/暂停Section 2">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="speed-control">
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedDown()">−</button>
+                                <span class="speed-display">1.00x</span>
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedUp()">+</button>
+                            </div>
+                        </div>
+                        <div class="breakpoint-controls" id="breakpoint-controls-2">
+                            <!-- 断点按钮将由JS动态生成 -->
+                        </div>
+                    </div>
+                    <div class="audio-section" id="audio-section-3" style="display: none;">
+                        <div class="audio-player-main">
+                            <audio id="section3-player" 
+                                   src="../audio/test1/Part3-Field trip to Bolton lsland.m4a"
+                                   data-cdn-src="https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/Part3-Field trip to Bolton lsland.m4a"
+                                   preload="metadata"></audio>
+                        </div>
+                        <div class="audio-controls">
+                            <button id="section3-play" class="play-btn" aria-label="播放/暂停Section 3">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="speed-control">
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedDown()">−</button>
+                                <span class="speed-display">1.00x</span>
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedUp()">+</button>
+                            </div>
+                        </div>
+                        <div class="breakpoint-controls" id="breakpoint-controls-3">
+                            <!-- 断点按钮将由JS动态生成 -->
+                        </div>
+                    </div>
+                    <div class="audio-section" id="audio-section-4" style="display: none;">
+                        <div class="audio-player-main">
+                            <audio id="section4-player" 
+                                   src="../audio/test1/Part4 Development and use of plastics.m4a"
+                                   data-cdn-src="https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/Part4 Development and use of plastics.m4a"
+                                   preload="metadata"></audio>
+                        </div>
+                        <div class="audio-controls">
+                            <button id="section4-play" class="play-btn" aria-label="播放/暂停Section 4">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="speed-control">
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedDown()">−</button>
+                                <span class="speed-display">1.00x</span>
+                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedUp()">+</button>
+                            </div>
+                        </div>
+                        <div class="breakpoint-controls" id="breakpoint-controls-4">
+                            <!-- 断点按钮将由JS动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <div class="audio-progress">
+                        <input type="range" id="current-section-progress" class="progress" min="0" max="100" value="0">
+                        <div class="time-display">
+                            <span id="current-section-time">00:00 / 00:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 部分切换标签页 -->
+                <div class="section-tabs" role="tablist">
+                    <button class="section-tab active" data-section="1" role="tab" 
+                            aria-selected="true" id="section1-tab">Section 1</button>
+                    <button class="section-tab" data-section="2" role="tab" 
+                            aria-selected="false" id="section2-tab">Section 2</button>
+                    <button class="section-tab" data-section="3" role="tab" 
+                            aria-selected="false" id="section3-tab">Section 3</button>
+                    <button class="section-tab" data-section="4" role="tab" 
+                            aria-selected="false" id="section4-tab">Section 4</button>
+                </div>
+
+                <!-- 题目内容区域 -->
+                <div class="questions-container">
+                    <div class="question-container active" id="section1-content" role="tabpanel">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>正在加载 Section 1 题目...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question-container" id="section2-content" role="tabpanel" style="display: none;">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>正在加载 Section 2 题目...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question-container" id="section3-content" role="tabpanel" style="display: none;">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>正在加载 Section 3 题目...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question-container" id="section4-content" role="tabpanel" style="display: none;">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>正在加载 Section 4 题目...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="test-actions">
+                    <button class="btn-secondary" id="btn-reset">
+                        <i class="fas fa-redo"></i> 重新开始
+                    </button>
+                    <button class="btn-primary" id="btn-submit">
+                        <i class="fas fa-paper-plane"></i> 提交答案
+                    </button>
+                </div>
+            </div>
+
+            <!-- 右侧增强答题卡 -->
+            <aside class="test-sidebar">
+                <div class="answer-sheet-container" id="answer-sheet-container">
+                    <!-- 答题卡内容将由JS动态生成 -->
+                </div>
+                
+                <!-- 进度显示 -->
+                <div class="progress-panel">
+                    <h4>答题进度</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text">0 / 40 题已完成</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- 反馈容器 -->
+    <div id="feedback-container"></div>
+
+    <!-- JavaScript文件 -->
+    <script src="../js/enhanced-audio-player.js" defer></script>
+    <script src="../js/enhanced-answer-sheet.js" defer></script>
+    <script src="../js/enhanced-keyboard-navigation.js" defer></script>
+    <script src="../js/test-data.js" defer></script>
+    <script src="../js/test-answers.js" defer></script>
+    <script src="../js/universal-test-generator.js" defer></script>
+    <script src="../js/test1-init.js" defer></script>
+    
+    <!-- 主初始化脚本 已外置至 js/test1-init.js -->
+    <!-- removed: inline script moved to external file
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化测试页面
+        const testId = 'test1';
+        
+        // 初始化音频播放器
+        if (window.enhancedAudioPlayer) {
+            enhancedAudioPlayer.testId = testId;
+        }
+        
+        // 加载题目数据
+        loadQuestionData(testId);
+        
+        // 初始化答题卡
+        initializeAnswerSheet();
+        
+        // 绑定事件监听器
+        bindEventListeners();
+        
+        // 显示启动提示
+        setTimeout(() => {
+            if (enhancedAnswerSheet) {
+                enhancedAnswerSheet.showFeedback('🚀 IELTS Listening Test 1 已准备就绪！按 H 查看帮助', 'info');
+            }
+        }, 1500);
+    });
+    
+    // 加载题目数据
+    function loadQuestionData(testId) {
+        // 根据不同的测试ID加载对应的数据
+        if (typeof TEST_DATA !== 'undefined') {
+            renderQuestionSections(TEST_DATA);
+        } else {
+            // 尝试动态加载数据文件
+            setTimeout(() => loadQuestionData(testId), 100);
+        }
+    }
+    
+    // 渲染题目部分
+    function renderQuestionSections(data) {
+        Object.keys(data).forEach((sectionKey, index) => {
+            const sectionNum = index + 1;
+            const container = document.getElementById(`section${sectionNum}-content`);
+            if (container) {
+                container.innerHTML = renderSection(data[sectionKey], sectionNum);
+            }
+        });
+    }
+    
+    // 渲染单个section
+    function renderSection(sectionData, sectionNum) {
+        let html = `<div class="section-header">`;
+        html += `<h2>Section ${sectionNum}</h2>`;
+        
+        if (sectionData.instructions) {
+            html += `<div class="section-instructions">${sectionData.instructions}</div>`;
+        }
+        
+        html += `</div>`;
+        
+        // 根据不同的题目类型渲染内容
+        if (sectionData.formContent) {
+            html += renderFormSection(sectionData.formContent, sectionNum);
+        } else if (sectionData.parts) {
+            html += renderPartsSection(sectionData.parts, sectionNum);
+        } else if (sectionData.questions) {
+            html += renderQuestionsSection(sectionData.questions, sectionNum);
+        }
+        
+        return html;
+    }
+    
+    // 渲染表单类型题目
+    function renderFormSection(formData, sectionNum) {
+        let html = `<div class="form-content">`;
+        
+        if (formData.title) {
+            html += `<h3>${formData.title}</h3>`;
+        }
+        
+        if (formData.subtitle) {
+            html += `<div class="form-subtitle">${formData.subtitle.replace(/\n/g, '<br>')}</div>`;
+        }
+        
+        if (formData.items) {
+            formData.items.forEach((item, index) => {
+                const questionNum = (sectionNum - 1) * 10 + index + 1;
+                if (item.text.includes('[' + (index + 1) + ']')) {
+                    // 填空题
+                    const processedText = item.text.replace(
+                        `[${index + 1}]........................`,
+                        `<input type="text" id="q${questionNum}" class="fill-blank" placeholder="${index + 1}" maxlength="20">`
+                    );
+                    html += `<div class="question-item" data-question="${questionNum}">${processedText}</div>`;
+                } else {
+                    html += `<div class="form-item ${item.type || ''}">${item.text}</div>`;
+                }
+            });
+        }
+        
+        html += `</div>`;
+        return html;
+    }
+    
+    // 渲染parts类型题目
+    function renderPartsSection(parts, sectionNum) {
+        let html = '';
+        
+        parts.forEach((part, partIndex) => {
+            html += `<div class="question-part">`;
+            
+            if (part.title) {
+                html += `<h3>${part.title}</h3>`;
+            }
+            
+            if (part.instructions) {
+                html += `<div class="part-instructions">${part.instructions}</div>`;
+            }
+            
+            if (part.questions) {
+                html += renderQuestionsSection(part.questions, sectionNum, partIndex);
+            }
+            
+            if (part.mapContent) {
+                html += `<div class="map-content">`;
+                html += `<h4>${part.mapContent.title}</h4>`;
+                if (part.mapContent.imageUrl) {
+                    html += `<img src="${part.mapContent.imageUrl}" alt="地图" class="map-image">`;
+                }
+                html += `</div>`;
+            }
+            
+            if (part.boxContent) {
+                html += `<div class="box-content">${part.boxContent}</div>`;
+            }
+            
+            html += `</div>`;
+        });
+        
+        return html;
+    }
+    
+    // 渲染问题列表
+    function renderQuestionsSection(questions, sectionNum, partIndex = 0) {
+        let html = `<div class="mcq-container">`;
+        
+        questions.forEach((question, qIndex) => {
+            const questionId = question.id || `q${question.id || (sectionNum-1)*10 + qIndex + 1}`;
+            
+            html += `<div class="question-item" data-question="${questionId}">`;
+            html += `<h4>${question.id || qIndex + 1}. ${question.text}</h4>`;
+            
+            if (question.type === 'radio' && question.options) {
+                html += `<div class="options">`;
+                question.options.forEach((option, optIndex) => {
+                    html += `<label class="option-label">`;
+                    html += `<input type="radio" name="${questionId}" value="${option.value}">`;
+                    html += `<span class="option-text">${option.value}. ${option.text}</span>`;
+                    html += `</label>`;
+                });
+                html += `</div>`;
+            } else if (question.type === 'text') {
+                html += `<div class="text-input">`;
+                html += `<input type="text" id="${questionId}" placeholder="${question.placeholder || ''}">`;
+                html += `</div>`;
+            }
+            
+            html += `</div>`;
+        });
+        
+        html += `</div>`;
+        return html;
+    }
+    
+    // 初始化答题卡
+    function initializeAnswerSheet() {
+        if (enhancedAnswerSheet) {
+            // 构建题目数组
+            const allQuestions = [];
+            for (let i = 1; i <= 40; i++) {
+                allQuestions.push({
+                    id: `q${i}`,
+                    number: i
+                });
+            }
+            enhancedAnswerSheet.setQuestions(allQuestions);
+        }
+    }
+    
+    // 绑定事件监听器
+    function bindEventListeners() {
+        // 监听答题变化
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('input[type="text"], input[type="radio"]')) {
+                const questionId = e.target.id || e.target.name;
+                const value = e.target.type === 'radio' ? 
+                    (e.target.checked ? e.target.value : null) : e.target.value;
+                
+                if (enhancedAnswerSheet && questionId) {
+                    enhancedAnswerSheet.updateAnswer(questionId, value);
+                }
+                
+                updateProgress();
+            }
+        });
+        
+        // Section切换事件
+        document.querySelectorAll('.section-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const sectionNum = this.dataset.section;
+                switchToSection(sectionNum);
+            });
+        });
+        
+        // 监听答题卡事件
+        document.addEventListener('answerSheet:questionChanged', function(e) {
+            console.log('切换到题目', e.detail.index + 1);
+        });
+    }
+    
+    // 切换到指定Section
+    function switchToSection(sectionNum) {
+        // 更新标签样式
+        document.querySelectorAll('.section-tab').forEach(tab => {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-selected', 'false');
+        });
+        
+        const activeTab = document.querySelector(`[data-section="${sectionNum}"]`);
+        if (activeTab) {
+            activeTab.classList.add('active');
+            activeTab.setAttribute('aria-selected', 'true');
+        }
+        
+        // 更新内容区域
+        document.querySelectorAll('.question-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        
+        const activeContent = document.getElementById(`section${sectionNum}-content`);
+        if (activeContent) {
+            activeContent.style.display = 'block';
+        }
+        
+        // 更新音频播放器
+        document.querySelectorAll('.audio-section').forEach(section => {
+            section.style.display = 'none';
+        });
+        
+        const activeAudio = document.getElementById(`audio-section-${sectionNum}`);
+        if (activeAudio) {
+            activeAudio.style.display = 'block';
+        }
+        
+        // 通知音频播放器
+        if (enhancedAudioPlayer) {
+            enhancedAudioPlayer.currentSection = parseInt(sectionNum);
+        }
+    }
+    
+    // 更新进度
+    function updateProgress() {
+        const inputs = document.querySelectorAll('input[type="text"], input[type="radio"]:checked');
+        const totalQuestions = 40;
+        const answeredCount = Array.from(inputs).filter(input => {
+            return input.type === 'radio' ? input.checked : input.value.trim() !== '';
+        }).length;
+        
+        const percentage = (answeredCount / totalQuestions) * 100;
+        
+        const progressFill = document.querySelector('.progress-fill');
+        const progressText = document.querySelector('.progress-text');
+        
+        if (progressFill) progressFill.style.width = percentage + '%';
+        if (progressText) progressText.textContent = `${answeredCount} / ${totalQuestions} 题已完成`;
+    }
+    
+    // 重置测试
+    function resetTest() {
+        if (confirm('确定要重新开始测试吗？所有答案将被清除。')) {
+            document.querySelectorAll('input').forEach(input => {
+                if (input.type === 'radio' || input.type === 'checkbox') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+            
+            if (enhancedAnswerSheet) {
+                enhancedAnswerSheet.reset();
+            }
+            
+            updateProgress();
+        }
+    }
+    
+    // 提交测试
+    function submitTest() {
+        const rawInputs = {};
+        document.querySelectorAll('input').forEach(input => {
+            if (input.type === 'radio' && input.checked) {
+                rawInputs[input.name] = input.value;
+            } else if (input.type === 'text' && input.value.trim()) {
+                rawInputs[input.id] = input.value.trim();
+            }
+        });
+
+        // 归一化为 sectionX_Y 键
+        const userAnswers = {};
+        const toKey = (qNum) => {
+            const n = parseInt(String(qNum), 10);
+            const section = Math.min(4, Math.max(1, Math.ceil(n / 10)));
+            return `section${section}_${n}`;
+        };
+        Object.entries(rawInputs).forEach(([k, v]) => {
+            const match = String(k).match(/(\d{1,2})/);
+            if (match) {
+                userAnswers[toKey(match[1])] = v;
+            }
+        });
+
+        // 构建答案键映射（从 1..40 到 sectionX_Y）
+        const answerKey = {};
+        if (typeof standardAnswers !== 'undefined') {
+            Object.entries(standardAnswers).forEach(([num, ans]) => {
+                answerKey[toKey(num)] = ans;
+            });
+        }
+
+        // 保存以供结果页使用（score-validator.html 读取 userAnswers）
+        try { localStorage.setItem('userAnswers', JSON.stringify(userAnswers)); } catch (_) {}
+
+        // 使用统一评分引擎计算并缓存结果（可选）
+        if (window.ScoreEngine && typeof window.ScoreEngine.calculate === 'function') {
+            const scoreResult = window.ScoreEngine.calculate(userAnswers, answerKey);
+            try {
+                localStorage.setItem('latestScoreResult', JSON.stringify(scoreResult));
+                localStorage.setItem('latestAnswerKey', JSON.stringify(answerKey));
+            } catch (_) {}
+            console.log('[ScoreEngine] 评分结果', scoreResult);
+        }
+
+        if (enhancedAnswerSheet) {
+            enhancedAnswerSheet.showFeedback('答案已提交！即将显示评分', 'success');
+        }
+
+        setTimeout(() => {
+            window.location.href = 'score-validator.html';
+        }, 800);
+    }
+    
+    // 初始化键盘导航系统
+    if (keyboardNavigation) {
+        keyboardNavigation.updateQuestionInfo(0, 40);
+    }
+    <script src="../js/score-engine.js" defer></script>
+    <script src="../js/test-page-events.js" defer></script>
+</body>
+</html>
+                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0" aria-label="音频播放进度" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        </div>
+                        <div class="time" id="section4-time">00:00 / 00:00</div>
+                    </div>
+                    <div class="speed-control">
+                        <label for="section4-speed" class="visually-hidden">播放速度选择</label>
+                        <select class="playback-speed" id="section4-speed" aria-label="播放速度选择">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 题目区域 -->
+        <div class="take-test__board highlighter-context" id="highlighter-contents">
+            <div class="take-test__questions-wrap">
+                <!-- Section 1 -->
+                <section class="test-panel" id="section1-content" data-section="1">
+                    <div class="test-panel__header">
+                        <h2 class="test-panel__title">Section 1</h2>
+                        <div class="test-panel__title-caption">Questions 1-10</div>
+                    </div>
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 1-10</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Complete the form below.</em></p>
+                                <p><em>Write <span style="color:#ff0000;"><strong>ONE WORD /OR A NUMBER</strong></span> for each answer.</em></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="ckeditor-wrapper">
+                                <div class="table-responsive">
+                                    <table border="1" cellpadding="3" cellspacing="0" style="width: 100%;">
+                                        <caption><h3>Amateur Dramatic Society</h3></caption>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" style="text-align: center; background: #f8f9fa;">
+                                                    <p><strong>Secretary: Jane Caulfield</strong></p>
+                                                    <p>Mailing address: 117 Green Road, Prestwin</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>Location for rehearsals</p></td>
+                                                <td valign="top">
+                                                    <p>The <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">1</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="1" autocomplete="off" data-q_type="9" id="q-1">
+                                                    </span> House, Wynn</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>Requirements</p></td>
+                                                <td valign="top">
+                                                    <p>No experience necessary</p>
+                                                    <p>They need actors and <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">2</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="2" autocomplete="off" data-q_type="9" id="q-2">
+                                                    </span> singers</p>
+                                                    <p>Also need people who can <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">3</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="3" autocomplete="off" data-q_type="9" id="q-3">
+                                                    </span></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>Meeting Schedule</p></td>
+                                                <td valign="top">
+                                                    <p>Meetings 6–8 p.m. every <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">4</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="4" autocomplete="off" data-q_type="9" id="q-4">
+                                                    </span></p>
+                                                    <p>Closed in <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">5</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="5" autocomplete="off" data-q_type="9" id="q-5">
+                                                    </span> (for 2 weeks)</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>Membership costs</p></td>
+                                                <td valign="top">
+                                                    <p>Standard: £ 40 (includes a <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">6</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="6" autocomplete="off" data-q_type="9" id="q-6">
+                                                    </span> once a year)</p>
+                                                    <p>Over 60s or unemployed: £ <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">7</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="7" autocomplete="off" data-q_type="9" id="q-7">
+                                                    </span></p>
+                                                    <p>Youth group: for people aged <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">8</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="8" autocomplete="off" data-q_type="9" id="q-8">
+                                                    </span> years old and under</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>Shows</p></td>
+                                                <td valign="top">
+                                                    <p>• mostly plays by <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">9</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="9" autocomplete="off" data-q_type="9" id="q-9">
+                                                    </span> authors</p>
+                                                    <p>• family show in December</p>
+                                                    <p>(raises money for children's <span class="test-panel__iotquestion">
+                                                        <span class="test-panel__question-num">10</span>
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="10" autocomplete="off" data-q_type="9" id="q-10">
+                                                    </span>)</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section class="test-panel" id="section2-content" data-section="2" style="display: none;">
+                    <div class="test-panel__header">
+                        <h2 class="test-panel__title">Section 2</h2>
+                        <div class="test-panel__title-caption">Questions 11-20</div>
+                    </div>
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 11 – 14</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Choose the correct letter, <strong>A, B or C</strong>.</em></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="test-panel__question-sm-group" data-num="11" data-q_type="6">
+                                <div class="test-panel__question-sm-title">11. What should employees bring to work?</div>
+                                <div class="test-panel__answer" data-question-item="11">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-11" data-num="11" value="A" id="radio-11-A">
+                                            gloves
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-11" data-num="11" value="B" id="radio-11-B">
+                                            lunch
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-11" data-num="11" value="C" id="radio-11-C">
+                                            water
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="test-panel__question-sm-group" data-num="12" data-q_type="6">
+                                <div class="test-panel__question-sm-title">12. If employees can't come to work one day, they should</div>
+                                <div class="test-panel__answer" data-question-item="12">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-12" data-num="12" value="A" id="radio-12-A">
+                                            contact the duty manager.
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-12" data-num="12" value="B" id="radio-12-B">
+                                            leave a phone message at the farm office.
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-12" data-num="12" value="C" id="radio-12-C">
+                                            call their team leader.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="test-panel__question-sm-group" data-num="13" data-q_type="6">
+                                <div class="test-panel__question-sm-title">13. One problem with customers that may occur now is that</div>
+                                <div class="test-panel__answer" data-question-item="13">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-13" data-num="13" value="A" id="radio-13-A">
+                                            they sometimes fail to return baskets.
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-13" data-num="13" value="B" id="radio-13-B">
+                                            they eat the fruit before paying.
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-13" data-num="13" value="C" id="radio-13-C">
+                                            they can be unsure about prices.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="test-panel__question-sm-group" data-num="14" data-q_type="6">
+                                <div class="test-panel__question-sm-title">14. One of the benefits of working at the strawberry farm is that</div>
+                                <div class="test-panel__answer" data-question-item="14">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-14" data-num="14" value="A" id="radio-14-A">
+                                            employees' friends are entitled to a small discount.
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-14" data-num="14" value="B" id="radio-14-B">
+                                            employees can have a quantity of fresh fruit for free.
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-14" data-num="14" value="C" id="radio-14-C">
+                                            employees don't pay the full price for gift items in the shop
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 15- 20</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Choose <strong>SIX</strong> answers from the box and write the correct letter: <strong>A-J</strong>, next to Questions 15-20.</em></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="ckeditor-wrapper">
+                                <h4>Map of strawberry farm</h4>
+                                <img src="../images/test1/map.jpg" alt="Map of strawberry farm" style="max-width: 100%; margin-bottom: 20px;">
+                                <p><strong>Buildings</strong></p>
+                                <div class="table-responsive">
+                                    <table border="1" cellpadding="3" cellspacing="0" style="width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td valign="top"><p>15 Staff room</p></td>
+                                                <td valign="top">
+                                                    <span class="test-panel__iotquestion">
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="15" autocomplete="off" data-q_type="9" id="q-15" placeholder="A-J">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>16 Administration</p></td>
+                                                <td valign="top">
+                                                    <span class="test-panel__iotquestion">
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="16" autocomplete="off" data-q_type="9" id="q-16" placeholder="A-J">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>17 Packing shed</p></td>
+                                                <td valign="top">
+                                                    <span class="test-panel__iotquestion">
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="17" autocomplete="off" data-q_type="9" id="q-17" placeholder="A-J">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>18 Staff car park</p></td>
+                                                <td valign="top">
+                                                    <span class="test-panel__iotquestion">
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="18" autocomplete="off" data-q_type="9" id="q-18" placeholder="A-J">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>19 Ripe strawberries</p></td>
+                                                <td valign="top">
+                                                    <span class="test-panel__iotquestion">
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="19" autocomplete="off" data-q_type="9" id="q-19" placeholder="A-J">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>20 Unripe strawberries</p></td>
+                                                <td valign="top">
+                                                    <span class="test-panel__iotquestion">
+                                                        <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="20" autocomplete="off" data-q_type="9" id="q-20" placeholder="A-J">
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section class="test-panel" id="section3-content" data-section="3" style="display: none;">
+                    <div class="test-panel__header">
+                        <h2 class="test-panel__title">Section 3</h2>
+                        <div class="test-panel__title-caption">Questions 21-30</div>
+                    </div>
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 21 – 24</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Choose the correct letter, <strong>A, B or C</strong>.</em></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="test-panel__question-sm-group" data-num="21" data-q_type="6">
+                                <div class="test-panel__question-sm-title">21. Why were Mark and Stella attracted to Bolton Island for their field trip?</div>
+                                <div class="test-panel__answer" data-question-item="21">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-21" data-num="21" value="A" id="radio-21-A">
+                                            because it is geologically unique
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-21" data-num="21" value="B" id="radio-21-B">
+                                            because it is easily accessible
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-21" data-num="21" value="C" id="radio-21-C">
+                                            because it is largely unstudied
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="test-panel__question-sm-group" data-num="22" data-q_type="6">
+                                <div class="test-panel__question-sm-title">22. Which aspect of Bolton Island's physical geography did Mark and Stella focus on?</div>
+                                <div class="test-panel__answer" data-question-item="22">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-22" data-num="22" value="A" id="radio-22-A">
+                                            its natural harbour
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-22" data-num="22" value="B" id="radio-22-B">
+                                            its fertile soil
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-22" data-num="22" value="C" id="radio-22-C">
+                                            its rock formations
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="test-panel__question-sm-group" data-num="23" data-q_type="6">
+                                <div class="test-panel__question-sm-title">23. Which problem did Mark and Stella have in studying Bolton Island's physical geography?</div>
+                                <div class="test-panel__answer" data-question-item="23">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-23" data-num="23" value="A" id="radio-23-A">
+                                            getting useful information from the local residents
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-23" data-num="23" value="B" id="radio-23-B">
+                                            recognising which features were man-made
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-23" data-num="23" value="C" id="radio-23-C">
+                                            finding official data about the island
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="test-panel__question-sm-group" data-num="24" data-q_type="6">
+                                <div class="test-panel__question-sm-title">24. What preparation was most useful for Mark and Stella's trip?</div>
+                                <div class="test-panel__answer" data-question-item="24">
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">A</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-24" data-num="24" value="A" id="radio-24-A">
+                                            reading previous field trip reports
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">B</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-24" data-num="24" value="B" id="radio-24-B">
+                                            drawing up a detailed schedule for their trip
+                                        </label>
+                                    </div>
+                                    <div class="test-panel__answer-item">
+                                        <span class="test-panel__answer-option">C</span>
+                                        <label class="iot-radio">
+                                            <input type="radio" class="radio-iot iot-lr-question" name="q-24" data-num="24" value="C" id="radio-24-C">
+                                            doing online research
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 25 – 26</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Choose <strong>TWO</strong> letters, <strong>A— E</strong></em></p>
+                                <p><strong>Which TWO mistakes did Mark and Stella make with their visuals?</strong></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">A</span>
+                                <label class="iot-checkbox2" for="q-25-26-A">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-25-26-A" data-num="25-26" name="q-25-26" data-q_type="15" value="A">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">not taking enough care when making sketches</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">B</span>
+                                <label class="iot-checkbox2" for="q-25-26-B">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-25-26-B" data-num="25-26" name="q-25-26" data-q_type="15" value="B">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">not ensuring their photos had proper lighting</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">C</span>
+                                <label class="iot-checkbox2" for="q-25-26-C">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-25-26-C" data-num="25-26" name="q-25-26" data-q_type="15" value="C">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">not using anything to indicate the scale of their photos</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">D</span>
+                                <label class="iot-checkbox2" for="q-25-26-D">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-25-26-D" data-num="25-26" name="q-25-26" data-q_type="15" value="D">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">not making multiple photos and drawings of things of interest</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">E</span>
+                                <label class="iot-checkbox2" for="q-25-26-E">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-25-26-E" data-num="25-26" name="q-25-26" data-q_type="15" value="E">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">not adequately recording when and where drawings were made</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 27 – 28</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Choose <strong>TWO</strong> letters, <strong>A— E</strong></em></p>
+                                <p><strong>Which TWO things does Stella say students need to do for a successful interview?</strong></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">A</span>
+                                <label class="iot-checkbox2" for="q-27-28-A">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-27-28-A" data-num="27-28" name="q-27-28" data-q_type="15" value="A">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Guide the way in which the interview progresses.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">B</span>
+                                <label class="iot-checkbox2" for="q-27-28-B">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-27-28-B" data-num="27-28" name="q-27-28" data-q_type="15" value="B">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Prepare the questions well in advance.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">C</span>
+                                <label class="iot-checkbox2" for="q-27-28-C">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-27-28-C" data-num="27-28" name="q-27-28" data-q_type="15" value="C">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Check the recording equipment is working</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">D</span>
+                                <label class="iot-checkbox2" for="q-27-28-D">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-27-28-D" data-num="27-28" name="q-27-28" data-q_type="15" value="D">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Explain fully the purpose of the interview.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">E</span>
+                                <label class="iot-checkbox2" for="q-27-28-E">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-27-28-E" data-num="27-28" name="q-27-28" data-q_type="15" value="E">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Give a personal opinion on the topics which are covered</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 29 – 30</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Choose <strong>TWO</strong> letters, <strong>A— E</strong></em></p>
+                                <p><strong>Which TWO things do Mark and Stella suggest doing with regard to note-taking on a field trip?</strong></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">A</span>
+                                <label class="iot-checkbox2" for="q-29-30-A">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-29-30-A" data-num="29-30" name="q-29-30" data-q_type="15" value="A">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Ensure that terminology is correctly used in the notes.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">B</span>
+                                <label class="iot-checkbox2" for="q-29-30-B">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-29-30-B" data-num="29-30" name="q-29-30" data-q_type="15" value="B">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Check your notes every evening.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">C</span>
+                                <label class="iot-checkbox2" for="q-29-30-C">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-29-30-C" data-num="29-30" name="q-29-30" data-q_type="15" value="C">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Be highly selective in what you write down.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">D</span>
+                                <label class="iot-checkbox2" for="q-29-30-D">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-29-30-D" data-num="29-30" name="q-29-30" data-q_type="15" value="D">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Have only one member's a team to write notes.</span>
+                                </label>
+                            </div>
+                            <div class="test-panel__answer-item">
+                                <span class="test-panel__answer-option">E</span>
+                                <label class="iot-checkbox2" for="q-29-30-E">
+                                    <input type="checkbox" class="checkbox-iot iot-lr-question" id="q-29-30-E" data-num="29-30" name="q-29-30" data-q_type="15" value="E">
+                                    <span class="checkmark"></span>
+                                    <span class="cb-label">Keep your notes in an organised fashion.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4 -->
+                <section class="test-panel" id="section4-content" data-section="4" style="display: none;">
+                    <div class="test-panel__header">
+                        <h2 class="test-panel__title">Section 4</h2>
+                        <div class="test-panel__title-caption">Questions 31-40</div>
+                    </div>
+                    <div class="test-panel__item">
+                        <div class="test-panel__question">
+                            <h4 class="test-panel__question-title">Questions 31-40</h4>
+                            <div class="test-panel__question-desc">
+                                <p><em>Complete the notes below.</em></p>
+                                <p><em>Write <span style="color:#ff0000;"><strong>ONE WORD ONLY</strong></span> for each answer.</em></p>
+                            </div>
+                        </div>
+                        <div class="test-panel__answer">
+                            <div class="ckeditor-wrapper">
+                                <div class="table-responsive">
+                                    <table border="1" cellpadding="3" cellspacing="0" style="width: 100%;">
+                                        <caption><h3>Development and use of plastics</h3></caption>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" style="background: #f8f9fa;"><strong>1930s</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p><strong>Polythene – two main forms:</strong></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p>• <strong>LDPE</strong> – distinguishing feature: it is highly <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">31</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="31" autocomplete="off" data-q_type="9" id="q-31">
+                                                </span></p>
+                                                <p>e.g. used to make <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">32</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="32" autocomplete="off" data-q_type="9" id="q-32">
+                                                </span> , carrier bags and packaging materials</p></td>
+                                                <td valign="top"><p>• <strong>HDPE</strong> – made tougher by exposure to a particular kind of <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">33</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="33" autocomplete="off" data-q_type="9" id="q-33">
+                                                </span></p>
+                                                <p>– suitable for rigid containers, e.g. for bleach</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p><strong>Polyurethane – two main forms:</strong></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p>• blown form used for making <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">34</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="34" autocomplete="off" data-q_type="9" id="q-34">
+                                                </span> (padding)<br>
+                                                and in housing infrastructure to give <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">35</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="35" autocomplete="off" data-q_type="9" id="q-35">
+                                                </span></p>
+                                                <p>• non-blown form used mainly for sportswear</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="background: #f8f9fa;"><strong>1940s – 1950s</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p><strong>PET</strong></p>
+                                                <p>– used to make <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">36</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="36" autocomplete="off" data-q_type="9" id="q-36">
+                                                </span> , e.g. Dacron and Terylene</p>
+                                                <p>– popular for making containers for fizzy drinks</p>
+                                                <p>– because it resists abrasion – used for household objects such as <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">37</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="37" autocomplete="off" data-q_type="9" id="q-37">
+                                                </span></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p><strong>Tupperware</strong></p>
+                                                <p>– storage boxes</p>
+                                                <p>– revolution in <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">38</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="38" autocomplete="off" data-q_type="9" id="q-38">
+                                                </span> techniques</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="background: #f8f9fa;"><strong>1960s</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><p><strong>Teflon</strong> – non-stick</p>
+                                                <p>– almost no <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">39</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="39" autocomplete="off" data-q_type="9" id="q-39">
+                                                </span> , so used for protective coatings, e.g. for frying pans</p></td>
+                                                <td valign="top"><p><strong>Gore-Tex</strong> – best known for outdoor wear</p>
+                                                <p>– also used for various <span class="test-panel__iotquestion">
+                                                    <span class="test-panel__question-num">40</span>
+                                                    <input type="text" class="iot-question iot-lr-question iot-question__fill-blank form-control test-panel__input-answer" data-num="40" autocomplete="off" data-q_type="9" id="q-40">
+                                                </span> purposes</p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Question Palette -->
+                <div class="take-test__bottom-palette">
+                    <section class="question-palette">
+                        <div class="question-palette__list-item" id="question-palette-table">
+                            <div class="question-palette__part -active" data-part="1" data-questions="10">
+                                <div class="question-palette__part-title">Section 1 <span>:</span></div>
+                                <div class="question-palette__part-status"><span class="number">0</span> of <span class="total">10</span> questions</div>
+                                <div class="question-palette__items-group">
+                                    <span class="question-palette__item" data-num="1">1</span>
+                                    <span class="question-palette__item" data-num="2">2</span>
+                                    <span class="question-palette__item" data-num="3">3</span>
+                                    <span class="question-palette__item" data-num="4">4</span>
+                                    <span class="question-palette__item" data-num="5">5</span>
+                                    <span class="question-palette__item" data-num="6">6</span>
+                                    <span class="question-palette__item" data-num="7">7</span>
+                                    <span class="question-palette__item" data-num="8">8</span>
+                                    <span class="question-palette__item" data-num="9">9</span>
+                                    <span class="question-palette__item" data-num="10">10</span>
+                                </div>
+                            </div>
+                            <div class="question-palette__part" data-part="2" data-questions="10">
+                                <div class="question-palette__part-title">Section 2 <span>:</span></div>
+                                <div class="question-palette__part-status"><span class="number">0</span> of <span class="total">10</span> questions</div>
+                                <div class="question-palette__items-group">
+                                    <span class="question-palette__item" data-num="11">11</span>
+                                    <span class="question-palette__item" data-num="12">12</span>
+                                    <span class="question-palette__item" data-num="13">13</span>
+                                    <span class="question-palette__item" data-num="14">14</span>
+                                    <span class="question-palette__item" data-num="15">15</span>
+                                    <span class="question-palette__item" data-num="16">16</span>
+                                    <span class="question-palette__item" data-num="17">17</span>
+                                    <span class="question-palette__item" data-num="18">18</span>
+                                    <span class="question-palette__item" data-num="19">19</span>
+                                    <span class="question-palette__item" data-num="20">20</span>
+                                </div>
+                            </div>
+                            <div class="question-palette__part" data-part="3" data-questions="10">
+                                <div class="question-palette__part-title">Section 3 <span>:</span></div>
+                                <div class="question-palette__part-status"><span class="number">0</span> of <span class="total">10</span> questions</div>
+                                <div class="question-palette__items-group">
+                                    <span class="question-palette__item" data-num="21">21</span>
+                                    <span class="question-palette__item" data-num="22">22</span>
+                                    <span class="question-palette__item" data-num="23">23</span>
+                                    <span class="question-palette__item" data-num="24">24</span>
+                                    <span class="question-palette__item -group" data-num="25-26" data-num-start="25" data-num-end="26">25<em></em>26</span>
+                                    <span class="question-palette__item -group" data-num="27-28" data-num-start="27" data-num-end="28">27<em></em>28</span>
+                                    <span class="question-palette__item -group" data-num="29-30" data-num-start="29" data-num-end="30">29<em></em>30</span>
+                                </div>
+                            </div>
+                            <div class="question-palette__part" data-part="4" data-questions="10">
+                                <div class="question-palette__part-title">Section 4 <span>:</span></div>
+                                <div class="question-palette__part-status"><span class="number">0</span> of <span class="total">10</span> questions</div>
+                                <div class="question-palette__items-group">
+                                    <span class="question-palette__item" data-num="31">31</span>
+                                    <span class="question-palette__item" data-num="32">32</span>
+                                    <span class="question-palette__item" data-num="33">33</span>
+                                    <span class="question-palette__item" data-num="34">34</span>
+                                    <span class="question-palette__item" data-num="35">35</span>
+                                    <span class="question-palette__item" data-num="36">36</span>
+                                    <span class="question-palette__item" data-num="37">37</span>
+                                    <span class="question-palette__item" data-num="38">38</span>
+                                    <span class="question-palette__item" data-num="39">39</span>
+                                    <span class="question-palette__item" data-num="40">40</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 录音稿弹窗 -->
+    <div class="transcript-modal" id="transcript-modal">
+        <div class="transcript-content">
+            <div class="transcript-header">
+                <h2>Test 1 录音稿</h2>
+                <span class="close-transcript" id="close-transcript">&times;</span>
+            </div>
+            <div class="transcript-tabs">
+                <button class="transcript-tab active" data-section="1">Section 1</button>
+                <button class="transcript-tab" data-section="2">Section 2</button>
+                <button class="transcript-tab" data-section="3">Section 3</button>
+                <button class="transcript-tab" data-section="4">Section 4</button>
+            </div>
+            <div class="transcript-body">
+                <div class="transcript-section active" id="transcript-section-1">
+                    <h3>Section 1</h3>
+                    <div class="transcript-text"></div>
+                </div>
+                <div class="transcript-section" id="transcript-section-2">
+                    <h3>Section 2</h3>
+                    <div class="transcript-text"></div>
+                </div>
+                <div class="transcript-section" id="transcript-section-3">
+                    <h3>Section 3</h3>
+                    <div class="transcript-text"></div>
+                </div>
+                <div class="transcript-section" id="transcript-section-4">
+                    <h3>Section 4</h3>
+                    <div class="transcript-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结果弹窗 -->
+    <div class="result-modal" id="result-modal">
+        <div class="result-content">
+            <span class="close-result" id="close-result">&times;</span>
+            <div class="result-header">
+                <h2>测试结果</h2>
+                <p>您已完成雅思听力测试，以下是您的成绩：</p>
+            </div>
+            <div class="result-score">
+                <div class="score-circle correct">
+                    <div class="score-value" id="correct-count">0</div>
+                    <div class="score-label">正确题数</div>
+                </div>
+                <div class="score-circle ielts">
+                    <div class="score-value" id="ielts-score">0.0</div>
+                    <div class="score-label">雅思分数</div>
+                </div>
+            </div>
+            <div class="result-details">
+                <h3>各部分得分</h3>
+                <div class="section-results" id="section-results">
+                    <!-- 各部分得分将由 JavaScript 动态生成 -->
+                </div>
+            </div>
+            <button class="retry-btn" id="retry-btn">重新测试</button>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>关于我们</h4>
+                <p>专注雅思听力评分解析，助力考生科学备考</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="scoring.html">评分详解</a></li>
+                    <li><a href="cases.html">案例分析</a></li>
+                    <li><a href="practice.html">练习题</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
+        </div>
+    </footer>
+

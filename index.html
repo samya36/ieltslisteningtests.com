@@ -5,15 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="雅思听力评分标准详解，包含完整的分数转换表、评分机制解析和实用的分数计算器">
     <meta name="keywords" content="雅思听力,IELTS Listening,评分标准,分数计算,听力备考">
+    
+    <!-- 安全HTTP头 -->
+    <!-- Content Security Policy - 防止XSS攻击和代码注入 -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        font-src 'self' https://cdnjs.cloudflare.com data:;
+        img-src 'self' data: blob:;
+        audio-src 'self' data: blob:;
+        connect-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+    ">
+    
+    <!-- X-Frame-Options - 防止点击劫持攻击 -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <!-- X-Content-Type-Options - 防止MIME类型嗅探攻击 -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- Referrer Policy - 控制引用信息泄露 -->
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- X-XSS-Protection - 启用XSS过滤器（向后兼容） -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Permissions Policy - 控制浏览器功能权限 -->
+    <meta http-equiv="Permissions-Policy" content="
+        geolocation=(),
+        microphone=(),
+        camera=(),
+        payment=(),
+        usb=(),
+        magnetometer=(),
+        gyroscope=(),
+        accelerometer=()
+    ">
+    
     <title>雅思听力评分标准解析 - 专业详解助你提分</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/enhanced/homepage-enhancements.css">
     <link rel="stylesheet" href="css/test-selection.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/mobile-optimizations.css">
+    <link rel="stylesheet" href="css/mobile-performance-optimizations.css">
 </head>
 <body>
+    <!-- 跳过导航链接 -->
+    <a href="#main-content" class="skip-link">跳过导航，直接到主要内容</a>
+    
     <!-- 导航栏 -->
-    <nav class="nav-bar">
+    <nav class="nav-bar" role="navigation" aria-label="主导航">
         <div class="nav-container">
             <div class="logo">
                 <a href="index.html" class="home-link">
@@ -32,7 +80,7 @@
     </nav>
 
     <!-- 主要内容区 -->
-    <main>
+    <main id="main-content">
         <!-- 头部横幅 -->
         <section class="hero">
             <div class="hero-content">
@@ -87,7 +135,7 @@
                         </div>
                     </div>
                     <div class="announcement-actions">
-                        <a href="pages/enhanced-test.html" class="btn btn-primary btn-large">体验增强版测试</a>
+                        <a href="pages/enhanced-test1.html" class="btn btn-primary btn-large">体验增强版测试</a>
                         <a href="pages/optimization-demo.html" class="btn btn-secondary">查看优化对比</a>
                     </div>
                 </div>
@@ -121,7 +169,7 @@
                         <div class="feature-icon-large">🚀</div>
                         <h3>增强版测试</h3>
                         <p>全新升级的测试系统，提供专业级的考试体验</p>
-                        <a href="pages/enhanced-test.html" class="feature-link featured">立即体验</a>
+                        <a href="pages/enhanced-test1.html" class="feature-link featured">立即体验</a>
                     </div>
                 </div>
             </div>
@@ -195,7 +243,7 @@
                             <h4>增强版测试系统</h4>
                             <p>体验全新的模块化架构、进度保存、智能分析等高级功能</p>
                         </div>
-                        <a href="pages/enhanced-test.html" class="btn btn-secondary">体验增强版</a>
+                        <a href="pages/enhanced-test1.html" class="btn btn-secondary">体验增强版</a>
                     </div>
                 </div>
             </div>
@@ -239,6 +287,16 @@
         </div>
     </footer>
 
+    <script src="js/secure-storage.js"></script>
+    <script src="js/sw-manager.js"></script>
+    
+    <!-- 移动端性能优化系统 -->
+    <script src="js/mobile-audio-optimizer.js"></script>
+    <script src="js/mobile-touch-controls.js"></script>
+    <script src="js/mobile-gesture-audio.js"></script>
+    <script src="js/battery-performance-manager.js"></script>
+    <script src="js/mobile-performance-integration.js"></script>
+    
     <script src="js/calculator.js"></script>
     <script src="js/main.js"></script>
 </body>

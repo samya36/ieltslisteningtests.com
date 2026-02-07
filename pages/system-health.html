@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>系统健康检查 - Cambridge IELTS 20</title>
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    font-src 'self' https://cdnjs.cloudflare.com data:;
+    img-src 'self' data: blob:;
+    audio-src 'self' https://cdn.jsdelivr.net data: blob:;
+    connect-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+  " />
+  <link rel="stylesheet" href="../css/main.css" />
+  <!-- Preload critical scripts used in health checks -->
+  <link rel="preload" href="../js/test-system-validator.js" as="script">
+  <link rel="preload" href="../js/test-player.js" as="script">
+  <link rel="preload" href="../js/test-data-4.js" as="script">
+  <link rel="preload" href="../js/test-data-5.js" as="script">
+  <link rel="preload" href="../js/test-data-6.js" as="script">
+  <link rel="preload" href="../js/test-data-7.js" as="script">
+  <style>
+    body { padding: 20px; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin: 12px 0; }
+    .ok { border-left: 4px solid #22c55e; }
+    .warn { border-left: 4px solid #f59e0b; }
+    .err { border-left: 4px solid #ef4444; }
+    .meta { color: #666; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .kpi { background: #f9fafb; border: 1px dashed #e5e7eb; border-radius: 8px; padding: 12px; }
+    h1 { margin-bottom: 8px; }
+    .muted { color: #6b7280; font-size: 14px; }
+    pre { background: #f8f9fa; padding: 10px; border-radius: 6px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>系统健康检查</h1>
+  <p class="muted">自动执行音频、数据、导航、响应式、性能与UX检查，并生成汇总报告。</p>
+
+  <div id="health" class="card"></div>
+  <div id="summary" class="card"></div>
+  <div id="perf" class="card"></div>
+  <div id="tips" class="card warn" style="display:none;"></div>
+  <div id="resources" class="card">
+    <h2>资源检查</h2>
+    <p class="muted">点击下方按钮检查关键脚本与数据资源的可用性。</p>
+    <button id="btn-validate" class="btn-primary">运行资源检查</button>
+    <div id="resources-log" style="margin-top:12px"></div>
+  </div>
+
+  <!-- 依赖脚本：音频配置、验证器、测试数据4-7 -->
+  <script src="../js/test-player.js" defer></script>
+  <script src="../js/test-system-validator.js" defer></script>
+  <script src="../js/test-data-4.js" defer></script>
+  <script src="../js/test-data-5.js" defer></script>
+  <script src="../js/test-data-6.js" defer></script>
+  <script src="../js/test-data-7.js" defer></script>
+  <script type="module">
+    import { validateResources } from '../js/resource-validator.js';
+    const list = [
+      '../js/score-engine.js',
+      '../js/test-ui.js',
+      '../js/test-player.js',
+      '../js/test-system-validator.js',
+      '../js/test-data-4.js',
+      '../js/test-data-5.js',
+      '../js/test-data-6.js',
+      '../js/test-data-7.js',
+      '../docs/c20_test1/cambridge20_test1_answers.js',
+      '../docs/c20_test2/cambridge20_test2_answers.js',
+      '../docs/c20_test3/cambridge20_test3_answers.js',
+      '../docs/c20_test4/cambridge20_test4_answers.js'
+    ];
+    document.getElementById('btn-validate').addEventListener('click', async () => {
+      const logDiv = document.getElementById('resources-log');
+      logDiv.textContent = '检查中...';
+      const results = await validateResources(list);
+      const ok = results.filter(r => r.ok);
+      const miss = results.filter(r => !r.ok);
+      logDiv.innerHTML = `
+        <div class="grid">
+          <div class="kpi"><div class="muted">资源总数</div><div><strong>${results.length}</strong></div></div>
+          <div class="kpi"><div class="muted">可用</div><div><strong style="color:#16a34a">${ok.length}</strong></div></div>
+          <div class="kpi"><div class="muted">缺失</div><div><strong style="color:#dc2626">${miss.length}</strong></div></div>
+        </div>
+        ${miss.length ? `<h3 style="margin-top:10px">缺失清单</h3><pre>${miss.map(m => m.src).join('\n')}</pre>` : '<div class="meta" style="margin-top:10px">所有关键资源均可用</div>'}
+      `;
+      console.log('[Resource Check]', results);
+    });
+  </script>
+
+  <script>
+    // 运行健康检查与系统测试，并在页面渲染结果
+    async function run() {
+      const healthDiv = document.getElementById('health');
+      const summaryDiv = document.getElementById('summary');
+      const perfDiv = document.getElementById('perf');
+      const tipsDiv = document.getElementById('tips');
+
+      try {
+        const quick = window.healthCheck ? window.healthCheck() : { score: 0, passed: 0, total: 0 };
+        healthDiv.classList.add(quick.score >= 80 ? 'ok' : (quick.score >= 50 ? 'warn' : 'err'));
+        healthDiv.innerHTML = `
+          <h2>快速健康度</h2>
+          <div class="grid">
+            <div class="kpi"><div class="muted">健康度</div><div><strong>${quick.score.toFixed(1)}%</strong></div></div>
+            <div class="kpi"><div class="muted">通过项</div><div><strong>${quick.passed}/${quick.total}</strong></div></div>
+          </div>
+          <div class="meta">提示：如未达到 100%，请检查音频配置或测试数据是否正确加载。</div>
+        `;
+
+        const result = window.runSystemTest ? await window.runSystemTest() : null;
+        if (!result) throw new Error('测试验证器未加载');
+
+        summaryDiv.classList.add(result.isHealthy ? 'ok' : 'err');
+        summaryDiv.innerHTML = `
+          <h2>测试汇总</h2>
+          <div class="grid">
+            <div class="kpi"><div class="muted">总测试数</div><div><strong>${result.totalTests}</strong></div></div>
+            <div class="kpi"><div class="muted">通过测试</div><div><strong>${result.passedTests}</strong></div></div>
+            <div class="kpi"><div class="muted">通过率</div><div><strong>${result.passRate.toFixed(1)}%</strong></div></div>
+            <div class="kpi"><div class="muted">错误数</div><div><strong>${result.errors}</strong></div></div>
+            <div class="kpi"><div class="muted">警告数</div><div><strong>${result.warnings}</strong></div></div>
+          </div>
+          <div class="meta">时间戳：${result.timestamp}</div>
+        `;
+
+        const m = result.performanceMetrics || {};
+        perfDiv.classList.add('ok');
+        perfDiv.innerHTML = `
+          <h2>性能指标</h2>
+          <div class="grid">
+            <div class="kpi"><div class="muted">DOMContentLoaded</div><div><strong>${(m.domContentLoaded || 0).toFixed ? m.domContentLoaded.toFixed(0) : m.domContentLoaded} ms</strong></div></div>
+            <div class="kpi"><div class="muted">页面加载时间</div><div><strong>${(m.pageLoadTime || 0).toFixed ? m.pageLoadTime.toFixed(0) : m.pageLoadTime} ms</strong></div></div>
+            <div class="kpi"><div class="muted">资源数量</div><div><strong>${m.resourceCount || 0}</strong></div></div>
+            <div class="kpi"><div class="muted">内存使用</div><div><strong>${typeof m.memoryUsage === 'object' ? (m.memoryUsage.used + ' / ' + m.memoryUsage.total) : (m.memoryUsage || 'N/A')}</strong></div></div>
+          </div>
+          <div class="meta">详细日志请查看浏览器控制台（已输出完整分类结果）。</div>
+        `;
+
+        // 常见优化建议提示
+        const tips = [];
+        if ((m.pageLoadTime || 0) > 3000) tips.push('页面加载时间偏长，建议合并与按需加载脚本、开启压缩与缓存。');
+        if ((m.resourceCount || 0) > 50) tips.push('资源数量较多，建议进行代码分割、延迟加载与CDN优化。');
+        if (result.errors > 0) tips.push('存在错误项，请在控制台报告中定位具体类别与条目。');
+        if (result.warnings > 0) tips.push('存在警告项，建议逐项跟进优化。');
+
+        if (tips.length) {
+          tipsDiv.style.display = '';
+          tipsDiv.innerHTML = `<h2>优化建议</h2><ul>${tips.map(t => `<li>${t}</li>`).join('')}</ul>`;
+        }
+      } catch (e) {
+        summaryDiv.classList.add('err');
+        summaryDiv.innerHTML = `<h2>测试失败</h2><p class="muted">${e.message}</p>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', run);
+  </script>
+</body>
+</html>

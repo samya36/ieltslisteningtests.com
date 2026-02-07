@@ -1,0 +1,291 @@
+{
+  "test_info": {
+    "test_id": "IELTS_Cambridge_20_Test_4",
+    "section": "Listening",
+    "total_questions": 40,
+    "parts": 4
+  },
+  "parts": [
+    {
+      "part_number": 1,
+      "title": "Advice on Family Visit",
+      "question_range": "1-10",
+      "instruction": "Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "format": "note_completion",
+      "context": "Information and advice about family visit activities and accommodation",
+      "questions": [
+        {
+          "question_number": 1,
+          "text": "___ Hotel on George Street",
+          "answer": "Kings"
+        },
+        {
+          "question_number": 2,
+          "text": "cost of family room per night: 2 £ ___ (approx.)",
+          "answer": "125"
+        },
+        {
+          "question_number": 3,
+          "text": "a ___ tour of the city centre (starts in Carlton Square)",
+          "answer": "walking"
+        },
+        {
+          "question_number": 4,
+          "text": "a trip by ___ to the old fort",
+          "answer": "boat"
+        },
+        {
+          "question_number": 5,
+          "text": "best day to visit:",
+          "answer": "Tuesday"
+        },
+        {
+          "question_number": 6,
+          "text": "see the exhibition about ___",
+          "answer": "space"
+        },
+        {
+          "question_number": 7,
+          "text": "Clacton Market: good for ___ food",
+          "answer": "vegetarian"
+        },
+        {
+          "question_number": 8,
+          "text": "need to have lunch before ___ p.m.",
+          "answer": "2.30"
+        },
+        {
+          "question_number": 9,
+          "text": "save up to ___% on ticket prices at bargaintickets.com",
+          "answer": "75"
+        },
+        {
+          "question_number": 10,
+          "text": "climb Telegraph Hill to see a view of the ___",
+          "answer": "port"
+        }
+      ]
+    },
+    {
+      "part_number": 2,
+      "title": "Football Stadium Tours",
+      "question_range": "11-20",
+      "instruction": "Questions 11-14: Choose TWO letters A-E. Questions 15-20: Choose SIX answers from box A-H.",
+      "format": "mixed_multiple_choice_matching",
+      "context": "Information about football stadium tours and football history",
+      "questions": [
+        {
+          "question_number": "11-12",
+          "text": "Which TWO things does the speaker say about visiting the football stadium with children?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "Children can get their photo taken with a football player.",
+            "B": "There is a competition for children today.",
+            "C": "Parents must stay with their children at all times.",
+            "D": "Children will need sunhats and drinks.",
+            "E": "The café has a special offer on meals for children."
+          },
+          "answer": ["C", "E"]
+        },
+        {
+          "question_number": "13-14",
+          "text": "Which TWO features of the stadium tour are new this year?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "VIP tour",
+            "B": "360 cinema experience",
+            "C": "audio guide",
+            "D": "dressing room tour",
+            "E": "tours in other languages"
+          },
+          "answer": ["A", "C"]
+        },
+        {
+          "question_number": "15-20",
+          "text": "Which event in the history of football in the UK took place in each of the following years? Choose SIX answers from the box and write the correct letter, A-H, next to Questions 15-20.",
+          "years": [
+            "15. 1870",
+            "16. 1874",
+            "17. 1875",
+            "18. 1877",
+            "19. 1878",
+            "20. 1880"
+          ],
+          "options": {
+            "A": "the introduction of pay for the players",
+            "B": "a change to the design of the goal",
+            "C": "the first use of lights for matches",
+            "D": "the introduction of goalkeepers",
+            "E": "the first international match",
+            "F": "two changes to the rules of the game",
+            "G": "the introduction of a fee for spectators",
+            "H": "an agreement on the length of a game"
+          },
+          "answer": ["D", "F", "B", "H", "C", "G"]
+        }
+      ]
+    },
+    {
+      "part_number": 3,
+      "title": "Teaching Handwriting Research",
+      "question_range": "21-30",
+      "instruction": "Questions 21-24: Choose TWO letters A-E. Questions 25-30: Choose correct letter A, B or C.",
+      "format": "mixed_multiple_choice",
+      "context": "Discussion about research on teaching handwriting to children",
+      "questions": [
+        {
+          "question_number": "21-22",
+          "text": "Which TWO benefits for children of learning to write did both students find surprising?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "improved fine motor skills",
+            "B": "improved memory",
+            "C": "improved concentration",
+            "D": "improved imagination",
+            "E": "improved spatial awareness"
+          },
+          "answer": ["C", "E"]
+        },
+        {
+          "question_number": "23-24",
+          "text": "For children with dyspraxia, which TWO problems with handwriting do the students think are easiest to correct?",
+          "instruction": "Choose TWO letters, A-E.",
+          "options": {
+            "A": "not spacing letters correctly",
+            "B": "not writing in a straight line",
+            "C": "applying too much pressure when writing",
+            "D": "confusing letter shapes",
+            "E": "writing very slowly"
+          },
+          "answer": ["A", "C"]
+        },
+        {
+          "question_number": 25,
+          "text": "What does the woman say about using laptops to teach writing to children with dyslexia?",
+          "options": {
+            "A": "Children often lack motivation to learn that way.",
+            "B": "Children become fluent relatively quickly.",
+            "C": "Children react more positively if they make a mistake."
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 26,
+          "text": "When discussing whether to teach cursive or print writing, the woman thinks that",
+          "options": {
+            "A": "cursive writing disadvantages a certain group of children.",
+            "B": "print writing is associated with lower academic performance.",
+            "C": "most teachers in the UK prefer a traditional approach to handwriting."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 27,
+          "text": "According to the students, what impact does poor handwriting have on exam performance?",
+          "options": {
+            "A": "There is evidence to suggest grades are affected by poor handwriting.",
+            "B": "Neat handwriting is less important now than it used to be.",
+            "C": "Candidates write more slowly and produce shorter answers."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 28,
+          "text": "What prediction does the man make about the future of handwriting?",
+          "options": {
+            "A": "Touch typing will be taught before writing by hand.",
+            "B": "Children will continue to learn to write by hand.",
+            "C": "People will dislike handwriting on digital devices."
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 29,
+          "text": "The woman is concerned that relying on digital devices has made it difficult for her to",
+          "options": {
+            "A": "take detailed notes.",
+            "B": "spell and punctuate.",
+            "C": "read old documents."
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 30,
+          "text": "How do the students feel about their own handwriting?",
+          "options": {
+            "A": "concerned they are unable to write quickly",
+            "B": "embarrassed by comments made about it",
+            "C": "regretful that they have lost the habit"
+          },
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "part_number": 4,
+      "title": "Research in Chembe Bird Sanctuary",
+      "question_range": "31-40",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "format": "note_completion",
+      "context": "Research about birds of prey around the Chembe Bird Sanctuary",
+      "questions": [
+        {
+          "question_number": 31,
+          "text": "They destroy ___ and other rodents.",
+          "answer": "rats"
+        },
+        {
+          "question_number": 32,
+          "text": "They help to prevent farmers from being bitten by ___",
+          "answer": "snakes"
+        },
+        {
+          "question_number": 33,
+          "text": "They now support the economy by encouraging ___ in the area.",
+          "answer": "tourism"
+        },
+        {
+          "question_number": 34,
+          "text": "by ___ when they are hunting or sleeping",
+          "answer": "traffic"
+        },
+        {
+          "question_number": 35,
+          "text": "especially at times when there is a lot of ___.",
+          "answer": "rain"
+        },
+        {
+          "question_number": 36,
+          "text": "Local farmers may illegally shoot them or ___ them.",
+          "answer": "poison"
+        },
+        {
+          "question_number": 37,
+          "text": "providing a ___ for chickens (expensive)",
+          "answer": "building"
+        },
+        {
+          "question_number": 38,
+          "text": "keeping a ___",
+          "answer": "dog"
+        },
+        {
+          "question_number": 39,
+          "text": "making a ___ – e.g. with metal objects",
+          "answer": "noise"
+        },
+        {
+          "question_number": 40,
+          "text": "A ___ of methods is usually most effective.",
+          "answer": "combination"
+        }
+      ]
+    }
+  ],
+  "answer_key": {
+    "part_1": ["Kings", "125", "walking", "boat", "Tuesday", "space", "vegetarian", "2.30", "75", "port"],
+    "part_2": ["C", "E", "A", "C", "D", "F", "B", "H", "C", "G"],
+    "part_3": ["C", "E", "A", "C", "C", "A", "A", "B", "C", "C"],
+    "part_4": ["rats", "snakes", "tourism", "traffic", "rain", "poison", "building", "dog", "noise", "combination"]
+  }
+}

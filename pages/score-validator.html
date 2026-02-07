@@ -1,1 +1,138 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>雅思听力评分验证工具</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:#333;background:#f5f5f5;margin:0;padding:20px}.score-container{max-width:800px;margin:2rem auto;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}.header{text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #eee}.header h1{color:#2c3e50;margin:0;font-size:2rem}.header p{color:#666;margin:0.5rem 0 0}.score-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}.score-card{background:#f8f9fa;padding:1.5rem;border-radius:8px;text-align:center;transition:transform 0.2s}.score-card:hover{transform:translateY(-2px)}.score-value{font-size:2.5rem;font-weight:bold;color:#2c3e50;margin:0.5rem 0}.score-label{color:#666;font-size:0.9rem}.section-analysis{margin-bottom:2rem;padding:1.5rem;background:#f8f9fa;border-radius:8px}.section-title{font-size:1.2rem;font-weight:bold;color:#2c3e50;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid #dee2e6}.question-analysis{margin:1rem 0;padding:1rem;background:#fff;border-radius:6px;border-left:4px solid #3498db}.question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem}.question-number{font-weight:bold;color:#2c3e50}.question-status{padding:0.25rem 0.5rem;border-radius:4px;font-size:0.9rem}.status-correct{background:#d4edda;color:#155724}.status-partial{background:#fff3cd;color:#856404}.status-incorrect{background:#f8d7da;color:#721c24}.answer-comparison{margin-top:0.5rem;font-size:0.9rem}.correct-answer{color:#28a745}.user-answer{color:#dc3545}.improvement-tips{margin-top:2rem;padding:1.5rem;background:#e3f2fd;border-radius:8px}.tips-title{font-size:1.2rem;font-weight:bold;color:#1976d2;margin-bottom:1rem}.tip-item{margin:0.5rem 0;padding-left:1.5rem;position:relative}.tip-item::before{content:"•";position:absolute;left:0;color:#1976d2}@media (max-width:768px){.score-container{margin:1rem;padding:1rem}.score-cards{grid-template-columns:1fr}.question-header{flex-direction:column;align-items:flex-start}.question-status{margin-top:0.5rem}}</style></head><body><div class="score-container"><header class="header"><h1>雅思听力评分验证工具</h1><p>详细分析您的答题情况，提供个性化改进建议</p></header><div class="score-cards"><div class="score-card"><div class="score-value" id="totalScore">0</div><div class="score-label">总分</div></div><div class="score-card"><div class="score-value" id="section1Score">0</div><div class="score-label">Section 1 得分</div></div><div class="score-card"><div class="score-value" id="section2Score">0</div><div class="score-label">Section 2 得分</div></div><div class="score-card"><div class="score-value" id="section3Score">0</div><div class="score-label">Section 3 得分</div></div></div><div class="section-analysis" id="section1Analysis"><h3 class="section-title">Section 1 详细分析</h3><div id="section1Questions"></div></div><div class="section-analysis" id="section2Analysis"><h3 class="section-title">Section 2 详细分析</h3><div id="section2Questions"></div></div><div class="section-analysis" id="section3Analysis"><h3 class="section-title">Section 3 详细分析</h3><div id="section3Questions"></div></div><div class="improvement-tips"><h3 class="tips-title">改进建议</h3><div id="improvementTips"></div></div></div><script type="module">import{calculateEnhancedScore}from"../js/enhanced-scoring.js";document.addEventListener("DOMContentLoaded",function(){const userAnswers=JSON.parse(localStorage.getItem("userAnswers")||"{}");const scoreResult=calculateEnhancedScore(userAnswers);document.getElementById("totalScore").textContent=scoreResult.totalScore.toFixed(1);document.getElementById("section1Score").textContent=scoreResult.sectionScores.section1.toFixed(1);document.getElementById("section2Score").textContent=scoreResult.sectionScores.section2.toFixed(1);document.getElementById("section3Score").textContent=scoreResult.sectionScores.section3.toFixed(1);renderSectionAnalysis("section1Questions",scoreResult.sectionAnalysis.section1);renderSectionAnalysis("section2Questions",scoreResult.sectionAnalysis.section2);renderSectionAnalysis("section3Questions",scoreResult.sectionAnalysis.section3);renderImprovementTips(scoreResult.problemAreas);});function renderSectionAnalysis(containerId,analysis){const container=document.getElementById(containerId);container.innerHTML=analysis.map(question=>`<div class="question-analysis"><div class="question-header"><span class="question-number">Question ${question.questionNumber}</span><span class="question-status ${getStatusClass(question.status)}">${getStatusText(question.status)}</span></div><div class="answer-comparison"><p>正确答案: <span class="correct-answer">${question.correctAnswer}</span></p><p>您的答案: <span class="user-answer">${question.userAnswer}</span></p></div></div>`).join("")}function renderImprovementTips(problemAreas){const container=document.getElementById("improvementTips");container.innerHTML=problemAreas.map(area=>`<div class="tip-item">${area}</div>`).join("")}function getStatusClass(status){switch(status){case"correct":return"status-correct";case"partial":return"status-partial";case"incorrect":return"status-incorrect";default:return""}}function getStatusText(status){switch(status){case"correct":return"正确";case"partial":return"部分正确";case"incorrect":return"错误";default:return""}}</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雅思听力评分验证工具</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:#333;background:#f5f5f5;margin:0;padding:20px}
+    .score-container{max-width:800px;margin:2rem auto;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+    .header{text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #eee}
+    .header h1{color:#2c3e50;margin:0;font-size:2rem}
+    .header p{color:#666;margin:0.5rem 0 0}
+    .score-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+    .score-card{background:#f8f9fa;padding:1.5rem;border-radius:8px;text-align:center;transition:transform .2s}
+    .score-card:hover{transform:translateY(-2px)}
+    .score-value{font-size:2.2rem;font-weight:bold;color:#2c3e50;margin:.5rem 0}
+    .score-label{color:#666;font-size:.9rem}
+    .section-analysis{margin-bottom:2rem;padding:1.2rem;background:#f8f9fa;border-radius:8px}
+    .section-title{font-size:1.1rem;font-weight:bold;color:#2c3e50;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #dee2e6}
+    .question-analysis{margin:1rem 0;padding:1rem;background:#fff;border-radius:6px;border-left:4px solid #3498db}
+    .question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+    .question-number{font-weight:bold;color:#2c3e50}
+    .question-status{padding:.25rem .5rem;border-radius:4px;font-size:.9rem}
+    .status-correct{background:#d4edda;color:#155724}
+    .status-partial{background:#fff3cd;color:#856404}
+    .status-incorrect{background:#f8d7da;color:#721c24}
+    .answer-comparison{margin-top:.5rem;font-size:.9rem}
+    .correct-answer{color:#28a745}
+    .user-answer{color:#dc3545}
+    .improvement-tips{margin-top:2rem;padding:1.2rem;background:#e3f2fd;border-radius:8px}
+    .tips-title{font-size:1.1rem;font-weight:bold;color:#1976d2;margin-bottom:1rem}
+    .tip-item{margin:.4rem 0;padding-left:1.2rem;position:relative}
+    .tip-item:before{content:"•";position:absolute;left:0;color:#1976d2}
+    @media (max-width:768px){.score-container{margin:1rem;padding:1rem}.score-cards{grid-template-columns:1fr}.question-header{flex-direction:column;align-items:flex-start}.question-status{margin-top:.5rem}}
+  </style>
+  <script src="../js/score-engine.js"></script>
+</head>
+<body>
+  <div class="score-container">
+    <header class="header">
+      <h1>雅思听力评分验证工具</h1>
+      <p>详细分析您的答题情况，提供个性化改进建议</p>
+    </header>
+
+    <div class="score-cards">
+      <div class="score-card"><div class="score-value" id="totalScore">0</div><div class="score-label">总分</div></div>
+      <div class="score-card"><div class="score-value" id="bandScore">--</div><div class="score-label">雅思分数</div></div>
+      <div class="score-card"><div class="score-value" id="section1Score">0</div><div class="score-label">Section 1 得分</div></div>
+      <div class="score-card"><div class="score-value" id="section2Score">0</div><div class="score-label">Section 2 得分</div></div>
+      <div class="score-card"><div class="score-value" id="section3Score">0</div><div class="score-label">Section 3 得分</div></div>
+      <div class="score-card"><div class="score-value" id="section4Score">0</div><div class="score-label">Section 4 得分</div></div>
+    </div>
+
+    <div class="section-analysis" id="section1Analysis">
+      <h3 class="section-title">Section 1 详细分析</h3>
+      <div id="section1Questions"></div>
+    </div>
+    <div class="section-analysis" id="section2Analysis">
+      <h3 class="section-title">Section 2 详细分析</h3>
+      <div id="section2Questions"></div>
+    </div>
+    <div class="section-analysis" id="section3Analysis">
+      <h3 class="section-title">Section 3 详细分析</h3>
+      <div id="section3Questions"></div>
+    </div>
+    <div class="improvement-tips">
+      <h3 class="tips-title">改进建议</h3>
+      <div id="improvementTips"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      function qs(id){return document.getElementById(id)}
+      function renderSectionAnalysis(containerId,analysis){
+        var c=document.getElementById(containerId); if(!c||!analysis) return;
+        c.innerHTML = analysis.map(function(q){
+          return '<div class="question-analysis">'
+            + '<div class="question-header">'
+            +   '<span class="question-number">Question '+(q.questionNumber||'')+'</span>'
+            +   '<span class="question-status '+cls(q.status)+'">'+txt(q.status)+'</span>'
+            + '</div>'
+            + '<div class="answer-comparison">'
+            +   '<p>正确答案: <span class="correct-answer">'+(q.correctAnswer||'')+'</span></p>'
+            +   '<p>您的答案: <span class="user-answer">'+(q.userAnswer||'')+'</span></p>'
+            + '</div>'
+            + '</div>';
+        }).join('');
+      }
+      function cls(s){switch(s){case'correct':return'status-correct';case'partial':return'status-partial';case'incorrect':return'status-incorrect';default:return''}}
+      function txt(s){switch(s){case'correct':return'正确';case'partial':return'部分正确';case'incorrect':return'错误';default:return''}}
+
+      document.addEventListener('DOMContentLoaded', function(){
+        try {
+          var stored = localStorage.getItem('latestScoreResult');
+          if (stored) {
+            var r = JSON.parse(stored);
+            qs('totalScore').textContent = (r.totalScore||0).toFixed(1);
+            if (typeof r.bandScore !== 'undefined') qs('bandScore').textContent = r.bandScore;
+            if (r.sectionScores){
+              qs('section1Score').textContent = (r.sectionScores.section1||0).toFixed(1);
+              qs('section2Score').textContent = (r.sectionScores.section2||0).toFixed(1);
+              qs('section3Score').textContent = (r.sectionScores.section3||0).toFixed(1);
+              if (typeof r.sectionScores.section4 !== 'undefined') qs('section4Score').textContent = (r.sectionScores.section4||0).toFixed(1);
+            }
+            renderSectionAnalysis('section1Questions', r.sectionAnalysis && r.sectionAnalysis.section1);
+            renderSectionAnalysis('section2Questions', r.sectionAnalysis && r.sectionAnalysis.section2);
+            renderSectionAnalysis('section3Questions', r.sectionAnalysis && r.sectionAnalysis.section3);
+            var tips = (r.problemAreas||[]).map(function(t){return '<div class="tip-item">'+t+'</div>'}).join('');
+            document.getElementById('improvementTips').innerHTML = tips;
+            return;
+          }
+
+          // Fallback: 重新计算
+          var ua = JSON.parse(localStorage.getItem('userAnswers')||'{}');
+          var ak = JSON.parse(localStorage.getItem('latestAnswerKey')||'null');
+          if (window.ScoreEngine && ScoreEngine.calculate && ua && ak) {
+            var r2 = ScoreEngine.calculate(ua, ak);
+            qs('totalScore').textContent = (r2.totalScore||0).toFixed(1);
+            if (typeof r2.bandScore !== 'undefined') qs('bandScore').textContent = r2.bandScore;
+            qs('section1Score').textContent = (r2.sectionScores.section1||0).toFixed(1);
+            qs('section2Score').textContent = (r2.sectionScores.section2||0).toFixed(1);
+            qs('section3Score').textContent = (r2.sectionScores.section3||0).toFixed(1);
+            if (typeof r2.sectionScores.section4 !== 'undefined') qs('section4Score').textContent = (r2.sectionScores.section4||0).toFixed(1);
+            renderSectionAnalysis('section1Questions', r2.sectionAnalysis.section1);
+            renderSectionAnalysis('section2Questions', r2.sectionAnalysis.section2);
+            renderSectionAnalysis('section3Questions', r2.sectionAnalysis.section3);
+            var tips2 = (r2.problemAreas||[]).map(function(t){return '<div class="tip-item">'+t+'</div>'}).join('');
+            document.getElementById('improvementTips').innerHTML = tips2;
+          }
+        } catch (e) {
+          console.warn('评分结果渲染失败', e);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+/**
+ * Mobile Performance Optimizations
+ * 移动端性能优化样式
+ * 包含触摸目标优化、电池感知样式、响应式布局等
+ */
+
+/* ===== 基础移动端优化 ===== */
+
+/* 触摸目标最小尺寸保证 */
+.touch-optimized,
+.play-btn,
+.section-tab,
+button,
+a,
+input[type="range"],
+select {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(33, 150, 243, 0.2);
+}
+
+/* 优化的触摸反馈 */
+.tap-highlight {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+}
+
+.tap-highlight:active {
+    transform: scale(0.96);
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* 触摸波纹效果 */
+.tap-highlight::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.tap-highlight.ripple::after {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+/* ===== 音频控件移动端优化 ===== */
+
+.audio-player {
+    position: relative;
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-player {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.player-main {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.play-btn {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.play-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.4);
+}
+
+.play-btn i {
+    margin-left: 2px; /* 视觉对齐 */
+}
+
+/* 进度条优化 */
+.progress-bar {
+    flex: 1;
+    position: relative;
+}
+
+.progress {
+    width: 100%;
+    height: 44px !important;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.progress::-webkit-slider-track {
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    border: none;
+}
+
+.progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2196F3;
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.progress::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+.progress::-moz-range-track {
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    border: none;
+}
+
+.progress::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2196F3;
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+/* 时间显示 */
+.time {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* 速度控制 */
+.speed-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playback-speed {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+}
+
+.playback-speed:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    outline: none;
+}
+
+/* ===== 章节切换标签优化 ===== */
+
+.section-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 5px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.section-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.section-tab {
+    flex: 1;
+    min-width: 120px;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 8px;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.section-tab.active {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.section-tab:active {
+    transform: scale(0.98);
+}
+
+/* ===== 手势识别区域 ===== */
+
+.gesture-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.gesture-area {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: transparent;
+    pointer-events: auto;
+    z-index: 11;
+    transition: background-color 0.2s ease;
+}
+
+.gesture-area:active {
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+.gesture-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 12;
+}
+
+/* ===== 电池感知性能样式 ===== */
+
+/* 降低动画性能 */
+.reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* 无视觉效果模式 */
+.no-visual-effects * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    background-image: none !important;
+}
+
+/* 省电模式样式 */
+.power-saving-mode {
+    filter: contrast(0.9) brightness(0.95);
+}
+
+.power-saving-mode * {
+    animation-play-state: paused !important;
+    transition-duration: 0s !important;
+}
+
+/* ===== 高对比度模式支持 ===== */
+
+.high-contrast-mode {
+    filter: contrast(1.5);
+}
+
+.high-contrast-mode .play-btn {
+    background: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+.high-contrast-mode .section-tab.active {
+    background: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+/* ===== 键盘导航优化 ===== */
+
+.keyboard-navigation *:focus {
+    outline: 3px solid #2196F3 !important;
+    outline-offset: 2px !important;
+}
+
+/* ===== 方向变化适配 ===== */
+
+.landscape-mode .audio-player {
+    margin: 10px 0;
+    padding: 15px;
+}
+
+.landscape-mode .custom-player {
+    flex-direction: row;
+    align-items: center;
+}
+
+.landscape-mode .speed-control {
+    margin-left: 20px;
+}
+
+.portrait-mode .custom-player {
+    flex-direction: column;
+}
+
+/* ===== 响应式断点优化 ===== */
+
+@media (max-width: 480px) {
+    .audio-player {
+        margin: 15px 0;
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .play-btn {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 20px;
+    }
+    
+    .section-tabs {
+        gap: 3px;
+    }
+    
+    .section-tab {
+        min-width: 100px;
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    .time {
+        font-size: 12px;
+        min-width: 70px;
+    }
+}
+
+@media (max-width: 360px) {
+    .audio-player {
+        margin: 10px 0;
+        padding: 12px;
+    }
+    
+    .play-btn {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 18px;
+    }
+    
+    .section-tab {
+        min-width: 80px;
+        padding: 10px 6px;
+        font-size: 13px;
+    }
+    
+    .playback-speed {
+        padding: 8px 12px;
+        font-size: 14px;
+        min-width: 70px;
+    }
+}
+
+/* ===== 触摸优化特殊情况 ===== */
+
+/* 防止iOS Safari自动缩放 */
+input[type="range"],
+input[type="number"],
+input[type="email"],
+input[type="text"],
+textarea,
+select {
+    font-size: 16px !important;
+}
+
+/* 防止Android触摸延迟 */
+a, button, input, select, textarea {
+    touch-action: manipulation;
+}
+
+/* 优化滚动性能 */
+.audio-players-container,
+.section-tabs {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+/* ===== 无障碍访问优化 ===== */
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* 跳过链接 */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* ===== 性能指示器样式 ===== */
+
+#battery-warning,
+#charging-indicator,
+#offline-indicator {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#volume-indicator,
+#speed-indicator,
+#temporary-indicator {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+#section-change-indicator {
+    animation: slideInFromTop 0.3s ease-out;
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== 速度控制菜单样式 ===== */
+
+#speed-control-menu {
+    animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: translate(-50%, -100%) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -100%) scale(1);
+        opacity: 1;
+    }
+}
+
+#speed-control-menu button {
+    transition: all 0.2s ease;
+}
+
+#speed-control-menu button:hover {
+    background: #e3f2fd !important;
+    transform: translateX(4px);
+}
+
+#speed-control-menu button:active {
+    transform: translateX(4px) scale(0.98);
+}
+
+/* ===== 低端设备优化 ===== */
+
+@media (max-device-width: 768px) and (max-device-height: 1024px) {
+    /* 减少视觉复杂性 */
+    .audio-player {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .play-btn {
+        box-shadow: 0 2px 6px rgba(33, 150, 243, 0.2);
+    }
+    
+    /* 简化动画 */
+    * {
+        animation-duration: 0.2s !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* ===== 打印样式优化 ===== */
+
+@media print {
+    .audio-player,
+    .section-tabs,
+    #battery-warning,
+    #charging-indicator,
+    #offline-indicator,
+    .gesture-zone,
+    .gesture-area {
+        display: none !important;
+    }
+}
+
+/* ===== 暗色模式支持 ===== */
+
+@media (prefers-color-scheme: dark) {
+    .audio-player {
+        background: #2d2d2d;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-tab {
+        background: #3d3d3d;
+        color: #ccc;
+    }
+    
+    .section-tab.active {
+        background: linear-gradient(135deg, #1976D2, #1565C0);
+        color: white;
+    }
+    
+    .progress::-webkit-slider-track {
+        background: #555;
+    }
+    
+    .playback-speed {
+        background: #3d3d3d;
+        border-color: #555;
+        color: #ccc;
+    }
+    
+    .time {
+        color: #ccc;
+    }
+}
+
+/* ===== 动态尺寸调整 ===== */
+
+@media (hover: none) and (pointer: coarse) {
+    /* 触摸设备特定优化 */
+    .touch-optimized {
+        min-width: 48px !important;
+        min-height: 48px !important;
+    }
+    
+    .play-btn {
+        width: 64px !important;
+        height: 64px !important;
+    }
+    
+    .section-tab {
+        padding: 16px 12px;
+    }
+}
+
+/* ===== 性能监控样式 ===== */
+
+.performance-debug {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 10000;
+    font-family: monospace;
+}
+
+.performance-debug.hidden {
+    display: none;
+}

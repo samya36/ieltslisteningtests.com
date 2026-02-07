@@ -1,0 +1,336 @@
+name: Deploy IELTS Listening Test Website
+
+on:
+  push:
+    branches:
+      - main      # 生产环境
+      - staging   # 预发布环境
+      - develop   # 开发环境
+  pull_request:
+    branches: [main, staging]
+
+env:
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # 代码质量检查
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install -g eslint htmlhint stylelint
+
+      - name: Lint JavaScript
+        run: |
+          eslint js/**/*.js --format stylish
+          echo "✓ JavaScript代码检查通过"
+
+      - name: Lint HTML
+        run: |
+          htmlhint "**/*.html" --config .htmlhintrc
+          echo "✓ HTML代码检查通过"
+
+      - name: Lint CSS
+        run: |
+          stylelint "css/**/*.css" --config .stylelintrc.json
+          echo "✓ CSS代码检查通过"
+
+      - name: Security scan
+        run: |
+          npm audit --audit-level moderate
+          echo "✓ 安全扫描完成"
+
+  # 音频文件验证
+  audio-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install audio tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-pip
+          pip3 install mutagen
+
+      - name: Validate audio files
+        run: |
+          chmod +x devops/validate-audio-files.sh
+          ./devops/validate-audio-files.sh
+          echo "✓ 音频文件验证完成"
+
+      - name: Generate audio manifest
+        run: |
+          python3 devops/generate-audio-manifest.py
+          echo "✓ 音频清单生成完成"
+
+      - name: Upload audio manifest
+        uses: actions/upload-artifact@v3
+        with:
+          name: audio-manifest
+          path: audio-manifest.json
+
+  # 构建和优化
+  build:
+    needs: [quality-check, audio-validation]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [development, staging, production]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download audio manifest
+        uses: actions/download-artifact@v3
+        with:
+          name: audio-manifest
+
+      - name: Build for ${{ matrix.environment }}
+        run: |
+          npm run build:${{ matrix.environment }}
+          echo "✓ ${{ matrix.environment }}环境构建完成"
+
+      - name: Optimize assets
+        run: |
+          # 压缩HTML
+          npx html-minifier-terser --input-dir . --output-dir dist \
+            --file-ext html --collapse-whitespace --remove-comments \
+            --minify-css --minify-js
+
+          # 压缩CSS
+          npx clean-css-cli -o dist/css/main.min.css css/*.css
+
+          # 压缩JavaScript
+          npx terser js/*.js -o dist/js/app.min.js --compress --mangle
+
+          # 生成静态资源版本hash
+          npx hashfiles -d dist -o dist/assets-manifest.json
+
+          echo "✓ 资源优化完成"
+
+      - name: Generate service worker
+        run: |
+          npx workbox generateSW workbox-config.js
+          echo "✓ Service Worker生成完成"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ matrix.environment }}
+          path: dist/
+
+  # 自动化测试
+  e2e-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-production
+          path: dist/
+
+      - name: Setup test environment
+        run: |
+          npm install -g http-server playwright
+          npx playwright install
+
+      - name: Start test server
+        run: |
+          http-server dist -p 8080 &
+          sleep 5
+          echo "✓ 测试服务器启动"
+
+      - name: Run E2E tests
+        run: |
+          npx playwright test --config=playwright.config.js
+          echo "✓ E2E测试完成"
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
+
+  # 部署到各环境
+  deploy:
+    needs: [build, e2e-tests]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - environment: development
+            branch: develop
+            s3_bucket: ielts-dev
+            cloudfront_id: ${{ secrets.CLOUDFRONT_DEV_ID }}
+          - environment: staging
+            branch: staging
+            s3_bucket: ielts-staging
+            cloudfront_id: ${{ secrets.CLOUDFRONT_STAGING_ID }}
+          - environment: production
+            branch: main
+            s3_bucket: ielts-prod
+            cloudfront_id: ${{ secrets.CLOUDFRONT_PROD_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        if: github.ref == format('refs/heads/{0}', matrix.branch)
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        if: github.ref == format('refs/heads/{0}', matrix.branch)
+        with:
+          name: build-${{ matrix.environment }}
+          path: dist/
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        if: github.ref == format('refs/heads/{0}', matrix.branch)
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy to S3
+        if: github.ref == format('refs/heads/{0}', matrix.branch)
+        run: |
+          # 同步文件到S3
+          aws s3 sync dist/ s3://${{ matrix.s3_bucket }} \
+            --delete \
+            --cache-control "public,max-age=31536000" \
+            --exclude "*.html" \
+            --exclude "service-worker.js"
+
+          # HTML文件使用短缓存
+          aws s3 sync dist/ s3://${{ matrix.s3_bucket }} \
+            --cache-control "public,max-age=300" \
+            --include "*.html" \
+            --include "service-worker.js"
+
+          echo "✓ 文件已部署到S3: ${{ matrix.s3_bucket }}"
+
+      - name: Invalidate CloudFront
+        if: github.ref == format('refs/heads/{0}', matrix.branch)
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ matrix.cloudfront_id }} \
+            --paths "/*"
+          echo "✓ CloudFront缓存已刷新"
+
+      - name: Upload audio files
+        if: github.ref == format('refs/heads/{0}', matrix.branch) && matrix.environment == 'production'
+        run: |
+          # 仅在生产环境同步音频文件
+          aws s3 sync audio/ s3://${{ matrix.s3_bucket }}/audio/ \
+            --cache-control "public,max-age=604800" \
+            --metadata-directive REPLACE
+          echo "✓ 音频文件已上传"
+
+      - name: Health check
+        if: github.ref == format('refs/heads/{0}', matrix.branch)
+        run: |
+          # 健康检查
+          HEALTH_URL="https://${{ matrix.environment == 'production' && 'ielts-listening.com' || format('{0}.ielts-listening.com', matrix.environment) }}"
+          
+          for i in {1..5}; do
+            if curl -f -s "$HEALTH_URL" > /dev/null; then
+              echo "✓ 健康检查通过: $HEALTH_URL"
+              break
+            fi
+            echo "健康检查失败，重试 $i/5..."
+            sleep 10
+          done
+
+  # 性能测试
+  performance-test:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli
+
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun --config=.lighthouserc.js
+          echo "✓ 性能测试完成"
+
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-results
+          path: .lighthouseci/
+
+  # 部署通知
+  notify:
+    needs: [deploy, performance-test]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Notify Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          message: |
+            雅思听力测试网站部署状态: ${{ job.status }}
+            分支: ${{ github.ref }}
+            提交: ${{ github.sha }}
+            作者: ${{ github.actor }}
+
+      - name: Create deployment record
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "记录部署信息..."
+          cat > deployment-record.json <<EOF
+          {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "commit": "${{ github.sha }}",
+            "branch": "${{ github.ref }}",
+            "actor": "${{ github.actor }}",
+            "environment": "production",
+            "status": "${{ job.status }}"
+          }
+          EOF
+
+      - name: Store deployment record
+        if: github.ref == 'refs/heads/main'
+        run: |
+          aws s3 cp deployment-record.json \
+            s3://ielts-deployment-logs/$(date +%Y%m%d_%H%M%S)_deployment.json

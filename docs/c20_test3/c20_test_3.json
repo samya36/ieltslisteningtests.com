@@ -1,0 +1,306 @@
+{
+  "test_info": {
+    "test_id": "IELTS_Cambridge_20_Test_3",
+    "section": "Listening",
+    "total_questions": 40,
+    "parts": 4
+  },
+  "parts": [
+    {
+      "part_number": 1,
+      "title": "Furniture Rental Companies",
+      "question_range": "1-10",
+      "instruction": "Complete the table below. Write ONE WORD AND/OR A NUMBER for each answer.",
+      "format": "table_completion",
+      "context": "Information about three furniture rental companies",
+      "questions": [
+        {
+          "question_number": 1,
+          "text": "Peak Rentals: Prices range from $105 to $ ___",
+          "answer": "239"
+        },
+        {
+          "question_number": 2,
+          "text": "The furniture is very ___",
+          "answer": "modern"
+        },
+        {
+          "question_number": 3,
+          "text": "Special offer: free ___ with every living room set",
+          "answer": "lamp"
+        },
+        {
+          "question_number": 4,
+          "text": "___ and Oliver",
+          "answer": "Aaron"
+        },
+        {
+          "question_number": 5,
+          "text": "12% monthly fee for ___",
+          "answer": "damage"
+        },
+        {
+          "question_number": 6,
+          "text": "furniture and ___ items",
+          "answer": "electronic"
+        },
+        {
+          "question_number": 7,
+          "text": "Must have own ___",
+          "answer": "insurance"
+        },
+        {
+          "question_number": 8,
+          "text": "___ Rentals",
+          "answer": "Space"
+        },
+        {
+          "question_number": 9,
+          "text": "See the ___ for the most up-to-date prices",
+          "answer": "app"
+        },
+        {
+          "question_number": 10,
+          "text": "___ are allowed within 7 days of delivery",
+          "answer": "exchanges"
+        }
+      ]
+    },
+    {
+      "part_number": 2,
+      "title": "Archaeological Dig Project",
+      "question_range": "11-20",
+      "instruction": "Questions 11-16: Choose correct letter A, B or C. Questions 17-20: Label the map.",
+      "format": "mixed_multiple_choice_map",
+      "context": "Information about community archaeological project at Bidcaster",
+      "questions": [
+        {
+          "question_number": 11,
+          "text": "Who was responsible for starting the community project?",
+          "options": {
+            "A": "the castle owners",
+            "B": "a national charity",
+            "C": "the local council"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 12,
+          "text": "How was the gold coin found?",
+          "options": {
+            "A": "Heavy rain had removed some of the soil.",
+            "B": "The ground was dug up by wild rabbits.",
+            "C": "A person with a metal detector searched the area."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 13,
+          "text": "What led the archaeologists to believe there was an ancient village on this site?",
+          "options": {
+            "A": "the lucky discovery of old records",
+            "B": "the bases of several structures visible in the grass",
+            "C": "the unusual stones found near the castle"
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 14,
+          "text": "What are the team still hoping to find?",
+          "options": {
+            "A": "everyday pottery",
+            "B": "animal bones",
+            "C": "pieces of jewellery"
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 15,
+          "text": "What was found on the other side of the river to the castle?",
+          "options": {
+            "A": "the remains of a large palace",
+            "B": "the outline of fields",
+            "C": "a number of small huts"
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 16,
+          "text": "What do the team plan to do after work ends this summer?",
+          "options": {
+            "A": "prepare a display for a museum",
+            "B": "take part in a television programme",
+            "C": "start to organise school visits"
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": "17-20",
+          "text": "Label the map below. Drag the correct letter, A-G, next to Questions 17-20.",
+          "map_locations": [
+            "17. bridge foundations",
+            "18. rubbish pit", 
+            "19. meeting hall",
+            "20. fish pond"
+          ],
+          "answer": ["B", "A", "G", "E"]
+        }
+      ]
+    },
+    {
+      "part_number": 3,
+      "title": "Theatre Programmes Research",
+      "question_range": "21-30",
+      "instruction": "Questions 21-26: Choose correct letter A, B or C. Questions 27-30: Choose FOUR answers from box A-F.",
+      "format": "mixed_multiple_choice_matching",
+      "context": "Finn and Maya discussing their research project on theatre programmes",
+      "questions": [
+        {
+          "question_number": 21,
+          "text": "Finn was pleased to discover that their topic",
+          "options": {
+            "A": "was not familiar to their module leader.",
+            "B": "had not been chosen by other students.",
+            "C": "did not prove to be difficult to research."
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": 22,
+          "text": "Maya says a mistaken belief about theatre programmes is that",
+          "options": {
+            "A": "theatres pay companies to produce them.",
+            "B": "few theatre-goers buy them nowadays.",
+            "C": "they contain far more adverts than previously."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 23,
+          "text": "Finn was surprised that, in early British theatre, programmes",
+          "options": {
+            "A": "were difficult for audiences to obtain.",
+            "B": "were given out free of charge.",
+            "C": "were seen as a kind of contract."
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 24,
+          "text": "Maya feels their project should include an explanation of why companies of actors",
+          "options": {
+            "A": "promoted their own plays.",
+            "B": "performed plays outdoors.",
+            "C": "had to tour with their plays."
+          },
+          "answer": "A"
+        },
+        {
+          "question_number": 25,
+          "text": "Finn and Maya both think that, compared to nineteenth-century programmes, those from the eighteenth century",
+          "options": {
+            "A": "were more original.",
+            "B": "were more colourful.",
+            "C": "were more informative."
+          },
+          "answer": "C"
+        },
+        {
+          "question_number": 26,
+          "text": "Maya doesn't fully understand why, in the twentieth century,",
+          "options": {
+            "A": "very few theatre programmes were printed in the USA.",
+            "B": "British theatre programmes failed to develop for so long.",
+            "C": "theatre programmes in Britain copied fashions from the USA."
+          },
+          "answer": "B"
+        },
+        {
+          "question_number": "27-30",
+          "text": "What comment is made about the programme for each of the following shows? Choose FOUR answers from the box and write the correct letter, A-F, next to Questions 27-30.",
+          "shows": [
+            "27 Ruy Blas",
+            "28 Man of La Mancha",
+            "29 The Tragedy of Jane Shore", 
+            "30 The Sailors' Festival"
+          ],
+          "options": {
+            "A": "Its origin is somewhat controversial.",
+            "B": "It is historically significant for a country.",
+            "C": "It was effective at attracting audiences.",
+            "D": "It is included in a recent project.",
+            "E": "It contains insights into the show.",
+            "F": "It resembles an artwork."
+          },
+          "answer": ["F", "E", "B", "D"]
+        }
+      ]
+    },
+    {
+      "part_number": 4,
+      "title": "Inclusive Design",
+      "question_range": "31-40",
+      "instruction": "Complete the notes below. Write ONE WORD ONLY for each answer.",
+      "format": "note_completion",
+      "context": "Lecture about inclusive design principles and examples",
+      "questions": [
+        {
+          "question_number": 31,
+          "text": "Designing products that can be accessed by a diverse range of people without the need for any ___",
+          "answer": "adaptation"
+        },
+        {
+          "question_number": 32,
+          "text": "Not the same as universal design: that is design for everyone, including catering for people with ___ problems.",
+          "answer": "cognitive"
+        },
+        {
+          "question_number": 33,
+          "text": "___ which are adjustable, avoiding back or neck problems",
+          "answer": "desks"
+        },
+        {
+          "question_number": 34,
+          "text": "___ in public toilets which are easier to use",
+          "answer": "taps"
+        },
+        {
+          "question_number": 35,
+          "text": "designers avoid using ___ in interfaces",
+          "answer": "blue"
+        },
+        {
+          "question_number": 36,
+          "text": "people can make commands using a mouse, keyboard or their ___",
+          "answer": "voice"
+        },
+        {
+          "question_number": 37,
+          "text": "Seatbelts are especially problematic for ___ women.",
+          "answer": "pregnant"
+        },
+        {
+          "question_number": 38,
+          "text": "PPE jackets are often unsuitable because of the size of women's ___",
+          "answer": "shoulders"
+        },
+        {
+          "question_number": 39,
+          "text": "PPE for female ___ officers dealing with emergencies is the worst.",
+          "answer": "police"
+        },
+        {
+          "question_number": 40,
+          "text": "The ___ in offices is often too low for women.",
+          "answer": "temperature"
+        }
+      ]
+    }
+  ],
+  "answer_key": {
+    "part_1": ["239", "modern", "lamp", "Aaron", "damage", "electronic", "insurance", "space", "app", "exchanges"],
+    "part_2": ["B", "A", "C", "C", "B", "A", "B", "A", "G", "E"],
+    "part_3": ["B", "A", "C", "A", "C", "B", "F", "E", "B", "D"],
+    "part_4": ["adaptation", "cognitive", "desks", "taps", "blue", "voice", "pregnant", "shoulders", "police", "temperature"]
+  }
+}

@@ -6,9 +6,10 @@ class MultiTestProgress {
     }
 
     initializeProgress() {
-        const saved = localStorage.getItem(this.storageKey);
+        // 使用安全存储读取数据（已经是解析后的对象）
+        const saved = window.secureStorage.getItem(this.storageKey);
         if (saved) {
-            this.progress = JSON.parse(saved);
+            this.progress = saved;
         } else {
             this.progress = {
                 test1: { completed: false, score: null, lastAttempt: null },
@@ -86,7 +87,8 @@ class MultiTestProgress {
     }
 
     saveProgress() {
-        localStorage.setItem(this.storageKey, JSON.stringify(this.progress));
+        // 使用安全存储保存数据
+        window.secureStorage.setItem(this.storageKey, this.progress);
     }
 
     resetProgress() {
