@@ -8,7 +8,7 @@
 
 // ==================== 配置常量 ====================
 
-const SW_VERSION = '2.1.3';
+const SW_VERSION = '2.2.0';
 const SW_NAME = `ielts-sw-${SW_VERSION}`;
 
 // 缓存名称配置

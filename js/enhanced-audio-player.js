@@ -150,7 +150,7 @@ class EnhancedAudioPlayer {
         }
     }
 
-    // 初始化音频源（CDN优先，本地备份）
+    // 初始化音频源（本地优先，CDN备份）
     async initializeAudioSources() {
         for (let section = 1; section <= 4; section++) {
             const player = this.players[section];
@@ -158,16 +158,20 @@ class EnhancedAudioPlayer {
 
             const sectionIndex = section - 1;
             const fileName = this.audioConfig.sections[sectionIndex];
+            // 对文件名进行URL编码（空格→%20），防止路径解析失败
+            const encodedFileName = encodeURIComponent(fileName);
             
-            // 优先尝试CDN
-            const cdnUrl = this.audioConfig.cdnPath + fileName;
-            const localUrl = this.audioConfig.localPath + fileName;
+            // 优先尝试本地路径（更可靠），CDN作为备份
+            const localUrl = this.audioConfig.localPath + encodedFileName;
+            const cdnUrl = this.audioConfig.cdnPath + encodedFileName;
 
             try {
-                await this.loadAudioWithFallback(player.audio, cdnUrl, localUrl);
-                console.log(`Section ${section} 音频加载成功`);
+                await this.loadAudioWithFallback(player.audio, localUrl, cdnUrl);
+                console.log(`✅ Section ${section} 音频加载成功`);
             } catch (error) {
-                console.error(`Section ${section} 音频加载失败:`, error);
+                console.error(`❌ Section ${section} 音频加载失败:`, error);
+                console.error(`  本地路径: ${localUrl}`);
+                console.error(`  CDN路径: ${cdnUrl}`);
                 this.showAudioError(section);
             }
         }
@@ -430,12 +434,23 @@ class EnhancedAudioPlayer {
         }
     }
 
-    // 加载本地备份信息
+    // 加载本地备份信息（确保路径已URL编码）
     loadLocalFallbacks() {
         for (let section = 1; section <= 4; section++) {
             const audio = document.getElementById(`section${section}-player`);
             if (audio) {
-                this.localFallback[section] = audio.getAttribute('data-local-src') || audio.src;
+                let fallbackSrc = audio.getAttribute('data-local-src') || audio.getAttribute('src') || '';
+                // 确保空格被正确编码
+                if (fallbackSrc && !fallbackSrc.includes('%20') && fallbackSrc.includes(' ')) {
+                    // 只编码文件名部分，保留路径分隔符
+                    const lastSlash = fallbackSrc.lastIndexOf('/');
+                    if (lastSlash >= 0) {
+                        const pathPart = fallbackSrc.substring(0, lastSlash + 1);
+                        const filePart = fallbackSrc.substring(lastSlash + 1);
+                        fallbackSrc = pathPart + encodeURIComponent(filePart);
+                    }
+                }
+                this.localFallback[section] = fallbackSrc;
             }
         }
     }

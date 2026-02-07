@@ -19,19 +19,34 @@ if (!window.testPlayer) {
     };
 }
 const AUDIO_CONFIG = {
-    // 现有测试路径配置
+    // 现有测试路径配置 - 使用实际文件名（与 audio/ 目录中的文件完全匹配）
     test1: {
         // 优先本地音频（页面在 pages/ 下，因此使用 ../audio/ 相对路径）
         basePath: '../audio/test1/',
-        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+        sections: [
+            'Part1 Amateur Dramatic Society.m4a',
+            'Part2 Talk to new employees at a strawberry farm.m4a',
+            'Part3-Field trip to Bolton lsland.m4a',
+            'Part4 Development and use of plastics.m4a'
+        ]
     },
     test2: {
-        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test 2/',
-        sections: ['Part 1 Winsham Farm.m4a', 'Part 2 Queensland Festival.m4a', 'Part 3 Environmental science course.mp3', 'Part 4-Photic sneezing.m4a']
+        basePath: '../audio/test2/',
+        sections: [
+            'Part1 Rental Property Application Form.m4a',
+            'Part2 Queensland Festival.m4a',
+            'Part3-Research for assignment of children playing outdoors.m4a',
+            'Part4 The Berbers.m4a'
+        ]
     },
     test3: {
-        basePath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test 3/',
-        sections: ['Part 1 .mp3', 'Part 2 .m4a', 'Part 3 (2).mp3', 'Part 4 .mp3']
+        basePath: '../audio/test3/',
+        sections: [
+            'Part1 Kiwi Air Customer Complaint Form.m4a',
+            'Part2 Spring Festival.m4a',
+            'Part3-Geology field trip to Iceland.m4a',
+            'Part4 Recycling Tyres in Australia.m4a'
+        ]
     }
 };
 
@@ -100,15 +115,17 @@ class AudioPlayer {
         return AUDIO_CONFIG[this.testId] || AUDIO_CONFIG.test1;
     }
     
-    // 构建音频文件完整路径
+    // 构建音频文件完整路径（对文件名进行URL编码）
     getAudioPath(section) {
         const sectionIndex = section - 1;
         if (this.audioConfig && this.audioConfig.sections[sectionIndex]) {
-            // 优先返回本地路径
-            return this.audioConfig.basePath + this.audioConfig.sections[sectionIndex];
+            const fileName = this.audioConfig.sections[sectionIndex];
+            // 对文件名进行URL编码（空格→%20），basePath不编码
+            const encodedFileName = encodeURIComponent(fileName);
+            return this.audioConfig.basePath + encodedFileName;
         }
-        // 兜底：CDN 地址
-        return `https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/section${section}.mp3`;
+        // 兜底：本地路径
+        return `../audio/test1/section${section}.mp3`;
     }
     
     // 更新音频源路径
