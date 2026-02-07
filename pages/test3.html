@@ -64,7 +64,7 @@
         <div class="audio-players-container">
             <!-- Section 1 音频播放器 -->
             <div class="audio-player" id="section1-player-container">
-                <audio id="section1-player" src="../audio/test3/Part1 Kiwi Air Customer Complaint Form.m4a"></audio>
+                <audio id="section1-player" src="../audio/test3/Part1%20Kiwi%20Air%20Customer%20Complaint%20Form.m4a" preload="none"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section1-play">
@@ -90,7 +90,7 @@
 
             <!-- Section 2 音频播放器 -->
             <div class="audio-player" id="section2-player-container" style="display: none;">
-                <audio id="section2-player" src="../audio/test3/Part2 Spring Festival.m4a"></audio>
+                <audio id="section2-player" src="../audio/test3/Part2%20Spring%20Festival.m4a" preload="none"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section2-play">
@@ -116,7 +116,7 @@
 
             <!-- Section 3 音频播放器 -->
             <div class="audio-player" id="section3-player-container" style="display: none;">
-                <audio id="section3-player" src="../audio/test3/Part3-Geology field trip to Iceland.m4a"></audio>
+                <audio id="section3-player" src="../audio/test3/Part3-Geology%20field%20trip%20to%20Iceland.m4a" preload="none"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section3-play">
@@ -142,7 +142,7 @@
 
             <!-- Section 4 音频播放器 -->
             <div class="audio-player" id="section4-player-container" style="display: none;">
-                <audio id="section4-player" src="../audio/test3/Part4 Recycling Tyres in Australia.m4a"></audio>
+                <audio id="section4-player" src="../audio/test3/Part4%20Recycling%20Tyres%20in%20Australia.m4a" preload="none"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section4-play">
@@ -613,28 +613,25 @@
                     
                     <!-- Section Audio Players -->
                     <div class="audio-players">
+                        <!-- 注意: 以下audio元素ID与上方重复，浏览器只会使用第一个匹配的ID -->
                         <div class="audio-player-section" data-section="1">
-                            <audio id="section1-player" preload="metadata"
-                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section1.mp3"
-                                   data-local-src="../audio/test3/section1.mp3">
+                            <audio class="section-audio" data-section="1" preload="none"
+                                   src="../audio/test3/Part1%20Kiwi%20Air%20Customer%20Complaint%20Form.m4a">
                             </audio>
                         </div>
                         <div class="audio-player-section" data-section="2">
-                            <audio id="section2-player" preload="metadata"
-                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section2.mp3"
-                                   data-local-src="../audio/test3/section2.mp3">
+                            <audio class="section-audio" data-section="2" preload="none"
+                                   src="../audio/test3/Part2%20Spring%20Festival.m4a">
                             </audio>
                         </div>
                         <div class="audio-player-section" data-section="3">
-                            <audio id="section3-player" preload="metadata"
-                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section3.mp3"
-                                   data-local-src="../audio/test3/section3.mp3">
+                            <audio class="section-audio" data-section="3" preload="none"
+                                   src="../audio/test3/Part3-Geology%20field%20trip%20to%20Iceland.m4a">
                             </audio>
                         </div>
                         <div class="audio-player-section" data-section="4">
-                            <audio id="section4-player" preload="metadata"
-                                   src="https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/section4.mp3"
-                                   data-local-src="../audio/test3/section4.mp3">
+                            <audio class="section-audio" data-section="4" preload="none"
+                                   src="../audio/test3/Part4%20Recycling%20Tyres%20in%20Australia.m4a">
                             </audio>
                         </div>
                     </div>
@@ -1031,9 +1028,6 @@
         提交测试
       </button>
     </div>
-    
-    <!-- Test Data -->
-    <script src="../js/test-data-3.js" defer></script>
     
     <!-- Enhanced Components -->
     <script src="../js/enhanced-audio-player.js" defer></script>

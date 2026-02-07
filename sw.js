@@ -8,7 +8,7 @@
 
 // ==================== 配置常量 ====================
 
-const SW_VERSION = '2.1.2';
+const SW_VERSION = '2.1.3';
 const SW_NAME = `ielts-sw-${SW_VERSION}`;
 
 // 缓存名称配置
@@ -39,6 +39,10 @@ const CACHE_CONFIG = {
     }
 };
 
+// 预缓存/预加载节流配置
+const PRECACHE_REQUEST_DELAY = 120; // ms
+const AUDIO_PRELOAD_DELAY = 500; // ms
+
 // 预缓存资源列表
 const PRECACHE_RESOURCES = [
     // 核心HTML文件
@@ -47,12 +51,13 @@ const PRECACHE_RESOURCES = [
     '/pages/test1.html',
     '/pages/test2.html',
     '/pages/test3.html',
+    '/pages/test4.html',
+    '/pages/test5.html',
+    '/pages/test6.html',
+    '/pages/test7.html',
     '/pages/enhanced-test1.html',
-    '/pages/test-c20-1.html',
-    '/pages/test-c20-2.html',
-    '/pages/test-c20-3.html',
-    '/pages/test-c20-4.html',
     '/pages/optimization-demo.html',
+    '/pages/practice.html',
     '/pages/scoring.html',
     
     // 核心CSS文件
@@ -80,10 +85,7 @@ const PRECACHE_RESOURCES = [
     '/js/test-data-2.js',
     '/js/test-answers-2.js',
     '/js/test-data-3.js',
-    '/js/test-answers-3.js',
-    
-    // 离线页面
-    '/offline.html'
+    '/js/test-answers-3.js'
 ];
 
 // 路由匹配规则
@@ -170,7 +172,7 @@ class IELTSServiceWorker {
     }
     
     async precacheResources(cache) {
-        const precachePromises = PRECACHE_RESOURCES.map(async (url) => {
+        for (const url of PRECACHE_RESOURCES) {
             try {
                 const response = await fetch(url);
                 if (response.ok) {
@@ -182,9 +184,10 @@ class IELTSServiceWorker {
             } catch (error) {
                 console.warn(`⚠️  预缓存错误: ${url}`, error);
             }
-        });
-        
-        await Promise.allSettled(precachePromises);
+
+            // 节流，避免安装阶段请求风暴
+            await this.sleep(PRECACHE_REQUEST_DELAY);
+        }
     }
     
     async cacheOfflineResources(cache) {
@@ -569,8 +572,8 @@ class IELTSServiceWorker {
             );
             
             if (networkResponse.ok) {
-                // 缓存音频文件
-                await this.cacheAudioResponse(cache, request, networkResponse);
+                // 缓存音频文件（使用 clone，避免消费原响应流）
+                await this.cacheAudioResponse(cache, request, networkResponse.clone());
                 this.cacheStats.updates++;
                 return networkResponse;
             }
@@ -684,6 +687,16 @@ class IELTSServiceWorker {
     }
     
     async cacheAudioResponse(cache, request, response) {
+        // Range 请求通常返回 206，Cache API 无法稳定缓存部分响应
+        if (request.headers.has('range') || response.status === 206) {
+            return;
+        }
+
+        // 只缓存完整成功响应
+        if (response.status !== 200) {
+            return;
+        }
+
         // 检查缓存大小限制
         await this.enforceAudioCacheLimit(cache);
         
@@ -698,7 +711,11 @@ class IELTSServiceWorker {
             headers: headers
         });
         
-        await cache.put(request, cachedResponse);
+        try {
+            await cache.put(request, cachedResponse);
+        } catch (error) {
+            console.warn('音频缓存写入失败，已跳过:', request.url, error);
+        }
     }
     
     async enforceAudioCacheLimit(cache) {
@@ -829,19 +846,34 @@ class IELTSServiceWorker {
     
     async preloadAudioFiles(urls) {
         const cache = await caches.open(CACHE_NAMES.AUDIO);
-        
-        const preloadPromises = urls.map(async (url) => {
+
+        const uniqueUrls = [...new Set((urls || []).filter(Boolean))];
+
+        for (const url of uniqueUrls) {
             try {
+                const request = new Request(url);
+
+                // 已缓存则跳过
+                const cached = await cache.match(request);
+                if (cached) {
+                    continue;
+                }
+
                 const response = await fetch(url);
                 if (response.ok) {
-                    await this.cacheAudioResponse(cache, new Request(url), response);
+                    await this.cacheAudioResponse(cache, request, response.clone());
                 }
             } catch (error) {
                 console.warn(`音频预加载失败: ${url}`, error);
             }
-        });
-        
-        await Promise.allSettled(preloadPromises);
+
+            // 串行节流，避免并发音频请求过多导致 503
+            await this.sleep(AUDIO_PRELOAD_DELAY);
+        }
+    }
+
+    async sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
     
     // ==================== 后台同步 ====================
