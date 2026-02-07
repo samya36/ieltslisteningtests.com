@@ -5,31 +5,61 @@ console.log('🎵 加载通用音频播放器系统...');
 const UNIVERSAL_AUDIO_CONFIG = {
     test1: {
         basePath: '../audio/test1/',
-        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+        sections: [
+            'Part1 Amateur Dramatic Society.m4a',
+            'Part2 Talk to new employees at a strawberry farm.m4a',
+            'Part3-Field trip to Bolton lsland.m4a',
+            'Part4 Development and use of plastics.m4a'
+        ]
     },
     test2: {
-        basePath: '../audio/test 2/',
-        sections: ['Part 1 Winsham Farm.m4a', 'Part 2 Queensland Festival.m4a', 'Part 3 Environmental science course.mp3', 'Part 4-Photic sneezing.m4a']
+        basePath: '../audio/test2/',
+        sections: [
+            'Part1 Rental Property Application Form.m4a',
+            'Part2 Queensland Festival.m4a',
+            'Part3-Research for assignment of children playing outdoors.m4a',
+            'Part4 The Berbers.m4a'
+        ]
     },
     test3: {
-        basePath: '../audio/test 3/',
-        sections: ['Part 1 .mp3', 'Part 2 .m4a', 'Part 3 (2).mp3', 'Part 4 .mp3']
+        basePath: '../audio/test3/',
+        sections: [
+            'Part1 Kiwi Air Customer Complaint Form.m4a',
+            'Part2 Spring Festival.m4a',
+            'Part3-Geology field trip to Iceland.m4a',
+            'Part4 Recycling Tyres in Australia.m4a'
+        ]
     },
     test4: {
         basePath: '../audio/test4/',
-        sections: ['section1_compressed_256k.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+        sections: [
+            'Part1_Windward Apartments .m4a',
+            'Part2 .m4a',
+            'Part 3 .m4a',
+            'Part 4.m4a'
+        ]
     },
     test5: {
         basePath: '../audio/test5/',
-        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+        sections: [
+            'test5_Part 1 Winsham Farm.m4a',
+            'test5_Part 2 Queensland Festival.m4a',
+            'test5_Part 3 Environmental science course.m4a',
+            'test5_Part 4-Photic sneezing.m4a'
+        ]
     },
     test6: {
         basePath: '../audio/test6/',
-        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+        sections: [
+            'Part 1_Amateur Dramatic Society.m4a',
+            'Part2_Clifton Bird Park .m4a',
+            'Part 3.m4a',
+            'Part 4 .m4a'
+        ]
     },
     test7: {
-        basePath: '../audio/test7/',
-        sections: ['section1.mp3', 'section2.mp3', 'section3.mp3', 'section4.mp3']
+        basePath: '../audio/c20-test4/',
+        sections: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
     }
 };
 
