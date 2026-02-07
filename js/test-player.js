@@ -12,23 +12,6 @@ const AUDIO_CONFIG = {
     test3: {
         basePath: '../audio/test 3/',
         sections: ['Part 1 .mp3', 'Part 2 .m4a', 'Part 3 (2).mp3', 'Part 4 .mp3']
-    },
-    // 剑桥雅思20配置
-    'cambridge20-test1': {
-        basePath: '../剑桥雅思20/剑20 听力音频 Test1/',
-        sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
-    },
-    'cambridge20-test2': {
-        basePath: '../剑桥雅思20/剑20 听力音频Test2/',
-        sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
-    },
-    'cambridge20-test3': {
-        basePath: '../剑桥雅思20/剑20 听力音频Test3/',
-        sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
-    },
-    'cambridge20-test4': {
-        basePath: '../剑桥雅思20/剑20 听力音频Test4/',
-        sections: ['Section1.mp3', 'Section2.mp3', 'Section3.mp3', 'Section4.mp3']
     }
 };
 
@@ -78,11 +61,6 @@ class AudioPlayer {
     // 检测当前测试ID
     detectTestId() {
         const path = window.location.pathname;
-        // 剑桥雅思20测试页面检测
-        if (path.includes('test-c20-1.html')) return 'cambridge20-test1';
-        if (path.includes('test-c20-2.html')) return 'cambridge20-test2';
-        if (path.includes('test-c20-3.html')) return 'cambridge20-test3';
-        if (path.includes('test-c20-4.html')) return 'cambridge20-test4';
         // 原有测试页面检测
         if (path.includes('test2.html')) return 'test2';
         if (path.includes('test3.html')) return 'test3';
@@ -157,11 +135,23 @@ class AudioPlayer {
         
         // 进度条点击事件
         const progressBar = player.playBtn.parentElement.querySelector('.progress-bar');
-        progressBar.addEventListener('click', (e) => {
-            const rect = progressBar.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / rect.width;
-            player.audio.currentTime = pos * player.audio.duration;
-            this.updateProgress(section);
+        if (progressBar) {
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const pos = (e.clientX - rect.left) / rect.width;
+                if (player.audio.duration) {
+                    player.audio.currentTime = pos * player.audio.duration;
+                    this.updateProgress(section);
+                }
+            });
+        }
+
+        // 进度滑块事件
+        player.progress.addEventListener('input', (e) => {
+            if (player.audio.duration) {
+                const value = parseFloat(e.target.value);
+                player.audio.currentTime = (value / 100) * player.audio.duration;
+            }
         });
         
         // 播放速度改变事件
@@ -280,8 +270,10 @@ class AudioPlayer {
         const player = this.players[section];
         if (!player || !player.audio || !player.progress) return;
         
-        const percent = (player.audio.currentTime / player.audio.duration) * 100;
-        player.progress.style.width = `${percent}%`;
+        if (player.audio.duration) {
+            const percent = (player.audio.currentTime / player.audio.duration) * 100;
+            player.progress.value = percent;
+        }
     }
     
     updateTimeDisplay(section) {

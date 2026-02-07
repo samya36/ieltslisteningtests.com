@@ -1,0 +1,205 @@
+/* 进阶听力测试样式 */
+
+/* 测试分类样式 */
+.test-category {
+    margin: 40px 0 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border-left: 5px solid #2196F3;
+}
+
+.test-category.advanced-section {
+    background: linear-gradient(135deg, #fff5f0 0%, #ffe8db 100%);
+    border-left: 5px solid #ff6b35;
+    position: relative;
+    overflow: hidden;
+}
+
+.test-category.advanced-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.category-title {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-icon {
+    font-size: 1.2em;
+}
+
+.highlight-badge {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+    box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
+}
+
+.category-description {
+    margin: 0;
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* 进阶听力测试卡片样式 */
+.practice-card.advanced-20 {
+    border: 2px solid #ff6b35;
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f5 100%);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.practice-card.advanced-20::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b35, #f7931e, #ffab00);
+    z-index: 1;
+}
+
+.practice-card.advanced-20::after {
+    content: 'ADVANCED';
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 5px 40px;
+    font-size: 0.8em;
+    font-weight: bold;
+    transform: rotate(45deg);
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.practice-card.advanced-20:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+    border-color: #f7931e;
+}
+
+.practice-card.advanced-20 h3 {
+    color: #ff6b35;
+    font-weight: bold;
+}
+
+/* 进阶难度标签 */
+.difficulty.advanced {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+
+.difficulty.advanced::before {
+    content: '👑';
+    margin-right: 5px;
+}
+
+/* 进阶测试按钮样式 */
+.start-btn.advanced {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-btn.advanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.start-btn.advanced:hover::before {
+    left: 100%;
+}
+
+.start-btn.advanced:hover {
+    background: linear-gradient(135deg, #f7931e 0%, #ffab00 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* 网格布局优化 */
+.practice-grid.advanced-tests {
+    margin-top: 20px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .test-category {
+        padding: 15px;
+        margin: 30px 0 15px 0;
+    }
+    
+    .category-title {
+        font-size: 1.3em;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .highlight-badge {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    
+    .practice-card.advanced-20::after {
+        font-size: 0.7em;
+        padding: 3px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .practice-card.advanced-20::after {
+        display: none;
+    }
+}
+
+/* 加载动画 */
+@keyframes advanced-shine {
+    0% { transform: translateX(-100%) skewX(-15deg); }
+    100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+.practice-card.advanced-20.loading::before {
+    animation: advanced-shine 2s infinite;
+}
+
+/* 徽章动画 */
+@keyframes badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.highlight-badge {
+    animation: badge-pulse 3s infinite;
+}

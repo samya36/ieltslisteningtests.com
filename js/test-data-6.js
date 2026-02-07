@@ -1,11 +1,11 @@
-// 剑桥雅思20 Test 3 测试数据
+// 进阶听力测试 6 数据
 const TEST_DATA_6 = {
     testInfo: {
-        title: '剑桥雅思20 Test 3',
-        description: 'Cambridge IELTS 20 Listening Test 3',
+        title: '进阶听力测试 6',
+        description: 'Advanced Listening Practice Test 6',
         totalQuestions: 40,
         timeLimit: 30, // 分钟
-        audioPath: '../剑桥雅思20/剑20 听力音频Test3/'
+        audioPath: '../audio/test6/'
     },
     
     section1: {

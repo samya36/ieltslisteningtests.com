@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分数计算器 - IELTS听力评分解析</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <main class="container" style="padding: 2rem 1rem; max-width: 760px;">
+    <h1>雅思听力分数计算器</h1>
+    <p>输入答对题数（0-40）：</p>
+    <div class="calculator" style="margin-top: 1rem;">
+      <input type="number" id="correct-answers" min="0" max="40" placeholder="输入正确题数">
+      <button id="calculate-btn" style="margin-left: 0.5rem;">计算分数</button>
+      <p style="margin-top: 1rem;">预估雅思分数：<strong id="score-result">--</strong></p>
+    </div>
+    <p><a href="scoring.html">查看评分标准</a></p>
+    <p><a href="../index.html">返回首页</a></p>
+  </main>
+  <script src="../js/calculator.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/* Homepage enhancement styles (kept lightweight for backward compatibility) */
+.version-announcement {
+  margin: 2rem 0;
+}
+
+.announcement-card {
+  background: linear-gradient(135deg, #eef6ff, #f7fbff);
+  border: 1px solid #dbe8f7;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.announcement-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.feature-highlight {
+  background: #fff;
+  border: 1px solid #e7eef7;
+  border-radius: 10px;
+  padding: 0.9rem;
+}
+
+.announcement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}

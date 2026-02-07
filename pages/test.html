@@ -159,7 +159,85 @@
         <form id="test-form">
             <div class="section-content active" id="section-1" data-section="1">
                 <div class="questions">
-                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
+                    <h2 class="section-title">Section 1</h2>
+                    <div class="instructions">
+                        <strong>Questions 1-10</strong><br>
+                        Complete the form below.<br>
+                        Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.
+                    </div>
+                    
+                    <div class="form-content">
+                        <h3>AMATEUR DRAMATIC SOCIETY</h3>
+                        
+                        <div class="question-item">
+                            <label>1. Location for rehearsals: The 
+                                <input type="text" name="q1" class="answer-input" data-question="1" placeholder="your answer"> 
+                                House, Wynn
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>2. They need actors and 
+                                <input type="text" name="q2" class="answer-input" data-question="2" placeholder="your answer"> 
+                                singers
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>3. Also need people who can 
+                                <input type="text" name="q3" class="answer-input" data-question="3" placeholder="your answer">
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>4. Meetings 6–8 p.m. every 
+                                <input type="text" name="q4" class="answer-input" data-question="4" placeholder="your answer">
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>5. Closed in 
+                                <input type="text" name="q5" class="answer-input" data-question="5" placeholder="your answer">
+                                (for 2 weeks)
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>6. Membership costs: Standard: £40 (includes a 
+                                <input type="text" name="q6" class="answer-input" data-question="6" placeholder="your answer">
+                                once a year)
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>7. Over 60s or unemployed: £
+                                <input type="text" name="q7" class="answer-input" data-question="7" placeholder="your answer">
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>8. Youth group: for people aged 
+                                <input type="text" name="q8" class="answer-input" data-question="8" placeholder="your answer">
+                                years old and under
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>9. Shows: mostly plays by 
+                                <input type="text" name="q9" class="answer-input" data-question="9" placeholder="your answer">
+                                authors
+                            </label>
+                        </div>
+                        
+                        <div class="question-item">
+                            <label>10. Family show in December (raises money for children's 
+                                <input type="text" name="q10" class="answer-input" data-question="10" placeholder="your answer">
+                                )
+                            </label>
+                        </div>
+
+                        <button type="button" class="submit-answers-btn" onclick="submitAnswers()">提交 Section 1 答案</button>
+                    </div>
                 </div>
             </div>
             <div class="section-content" id="section-2" data-section="2" style="display: none;">
@@ -232,65 +310,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- JavaScript -->
+    <script src="../js/universal-audio-player.js"></script>
     <script src="../js/test-data.js"></script>
-    <script src="../js/test-answers.js"></script>
-    <script src="../js/test-player.js"></script>
-    <script src="../js/score-display.js"></script>
-    <script src="../js/test-ui.js"></script>
-    
-    <script>
-        // 确保DOM加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('页面加载完成，开始初始化测试界面...');
-            try {
-                // 检查必要的全局变量
-                if (typeof TEST_DATA === 'undefined') {
-                    throw new Error('TEST_DATA 未定义，请确保 test-data.js 已正确加载');
-                }
-                
-                if (typeof standardAnswers === 'undefined') {
-                    throw new Error('standardAnswers 未定义，请确保 test-answers.js 已正确加载');
-                }
-                
-                if (typeof TestUI === 'undefined') {
-                    throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
-                }
-                
-                // 初始化测试界面
-                window.testUI = new TestUI();
-                console.log('测试界面初始化完成');
-            } catch (error) {
-                console.error('初始化失败:', error);
-                // 在页面上显示错误信息而不是简单的弹窗
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background-color: #fff;
-                    padding: 20px;
-                    border-radius: 5px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    z-index: 1000;
-                    text-align: center;
-                `;
-                errorDiv.innerHTML = `
-                    <h3 style="color: #ff4444; margin-bottom: 10px;">初始化失败</h3>
-                    <p style="margin-bottom: 15px;">${error.message}</p>
-                    <button onclick="location.reload()" style="
-                        padding: 8px 16px;
-                        background-color: #4CAF50;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    ">刷新页面</button>
-                `;
-                document.body.appendChild(errorDiv);
-            }
-        });
-    </script>
+    <script src="../js/test-renderer.js"></script>
+    <script src="../js/test-init.js"></script>
 </body>
 </html> 

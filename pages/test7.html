@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Listening Test 3 - 客户投诉、春节庆典、冰岛地质、轮胎回收</title>
+    <title>IELTS Listening Test 7</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/test.css">
 </head>
@@ -19,12 +19,9 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="../index.html">首页</a></li>
-                <li><a href="practice.html" class="active">听力练习</a></li>
-                <li><a href="test.html">Test 1</a></li>
-                <li><a href="test2.html">Test 2</a></li>
-                <li><a href="test3.html" class="current-test">Test 3</a></li>
                 <li><a href="scoring.html">评分详解</a></li>
                 <li><a href="cases.html">案例分析</a></li>
+                <li><a href="practice.html">听力练习</a></li>
             </ul>
         </div>
     </nav>
@@ -33,20 +30,11 @@
     <main class="test-container">
         <!-- 测试说明 -->
         <div class="test-intro">
-            <h2>IELTS听力测试 3</h2>
-            <div class="test-themes">
-                <h3>本次测试主题：</h3>
-                <ul class="theme-list">
-                    <li><strong>Section 1:</strong> 奇异航空 - 客户投诉表格</li>
-                    <li><strong>Section 2:</strong> 春节庆典 - 活动安排与信息</li>
-                    <li><strong>Section 3:</strong> 冰岛地质实地考察 - 学术研讨</li>
-                    <li><strong>Section 4:</strong> 澳大利亚轮胎回收 - 环保讲座</li>
-                </ul>
-            </div>
+            <h2>测试说明</h2>
             <ul class="test-instructions">
                 <li>时长：30分钟</li>
                 <li>题量：40题</li>
-                <li>难度：中等偏上</li>
+                <li>难度：中等</li>
                 <li>每个部分有独立的音频播放器，可调整播放速度</li>
                 <li>在听力过程中完成答题</li>
             </ul>
@@ -64,7 +52,7 @@
         <div class="audio-players-container">
             <!-- Section 1 音频播放器 -->
             <div class="audio-player" id="section1-player-container">
-                <audio id="section1-player" src="../audio/test 3/Part 1 .mp3"></audio>
+                <audio id="section1-player" src="../audio/test7/section1.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section1-play">
@@ -90,7 +78,7 @@
 
             <!-- Section 2 音频播放器 -->
             <div class="audio-player" id="section2-player-container" style="display: none;">
-                <audio id="section2-player" src="../audio/test 3/Part 2 .m4a"></audio>
+                <audio id="section2-player" src="../audio/test7/section2.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section2-play">
@@ -116,7 +104,7 @@
 
             <!-- Section 3 音频播放器 -->
             <div class="audio-player" id="section3-player-container" style="display: none;">
-                <audio id="section3-player" src="../audio/test 3/Part 3 (2).mp3"></audio>
+                <audio id="section3-player" src="../audio/test7/section3.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section3-play">
@@ -142,7 +130,7 @@
 
             <!-- Section 4 音频播放器 -->
             <div class="audio-player" id="section4-player-container" style="display: none;">
-                <audio id="section4-player" src="../audio/test 3/Part 4 .mp3"></audio>
+                <audio id="section4-player" src="../audio/test7/section4.mp3"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section4-play">
@@ -171,79 +159,7 @@
         <form id="test-form">
             <div class="section-content active" id="section-1" data-section="1">
                 <div class="questions">
-                    <h2 class="section-title">Section 1</h2>
-                    <div class="instructions">
-                        <strong>Questions 1-10</strong><br>
-                        Complete the form below.<br>
-                        Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.
-                    </div>
-                    
-                    <div class="form-content">
-                        <h3>CUSTOMER COMPLAINT FORM</h3>
-                        
-                        <div class="question-item">
-                            <label>1. Customer name: 
-                                <input type="text" name="q1" class="answer-input" data-question="1" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>2. Flight number: 
-                                <input type="text" name="q2" class="answer-input" data-question="2" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>3. Date of travel: 
-                                <input type="text" name="q3" class="answer-input" data-question="3" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>4. Problem with: 
-                                <input type="text" name="q4" class="answer-input" data-question="4" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>5. Compensation requested: $ 
-                                <input type="text" name="q5" class="answer-input" data-question="5" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>6. Contact method preferred: 
-                                <input type="text" name="q6" class="answer-input" data-question="6" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>7. Booking reference: 
-                                <input type="text" name="q7" class="answer-input" data-question="7" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>8. Seat number: 
-                                <input type="text" name="q8" class="answer-input" data-question="8" placeholder="your answer">
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>9. Follow-up required by: 
-                                <input type="text" name="q9" class="answer-input" data-question="9" placeholder="your answer">
-                                (date)
-                            </label>
-                        </div>
-                        
-                        <div class="question-item">
-                            <label>10. Additional services needed: 
-                                <input type="text" name="q10" class="answer-input" data-question="10" placeholder="your answer">
-                            </label>
-                        </div>
-
-                        <button type="button" class="submit-answers-btn" onclick="submitAnswers()">提交 Section 1 答案</button>
-                    </div>
+                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
                 </div>
             </div>
             <div class="section-content" id="section-2" data-section="2" style="display: none;">
@@ -269,8 +185,8 @@
         <div class="result-content">
             <span class="close-result" id="close-result">&times;</span>
             <div class="result-header">
-                <h2>测试结果 - Test 3</h2>
-                <p>您已完成雅思听力测试3，以下是您的成绩：</p>
+                <h2>测试结果</h2>
+                <p>您已完成雅思听力测试，以下是您的成绩：</p>
             </div>
             <div class="result-score">
                 <div class="score-circle correct">
@@ -288,15 +204,7 @@
                     <!-- 各部分得分将由 JavaScript 动态生成 -->
                 </div>
             </div>
-            <div class="test-navigation">
-                <a href="test2.html" class="nav-test-btn">← Test 2</a>
-                <button class="retry-btn" id="retry-btn">重新测试</button>
-                <a href="test.html" class="nav-test-btn">Test 1 →</a>
-            </div>
-            <div class="completion-badge">
-                <h4>🎉 恭喜完成全部测试！</h4>
-                <p>您已完成所有3套IELTS听力测试，可以对比不同测试的表现。</p>
-            </div>
+            <button class="retry-btn" id="retry-btn">重新测试</button>
         </div>
     </div>
 
@@ -325,101 +233,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- JavaScript -->
     <script src="../js/universal-audio-player.js"></script>
-    <script src="../js/test-data-3.js"></script>
+    <script src="../js/test-data-7.js"></script>
     <script src="../js/test-renderer.js"></script>
     <script src="../js/test-init.js"></script>
-    
-    <style>
-        /* Test 3 特有样式 */
-        .test-themes {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #e53935;
-        }
-        
-        .test-themes h3 {
-            margin: 0 0 10px 0;
-            color: #e53935;
-            font-size: 1.1em;
-        }
-        
-        .theme-list {
-            margin: 0;
-            padding-left: 20px;
-        }
-        
-        .theme-list li {
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .theme-list strong {
-            color: #d32f2f;
-        }
-        
-        .test-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .nav-test-btn {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-test-btn:hover {
-            background: linear-gradient(135deg, #1976D2, #1565C0);
-            transform: translateY(-1px);
-        }
-        
-        .nav-menu a.active {
-            background: #e53935;
-            color: white;
-            border-radius: 4px;
-        }
-        
-        .nav-menu a.current-test {
-            background: #d32f2f;
-            color: white;
-            border-radius: 4px;
-            font-weight: bold;
-            position: relative;
-        }
-        
-        .nav-menu a.current-test::after {
-            content: ' ✓';
-            font-size: 0.8em;
-        }
-        
-        .completion-badge {
-            background: linear-gradient(135deg, #4CAF50, #388E3C);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .completion-badge h4 {
-            margin: 0 0 8px 0;
-            font-size: 1.2em;
-        }
-        
-        .completion-badge p {
-            margin: 0;
-            opacity: 0.9;
-        }
-    </style>
 </body>
-</html>
+</html> 

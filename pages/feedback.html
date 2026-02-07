@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反馈建议 - IELTS听力评分解析</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <main class="container" style="padding: 2rem 1rem; max-width: 760px;">
+    <h1>反馈建议</h1>
+    <form id="feedback-form">
+      <label for="email">邮箱地址</label>
+      <input id="email" type="email" required placeholder="your@email.com" style="display:block;margin:0.5rem 0 1rem;width:100%;max-width:460px;">
+      <label for="feedback">反馈内容</label>
+      <textarea id="feedback" rows="6" placeholder="请输入你的建议" style="display:block;margin:0.5rem 0 1rem;width:100%;max-width:640px;"></textarea>
+      <button type="submit">提交</button>
+    </form>
+    <p style="margin-top:1rem;"><a href="../index.html">返回首页</a></p>
+  </main>
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('感谢你的反馈！');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

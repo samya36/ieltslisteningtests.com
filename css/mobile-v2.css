@@ -1,0 +1,547 @@
+/* ==============================================
+   移动端响应式优化 v2.0
+   移动优先的设计方法和交互优化
+   ============================================== */
+
+/* === 移动端导航优化 === */
+@media (max-width: 768px) {
+  /* 汉堡菜单样式 */
+  .nav-toggle {
+    display: flex;
+    position: relative;
+    z-index: var(--z-tooltip);
+  }
+  
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* 移动端菜单 */
+  .nav-menu-v2 {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--surface-primary);
+    flex-direction: column;
+    padding: var(--space-6);
+    gap: var(--space-4);
+    box-shadow: var(--shadow-xl);
+    border-top: 1px solid var(--border-light);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    z-index: var(--z-dropdown);
+  }
+  
+  .nav-menu-v2.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-menu-v2 li {
+    width: 100%;
+  }
+  
+  .nav-menu-v2 a {
+    display: block;
+    padding: var(--space-4);
+    background: var(--neutral-50);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    font-size: var(--font-size-base);
+  }
+  
+  .nav-cta {
+    margin-top: var(--space-4);
+    width: 100%;
+    text-align: center;
+    padding: var(--space-4) var(--space-6);
+  }
+}
+
+/* === 移动端Hero区域优化 === */
+@media (max-width: 768px) {
+  .hero-v2 {
+    padding: var(--space-16) var(--space-4) var(--space-12);
+  }
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    text-align: center;
+  }
+  
+  .hero-visual {
+    order: -1;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-tight);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-base);
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-4) var(--space-6);
+  }
+  
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-xl);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* === 移动端计算器优化 === */
+@media (max-width: 768px) {
+  .calculator-section-v2 {
+    padding: var(--space-16) var(--space-4);
+  }
+  
+  .calculator-card {
+    padding: var(--space-6);
+    margin: var(--space-4);
+  }
+  
+  .input-field {
+    font-size: var(--font-size-xl);
+    padding: var(--space-5);
+    text-align: center;
+  }
+  
+  .calculate-button {
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--font-size-lg);
+    width: 100%;
+  }
+}
+
+/* === 移动端功能卡片优化 === */
+@media (max-width: 768px) {
+  .features-section-v2,
+  .tests-section-v2 {
+    padding: var(--space-16) var(--space-4);
+  }
+  
+  .features-grid-v2,
+  .tests-grid-v2 {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .feature-card-v2,
+  .test-card-v2 {
+    padding: var(--space-6);
+  }
+  
+  .feature-icon-v2 {
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-xl);
+  }
+  
+  .test-header-v2 {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+  
+  .difficulty-badge-v2 {
+    align-self: flex-end;
+  }
+}
+
+/* === 移动端测试界面优化 === */
+@media (max-width: 768px) {
+  .test-container-v2 {
+    padding-top: 60px;
+  }
+  
+  /* 紧凑的导航栏 */
+  .nav-container-v2 {
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  .nav-logo-v2 {
+    font-size: var(--font-size-base);
+  }
+  
+  .nav-logo-v2 img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* 进度条优化 */
+  .test-progress-bar {
+    top: 60px;
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  .progress-container {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .progress-bar-track {
+    width: 100%;
+  }
+  
+  /* 测试说明优化 */
+  .test-intro-v2 {
+    padding: var(--space-6) var(--space-4);
+  }
+  
+  .test-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .test-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .test-instructions {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .instruction-item {
+    padding: var(--space-3);
+  }
+  
+  /* 部分选择器移动端优化 */
+  .section-tabs-v2 {
+    top: 120px;
+    padding: 0 var(--space-4);
+  }
+  
+  .section-tab-v2 {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-xs);
+    min-width: 80px;
+  }
+  
+  /* 测试内容布局 */
+  .test-content-v2 {
+    flex-direction: column;
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+  
+  /* 音频面板移动端优化 */
+  .audio-panel-v2 {
+    width: 100%;
+    position: static;
+    order: -1;
+    padding: var(--space-4);
+  }
+  
+  .player-controls-v2 {
+    gap: var(--space-3);
+  }
+  
+  .play-button-v2 {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+  }
+  
+  .speed-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .speed-button {
+    padding: var(--space-2);
+    font-size: var(--font-size-xs);
+  }
+  
+  /* 题目区域移动端优化 */
+  .section-content-v2 {
+    padding: var(--space-5);
+  }
+  
+  .questions-list {
+    gap: var(--space-4);
+  }
+  
+  .question-item-v2 {
+    padding: var(--space-4);
+  }
+  
+  .question-number {
+    width: 28px;
+    height: 28px;
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-3);
+  }
+  
+  .question-text {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-3);
+  }
+  
+  .question-input {
+    padding: var(--space-4);
+    font-size: var(--font-size-base);
+  }
+  
+  .multiple-choice-options {
+    gap: var(--space-2);
+  }
+  
+  .option-item-v2 {
+    padding: var(--space-3);
+  }
+  
+  .option-text {
+    font-size: var(--font-size-sm);
+  }
+  
+  /* 导航控制移动端优化 */
+  .question-navigation {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .question-counter {
+    order: -1;
+    text-align: center;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: var(--space-3);
+    width: 100%;
+  }
+  
+  .nav-button {
+    flex: 1;
+    padding: var(--space-4);
+    justify-content: center;
+  }
+}
+
+/* === 移动端模态框优化 === */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95vw;
+    padding: var(--space-6);
+    margin: var(--space-4);
+  }
+  
+  .modal-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .modal-button {
+    padding: var(--space-4);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* === 触摸友好的交互增强 === */
+@media (max-width: 768px) {
+  /* 增大触摸目标 */
+  .nav-menu-v2 a,
+  .btn,
+  .nav-button,
+  .option-item-v2,
+  .speed-button,
+  .play-button-v2 {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 触摸反馈 */
+  .btn:active,
+  .nav-button:active,
+  .option-item-v2:active,
+  .speed-button:active,
+  .play-button-v2:active {
+    transform: scale(0.98);
+    background: var(--primary-600);
+  }
+  
+  /* 防止意外缩放 */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+  
+  /* 滚动优化 */
+  .test-content-v2,
+  .questions-list,
+  .tabs-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* === 横屏模式优化 === */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-v2 {
+    padding: var(--space-8) var(--space-4);
+  }
+  
+  .hero-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .test-intro-v2 {
+    padding: var(--space-4);
+  }
+  
+  .test-instructions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal-actions {
+    flex-direction: row;
+  }
+}
+
+/* === 小屏幕设备额外优化 === */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .test-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .feature-card-v2,
+  .test-card-v2 {
+    padding: var(--space-4);
+  }
+  
+  .section-content-v2 {
+    padding: var(--space-4);
+  }
+  
+  .question-item-v2 {
+    padding: var(--space-3);
+  }
+  
+  .audio-panel-v2 {
+    padding: var(--space-3);
+  }
+  
+  .speed-controls {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* === 移动端性能优化 === */
+@media (max-width: 768px) {
+  /* 减少阴影和渐变以提升性能 */
+  .card:hover,
+  .feature-card-v2:hover,
+  .test-card-v2:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* 简化动画 */
+  .btn:hover,
+  .nav-button:hover {
+    transform: none;
+  }
+  
+  /* 优化图片加载 */
+  img {
+    loading: lazy;
+  }
+}
+
+/* === 可访问性移动端增强 === */
+@media (max-width: 768px) {
+  /* 更大的聚焦指示器 */
+  .nav-button:focus,
+  .btn:focus,
+  .option-item-v2:focus-within {
+    outline: 3px solid var(--primary-500);
+    outline-offset: 3px;
+  }
+  
+  /* 更好的文本对比度 */
+  @media (prefers-contrast: high) {
+    .option-item-v2,
+    .question-item-v2 {
+      border-width: 3px;
+    }
+  }
+  
+  /* 减少动画 */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-menu-v2,
+    .submit-modal,
+    .modal-content {
+      transition: none;
+    }
+  }
+}
+
+/* === 移动端安全区域适配（刘海屏等） === */
+@supports (padding: max(0px)) {
+  .nav-bar-v2 {
+    padding-left: max(var(--space-6), env(safe-area-inset-left));
+    padding-right: max(var(--space-6), env(safe-area-inset-right));
+  }
+  
+  .nav-menu-v2 {
+    padding-left: max(var(--space-6), env(safe-area-inset-left));
+    padding-right: max(var(--space-6), env(safe-area-inset-right));
+  }
+  
+  .test-content-v2 {
+    padding-left: max(var(--space-4), env(safe-area-inset-left));
+    padding-right: max(var(--space-4), env(safe-area-inset-right));
+  }
+}

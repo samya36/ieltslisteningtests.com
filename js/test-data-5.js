@@ -1,11 +1,11 @@
-// 剑桥雅思20 Test 2 测试数据
+// 进阶听力测试 5 数据
 const TEST_DATA_5 = {
     testInfo: {
-        title: '剑桥雅思20 Test 2',
-        description: 'Cambridge IELTS 20 Listening Test 2',
+        title: '进阶听力测试 5',
+        description: 'Advanced Listening Practice Test 5',
         totalQuestions: 40,
         timeLimit: 30, // 分钟
-        audioPath: '../剑桥雅思20/剑20 听力音频Test2/'
+        audioPath: '../audio/test5/'
     },
     
     section1: {

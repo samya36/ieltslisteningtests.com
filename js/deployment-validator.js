@@ -1,5 +1,5 @@
 // 部署验证工具
-// 用于验证剑桥雅思20集成后的系统完整性和部署就绪状态
+// 用于验证进阶听力测试集成后的系统完整性和部署就绪状态
 
 class DeploymentValidator {
     constructor() {
@@ -74,7 +74,7 @@ class DeploymentValidator {
             { path: 'js/test-system-validator.js', type: 'script', critical: false },
             
             // 样式文件
-            { path: 'css/cambridge-tests.css', type: 'style', critical: true },
+            { path: 'css/advanced-tests.css', type: 'style', critical: true },
             
             // 文档文件
             { path: 'CHANGELOG.md', type: 'document', critical: false },
@@ -130,10 +130,10 @@ class DeploymentValidator {
         console.log('🎵 验证音频文件...');
         
         const audioTests = [
-            { testId: 'test4', name: '剑桥雅思20 Test 1' },
-            { testId: 'test5', name: '剑桥雅思20 Test 2' },
-            { testId: 'test6', name: '剑桥雅思20 Test 3' },
-            { testId: 'test7', name: '剑桥雅思20 Test 4' }
+            { testId: 'test4', name: '进阶听力测试 Test 4' },
+            { testId: 'test5', name: '进阶听力测试 Test 5' },
+            { testId: 'test6', name: '进阶听力测试 Test 6' },
+            { testId: 'test7', name: '进阶听力测试 Test 7' }
         ];
 
         for (const test of audioTests) {
@@ -267,7 +267,7 @@ class DeploymentValidator {
             { name: '音频配置存在', test: () => typeof AUDIO_CONFIG !== 'undefined' },
             { name: '测试UI类存在', test: () => typeof TestUI !== 'undefined' },
             { name: '评分显示功能存在', test: () => typeof generateScoreResultHTML !== 'undefined' },
-            { name: 'Cambridge样式加载', test: () => this.checkCSSLoaded('cambridge-tests.css') }
+            { name: '进阶样式加载', test: () => this.checkCSSLoaded('advanced-tests.css') }
         ];
 
         functionalityTests.forEach(test => {
@@ -583,7 +583,7 @@ window.quickDeploymentCheck = function() {
         { name: '音频配置', test: () => typeof AUDIO_CONFIG !== 'undefined' && AUDIO_CONFIG.test4 },
         { name: '剑桥雅思数据', test: () => typeof TEST_DATA_4 !== 'undefined' },
         { name: '音频播放器', test: () => typeof AudioPlayer !== 'undefined' },
-        { name: 'Cambridge样式', test: () => document.querySelector('link[href*="cambridge-tests.css"]') !== null }
+        { name: '进阶样式', test: () => document.querySelector('link[href*="advanced-tests.css"]') !== null }
     ];
 
     let passed = 0;

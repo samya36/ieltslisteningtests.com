@@ -1,4 +1,4 @@
-// 剑桥雅思20测试系统验证工具
+// 进阶听力测试系统验证工具
 // 用于全面测试和优化新集成的功能
 
 class TestSystemValidator {
@@ -18,7 +18,7 @@ class TestSystemValidator {
         }
 
         this.isRunning = true;
-        console.log('🚀 开始剑桥雅思20系统完整测试...');
+        console.log('🚀 开始进阶听力系统完整测试...');
         
         try {
             // 清理之前的结果
@@ -67,10 +67,10 @@ class TestSystemValidator {
     async testAudioPlayback() {
         console.log('📻 测试音频播放功能...');
         const audioTests = [
-            { testId: 'test4', name: '剑桥雅思20 Test 1' },
-            { testId: 'test5', name: '剑桥雅思20 Test 2' },
-            { testId: 'test6', name: '剑桥雅思20 Test 3' },
-            { testId: 'test7', name: '剑桥雅思20 Test 4' }
+            { testId: 'test4', name: '进阶听力测试 Test 4' },
+            { testId: 'test5', name: '进阶听力测试 Test 5' },
+            { testId: 'test6', name: '进阶听力测试 Test 6' },
+            { testId: 'test7', name: '进阶听力测试 Test 7' }
         ];
 
         for (const test of audioTests) {
@@ -229,7 +229,7 @@ class TestSystemValidator {
             
             // 检查关键元素的响应式表现
             const elements = [
-                '.practice-card.cambridge-20',
+                '.practice-card.advanced-20',
                 '.test-category',
                 '.official-badge'
             ];
@@ -384,7 +384,7 @@ class TestSystemValidator {
     // 生成测试报告
     generateTestReport() {
         console.log('\n' + '='.repeat(50));
-        console.log('📋 剑桥雅思20系统测试报告');
+        console.log('📋 进阶听力系统测试报告');
         console.log('='.repeat(50));
 
         // 按类别分组显示结果
