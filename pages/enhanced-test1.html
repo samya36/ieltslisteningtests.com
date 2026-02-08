@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- 安全HTTP头 -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
@@ -19,32 +19,25 @@
         frame-ancestors 'none';
         upgrade-insecure-requests;
     ">
-    
+
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    
+
     <title>Enhanced IELTS Listening Test 1</title>
-    
-    <!-- 样式文件 -->
+
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/test.css">
     <link rel="stylesheet" href="../css/accessibility.css">
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
     <link rel="stylesheet" href="../css/enhanced-components.css">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- 跳过导航链接 -->
     <a href="#main-content" class="skip-link">跳过导航，直接到主要内容</a>
-    
-    <!-- 屏幕阅读器通告区域 -->
-    <div id="sr-announcements" aria-live="polite" aria-atomic="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"></div>
-    
-    <!-- 导航栏 -->
+    <div id="sr-announcements" aria-live="polite" aria-atomic="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;"></div>
+
     <nav class="nav-bar">
         <div class="nav-container">
             <div class="logo">
@@ -61,16 +54,16 @@
                 <li><a href="scoring.html">评分详解</a></li>
                 <li><a href="cases.html">案例分析</a></li>
                 <li><a href="practice.html">听力练习</a></li>
-                <li><button onclick="keyboardNavigation?.showHelp()" class="help-btn">
-                    <i class="fas fa-keyboard"></i> 快捷键
-                </button></li>
+                <li>
+                    <button id="kb-help-btn" class="help-btn" type="button">
+                        <i class="fas fa-keyboard"></i> 快捷键
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <!-- 主要内容区 -->
     <main class="test-container" id="main-content">
-        <!-- 测试说明 -->
         <div class="test-intro">
             <div class="test-header">
                 <h1>🎆 Enhanced IELTS Listening Test 1</h1>
@@ -80,14 +73,14 @@
                     <span class="badge questions">40题</span>
                 </div>
             </div>
-            
+
             <div class="enhancement-notice">
                 <div class="notice-icon">🚀</div>
                 <div class="notice-content">
                     <h3>增强特性</h3>
                     <ul class="feature-list">
                         <li><i class="fas fa-keyboard"></i> 全面键盘快捷键支持</li>
-                        <li><i class="fas fa-play-circle"></i> 音频断点跳转功能</li>
+                        <li><i class="fas fa-play-circle"></i> 音频自动恢复机制</li>
                         <li><i class="fas fa-star"></i> 智能题目标记系统</li>
                         <li><i class="fas fa-mobile-alt"></i> 移动端优化体验</li>
                         <li><i class="fas fa-save"></i> 自动进度保存</li>
@@ -97,371 +90,133 @@
         </div>
 
         <div class="test-layout">
-            <!-- 左侧主要内容 -->
             <div class="test-main">
-                <!-- 增强音频播放器 -->
-                <div class="enhanced-audio-player">
-                    <div class="audio-section" id="audio-section-1">
-                        <div class="audio-player-main">
-                            <audio id="section1-player" 
-                                   src="../audio/test1/Part1%20Amateur%20Dramatic%20Society.m4a"
-                                   data-local-src="../audio/test1/Part1%20Amateur%20Dramatic%20Society.m4a"
-                                   preload="none"></audio>
-                        </div>
-                        <div class="audio-controls">
-                            <button id="section1-play" class="play-btn" aria-label="播放/暂停Section 1">
-                                <i class="fas fa-play"></i>
-                            </button>
+                <div class="audio-players-container">
+                    <div class="audio-player" id="section1-player-container">
+                        <audio id="section1-player" src="../audio/test1/Part1%20Amateur%20Dramatic%20Society.m4a" preload="none"></audio>
+                        <div class="custom-player">
+                            <div class="player-main">
+                                <button class="play-btn" id="section1-play"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar"><input type="range" class="progress" id="section1-progress" min="0" max="100" value="0"></div>
+                                <div class="time" id="section1-time">00:00 / 00:00</div>
+                            </div>
                             <div class="speed-control">
-                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedDown()">−</button>
-                                <span class="speed-display">1.00x</span>
-                                <button class="speed-btn" onclick="enhancedAudioPlayer?.speedUp()">+</button>
+                                <select class="playback-speed" id="section1-speed">
+                                    <option value="0.75">0.75x</option>
+                                    <option value="1" selected>1.0x</option>
+                                    <option value="1.25">1.25x</option>
+                                    <option value="1.5">1.5x</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="breakpoint-controls" id="breakpoint-controls">
-                            <!-- 断点按钮将由JS动态生成 -->
+                    </div>
+
+                    <div class="audio-player" id="section2-player-container" style="display:none;">
+                        <audio id="section2-player" src="../audio/test1/Part2%20Talk%20to%20new%20employees%20at%20a%20strawberry%20farm.m4a" preload="none"></audio>
+                        <div class="custom-player">
+                            <div class="player-main">
+                                <button class="play-btn" id="section2-play"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar"><input type="range" class="progress" id="section2-progress" min="0" max="100" value="0"></div>
+                                <div class="time" id="section2-time">00:00 / 00:00</div>
+                            </div>
+                            <div class="speed-control">
+                                <select class="playback-speed" id="section2-speed">
+                                    <option value="0.75">0.75x</option>
+                                    <option value="1" selected>1.0x</option>
+                                    <option value="1.25">1.25x</option>
+                                    <option value="1.5">1.5x</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="audio-progress">
-                        <input type="range" id="section1-progress" class="progress" min="0" max="100" value="0">
-                        <div class="time-display">
-                            <span id="section1-time">00:00 / 00:00</span>
+
+                    <div class="audio-player" id="section3-player-container" style="display:none;">
+                        <audio id="section3-player" src="../audio/test1/Part3-Field%20trip%20to%20Bolton%20lsland.m4a" preload="none"></audio>
+                        <div class="custom-player">
+                            <div class="player-main">
+                                <button class="play-btn" id="section3-play"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar"><input type="range" class="progress" id="section3-progress" min="0" max="100" value="0"></div>
+                                <div class="time" id="section3-time">00:00 / 00:00</div>
+                            </div>
+                            <div class="speed-control">
+                                <select class="playback-speed" id="section3-speed">
+                                    <option value="0.75">0.75x</option>
+                                    <option value="1" selected>1.0x</option>
+                                    <option value="1.25">1.25x</option>
+                                    <option value="1.5">1.5x</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="audio-player" id="section4-player-container" style="display:none;">
+                        <audio id="section4-player" src="../audio/test1/Part4%20Development%20and%20use%20of%20plastics.m4a" preload="none"></audio>
+                        <div class="custom-player">
+                            <div class="player-main">
+                                <button class="play-btn" id="section4-play"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar"><input type="range" class="progress" id="section4-progress" min="0" max="100" value="0"></div>
+                                <div class="time" id="section4-time">00:00 / 00:00</div>
+                            </div>
+                            <div class="speed-control">
+                                <select class="playback-speed" id="section4-speed">
+                                    <option value="0.75">0.75x</option>
+                                    <option value="1" selected>1.0x</option>
+                                    <option value="1.25">1.25x</option>
+                                    <option value="1.5">1.5x</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 部分切换标签页 -->
                 <div class="section-tabs" role="tablist">
-                    <button class="section-tab active" data-section="1" role="tab" 
-                            aria-selected="true" id="section1-tab">Section 1</button>
-                    <button class="section-tab" data-section="2" role="tab" 
-                            aria-selected="false" id="section2-tab">Section 2</button>
-                    <button class="section-tab" data-section="3" role="tab" 
-                            aria-selected="false" id="section3-tab">Section 3</button>
-                    <button class="section-tab" data-section="4" role="tab" 
-                            aria-selected="false" id="section4-tab">Section 4</button>
+                    <button class="section-tab active" data-section="1" role="tab" aria-selected="true" id="section1-tab">Section 1</button>
+                    <button class="section-tab" data-section="2" role="tab" aria-selected="false" id="section2-tab">Section 2</button>
+                    <button class="section-tab" data-section="3" role="tab" aria-selected="false" id="section3-tab">Section 3</button>
+                    <button class="section-tab" data-section="4" role="tab" aria-selected="false" id="section4-tab">Section 4</button>
                 </div>
 
-                <!-- 题目内容区域 -->
-                <div class="questions-container">
-                    <div class="question-container active" id="section1-content" role="tabpanel">
-                        <div class="section-header">
-                            <h2>Section 1</h2>
-                            <p class="section-instructions">
-                                <strong>Questions 1-10</strong><br>
-                                Complete the form below.<br>
-                                Write <strong>ONE WORD OR A NUMBER</strong> for each answer.
-                            </p>
-                        </div>
-                        
-                        <!-- 示例题目 - 填空题 -->
-                        <div class="form-content">
-                            <h3>Amateur Dramatic Society</h3>
-                            <p><strong>Secretary:</strong> Jane Caulfield</p>
-                            <p><strong>Mailing address:</strong> 117 Green Road, Prestwin</p>
-                            
-                            <div class="question-item" data-question="1">
-                                <label for="q1">Location for rehearsals: The 
-                                    <input type="text" id="q1" class="fill-blank" placeholder="1" maxlength="20">
-                                     House, Wynn
-                                </label>
-                            </div>
-                            
-                            <div class="question-item" data-question="2">
-                                <p>No experience necessary</p>
-                                <label for="q2">They need actors and 
-                                    <input type="text" id="q2" class="fill-blank" placeholder="2" maxlength="20">
-                                     singers
-                                </label>
-                            </div>
-                            
-                            <div class="question-item" data-question="3">
-                                <label for="q3">Also need people who can 
-                                    <input type="text" id="q3" class="fill-blank" placeholder="3" maxlength="20">
-                                </label>
-                            </div>
-                            
-                            <div class="question-item" data-question="4">
-                                <label for="q4">Meetings 6–8 p.m. every 
-                                    <input type="text" id="q4" class="fill-blank" placeholder="4" maxlength="20">
-                                </label>
-                            </div>
-                            
-                            <div class="question-item" data-question="5">
-                                <label for="q5">Closed in 
-                                    <input type="text" id="q5" class="fill-blank" placeholder="5" maxlength="20">
-                                     (for 2 weeks)
-                                </label>
-                            </div>
-                        </div>
+                <form id="test-form" class="questions-container">
+                    <div class="section-content active" id="section-1" data-section="1">
+                        <div class="questions"></div>
                     </div>
-                    
-                    <!-- 其他section内容类似... -->
-                    <div class="question-container" id="section2-content" role="tabpanel" style="display: none;">
-                        <div class="section-header">
-                            <h2>Section 2</h2>
-                            <p class="section-instructions">
-                                <strong>Questions 11-14</strong><br>
-                                Choose the correct letter, <strong>A, B or C</strong>.
-                            </p>
-                        </div>
-                        
-                        <!-- 示例选择题 -->
-                        <div class="mcq-container">
-                            <div class="question-item" data-question="11">
-                                <h4>11. What should employees bring to work?</h4>
-                                <div class="options">
-                                    <label class="option-label">
-                                        <input type="radio" name="q11" value="A">
-                                        <span class="option-text">A. gloves</span>
-                                    </label>
-                                    <label class="option-label">
-                                        <input type="radio" name="q11" value="B">
-                                        <span class="option-text">B. lunch</span>
-                                    </label>
-                                    <label class="option-label">
-                                        <input type="radio" name="q11" value="C">
-                                        <span class="option-text">C. water</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="section-content" id="section-2" data-section="2" style="display:none;">
+                        <div class="questions"></div>
                     </div>
-                </div>
+                    <div class="section-content" id="section-3" data-section="3" style="display:none;">
+                        <div class="questions"></div>
+                    </div>
+                    <div class="section-content" id="section-4" data-section="4" style="display:none;">
+                        <div class="questions"></div>
+                    </div>
+                </form>
 
-                <!-- 提交按钮 -->
                 <div class="test-actions">
-                    <button class="btn-secondary" id="btn-reset">
-                        <i class="fas fa-redo"></i> 重新开始
-                    </button>
-                    <button class="btn-primary" id="btn-submit">
-                        <i class="fas fa-paper-plane"></i> 提交答案
-                    </button>
+                    <button class="btn-secondary" id="btn-reset"><i class="fas fa-redo"></i> 重新开始</button>
+                    <button class="btn-primary" id="btn-submit"><i class="fas fa-paper-plane"></i> 提交答案</button>
                 </div>
             </div>
 
-            <!-- 右侧增强答题卡 -->
             <aside class="test-sidebar">
-                <div class="answer-sheet-container" id="answer-sheet-container">
-                    <!-- 答题卡内容将由JS动态生成 -->
-                </div>
-                
-                <!-- 进度显示 -->
+                <div class="answer-sheet-container" id="answer-sheet-container"></div>
                 <div class="progress-panel">
                     <h4>答题进度</h4>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
                     <div class="progress-text">0 / 40 题已完成</div>
                 </div>
             </aside>
         </div>
     </main>
 
-    <!-- 反馈容器 -->
     <div id="feedback-container"></div>
 
-    <!-- JavaScript文件 -->
-    <script src="../js/enhanced-audio-player.js" defer></script>
-    <script src="../js/enhanced-answer-sheet.js" defer></script>
-    <script src="../js/enhanced-keyboard-navigation.js" defer></script>
     <script src="../js/test-data.js" defer></script>
     <script src="../js/test-answers.js" defer></script>
+    <script src="../js/test-renderer.js" defer></script>
+    <script src="../js/test-init.js" defer></script>
+    <script src="../js/enhanced-answer-sheet.js" defer></script>
+    <script src="../js/enhanced-keyboard-navigation.js" defer></script>
     <script src="../js/enhanced-test1-init.js" defer></script>
-    
-    <!-- 主初始化脚本 -->
-    <!-- removed: inline script moved to external file -->
-    document.addEventListener('DOMContentLoaded', function() {
-        // 初始化题目数据
-        if (typeof TEST_DATA !== 'undefined' && enhancedAnswerSheet) {
-            const allQuestions = [];
-            
-            // 从 TEST_DATA 提取所有题目
-            Object.keys(TEST_DATA).forEach(sectionKey => {
-                const section = TEST_DATA[sectionKey];
-                if (section.questions) {
-                    section.questions.forEach(q => allQuestions.push(q));
-                } else if (section.parts) {
-                    section.parts.forEach(part => {
-                        if (part.questions) {
-                            part.questions.forEach(q => allQuestions.push(q));
-                        }
-                    });
-                }
-            });
-            
-            enhancedAnswerSheet.setQuestions(allQuestions);
-        }
-        
-        // 监听答题变化
-        document.addEventListener('input', function(e) {
-            if (e.target.matches('input[type="text"], input[type="radio"]')) {
-                const questionId = e.target.id || e.target.name;
-                const value = e.target.type === 'radio' ? 
-                    (e.target.checked ? e.target.value : null) : e.target.value;
-                
-                if (enhancedAnswerSheet && questionId) {
-                    enhancedAnswerSheet.updateAnswer(questionId, value);
-                }
-                
-                updateProgress();
-            }
-        });
-        
-        // 更新进度
-        function updateProgress() {
-            const inputs = document.querySelectorAll('input[type="text"], input[type="radio"]:checked');
-            const totalQuestions = document.querySelectorAll('.question-item').length;
-            const answeredCount = Array.from(inputs).filter(input => {
-                return input.type === 'radio' ? input.checked : input.value.trim() !== '';
-            }).length;
-            
-            const percentage = (answeredCount / totalQuestions) * 100;
-            
-            const progressFill = document.querySelector('.progress-fill');
-            const progressText = document.querySelector('.progress-text');
-            
-            if (progressFill) progressFill.style.width = percentage + '%';
-            if (progressText) progressText.textContent = `${answeredCount} / ${totalQuestions} 题已完成`;
-        }
-        
-        // 监听答题卡事件
-        document.addEventListener('answerSheet:questionChanged', function(e) {
-            const questionIndex = e.detail.index;
-            // 切换到对应题目
-            console.log('切换到题目', questionIndex + 1);
-        });
-        
-        // Section切换事件
-        document.querySelectorAll('.section-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const sectionNum = this.dataset.section;
-                switchToSection(sectionNum);
-            });
-        });
-        
-        function switchToSection(sectionNum) {
-            // 更新标签样式
-            document.querySelectorAll('.section-tab').forEach(tab => {
-                tab.classList.remove('active');
-                tab.setAttribute('aria-selected', 'false');
-            });
-            
-            const activeTab = document.querySelector(`[data-section="${sectionNum}"]`);
-            if (activeTab) {
-                activeTab.classList.add('active');
-                activeTab.setAttribute('aria-selected', 'true');
-            }
-            
-            // 更新内容区域
-            document.querySelectorAll('.question-container').forEach(container => {
-                container.style.display = 'none';
-            });
-            
-            const activeContent = document.getElementById(`section${sectionNum}-content`);
-            if (activeContent) {
-                activeContent.style.display = 'block';
-            }
-            
-            // 通知音频播放器
-            if (enhancedAudioPlayer) {
-                enhancedAudioPlayer.currentSection = parseInt(sectionNum);
-            }
-        }
-        
-        // 初始化键盘导航系统
-        if (keyboardNavigation) {
-            keyboardNavigation.updateQuestionInfo(0, 40);
-        }
-        
-        // 显示启动提示
-        setTimeout(() => {
-            if (enhancedAnswerSheet) {
-                enhancedAnswerSheet.showFeedback('🎆 增强测试系统已启动！按 H 查看帮助', 'info');
-            }
-        }, 1500);
-    });
-    
-    // 全局函数
-    function resetTest() {
-        if (confirm('确定要重新开始测试吗？所有答案将被清除。')) {
-            // 清除所有输入
-            document.querySelectorAll('input').forEach(input => {
-                if (input.type === 'radio' || input.type === 'checkbox') {
-                    input.checked = false;
-                } else {
-                    input.value = '';
-                }
-            });
-            
-            // 重置答题卡
-            if (enhancedAnswerSheet) {
-                enhancedAnswerSheet.reset();
-            }
-            
-            // 重置音频播放器
-            if (enhancedAudioPlayer) {
-                Object.values(enhancedAudioPlayer.players).forEach(player => {
-                    if (player && player.audio) {
-                        player.audio.pause();
-                        player.audio.currentTime = 0;
-                    }
-                });
-            }
-            
-            // 更新进度
-            updateProgress();
-        }
-    }
-    
-    function submitTest() {
-        // 收集所有答案
-        const rawInputs = {};
-        document.querySelectorAll('input').forEach(input => {
-            if (input.type === 'radio' && input.checked) {
-                rawInputs[input.name] = input.value;
-            } else if (input.type === 'text' && input.value.trim()) {
-                rawInputs[input.id] = input.value.trim();
-            }
-        });
-
-        // 归一化为 sectionX_Y 键
-        const userAnswers = {};
-        const toKey = (qNum) => {
-            const n = parseInt(String(qNum), 10);
-            const section = Math.min(4, Math.max(1, Math.ceil(n / 10)));
-            return `section${section}_${n}`;
-        };
-        Object.entries(rawInputs).forEach(([k, v]) => {
-            const match = String(k).match(/(\d{1,2})/);
-            if (match) userAnswers[toKey(match[1])] = v;
-        });
-
-        // 构建答案键映射
-        const answerKey = {};
-        if (typeof standardAnswers !== 'undefined') {
-            Object.entries(standardAnswers).forEach(([num, ans]) => {
-                answerKey[toKey(num)] = ans;
-            });
-        }
-
-        try { localStorage.setItem('userAnswers', JSON.stringify(userAnswers)); } catch (_) {}
-        if (window.ScoreEngine && typeof window.ScoreEngine.calculate === 'function') {
-            const scoreResult = window.ScoreEngine.calculate(userAnswers, answerKey);
-            try {
-                localStorage.setItem('latestScoreResult', JSON.stringify(scoreResult));
-                localStorage.setItem('latestAnswerKey', JSON.stringify(answerKey));
-            } catch (_) {}
-            console.log('[ScoreEngine] 评分结果', scoreResult);
-        }
-
-        if (enhancedAnswerSheet) {
-            enhancedAnswerSheet.showFeedback('答案已提交！即将显示评分', 'success');
-        }
-        setTimeout(() => { window.location.href = 'score-validator.html'; }, 800);
-    }
-    
     <script src="../js/score-engine.js" defer></script>
     <script src="../js/test-page-events.js" defer></script>
 </body>

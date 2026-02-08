@@ -2,13 +2,13 @@
  * IELTS 听力测试网站 Service Worker
  * 高级缓存策略和离线功能支持
  * 
- * 版本: 2.1.0
+ * 版本: 2.3.0
  * 更新日期: 2024年
  */
 
 // ==================== 配置常量 ====================
 
-const SW_VERSION = '2.2.0';
+const SW_VERSION = '2.3.0';
 const SW_NAME = `ielts-sw-${SW_VERSION}`;
 
 // 缓存名称配置
