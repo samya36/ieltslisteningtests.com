@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Exclude internal diagnostic pages from indexing
+Disallow: /pages/system-health.html
+Disallow: /pages/optimization-demo.html
+Disallow: /pages/ielts-score-validator.html
+
+Sitemap: https://ieltslisteningtests.com/sitemap.xml

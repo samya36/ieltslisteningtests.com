@@ -78,7 +78,7 @@ const TEST_DATA = {
                 instructions: "Choose <strong>SIX</strong> answers from the box and write the correct letter: <strong>A-J</strong>, next to Questions 15-20.",
                 mapContent: {
                     title: "Map of Strawberry Farm",
-                    imageUrl: "../images/test1/map.jpg"
+                    imageUrl: "../images/test1/map.webp"
                 },
                 questions: [
                     {
