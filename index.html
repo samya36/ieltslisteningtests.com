@@ -62,13 +62,24 @@
     
     <title>雅思听力评分标准解析 - 专业详解助你提分</title>
     <link rel="preload" as="image" href="images/logo.webp" type="image/webp">
+
+    <!-- 关键样式（首屏渲染必需） -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/enhanced/homepage-enhancements.css">
-    <link rel="stylesheet" href="css/test-selection.css">
-    <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/mobile-optimizations.css">
-    <link rel="stylesheet" href="css/mobile-performance-optimizations.css">
+
+    <!-- 非关键样式（异步加载，不阻塞首屏渲染） -->
+    <link rel="stylesheet" href="css/enhanced/homepage-enhancements.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/test-selection.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/accessibility.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/mobile-optimizations.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/mobile-performance-optimizations.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/enhanced/homepage-enhancements.css">
+        <link rel="stylesheet" href="css/test-selection.css">
+        <link rel="stylesheet" href="css/accessibility.css">
+        <link rel="stylesheet" href="css/mobile-optimizations.css">
+        <link rel="stylesheet" href="css/mobile-performance-optimizations.css">
+    </noscript>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
