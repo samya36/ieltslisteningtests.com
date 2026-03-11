@@ -27,12 +27,27 @@
 
     <title>Enhanced IELTS Listening Test 1</title>
 
+    <!-- 预连接CDN加速 -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- 关键样式（首屏渲染必需） -->
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/test.css">
-    <link rel="stylesheet" href="../css/accessibility.css">
-    <link rel="stylesheet" href="../css/mobile-optimizations.css">
-    <link rel="stylesheet" href="../css/enhanced-components.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 非关键样式（异步加载，不阻塞首屏渲染） -->
+    <link rel="stylesheet" href="../css/accessibility.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/mobile-optimizations.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/enhanced-components.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="../css/accessibility.css">
+        <link rel="stylesheet" href="../css/mobile-optimizations.css">
+        <link rel="stylesheet" href="../css/enhanced-components.css">
+    </noscript>
+
+    <!-- Font Awesome 异步加载（不阻塞首屏渲染） -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
 </head>
 <body>
     <a href="#main-content" class="skip-link">跳过导航，直接到主要内容</a>
