@@ -3,6 +3,9 @@
 (function() {
     'use strict';
 
+    // Signal that the newer unified test audio controller owns the page.
+    window.__IELTS_USE_TEST_INIT_AUDIO__ = true;
+
     function detectTestNumber() {
         var path = window.location.pathname.toLowerCase();
         var m = path.match(/test(\d+)/);
@@ -165,6 +168,7 @@
             return;
         }
 
+        audioPlayer.crossOrigin = 'anonymous';
         applyPreferredAudioSource(section, audioPlayer);
         initializeRecoveryState(section, audioPlayer);
         let isPlaying = false;
@@ -346,8 +350,12 @@
             audioPlayer.setAttribute('data-local-src', currentAttrSrc);
         }
 
-        if (stripQuery(currentAttrSrc) !== stripQuery(preferredSrc)) {
+        const corsWasMissing = audioPlayer.crossOrigin !== 'anonymous';
+        audioPlayer.crossOrigin = 'anonymous';
+
+        if (corsWasMissing || stripQuery(currentAttrSrc) !== stripQuery(preferredSrc)) {
             audioPlayer.src = preferredSrc;
+            audioPlayer.load();
         }
     }
 

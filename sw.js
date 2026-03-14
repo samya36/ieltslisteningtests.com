@@ -8,7 +8,7 @@
 
 // ==================== 配置常量 ====================
 
-const SW_VERSION = '2.3.0';
+const SW_VERSION = '2.3.1';
 const SW_NAME = `ielts-sw-${SW_VERSION}`;
 
 // 缓存名称配置
@@ -570,6 +570,12 @@ class IELTSServiceWorker {
                 request,
                 CACHE_CONFIG.AUDIO.networkTimeout
             );
+
+            // Cross-origin media without CORS is exposed to the Service Worker as
+            // an opaque response. Allow it through instead of treating it as a failure.
+            if (networkResponse.type === 'opaque') {
+                return networkResponse;
+            }
             
             if (networkResponse.ok) {
                 // 缓存音频文件（使用 clone，避免消费原响应流）

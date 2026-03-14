@@ -494,6 +494,11 @@ class UniversalAudioPlayer {
 
 // 自动初始化
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.__IELTS_USE_TEST_INIT_AUDIO__) {
+        console.log('⏭️ 已启用 test-init 音频系统，跳过通用音频播放器初始化');
+        return;
+    }
+
     console.log('🎵 DOM加载完成，启动通用音频播放器...');
     
     setTimeout(async () => {
