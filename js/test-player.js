@@ -1,4 +1,5 @@
 // 音频路径配置 - 使用jsDelivr CDN
+const AUDIO_R2_BASE_URL = 'https://audio.ieltslisteningtests.com/audio/';
 // 预先提供一个全局 testPlayer 桥接（防止其他模块在 DOMContentLoaded 之前调用）
 if (!window.testPlayer) {
     window.__pendingSwitchSectionQueue = [];
@@ -21,8 +22,7 @@ if (!window.testPlayer) {
 const AUDIO_CONFIG = {
     // 现有测试路径配置 - 使用实际文件名（与 audio/ 目录中的文件完全匹配）
     test1: {
-        // 优先本地音频（页面在 pages/ 下，因此使用 ../audio/ 相对路径）
-        basePath: '../audio/test1/',
+        basePath: `${AUDIO_R2_BASE_URL}test1/`,
         sections: [
             'Part1 Amateur Dramatic Society.m4a',
             'Part2 Talk to new employees at a strawberry farm.m4a',
@@ -31,7 +31,7 @@ const AUDIO_CONFIG = {
         ]
     },
     test2: {
-        basePath: '../audio/test2/',
+        basePath: `${AUDIO_R2_BASE_URL}test2/`,
         sections: [
             'Part1 Rental Property Application Form.m4a',
             'Part2 Queensland Festival.m4a',
@@ -40,7 +40,7 @@ const AUDIO_CONFIG = {
         ]
     },
     test3: {
-        basePath: '../audio/test3/',
+        basePath: `${AUDIO_R2_BASE_URL}test3/`,
         sections: [
             'Part1 Kiwi Air Customer Complaint Form.m4a',
             'Part2 Spring Festival.m4a',
@@ -224,7 +224,7 @@ class AudioPlayer {
         // 出错时自动在本地与CDN间回退
         player.audio.addEventListener('error', () => {
             const localSrc = this.localFallback[section];
-            const cdnSrc = `https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/section${section}.mp3`;
+            const cdnSrc = `${AUDIO_R2_BASE_URL}test1/section${section}.mp3`;
             const current = player.audio.src;
             const trySrc = (src) => { player.audio.src = src; player.audio.load(); };
             if (current.includes('/audio/test1/') && current !== cdnSrc) {

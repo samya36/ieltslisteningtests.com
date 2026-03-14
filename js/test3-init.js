@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof EnhancedAudioPlayer !== 'undefined') {
     const audioConfig = {
       test3: {
-        cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/',
+        cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
         localPath: '../audio/test3/',
         sections: [
           { id: 'section1', title: 'Section 1: Kiwi Air Complaint', duration: '10:00' },
@@ -75,4 +75,3 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = 'score-validator.html';
   };
 });
-

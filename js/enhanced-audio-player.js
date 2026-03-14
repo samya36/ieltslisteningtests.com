@@ -30,27 +30,27 @@ class EnhancedAudioPlayer {
     // 音频路径配置 - 保持CDN + 本地备份
     static AUDIO_CONFIG = {
         test1: {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
             localPath: '../audio/test1/',
             sections: ['Part1 Amateur Dramatic Society.m4a', 'Part2 Talk to new employees at a strawberry farm.m4a', 'Part3-Field trip to Bolton lsland.m4a', 'Part4 Development and use of plastics.m4a']
         },
         test2: {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test2/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
             localPath: '../audio/test2/',
             sections: ['Part1 Rental Property Application Form.m4a', 'Part2 Queensland Festival.m4a', 'Part3-Research for assignment of children playing outdoors.m4a', 'Part4 The Berbers.m4a']
         },
         test3: {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test3/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
             localPath: '../audio/test3/',
             sections: ['Part1 Kiwi Air Customer Complaint Form.m4a', 'Part2 Spring Festival.m4a', 'Part3-Geology field trip to Iceland.m4a', 'Part4 Recycling Tyres in Australia.m4a']
         },
         'cambridge20-test1': {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test1/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
             localPath: '../audio/c20-test1/',
             sections: ['c20_T1S1_64k.mp3', 'c20_T1S2_64k.mp3', 'c20_T1S3_48k.mp3', 'c20_T1S4_48k.mp3']
         },
         'cambridge20-test2': {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test2/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
             localPath: '../audio/c20-test2/',
             sections: ['c20_T2S1_48k.mp3', 'c20_T2S2_48k.mp3', 'c20_T2S3_48k.mp3', 'c20_T2S4_48k.mp3']
         }
@@ -150,7 +150,7 @@ class EnhancedAudioPlayer {
         }
     }
 
-    // 初始化音频源（本地优先，CDN备份）
+    // 初始化音频源（R2 域名优先，本地备份）
     async initializeAudioSources() {
         for (let section = 1; section <= 4; section++) {
             const player = this.players[section];
@@ -161,17 +161,15 @@ class EnhancedAudioPlayer {
             // 对文件名进行URL编码（空格→%20），防止路径解析失败
             const encodedFileName = encodeURIComponent(fileName);
             
-            // 优先尝试本地路径（更可靠），CDN作为备份
-            const localUrl = this.audioConfig.localPath + encodedFileName;
-            const cdnUrl = this.audioConfig.cdnPath + encodedFileName;
-
+            const primaryUrl = this.audioConfig.cdnPath + encodedFileName;
+            const fallbackUrl = this.audioConfig.localPath + encodedFileName;
             try {
-                await this.loadAudioWithFallback(player.audio, localUrl, cdnUrl);
+                await this.loadAudioWithFallback(player.audio, primaryUrl, fallbackUrl);
                 console.log(`✅ Section ${section} 音频加载成功`);
             } catch (error) {
                 console.error(`❌ Section ${section} 音频加载失败:`, error);
-                console.error(`  本地路径: ${localUrl}`);
-                console.error(`  CDN路径: ${cdnUrl}`);
+                console.error(`  R2路径: ${primaryUrl}`);
+                console.error(`  本地路径: ${fallbackUrl}`);
                 this.showAudioError(section);
             }
         }
@@ -197,7 +195,7 @@ class EnhancedAudioPlayer {
                     attemptCount++;
                     
                     if (attemptCount < maxAttempts && url === primaryUrl) {
-                        console.warn(`CDN加载失败，切换到本地备份: ${fallbackUrl}`);
+                        console.warn(`R2音频加载失败，切换到本地备份: ${fallbackUrl}`);
                         tryLoad(fallbackUrl);
                     } else {
                         reject(new Error(`所有音频源加载失败`));

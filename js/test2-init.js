@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof EnhancedAudioPlayer !== 'undefined') {
     const audioConfig = {
       test2: {
-        cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test2/',
+        cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
         localPath: '../audio/test2/',
         sections: [
           { id: 'section1', title: 'Section 1: Winsham Farm Job', duration: '10:00' },
@@ -94,4 +94,3 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = 'score-validator.html';
   };
 });
-

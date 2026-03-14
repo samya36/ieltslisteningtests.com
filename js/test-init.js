@@ -13,6 +13,7 @@
     const testNumber = detectTestNumber();
     const storageKey = `ielts-test${testNumber}-answers`;
     const resultStorageKey = `ielts-test${testNumber}-result`;
+    const AUDIO_R2_BASE_URL = 'https://audio.ieltslisteningtests.com/audio/';
     const defaultListeningScoreTable = {
         40: 9.0,
         39: 9.0,
@@ -61,7 +62,7 @@
         1: {
             localPath: '../audio/test1/',
             absolutePath: '/audio/test1/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test1/',
+            cdnPath: `${AUDIO_R2_BASE_URL}test1/`,
             files: [
                 'Part1 Amateur Dramatic Society.m4a',
                 'Part2 Talk to new employees at a strawberry farm.m4a',
@@ -72,7 +73,7 @@
         2: {
             localPath: '../audio/test2/',
             absolutePath: '/audio/test2/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test2/',
+            cdnPath: `${AUDIO_R2_BASE_URL}test2/`,
             files: [
                 'Part1 Rental Property Application Form.m4a',
                 'Part2 Queensland Festival.m4a',
@@ -83,7 +84,7 @@
         3: {
             localPath: '../audio/test3/',
             absolutePath: '/audio/test3/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/',
+            cdnPath: `${AUDIO_R2_BASE_URL}test3/`,
             files: [
                 'Part1 Kiwi Air Customer Complaint Form.m4a',
                 'Part2 Spring Festival.m4a',
@@ -94,13 +95,13 @@
         4: {
             localPath: '../audio/test4/',
             absolutePath: '/audio/test4/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test4/',
+            cdnPath: `${AUDIO_R2_BASE_URL}test4/`,
             files: ['Part1_Windward_Apartments.m4a', 'Part2.m4a', 'Part3.m4a', 'Part4.m4a']
         },
         5: {
             localPath: '../audio/test5/',
             absolutePath: '/audio/test5/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test5/',
+            cdnPath: `${AUDIO_R2_BASE_URL}test5/`,
             files: [
                 'test5_Part1_Winsham_Farm.m4a',
                 'test5_Part2_Queensland_Festival.m4a',
@@ -111,7 +112,7 @@
         6: {
             localPath: '../audio/test6/',
             absolutePath: '/audio/test6/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test6/',
+            cdnPath: `${AUDIO_R2_BASE_URL}test6/`,
             files: [
                 'Part1_Amateur_Dramatic_Society.m4a',
                 'Part2_Clifton_Bird_Park.m4a',
@@ -122,7 +123,7 @@
         7: {
             localPath: '../audio/c20-test4/',
             absolutePath: '/audio/c20-test4/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/c20-test4/',
+            cdnPath: `${AUDIO_R2_BASE_URL}c20-test4/`,
             files: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
         }
     };
@@ -164,6 +165,7 @@
             return;
         }
 
+        applyPreferredAudioSource(section, audioPlayer);
         initializeRecoveryState(section, audioPlayer);
         let isPlaying = false;
 
@@ -280,6 +282,10 @@
             if (normalized) {
                 candidates.push(normalized);
             }
+            const remote = toR2AudioUrl(src);
+            if (remote) {
+                candidates.push(remote);
+            }
         });
 
         if (config && config.files && config.files[section - 1]) {
@@ -308,6 +314,41 @@
         });
 
         return unique;
+    }
+
+    function toR2AudioUrl(src) {
+        if (!src) return '';
+        const value = String(src);
+        if (value.startsWith(AUDIO_R2_BASE_URL)) return value;
+
+        const match = value.match(/(?:https?:\/\/[^/]+)?(?:\.\.\/|\/)?audio\/(.+)$/);
+        if (!match) return '';
+
+        return `${AUDIO_R2_BASE_URL}${match[1]}`;
+    }
+
+    function getConfiguredRemoteAudioUrl(section, config) {
+        if (!config || !config.files || !config.files[section - 1] || !config.cdnPath) return '';
+        return config.cdnPath + encodeURIComponent(config.files[section - 1]);
+    }
+
+    function applyPreferredAudioSource(section, audioPlayer) {
+        const config = TEST_AUDIO_CONFIG[testNumber];
+        const currentAttrSrc = audioPlayer.getAttribute('src') || '';
+        const preferredSrc =
+            getConfiguredRemoteAudioUrl(section, config) ||
+            toR2AudioUrl(currentAttrSrc) ||
+            toR2AudioUrl(audioPlayer.currentSrc);
+
+        if (!preferredSrc) return;
+
+        if (!audioPlayer.getAttribute('data-local-src') && currentAttrSrc) {
+            audioPlayer.setAttribute('data-local-src', currentAttrSrc);
+        }
+
+        if (stripQuery(currentAttrSrc) !== stripQuery(preferredSrc)) {
+            audioPlayer.src = preferredSrc;
+        }
     }
 
     function normalizeAudioUrl(src) {

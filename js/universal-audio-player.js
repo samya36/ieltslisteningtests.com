@@ -1,10 +1,11 @@
 // 通用音频播放器系统 - 支持所有7套卷子
 console.log('🎵 加载通用音频播放器系统...');
+const AUDIO_R2_BASE_URL = 'https://audio.ieltslisteningtests.com/audio/';
 
 // 所有测试的音频配置
 const UNIVERSAL_AUDIO_CONFIG = {
     test1: {
-        basePath: '../audio/test1/',
+        basePath: `${AUDIO_R2_BASE_URL}test1/`,
         sections: [
             'Part1 Amateur Dramatic Society.m4a',
             'Part2 Talk to new employees at a strawberry farm.m4a',
@@ -13,7 +14,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test2: {
-        basePath: '../audio/test2/',
+        basePath: `${AUDIO_R2_BASE_URL}test2/`,
         sections: [
             'Part1 Rental Property Application Form.m4a',
             'Part2 Queensland Festival.m4a',
@@ -22,7 +23,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test3: {
-        basePath: '../audio/test3/',
+        basePath: `${AUDIO_R2_BASE_URL}test3/`,
         sections: [
             'Part1 Kiwi Air Customer Complaint Form.m4a',
             'Part2 Spring Festival.m4a',
@@ -31,7 +32,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test4: {
-        basePath: '../audio/test4/',
+        basePath: `${AUDIO_R2_BASE_URL}test4/`,
         sections: [
             'Part1_Windward_Apartments.m4a',
             'Part2.m4a',
@@ -40,7 +41,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test5: {
-        basePath: '../audio/test5/',
+        basePath: `${AUDIO_R2_BASE_URL}test5/`,
         sections: [
             'test5_Part1_Winsham_Farm.m4a',
             'test5_Part2_Queensland_Festival.m4a',
@@ -49,7 +50,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test6: {
-        basePath: '../audio/test6/',
+        basePath: `${AUDIO_R2_BASE_URL}test6/`,
         sections: [
             'Part1_Amateur_Dramatic_Society.m4a',
             'Part2_Clifton_Bird_Park.m4a',
@@ -58,7 +59,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test7: {
-        basePath: '../audio/c20-test4/',
+        basePath: `${AUDIO_R2_BASE_URL}c20-test4/`,
         sections: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
     }
 };
