@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const audioConfig = {
       test2: {
         cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
-        localPath: '../audio/test2/',
+        localPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
         sections: [
           { id: 'section1', title: 'Section 1: Winsham Farm Job', duration: '10:00' },
           { id: 'section2', title: 'Section 2: Queensland Festival', duration: '10:00' },

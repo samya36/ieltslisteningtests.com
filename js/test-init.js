@@ -60,8 +60,8 @@
 
     const TEST_AUDIO_CONFIG = {
         1: {
-            localPath: '../audio/test1/',
-            absolutePath: '/audio/test1/',
+            localPath: `${AUDIO_R2_BASE_URL}test1/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test1/`,
             cdnPath: `${AUDIO_R2_BASE_URL}test1/`,
             files: [
                 'Part1 Amateur Dramatic Society.m4a',
@@ -71,8 +71,8 @@
             ]
         },
         2: {
-            localPath: '../audio/test2/',
-            absolutePath: '/audio/test2/',
+            localPath: `${AUDIO_R2_BASE_URL}test2/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test2/`,
             cdnPath: `${AUDIO_R2_BASE_URL}test2/`,
             files: [
                 'Part1 Rental Property Application Form.m4a',
@@ -82,8 +82,8 @@
             ]
         },
         3: {
-            localPath: '../audio/test3/',
-            absolutePath: '/audio/test3/',
+            localPath: `${AUDIO_R2_BASE_URL}test3/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test3/`,
             cdnPath: `${AUDIO_R2_BASE_URL}test3/`,
             files: [
                 'Part1 Kiwi Air Customer Complaint Form.m4a',
@@ -93,14 +93,14 @@
             ]
         },
         4: {
-            localPath: '../audio/test4/',
-            absolutePath: '/audio/test4/',
+            localPath: `${AUDIO_R2_BASE_URL}test4/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test4/`,
             cdnPath: `${AUDIO_R2_BASE_URL}test4/`,
             files: ['Part1_Windward_Apartments.m4a', 'Part2.m4a', 'Part3.m4a', 'Part4.m4a']
         },
         5: {
-            localPath: '../audio/test5/',
-            absolutePath: '/audio/test5/',
+            localPath: `${AUDIO_R2_BASE_URL}test5/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test5/`,
             cdnPath: `${AUDIO_R2_BASE_URL}test5/`,
             files: [
                 'test5_Part1_Winsham_Farm.m4a',
@@ -110,8 +110,8 @@
             ]
         },
         6: {
-            localPath: '../audio/test6/',
-            absolutePath: '/audio/test6/',
+            localPath: `${AUDIO_R2_BASE_URL}test6/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test6/`,
             cdnPath: `${AUDIO_R2_BASE_URL}test6/`,
             files: [
                 'Part1_Amateur_Dramatic_Society.m4a',
@@ -121,8 +121,8 @@
             ]
         },
         7: {
-            localPath: '../audio/c20-test4/',
-            absolutePath: '/audio/c20-test4/',
+            localPath: `${AUDIO_R2_BASE_URL}c20-test4/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}c20-test4/`,
             cdnPath: `${AUDIO_R2_BASE_URL}c20-test4/`,
             files: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
         }

@@ -5,7 +5,7 @@ const TEST_DATA_6 = {
         description: 'Amateur Dramatic Society / Clifton Bird Park / Shampoo Advertising / Drama Activities',
         totalQuestions: 40,
         timeLimit: 30,
-        audioPath: '../audio/test6/'
+        audioPath: 'https://audio.ieltslisteningtests.com/audio/test6/'
     },
 
     section1: {

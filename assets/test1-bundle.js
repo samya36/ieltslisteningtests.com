@@ -33,28 +33,28 @@ class EnhancedAudioPlayer {
     // 音频路径配置 - 保持CDN + 本地备份
     static AUDIO_CONFIG = {
         test1: {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/',
-            localPath: '../audio/test1/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
             sections: ['Part1 Amateur Dramatic Society.m4a', 'Part2 Talk to new employees at a strawberry farm.m4a', 'Part3-Field trip to Bolton lsland.m4a', 'Part4 Development and use of plastics.m4a']
         },
         test2: {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test2/',
-            localPath: '../audio/test2/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
             sections: ['Part1 Rental Property Application Form.m4a', 'Part2 Queensland Festival.m4a', 'Part3-Research for assignment of children playing outdoors.m4a', 'Part4 The Berbers.m4a']
         },
         test3: {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test3/',
-            localPath: '../audio/test3/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
             sections: ['Part1 Kiwi Air Customer Complaint Form.m4a', 'Part2 Spring Festival.m4a', 'Part3-Geology field trip to Iceland.m4a', 'Part4 Recycling Tyres in Australia.m4a']
         },
         'cambridge20-test1': {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test1/',
-            localPath: '../audio/c20-test1/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
             sections: ['c20_T1S1_64k.mp3', 'c20_T1S2_64k.mp3', 'c20_T1S3_48k.mp3', 'c20_T1S4_48k.mp3']
         },
         'cambridge20-test2': {
-            cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test2/',
-            localPath: '../audio/c20-test2/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
             sections: ['c20_T2S1_48k.mp3', 'c20_T2S2_48k.mp3', 'c20_T2S3_48k.mp3', 'c20_T2S4_48k.mp3']
         }
     };
@@ -2123,8 +2123,8 @@ class UniversalTestGenerator {
             test1: {
                 title: 'IELTS Listening Test 1',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test1/',
-                    localPath: '../audio/test1/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
                     sections: [
                         'Part1 Amateur Dramatic Society.m4a',
                         'Part2 Talk to new employees at a strawberry farm.m4a', 
@@ -2145,8 +2145,8 @@ class UniversalTestGenerator {
             test2: {
                 title: 'IELTS Listening Test 2', 
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test2/',
-                    localPath: '../audio/test2/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
                     sections: [
                         'Part1 Rental Property Application Form.m4a',
                         'Part2 Queensland Festival.m4a',
@@ -2167,8 +2167,8 @@ class UniversalTestGenerator {
             test3: {
                 title: 'IELTS Listening Test 3',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test3/',
-                    localPath: '../audio/test3/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
                     sections: [
                         'Part1 Kiwi Air Customer Complaint Form.m4a',
                         'Part2 Spring Festival.m4a', 
@@ -2189,8 +2189,8 @@ class UniversalTestGenerator {
             test4: {
                 title: 'IELTS Listening Test 4',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test4/', 
-                    localPath: '../audio/test4/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/test4/', 
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/test4/',
                     sections: [
                         'Part 1_Windward Apartments .m4a',
                         'Part 2 .m4a',
@@ -2211,8 +2211,8 @@ class UniversalTestGenerator {
             test5: {
                 title: 'IELTS Listening Test 5',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test5/',
-                    localPath: '../audio/test5/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/test5/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/test5/',
                     sections: [
                         'test5_Part 1 Winsham Farm.m4a',
                         'test5_Part 2 Queensland Festival.m4a',
@@ -2233,8 +2233,8 @@ class UniversalTestGenerator {
             test6: {
                 title: 'IELTS Listening Test 6',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/test6/',
-                    localPath: '../audio/test6/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/test6/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/test6/',
                     sections: [
                         'Part 1_Amateur Dramatic Society.m4a',
                         'Part2_Clifton Bird Park .m4a',
@@ -2256,8 +2256,8 @@ class UniversalTestGenerator {
             'cambridge20-test1': {
                 title: 'Cambridge IELTS 20 - Test 1',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test1/',
-                    localPath: '../audio/c20-test1/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
                     sections: [
                         'c20_T1S1_64k.mp3', 
                         'c20_T1S2_64k.mp3',
@@ -2279,8 +2279,8 @@ class UniversalTestGenerator {
             'cambridge20-test2': {
                 title: 'Cambridge IELTS 20 - Test 2',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test2/',
-                    localPath: '../audio/c20-test2/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
                     sections: [
                         'c20_T2S1_48k.mp3',
                         'c20_T2S2_48k.mp3', 
@@ -2302,8 +2302,8 @@ class UniversalTestGenerator {
             'cambridge20-test3': {
                 title: 'Cambridge IELTS 20 - Test 3', 
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test3/',
-                    localPath: '../audio/c20-test3/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test3/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test3/',
                     sections: [
                         'c20_T3S1_48k.mp3',
                         'c20_T3S2_48k.mp3',
@@ -2325,8 +2325,8 @@ class UniversalTestGenerator {
             'cambridge20-test4': {
                 title: 'Cambridge IELTS 20 - Test 4',
                 audioConfig: {
-                    cdnPath: 'https://cdn.jsdelivr.net/gh/samya36/ieltslisteningtests.com@v1.0.0-audio/audio/c20-test4/',
-                    localPath: '../audio/c20-test4/',
+                    cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
+                    localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
                     sections: [
                         'c20_T4S1_48k.mp3',
                         'c20_T4S2_48k.mp3',

@@ -125,7 +125,7 @@ class AudioPlayer {
             return this.audioConfig.basePath + encodedFileName;
         }
         // 兜底：本地路径
-        return `../audio/test1/section${section}.mp3`;
+        return `${AUDIO_R2_BASE_URL}test1/section${section}.mp3`;
     }
     
     // 更新音频源路径
@@ -227,12 +227,9 @@ class AudioPlayer {
             const cdnSrc = `${AUDIO_R2_BASE_URL}test1/section${section}.mp3`;
             const current = player.audio.src;
             const trySrc = (src) => { player.audio.src = src; player.audio.load(); };
-            if (current.includes('/audio/test1/') && current !== cdnSrc) {
-                console.warn(`本地音频加载失败，回退CDN: Section ${section}`);
+            if (current !== cdnSrc) {
+                console.warn(`音频加载失败，重试CDN: Section ${section}`);
                 trySrc(cdnSrc);
-            } else if (localSrc && current !== localSrc) {
-                console.warn(`CDN音频加载失败，回退本地: Section ${section}`);
-                trySrc(localSrc);
             }
         });
         

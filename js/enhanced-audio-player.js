@@ -31,27 +31,27 @@ class EnhancedAudioPlayer {
     static AUDIO_CONFIG = {
         test1: {
             cdnPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
-            localPath: '../audio/test1/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
             sections: ['Part1 Amateur Dramatic Society.m4a', 'Part2 Talk to new employees at a strawberry farm.m4a', 'Part3-Field trip to Bolton lsland.m4a', 'Part4 Development and use of plastics.m4a']
         },
         test2: {
             cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
-            localPath: '../audio/test2/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
             sections: ['Part1 Rental Property Application Form.m4a', 'Part2 Queensland Festival.m4a', 'Part3-Research for assignment of children playing outdoors.m4a', 'Part4 The Berbers.m4a']
         },
         test3: {
             cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
-            localPath: '../audio/test3/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
             sections: ['Part1 Kiwi Air Customer Complaint Form.m4a', 'Part2 Spring Festival.m4a', 'Part3-Geology field trip to Iceland.m4a', 'Part4 Recycling Tyres in Australia.m4a']
         },
         'cambridge20-test1': {
             cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
-            localPath: '../audio/c20-test1/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test1/',
             sections: ['c20_T1S1_64k.mp3', 'c20_T1S2_64k.mp3', 'c20_T1S3_48k.mp3', 'c20_T1S4_48k.mp3']
         },
         'cambridge20-test2': {
             cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
-            localPath: '../audio/c20-test2/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test2/',
             sections: ['c20_T2S1_48k.mp3', 'c20_T2S2_48k.mp3', 'c20_T2S3_48k.mp3', 'c20_T2S4_48k.mp3']
         }
     };

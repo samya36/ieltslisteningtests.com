@@ -7,7 +7,7 @@ console.log('🎵 加载通用音频播放器系统...');
 // 所有测试的音频配置
 const UNIVERSAL_AUDIO_CONFIG = {
     test1: {
-        basePath: '../audio/test1/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/test1/',
         sections: [
             'Part1 Amateur Dramatic Society.m4a',
             'Part2 Talk to new employees at a strawberry farm.m4a',
@@ -16,7 +16,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test2: {
-        basePath: '../audio/test2/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/test2/',
         sections: [
             'Part1 Rental Property Application Form.m4a',
             'Part2 Queensland Festival.m4a',
@@ -25,7 +25,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test3: {
-        basePath: '../audio/test3/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/test3/',
         sections: [
             'Part1 Kiwi Air Customer Complaint Form.m4a',
             'Part2 Spring Festival.m4a',
@@ -34,7 +34,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test4: {
-        basePath: '../audio/test4/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/test4/',
         sections: [
             'Part1_Windward_Apartments.m4a',
             'Part2.m4a',
@@ -43,7 +43,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test5: {
-        basePath: '../audio/test5/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/test5/',
         sections: [
             'test5_Part1_Winsham_Farm.m4a',
             'test5_Part2_Queensland_Festival.m4a',
@@ -52,7 +52,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test6: {
-        basePath: '../audio/test6/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/test6/',
         sections: [
             'Part1_Amateur_Dramatic_Society.m4a',
             'Part2_Clifton_Bird_Park.m4a',
@@ -61,7 +61,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
         ]
     },
     test7: {
-        basePath: '../audio/c20-test4/',
+        basePath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
         sections: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
     }
 };
@@ -1243,9 +1243,9 @@ window.getTestData = getTestData;
 
     const TEST_AUDIO_CONFIG = {
         1: {
-            localPath: '../audio/test1/',
-            absolutePath: '/audio/test1/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test1/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test1/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
             files: [
                 'Part1 Amateur Dramatic Society.m4a',
                 'Part2 Talk to new employees at a strawberry farm.m4a',
@@ -1254,9 +1254,9 @@ window.getTestData = getTestData;
             ]
         },
         2: {
-            localPath: '../audio/test2/',
-            absolutePath: '/audio/test2/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test2/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test2/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
             files: [
                 'Part1 Rental Property Application Form.m4a',
                 'Part2 Queensland Festival.m4a',
@@ -1265,9 +1265,9 @@ window.getTestData = getTestData;
             ]
         },
         3: {
-            localPath: '../audio/test3/',
-            absolutePath: '/audio/test3/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test3/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test3/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
             files: [
                 'Part1 Kiwi Air Customer Complaint Form.m4a',
                 'Part2 Spring Festival.m4a',
@@ -1276,15 +1276,15 @@ window.getTestData = getTestData;
             ]
         },
         4: {
-            localPath: '../audio/test4/',
-            absolutePath: '/audio/test4/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test4/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test4/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test4/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test4/',
             files: ['Part1_Windward_Apartments.m4a', 'Part2.m4a', 'Part3.m4a', 'Part4.m4a']
         },
         5: {
-            localPath: '../audio/test5/',
-            absolutePath: '/audio/test5/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test5/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test5/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test5/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test5/',
             files: [
                 'test5_Part1_Winsham_Farm.m4a',
                 'test5_Part2_Queensland_Festival.m4a',
@@ -1293,9 +1293,9 @@ window.getTestData = getTestData;
             ]
         },
         6: {
-            localPath: '../audio/test6/',
-            absolutePath: '/audio/test6/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/test6/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/test6/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test6/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test6/',
             files: [
                 'Part1_Amateur_Dramatic_Society.m4a',
                 'Part2_Clifton_Bird_Park.m4a',
@@ -1304,9 +1304,9 @@ window.getTestData = getTestData;
             ]
         },
         7: {
-            localPath: '../audio/c20-test4/',
-            absolutePath: '/audio/c20-test4/',
-            cdnPath: 'https://cdn.jsdelivr.net/gh/xjy-git/audio@main/c20-test4/',
+            localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
+            absolutePath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
+            cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
             files: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
         }
     };

@@ -5,7 +5,7 @@ const TEST_DATA_4 = {
         description: "Windward Apartments / Beach Races / Gender Clothing / Umbrellas",
         totalQuestions: 40,
         timeLimit: 30,
-        audioPath: "../audio/test4/"
+        audioPath: "https://audio.ieltslisteningtests.com/audio/test4/"
     },
     section1: {
         title: "<strong>Section 1</strong>",

@@ -5,7 +5,7 @@ const TEST_DATA_7 = {
         description: 'Advanced Listening Practice Test 7',
         totalQuestions: 40,
         timeLimit: 30, // 分钟
-        audioPath: '../audio/test7/'
+        audioPath: 'https://audio.ieltslisteningtests.com/audio/test7/'
     },
     
     section1: {

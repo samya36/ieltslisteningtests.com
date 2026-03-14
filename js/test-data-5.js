@@ -5,7 +5,7 @@ const TEST_DATA_5 = {
         description: "Winsham Farm Centre / Queensland Festival / Environmental Science / Photic Sneezing",
         totalQuestions: 40,
         timeLimit: 30,
-        audioPath: "../audio/test5/"
+        audioPath: "https://audio.ieltslisteningtests.com/audio/test5/"
     },
     section1: {
         title: "<strong>Section 1</strong>",
