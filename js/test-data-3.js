@@ -1,23 +1,30 @@
-// Test 3 测试数据 - Kiwi Air Complaint, Spring Festival, Iceland Geology, Tyre Recycling
+// Test 3 测试数据 - Kiwi Air Customer Complaint Form, Spring Festival, Geology Field Trip to Iceland, Recycling Tyres in Australia
 const TEST_DATA_3 = {
     section1: {
         title: "<strong>Section 1</strong>",
-        instructions: "<strong>Questions 1-10</strong>\n\nComplete the form below.\n\nWrite <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.",
+        instructions: "<strong>Questions 1-10</strong>\n\nComplete the form below.\n\nWrite <strong>ONE WORD OR A NUMBER</strong> for each answer.",
         formContent: {
-            title: "KIWI AIR - CUSTOMER COMPLAINT FORM",
+            title: "Kiwi Air Customer Complaint Form",
             items: [
-                { text: "Passenger name: Ms Sarah [1] ........................" },
-                { text: "Flight number: KA [2] ........................" },
-                { text: "Date of flight: [3] ........................ March" },
-                { text: "Destination: [4] ........................" },
-                { text: "Type of complaint: [5] ........................ delay" },
-                { text: "Delay duration: [6] ........................ hours" },
-                { text: "Reason given by airline:", type: "text" },
-                { text: "• [7] ........................ conditions", type: "bullet" },
-                { text: "Compensation requested:", type: "text" },
-                { text: "• [8] ........................ for meals", type: "bullet" },
-                { text: "• Voucher for [9] ........................ flight", type: "bullet" },
-                { text: "Contact method: [10] ........................" }
+                { text: "Customer has been trying to make booking using the internet." },
+                { text: "Booking details:", type: "text" },
+                { text: "Name: [1] ........................ Janet" },
+                { text: "Ticket details: one adult and three children (Wellington to Christchurch) - four [2] ........................ tickets" },
+                { text: "Flight dates: November 10th - 15th" },
+                { text: "Time: departing at [3] ........................ a.m." },
+                { text: "Details of the problem:", type: "text" },
+                { text: "• the website changes the rate for one child", type: "bullet" },
+                { text: "• the website keeps giving the customer [4] ........................ message", type: "bullet" },
+                { text: "Customer informed that Kiwi Air policy:", type: "text" },
+                { text: "• allows no more than [5] ........................ child fares per adult (applies to domestic flights only)", type: "bullet" },
+                { text: "Customer's reasons for complaint:", type: "text" },
+                { text: "• none of her children are [6] ........................ years old or older", type: "bullet" },
+                { text: "• child passengers require less [7] ........................", type: "bullet" },
+                { text: "• the rule is unfair for large families and [8] ........................ groups", type: "bullet" },
+                { text: "Customer invited to send written complaint:", type: "text" },
+                { text: "• letter to go to the [9] ........................", type: "bullet" },
+                { text: "• reply predicted within a week", type: "bullet" },
+                { text: "• reference number: [10] ........................", type: "bullet" }
             ]
         }
     },
@@ -25,62 +32,42 @@ const TEST_DATA_3 = {
         title: "<strong>Section 2</strong>",
         parts: [
             {
-                title: "<strong>Questions 11 – 16</strong>",
-                instructions: "Complete the table below.\n\nWrite <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.",
+                title: "<strong>Questions 11 – 18</strong>",
+                instructions: "Complete the form below.\n\nWrite <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.",
                 tableData: {
-                    title: "Spring Festival Events Schedule",
-                    headers: ["Time", "Event", "Location", "Cost"],
+                    title: "Spring Festival",
+                    headers: ["Event", "Location", "Date and Time", "Other Information"],
                     rows: [
-                        ["10:00", "[11] ........................", "Main Stage", "Free"],
-                        ["12:30", "Cultural Exhibition", "[12] ........................", "$5"],
-                        ["[13] ........................", "Children's Workshop", "Arts Centre", "$10"],
-                        ["15:00", "[14] ........................", "Food Court", "Various"],
-                        ["18:00", "Evening Concert", "[15] ........................", "$[16] ........................"]
+                        ["Firework display", "Near the: [11] ........................", "4 September, 9 p.m.", "Pack a [12] ........................ and blanket"],
+                        ["Display of [13] ........................", "Central Park", "daily", "Buses run from the town centre every [14] ........................ minutes"],
+                        ["The [15] ........................ Show", "Exhibition Centre", "10-15 September, 9 a.m. - 10 p.m.", ""],
+                        ["'Grow Your Imagination'", "in the [16] ........................", "11-19 September", ""],
+                        ["'Swing in Spring'", "in the [17] ........................", "17 & 18 September", "Saturday matinee performance at [18] ........................"]
                     ]
                 }
             },
             {
-                title: "<strong>Questions 17 – 20</strong>",
+                title: "<strong>Questions 19 – 20</strong>",
                 instructions: "Choose the correct letter, <strong>A, B or C</strong>.",
                 questions: [
                     {
-                        id: 17,
-                        text: "The Spring Festival celebrates",
-                        type: "radio",
-                        options: [
-                            { value: "A", text: "the beginning of spring season" },
-                            { value: "B", text: "Chinese New Year traditions" },
-                            { value: "C", text: "local community heritage" }
-                        ]
-                    },
-                    {
-                        id: 18,
-                        text: "This year's festival is special because",
-                        type: "radio",
-                        options: [
-                            { value: "A", text: "it's the 25th anniversary" },
-                            { value: "B", text: "there are international performers" },
-                            { value: "C", text: "it lasts for a longer period" }
-                        ]
-                    },
-                    {
                         id: 19,
-                        text: "Food stalls will mainly offer",
+                        text: "In the Spring Festival competition, you can win",
                         type: "radio",
                         options: [
-                            { value: "A", text: "traditional Asian cuisine" },
-                            { value: "B", text: "fusion food options" },
-                            { value: "C", text: "local Australian dishes" }
+                            { value: "A", text: "a family pass to 'Balloons Down Under'." },
+                            { value: "B", text: "a cheque for $200." },
+                            { value: "C", text: "a flight in a hot air balloon." }
                         ]
                     },
                     {
                         id: 20,
-                        text: "Advanced booking is required for",
+                        text: "You can get an entry form for the competition from",
                         type: "radio",
                         options: [
-                            { value: "A", text: "all events" },
-                            { value: "B", text: "workshop activities only" },
-                            { value: "C", text: "the evening concert only" }
+                            { value: "A", text: "the radio station" },
+                            { value: "B", text: "the newspaper" },
+                            { value: "C", text: "the Festival's website" }
                         ]
                     }
                 ]
@@ -96,137 +83,120 @@ const TEST_DATA_3 = {
                 questions: [
                     {
                         id: 21,
-                        text: "The main purpose of the Iceland field trip is to study",
+                        text: "Why do Andrew and Sarah decide to mention the Mountain Code?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "volcanic activity" },
-                            { value: "B", text: "glacial formations" },
-                            { value: "C", text: "geological structures" }
+                            { value: "A", text: "It is the most relevant to their field trip." },
+                            { value: "B", text: "It also applies to caves." },
+                            { value: "C", text: "It covers the whole country." }
                         ]
                     },
                     {
                         id: 22,
-                        text: "The field trip will last for",
+                        text: "Andrew suggests some field trip participants harm the environment because",
                         type: "radio",
                         options: [
-                            { value: "A", text: "one week" },
-                            { value: "B", text: "ten days" },
-                            { value: "C", text: "two weeks" }
+                            { value: "A", text: "they fail to recognise rare species of plant." },
+                            { value: "B", text: "they don't realise how fragile the environment is." },
+                            { value: "C", text: "they get too absorbed in their tasks." }
                         ]
                     },
                     {
                         id: 23,
-                        text: "Students need to bring",
+                        text: "Which rule about taking samples is most important?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "sleeping bags" },
-                            { value: "B", text: "cooking equipment" },
-                            { value: "C", text: "warm clothing" }
+                            { value: "A", text: "Leave the area in its natural state." },
+                            { value: "B", text: "Avoid removing fossils." },
+                            { value: "C", text: "Keep collecting to a minimum." }
                         ]
                     },
                     {
                         id: 24,
-                        text: "The most challenging aspect will be",
+                        text: "Which aspect of taking samples do they still have to find out about?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "the weather conditions" },
-                            { value: "B", text: "the physical demands" },
-                            { value: "C", text: "the technical requirements" }
+                            { value: "A", text: "taking them from private land" },
+                            { value: "B", text: "taking them from rock faces" },
+                            { value: "C", text: "taking them from man-made structures" }
                         ]
                     },
                     {
                         id: 25,
-                        text: "Safety briefings will cover",
+                        text: "What danger in coastal areas do they decide to emphasise?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "emergency procedures only" },
-                            { value: "B", text: "equipment usage only" },
-                            { value: "C", text: "both emergency and equipment procedures" }
+                            { value: "A", text: "falling rock" },
+                            { value: "B", text: "tidal movements" },
+                            { value: "C", text: "unstable sand" }
                         ]
                     }
                 ]
             },
             {
                 title: "<strong>Questions 26 – 30</strong>",
-                instructions: "Complete the summary below.\n\nWrite <strong>NO MORE THAN TWO WORDS</strong> for each answer.",
-                summaryContent: {
-                    title: "Iceland Field Trip Itinerary",
-                    text: "Day 1-2: Arrival and [26] ........................ in Reykjavik. Visit to the National Museum and geology department briefing.\n\nDay 3-5: Travel to the [27] ........................ region to study recent volcanic formations and collect rock samples.\n\nDay 6-8: Examination of [28] ........................ near Vatnajökull glacier and analysis of ice-carved landscapes.\n\nDay 9-10: Return to Reykjavik for [29] ........................ work and preparation of field reports.\n\nAll students must submit their [30] ........................ within two weeks of return."
+                instructions: "Which topic does each of the following reading packs focus on?\n\nChoose the correct letter, <strong>A-G</strong>.",
+                questions: [
+                    { id: 26, text: "Geothermal Fields", type: "text", placeholder: "A-G" },
+                    { id: 27, text: "The Hot Spot", type: "text", placeholder: "A-G" },
+                    { id: 28, text: "Glaciers", type: "text", placeholder: "A-G" },
+                    { id: 29, text: "Basalt Rock", type: "text", placeholder: "A-G" },
+                    { id: 30, text: "Geothermal Power Plants", type: "text", placeholder: "A-G" }
+                ],
+                boxContent: {
+                    title: "Topic Box",
+                    content: [
+                        { type: "text", text: "A. unique geological features of Iceland" },
+                        { type: "text", text: "B. replacement of fossil fuels" },
+                        { type: "text", text: "C. negative changes due to human activity" },
+                        { type: "text", text: "D. energy for agriculture" },
+                        { type: "text", text: "E. health risks of eruptions" },
+                        { type: "text", text: "F. risk of flooding" },
+                        { type: "text", text: "G. long-term effects of volcanoes" }
+                    ]
                 }
             }
         ]
     },
     section4: {
         title: "<strong>Section 4</strong>",
-        instructions: "<strong>Questions 31-40</strong>\n\nComplete the notes below.\n\nWrite <strong>NO MORE THAN TWO WORDS</strong> for each answer.",
-        boxContent: {
-            title: "Recycling Tyres in Australia",
-            content: [
-                {
-                    type: "header",
-                    text: "Current Situation"
-                },
-                {
-                    type: "text",
-                    text: "• Australia produces [31] ........................ million waste tyres annually"
-                },
-                {
-                    type: "text",
-                    text: "• Previously, most tyres were [32] ........................ overseas"
-                },
-                {
-                    type: "text",
-                    text: "• New regulations require [33] ........................ processing"
-                },
-                {
-                    type: "header",
-                    text: "Recycling Methods"
-                },
-                {
-                    type: "text",
-                    text: "• [34] ........................ recycling: tyres are shredded into small pieces"
-                },
-                {
-                    type: "text",
-                    text: "• Used for playground surfaces and [35] ........................"
-                },
-                {
-                    type: "text",
-                    text: "• [36] ........................ recycling: tyres burned for energy production"
-                },
-                {
-                    type: "header",
-                    text: "New Applications"
-                },
-                {
-                    type: "text",
-                    text: "• Road construction: crumb rubber improves [37] ........................"
-                },
-                {
-                    type: "text",
-                    text: "• Building materials: rubber mixed with [38] ........................"
-                },
-                {
-                    type: "text",
-                    text: "• Agricultural uses: [39] ........................ for livestock areas"
-                },
-                {
-                    type: "header",
-                    text: "Future Challenges"
-                },
-                {
-                    type: "text",
-                    text: "• Need for increased [40] ........................ investment"
+        parts: [
+            {
+                title: "<strong>Questions 31 – 34</strong>",
+                instructions: "Complete the notes below.\n\nWrite <strong>ONE WORD ONLY</strong> for each answer.",
+                boxContent: {
+                    title: "Recycling Tyres in Australia",
+                    content: [
+                        { type: "header", text: "Background" },
+                        { type: "text", text: "More than 1.5 million tyres dumped in Australia per [31] ........................" },
+                        { type: "text", text: "Previous recycling attempts failed because:" },
+                        { type: "text", text: "• there were pollution problems - smoke from burning" },
+                        { type: "text", text: "• recycling companies didn't make any [32] ........................" },
+                        { type: "header", text: "Advantages of Molectra's process" },
+                        { type: "text", text: "• More economical because smaller machines are used" },
+                        { type: "text", text: "• Less maintenance - tyres softened before shredding" },
+                        { type: "text", text: "• No limit on the [33] ........................ of tyres recycled" },
+                        { type: "header", text: "The Future" },
+                        { type: "text", text: "• Ten more factories being built" },
+                        { type: "text", text: "• Plans to spend 5% of income each year on [34] ........................" }
+                    ]
                 }
-            ]
-        }
+            },
+            {
+                title: "<strong>Questions 35 – 40</strong>",
+                instructions: "Complete the flow-chart below.\n\nWrite <strong>ONE WORD ONLY</strong> in each gap.",
+                summaryContent: {
+                    title: "Recycling Tyres - Process Flow Chart",
+                    text: "1. Removal of steel\n[35] ........................ from tyre rim -> steel pellets used in industry\n\n2. Chemicals applied to get rid of [36] ........................ and soften rubber\n-> Strengthening concrete\n\n3. Fibres, e.g. nylon, removed\n-> Sheets made of [37] ........................\n\n4. Tyres cut up into crumb rubber\n-> Asphalt for roads\n-> Insulation\n-> [38] ........................ tiles\n\n5. The MolectraVac machine microwaves rubber into hydrocarbon\n(i) Used for activated carbon:\n- [39] ........................ treatment\n- air filtration\n\n(ii) Used for carbon black:\n- batteries\n- [40] ........................\n\n(iii) Oil used for electricity"
+                }
+            }
+        ]
     }
 };
 
-// 获取测试数据的函数
 function getTestData3() {
     return TEST_DATA_3;
 }
 
-// 导出函数
+window.TEST_DATA_3 = TEST_DATA_3;
 window.getTestData3 = getTestData3;

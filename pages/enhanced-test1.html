@@ -31,9 +31,35 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
-    <!-- 关键样式（首屏渲染必需） -->
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/test.css">
+    <!-- 关键CSS内联（首屏渲染必需） -->
+    <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary-color:#e53935;--primary-light:#ff6f60;--primary-dark:#ab000d;--secondary-color:#455a64;--background-color:#fafafa;--text-color:#333333;--gray-light:#f5f5f5;--gray-medium:#e0e0e0;--max-width:1200px;--border-radius:8px;--box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+    body{font-family:"思源黑体","Roboto",sans-serif;line-height:1.6;color:var(--text-color);background-color:var(--background-color)}
+    .nav-bar{background-color:var(--primary-color);padding:1rem 0;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+    .nav-container{max-width:var(--max-width);margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center}
+    .logo{color:white;font-size:1.5rem;font-weight:bold}
+    .logo-img{height:40px;margin-right:10px;vertical-align:middle}
+    .home-link{text-decoration:none;color:inherit;display:flex;align-items:center}
+    .nav-menu{display:flex;list-style:none;gap:2rem}
+    .nav-menu a{color:white;text-decoration:none;font-weight:500}
+    main{margin-top:4rem;padding:2rem 1rem}
+    .test-container{max-width:900px;margin:2rem auto;padding:0 1rem;font-family:Arial,sans-serif;line-height:1.5}
+    .test-intro{background:#fff;padding:1.5rem;border-radius:4px;margin-bottom:2rem;border:1px solid #ddd}
+    .section-tabs{display:flex;margin:20px 0;border-bottom:2px solid #1E88E5}
+    .section-tab{padding:12px 25px;background:#e3f2fd;border:1px solid #90caf9;border-bottom:none;cursor:pointer;margin-right:5px;border-radius:8px 8px 0 0;font-weight:500;color:#0d47a1;transition:all .3s ease}
+    .section-tab.active{background:#1E88E5;border:1px solid #1565C0;border-bottom:none;color:white;font-weight:bold;position:relative;z-index:1}
+    a{color:var(--primary-color)}
+    @media(max-width:768px){.nav-menu{display:none}.section-tabs{flex-wrap:wrap}.section-tab{flex:1 1 calc(50% - 10px);text-align:center;padding:10px 15px;margin-bottom:5px;font-size:14px}}
+    </style>
+
+    <!-- 完整样式（异步加载） -->
+    <link rel="stylesheet" href="../css/main.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/test.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/test.css">
+    </noscript>
 
     <!-- 非关键样式（异步加载，不阻塞首屏渲染） -->
     <link rel="stylesheet" href="../css/accessibility.css" media="print" onload="this.media='all'">
@@ -57,7 +83,7 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="../index.html" class="home-link">
-                    <img src="../images/logo.webp" alt="IELTS听力评分解析" class="logo-img" width="150" height="150" decoding="async">
+                    <img src="../images/logo.svg" alt="IELTS听力评分解析" class="logo-img" width="48" height="48" decoding="async">
                     IELTS听力评分解析
                 </a>
             </div>
@@ -234,5 +260,13 @@
     <script src="../js/enhanced-test1-init.js" defer></script>
     <script src="../js/score-engine.js" defer></script>
     <script src="../js/test-page-events.js" defer></script>
+    <footer style="margin-top:40px;padding:20px 1rem;border-top:1px solid #e5e7eb;font-size:14px;text-align:center">
+        <a href="../about.html" style="color:#2563eb;text-decoration:none;margin-right:12px">About</a>
+        <a href="../privacy.html" style="color:#2563eb;text-decoration:none;margin-right:12px">Privacy</a>
+        <a href="../terms.html" style="color:#2563eb;text-decoration:none;margin-right:12px">Terms</a>
+        <a href="../contact.html" style="color:#2563eb;text-decoration:none">Contact</a>
+        <p style="margin-top:10px;color:#6b7280">&copy; 2024 雅思听力评分解析. All rights reserved.</p>
+    </footer>
+<script src="../js/analytics.js" defer></script>
 </body>
 </html>

@@ -328,6 +328,8 @@ const TEST_DATA = {
     }
 };
 
+window.TEST_DATA = TEST_DATA;
+
 // 获取测试数据的函数
 function getTestData() {
     return TEST_DATA;

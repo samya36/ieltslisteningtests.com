@@ -4,14 +4,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>学习进度 - IELTS听力评分解析</title>
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" media="print" onload="this.media='all'">
+  <style>
+    *{box-sizing:border-box}
+    :root{--primary:#1a56db;--surface:#f8fafc;--surface-raised:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--success:#10b981;--warning:#f59e0b;--font-display:"Space Grotesk",sans-serif;--font-body:"IBM Plex Sans","PingFang SC",-apple-system,sans-serif;--font-mono:"JetBrains Mono",monospace}
+    body{margin:0;font-family:var(--font-body);background:var(--surface);color:var(--text)}
+    .nav-bar{background:rgba(30,58,95,.97);padding:.875rem 0;position:sticky;top:0;z-index:1000}
+    .nav-container{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center}
+    .home-link{display:flex;align-items:center;color:#fff;text-decoration:none;font-family:var(--font-display);font-weight:700}
+    .logo-img{height:40px;margin-right:10px}
+    .nav-menu{display:flex;list-style:none;gap:1.5rem;margin:0;padding:0}
+    .nav-menu a{color:rgba(255,255,255,.85);text-decoration:none}
+    main{max-width:1100px;margin:0 auto;padding:2rem 1rem 3rem}
+    .hero{background:linear-gradient(135deg,#1e3a5f,#1a56db);color:#fff;border-radius:20px;padding:2rem;margin-bottom:1.5rem}
+    .hero h1{margin:0 0 .5rem;font-family:var(--font-display);font-size:2rem}
+    .hero p{margin:0;opacity:.9}
+    .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .summary-card,.progress-card{background:var(--surface-raised);border:1px solid var(--border);border-radius:16px;padding:1.25rem;box-shadow:0 6px 16px rgba(15,23,42,.06)}
+    .summary-card h2,.progress-card h2{margin:0 0 .5rem;font-size:1rem;color:var(--muted)}
+    .summary-value{font-family:var(--font-mono);font-size:2rem;font-weight:700}
+    .progress-grid{display:grid;gap:1rem}
+    .progress-card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem}
+    .progress-card__title{margin:0;font-family:var(--font-display);font-size:1.25rem}
+    .progress-card__link{color:var(--primary);text-decoration:none;font-weight:600}
+    .progress-meta{display:grid;gap:.5rem;font-size:.95rem;color:#334155}
+    .badge{display:inline-flex;align-items:center;padding:.2rem .65rem;border-radius:999px;font-size:.8rem;font-weight:600}
+    .badge.done{background:rgba(16,185,129,.12);color:#047857}
+    .badge.partial{background:rgba(245,158,11,.14);color:#b45309}
+    .badge.empty{background:rgba(100,116,139,.12);color:#475569}
+    .muted{color:var(--muted)}
+    .empty-state{padding:2rem;text-align:center;color:var(--muted)}
+    @media(max-width:768px){.nav-menu{display:none}.hero h1{font-size:1.6rem}}
+  </style>
 </head>
 <body>
-  <main class="container" style="padding: 2rem 1rem;">
-    <h1>学习进度</h1>
-    <p>该页面正在完善中。你可以先通过练习页完成测试，系统会按测试编号保存本地答题记录。</p>
-    <p><a href="practice.html">前往听力练习</a></p>
-    <p><a href="../index.html">返回首页</a></p>
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <a href="../index.html" class="home-link">
+        <img src="../images/logo.svg" alt="IELTS听力评分解析" class="logo-img" width="48" height="48" decoding="async">
+        IELTS听力评分解析
+      </a>
+      <ul class="nav-menu">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="progress.html">学习进度</a></li>
+        <li><a href="practice.html">听力练习</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>学习进度</h1>
+      <p>本页读取浏览器本地保存的答题记录与已提交分数，不依赖账号登录。</p>
+    </section>
+
+    <section class="summary" id="summary">
+      <div class="summary-card">
+        <h2>已发现测试</h2>
+        <div class="summary-value" id="tests-count">0</div>
+      </div>
+      <div class="summary-card">
+        <h2>已提交测试</h2>
+        <div class="summary-value" id="submitted-count">0</div>
+      </div>
+      <div class="summary-card">
+        <h2>平均雅思分</h2>
+        <div class="summary-value" id="avg-band">0.0</div>
+      </div>
+    </section>
+
+    <section class="progress-grid" id="progress-grid">
+      <div class="empty-state">正在读取本地进度...</div>
+    </section>
   </main>
+
+  <script>
+    (function() {
+      const DEFAULT_TESTS = [1, 2, 3, 4, 5];
+
+      function getTestPath(testNumber) {
+        return testNumber === 1 ? 'test.html' : `test${testNumber}.html`;
+      }
+
+      function getAllTestNumbers() {
+        const discovered = new Set(DEFAULT_TESTS);
+
+        for (let index = 0; index < localStorage.length; index += 1) {
+          const key = localStorage.key(index) || '';
+          const match = key.match(/^ielts-test(\d+)-(answers|result)$/);
+          if (match) discovered.add(parseInt(match[1], 10));
+        }
+
+        return Array.from(discovered).sort(function(a, b) {
+          return a - b;
+        });
+      }
+
+      function countAnsweredQuestions(answerMap) {
+        return Object.values(answerMap || {}).reduce(function(total, value) {
+          if (Array.isArray(value)) return total + value.length;
+          return String(value || '').trim() ? total + 1 : total;
+        }, 0);
+      }
+
+      function readProgress(testNumber) {
+        const answers = JSON.parse(localStorage.getItem(`ielts-test${testNumber}-answers`) || '{}');
+        const result = JSON.parse(localStorage.getItem(`ielts-test${testNumber}-result`) || 'null');
+        const answeredCount = Math.min(40, countAnsweredQuestions(answers));
+
+        return {
+          testNumber: testNumber,
+          answeredCount: answeredCount,
+          bandScore: result ? Number(result.bandScore || 0) : null,
+          correctCount: result ? Number(result.correctCount || 0) : null,
+          submittedAt: result ? result.submittedAt : null
+        };
+      }
+
+      function getStatus(progress) {
+        if (progress.bandScore !== null) return { label: '已提交', className: 'done' };
+        if (progress.answeredCount > 0) return { label: '进行中', className: 'partial' };
+        return { label: '未开始', className: 'empty' };
+      }
+
+      function formatDate(value) {
+        if (!value) return '未提交';
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return '未提交';
+        return date.toLocaleString('zh-CN');
+      }
+
+      function render() {
+        const testNumbers = getAllTestNumbers();
+        const progressList = testNumbers.map(readProgress);
+        const submitted = progressList.filter(function(item) { return item.bandScore !== null; });
+        const avgBand = submitted.length
+          ? (submitted.reduce(function(sum, item) { return sum + item.bandScore; }, 0) / submitted.length).toFixed(1)
+          : '0.0';
+
+        document.getElementById('tests-count').textContent = String(progressList.length);
+        document.getElementById('submitted-count').textContent = String(submitted.length);
+        document.getElementById('avg-band').textContent = avgBand;
+
+        const grid = document.getElementById('progress-grid');
+        if (!grid) return;
+
+        grid.innerHTML = progressList.map(function(progress) {
+          const status = getStatus(progress);
+          const scoreText = progress.bandScore === null
+            ? '尚未提交'
+            : `${progress.correctCount}/40 · IELTS ${progress.bandScore.toFixed(1)}`;
+
+          return `<article class="progress-card">
+            <div class="progress-card__head">
+              <div>
+                <h2 class="progress-card__title">Test ${progress.testNumber}</h2>
+                <span class="badge ${status.className}">${status.label}</span>
+              </div>
+              <a class="progress-card__link" href="${getTestPath(progress.testNumber)}">继续测试</a>
+            </div>
+            <div class="progress-meta">
+              <div>已答题数：<strong>${progress.answeredCount}/40</strong></div>
+              <div>已提交成绩：<strong>${scoreText}</strong></div>
+              <div class="muted">最近提交：${formatDate(progress.submittedAt)}</div>
+            </div>
+          </article>`;
+        }).join('');
+      }
+
+      render();
+    })();
+  </script>
+<script src="../js/analytics.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
-// 测试标准答案
+// Test 1 标准答案
 const standardAnswers = {
-    // Section 1 答案 (1-10)
     1: "Club",
     2: "male",
     3: "drive",
@@ -8,11 +7,9 @@ const standardAnswers = {
     5: "August",
     6: "dinner",
     7: "25",
-    8: "16", // 或者设置为接受两种格式 ["16", "sixteen"]
+    8: "16",
     9: "modern",
     10: "hospital",
-    
-    // Section 2 答案 (11-20)
     11: "C",
     12: "A",
     13: "A",
@@ -23,20 +20,13 @@ const standardAnswers = {
     18: "I",
     19: "A",
     20: "E",
-    
-    // Section 3 答案 (21-30)
     21: "B",
     22: "A",
     23: "B",
     24: "A",
-    25: ["C", "E"], // 25&26题为CE
-    26: ["C", "E"],
-    27: ["A", "D"], // 27&28题为AD
-    28: ["A", "D"],
-    29: ["B", "E"], // 29&30题为BE
-    30: ["B", "E"],
-    
-    // Section 4 答案 (31-40)
+    "25-26": ["C", "E"],
+    "27-28": ["A", "D"],
+    "29-30": ["B", "E"],
     31: "flexible",
     32: "film",
     33: "gas",
@@ -49,7 +39,6 @@ const standardAnswers = {
     40: "medical"
 };
 
-// 雅思听力分数换算表
 const listeningScoreTable = {
     40: 9.0,
     39: 9.0,
@@ -94,12 +83,15 @@ const listeningScoreTable = {
     0: 0.0
 };
 
-// 获取标准答案
 function getStandardAnswers() {
     return standardAnswers;
 }
 
-// 获取雅思分数
 function getIeltsScore(correctCount) {
     return listeningScoreTable[correctCount] || 0;
-} 
+}
+
+window.standardAnswers = standardAnswers;
+window.listeningScoreTable = listeningScoreTable;
+window.getStandardAnswers = getStandardAnswers;
+window.getIeltsScore = getIeltsScore;

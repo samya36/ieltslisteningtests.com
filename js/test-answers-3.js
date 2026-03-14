@@ -1,55 +1,47 @@
 // Test 3 标准答案
 const standardAnswers3 = {
-    // Section 1 答案 (1-10)
-    1: "Mitchell",
-    2: "176",
-    3: "23rd",
-    4: "Auckland",
-    5: "flight",
-    6: "3.5",
-    7: "weather",
-    8: "refund",
-    9: "future",
-    10: "email",
-    
-    // Section 2 答案 (11-20)
-    11: "Opening Ceremony",
-    12: "Community Hall",
-    13: "14:00",
-    14: "Food Festival",
-    15: "Park Amphitheatre",
-    16: "20",
-    17: "B",
-    18: "A",
-    19: "A",
-    20: "C",
-    
-    // Section 3 答案 (21-30)
-    21: "C",
-    22: "B",
+    1: "Quigley",
+    2: "return",
+    3: "11.45 / 11:45",
+    4: "error",
+    5: "two / 2",
+    6: "12",
+    7: "food",
+    8: "school",
+    9: "manager",
+    10: "GBK 8422 / GBK8422",
+    11: "lake",
+    12: "picnic",
+    13: "flowers",
+    14: "20 / twenty",
+    15: "Motor",
+    16: "art gallery",
+    17: "Concert Hall",
+    18: "2:30 / 2.30",
+    19: "C",
+    20: "B",
+    21: "A",
+    22: "C",
     23: "C",
-    24: "A",
-    25: "C",
-    26: "orientation",
-    27: "southern",
-    28: "rock formations",
-    29: "laboratory",
-    30: "final reports",
-    
-    // Section 4 答案 (31-40)
-    31: "51",
-    32: "exported",
-    33: "local",
-    34: "mechanical",
-    35: "sports surfaces",
-    36: "thermal",
-    37: "road durability",
-    38: "concrete",
-    39: "floor matting",
-    40: "government"
+    24: "C",
+    25: "B",
+    26: "D",
+    27: "A",
+    28: "F",
+    29: "G",
+    30: "B",
+    31: "month",
+    32: "profit",
+    33: "size",
+    34: "research",
+    35: "wire",
+    36: "dirt",
+    37: "panels",
+    38: "floor",
+    39: "water",
+    40: "ink"
 };
 
-// 雅思听力分数换算表
 const listeningScoreTable3 = {
     40: 9.0,
     39: 9.0,
@@ -94,20 +86,16 @@ const listeningScoreTable3 = {
     0: 0.0
 };
 
-// 获取Test 3标准答案
 function getStandardAnswers3() {
     return standardAnswers3;
 }
 
-// 获取雅思分数
 function getIeltsScore3(correctCount) {
     return listeningScoreTable3[correctCount] || 0;
 }
 
-// 为兼容性提供全局函数和变量
-function getIeltsScore(correctCount) {
-    return listeningScoreTable3[correctCount] || 0;
-}
-
-// 设置全局评分表
+window.standardAnswers3 = standardAnswers3;
+window.listeningScoreTable3 = listeningScoreTable3;
 window.listeningScoreTable = listeningScoreTable3;
+window.getStandardAnswers3 = getStandardAnswers3;
+window.getIeltsScore3 = getIeltsScore3;

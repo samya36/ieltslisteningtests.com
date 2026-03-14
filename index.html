@@ -24,8 +24,8 @@
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
-        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
-        font-src 'self' https://cdnjs.cloudflare.com data:;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+        font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:;
         img-src 'self' data: blob:;
         audio-src 'self' data: blob:;
         connect-src 'self';
@@ -61,11 +61,43 @@
     ">
     
     <title>雅思听力评分标准解析 - 专业详解助你提分</title>
-    <link rel="preload" as="image" href="images/logo.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="images/logo.svg" type="image/svg+xml">
 
-    <!-- 关键样式（首屏渲染必需） -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- 关键CSS内联（首屏渲染必需） -->
+    <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary:#1a56db;--primary-light:#3b82f6;--primary-dark:#1e3a5f;--primary-color:#1a56db;--accent:#f59e0b;--success:#10b981;--surface:#f8fafc;--surface-raised:#ffffff;--background-color:#f8fafc;--text:#0f172a;--text-color:#0f172a;--text-secondary:#64748b;--gray-light:#f1f5f9;--gray-medium:#e2e8f0;--secondary-color:#1e3a5f;--max-width:1200px;--border-radius:8px;--radius-lg:12px;--radius-xl:16px;--font-display:'Space Grotesk',sans-serif;--font-body:'IBM Plex Sans','PingFang SC',-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;--box-shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+    body{font-family:var(--font-body);line-height:1.6;color:var(--text);background-color:var(--surface);-webkit-font-smoothing:antialiased}
+    .nav-bar{background:rgba(30,58,95,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:0.875rem 0;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.12);border-bottom:1px solid rgba(59,130,246,0.15)}
+    .nav-container{max-width:var(--max-width);margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center}
+    .logo{color:white;font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.02em}
+    .logo-img{height:40px;margin-right:10px;vertical-align:middle}
+    .home-link{text-decoration:none;color:inherit;display:flex;align-items:center}
+    .nav-menu{display:flex;list-style:none;gap:2rem}
+    .nav-menu a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:500;font-size:0.875rem}
+    main{margin-top:4rem;padding:2rem 1rem}
+    .hero{background:radial-gradient(ellipse at 20% 50%,rgba(59,130,246,0.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(245,158,11,0.08) 0%,transparent 40%),linear-gradient(135deg,#1e3a5f 0%,#1a56db 100%);color:white;padding:6rem 1.5rem;text-align:center;border-radius:var(--radius-xl);margin-bottom:2rem;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 70%,rgba(255,255,255,0.03) 0%,transparent 50%),radial-gradient(circle at 70% 30%,rgba(255,255,255,0.04) 0%,transparent 50%)}
+    .hero-content{max-width:var(--max-width);margin:0 auto;position:relative;z-index:1;display:grid;gap:1rem}
+    .hero h1{font-family:var(--font-display);font-size:3rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:1rem;line-height:1.15}
+    .hero p{font-size:1.125rem;opacity:0.9}
+    #score-result{font-family:var(--font-mono);font-weight:700;color:var(--primary)}
+    a{color:var(--primary)}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .animate-in{animation:fadeInUp 0.6s ease-out both}
+    @media(max-width:768px){.nav-menu{display:none}.hero h1{font-size:2rem}.hero{padding:3.5rem 1rem}}
+    </style>
+
+    <!-- 完整样式（异步加载） -->
+    <link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </noscript>
 
     <!-- 非关键样式（异步加载，不阻塞首屏渲染） -->
     <link rel="stylesheet" href="css/enhanced/homepage-enhancements.css" media="print" onload="this.media='all'">
@@ -100,7 +132,7 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="index.html" class="home-link">
-                    <img src="images/logo.webp" alt="IELTS听力评分解析" class="logo-img" width="150" height="150" decoding="async">
+                    <img src="images/logo.svg" alt="IELTS听力评分解析" class="logo-img" width="48" height="48" decoding="async">
                     IELTS听力评分解析
                 </a>
             </div>
@@ -119,8 +151,8 @@
         <!-- 头部横幅 -->
         <section class="hero">
             <div class="hero-content">
-                <h1>雅思听力评分标准专业解析</h1>
-                <p>深入了解评分机制，科学规划备考策略</p>
+                <h1 class="animate-in">雅思听力评分标准专业解析</h1>
+                <p class="animate-in">深入了解评分机制，科学规划备考策略</p>
             </div>
         </section>
 
@@ -134,45 +166,7 @@
                 </div>
                 <button id="calculate-btn">计算分数</button>
                 <div class="result">
-                    <p>预估雅思分数：<span id="score-result">--</span></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 新版本特色 -->
-        <section class="version-announcement">
-            <div class="container">
-                <div class="announcement-card">
-                    <div class="announcement-header">
-                        <h2>🚀 全新增强版本上线！</h2>
-                        <p>体验更智能、更强大的雅思听力测试系统</p>
-                    </div>
-                    <div class="announcement-features">
-                        <div class="feature-highlight">
-                            <div class="feature-icon">💾</div>
-                            <h4>进度自动保存</h4>
-                            <p>再也不用担心意外中断，自动保存答题进度</p>
-                        </div>
-                        <div class="feature-highlight">
-                            <div class="feature-icon">⏱️</div>
-                            <h4>智能时间统计</h4>
-                            <p>详细记录答题时间，帮你掌握最佳节奏</p>
-                        </div>
-                        <div class="feature-highlight">
-                            <div class="feature-icon">📊</div>
-                            <h4>深度分析报告</h4>
-                            <p>专业的分析报告，精准指出提升方向</p>
-                        </div>
-                        <div class="feature-highlight">
-                            <div class="feature-icon">🎵</div>
-                            <h4>专业音频控制</h4>
-                            <p>变速播放、键盘操作，专业级音频体验</p>
-                        </div>
-                    </div>
-                    <div class="announcement-actions">
-                        <a href="pages/enhanced-test1.html" class="btn btn-primary btn-large">体验增强版测试</a>
-                        <a href="pages/optimization-demo.html" class="btn btn-secondary">查看优化对比</a>
-                    </div>
+                    <p>预估雅思分数：<span id="score-result" class="font-mono">--</span></p>
                 </div>
             </div>
         </section>
@@ -200,11 +194,11 @@
                         <p>精选模拟题目，配备专业解析和答题指导</p>
                         <a href="pages/practice.html" class="feature-link">开始练习</a>
                     </div>
-                    <div class="feature-card enhanced-highlight">
-                        <div class="feature-icon-large">🚀</div>
-                        <h3>增强版测试</h3>
-                        <p>全新升级的测试系统，提供专业级的考试体验</p>
-                        <a href="pages/enhanced-test1.html" class="feature-link featured">立即体验</a>
+                    <div class="feature-card">
+                        <div class="feature-icon-large">📈</div>
+                        <h3>学习进度</h3>
+                        <p>查看各套测试的已答题数与已提交分数，快速定位下一步练习重点</p>
+                        <a href="pages/progress.html" class="feature-link">查看进度</a>
                     </div>
                 </div>
             </div>
@@ -240,10 +234,10 @@
                             <span class="difficulty-badge intermediate">中等</span>
                         </div>
                         <div class="test-themes">
-                            <div class="theme-item">🚛 温沙姆农场工作</div>
+                            <div class="theme-item">🏠 租房申请表</div>
                             <div class="theme-item">🎊 昆士兰节庆</div>
-                            <div class="theme-item">🌱 环境科学课程</div>
-                            <div class="theme-item">🤧 光性喷嚏反射</div>
+                            <div class="theme-item">🛝 儿童户外活动研究</div>
+                            <div class="theme-item">🏜️ 柏柏尔人</div>
                         </div>
                         <div class="test-stats">
                             <span>⏱️ 30分钟</span>
@@ -269,17 +263,65 @@
                         </div>
                         <a href="pages/test3.html" class="btn btn-primary">开始 Test 3</a>
                     </div>
-                </div>
-                
-                <div class="enhanced-version-notice">
-                    <div class="notice-content">
-                        <div class="notice-icon">🚀</div>
-                        <div class="notice-text">
-                            <h4>增强版测试系统</h4>
-                            <p>体验全新的模块化架构、进度保存、智能分析等高级功能</p>
+
+                    <div class="test-card">
+                        <div class="test-header">
+                            <h3>Test 4</h3>
+                            <span class="difficulty-badge intermediate-advanced">中等偏上</span>
                         </div>
-                        <a href="pages/enhanced-test1.html" class="btn btn-secondary">体验增强版</a>
+                        <div class="test-themes">
+                            <div class="theme-item">🏢 Windward Apartments</div>
+                            <div class="theme-item">🏖️ Beach Races</div>
+                            <div class="theme-item">👕 性别化服饰</div>
+                            <div class="theme-item">☂️ 雨伞的历史</div>
+                        </div>
+                        <div class="test-stats">
+                            <span>⏱️ 30分钟</span>
+                            <span>📝 40题</span>
+                        </div>
+                        <a href="pages/test4.html" class="btn btn-primary">开始 Test 4</a>
                     </div>
+
+                    <div class="test-card">
+                        <div class="test-header">
+                            <h3>Test 5</h3>
+                            <span class="difficulty-badge intermediate-advanced">中等偏上</span>
+                        </div>
+                        <div class="test-themes">
+                            <div class="theme-item">🚜 Winsham Farm Centre</div>
+                            <div class="theme-item">🎶 Queensland Festival</div>
+                            <div class="theme-item">🌱 环境科学课程</div>
+                            <div class="theme-item">🤧 光性喷嚏反射</div>
+                        </div>
+                        <div class="test-stats">
+                            <span>⏱️ 30分钟</span>
+                            <span>📝 40题</span>
+                        </div>
+                        <a href="pages/test5.html" class="btn btn-primary">开始 Test 5</a>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="test-header">
+                            <h3>Test 6</h3>
+                            <span class="difficulty-badge intermediate-advanced">中等偏上</span>
+                        </div>
+                        <div class="test-themes">
+                            <div class="theme-item">🎭 Amateur Dramatic Society</div>
+                            <div class="theme-item">🦜 Clifton Bird Park</div>
+                            <div class="theme-item">🧴 Shampoo Advertising</div>
+                            <div class="theme-item">🏫 课堂戏剧活动</div>
+                        </div>
+                        <div class="test-stats">
+                            <span>⏱️ 30分钟</span>
+                            <span>📝 40题</span>
+                        </div>
+                        <a href="pages/test6.html" class="btn btn-primary">开始 Test 6</a>
+                    </div>
+                </div>
+                <div class="test-audit-notice" style="margin-top:2rem;padding:1.5rem;border:1px solid #e2e8f0;border-radius:16px;background:#fff8e1;">
+                    <h3 style="margin:0 0 .75rem;color:#92400e;">更多批量生成测试正在复核中</h3>
+                    <p style="margin:0 0 .75rem;color:#78350f;">我们对 test8-75 的一致性扫描发现大量题号缺失和结构异常，当前不再从首页直接开放这些页面，避免把错误内容暴露到正式入口。</p>
+                    <p style="margin:0;color:#78350f;">正式公开入口目前仅保留已核对并修复完成的 Test 1-6。</p>
                 </div>
             </div>
         </section>
@@ -317,6 +359,12 @@
                 </ul>
             </div>
         </div>
+        <div class="footer-legal">
+            <a href="about.html">About</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+        </div>
         <div class="footer-bottom">
             <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
         </div>
@@ -326,5 +374,6 @@
     <script src="js/calculator.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/webmcp-tools.js" defer></script>
+    <script src="js/analytics.js" defer></script>
 </body>
 </html> 

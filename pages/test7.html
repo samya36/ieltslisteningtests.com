@@ -3,240 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Listening Test 7</title>
-    <!-- 预连接CDN加速Font Awesome加载 -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/test.css">
+    <title>Test 7 暂未开放</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing:border-box}
+        :root{--primary:#1a56db;--surface:#f8fafc;--surface-raised:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--font-display:"Space Grotesk",sans-serif;--font-body:"IBM Plex Sans","PingFang SC",-apple-system,sans-serif}
+        body{margin:0;font-family:var(--font-body);background:var(--surface);color:var(--text)}
+        .nav-bar{background:rgba(30,58,95,.97);padding:.875rem 0}
+        .nav-container{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center}
+        .home-link{display:flex;align-items:center;color:#fff;text-decoration:none;font-family:var(--font-display);font-weight:700}
+        .logo-img{height:40px;margin-right:10px}
+        .nav-menu{display:flex;list-style:none;gap:1.5rem;margin:0;padding:0}
+        .nav-menu a{color:rgba(255,255,255,.85);text-decoration:none}
+        main{max-width:880px;margin:0 auto;padding:3rem 1rem}
+        .notice{background:var(--surface-raised);border:1px solid var(--border);border-radius:20px;padding:2rem;box-shadow:0 10px 24px rgba(15,23,42,.08)}
+        .notice h1{margin:0 0 1rem;font-family:var(--font-display);font-size:2rem}
+        .notice p{margin:.75rem 0;color:#334155;line-height:1.7}
+        .notice ul{margin:1rem 0 1.5rem;padding-left:1.2rem;color:#334155}
+        .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:1.5rem}
+        .btn{display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.1rem;border-radius:12px;text-decoration:none;font-weight:600}
+        .btn-primary{background:var(--primary);color:#fff}
+        .btn-secondary{background:#e2e8f0;color:#0f172a}
+        @media(max-width:768px){.nav-menu{display:none}.notice h1{font-size:1.6rem}}
+    </style>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="nav-bar">
         <div class="nav-container">
-            <div class="logo">
-                <a href="../index.html" class="home-link">
-                    <img src="../images/logo.webp" alt="IELTS听力评分解析" class="logo-img" width="150" height="150" decoding="async">
-                    IELTS听力评分解析
-                </a>
-            </div>
+            <a href="../index.html" class="home-link">
+                <img src="../images/logo.svg" alt="IELTS听力评分解析" class="logo-img" width="48" height="48" decoding="async">
+                IELTS听力评分解析
+            </a>
             <ul class="nav-menu">
                 <li><a href="../index.html">首页</a></li>
-                <li><a href="scoring.html">评分详解</a></li>
-                <li><a href="cases.html">案例分析</a></li>
                 <li><a href="practice.html">听力练习</a></li>
+                <li><a href="progress.html">学习进度</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 主要内容区 -->
-    <main class="test-container">
-        <!-- 测试说明 -->
-        <div class="test-intro">
-            <h2>测试说明</h2>
-            <ul class="test-instructions">
-                <li>时长：30分钟</li>
-                <li>题量：40题</li>
-                <li>难度：中等</li>
-                <li>每个部分有独立的音频播放器，可调整播放速度</li>
-                <li>在听力过程中完成答题</li>
+    <main>
+        <section class="notice">
+            <h1>Test 7 暂未开放</h1>
+            <p>该测试当前未提供有效内容，因此已从练习入口下线。</p>
+            <ul>
+                <li>本地仅发现 132B 的占位音频文件，不是可播放的完整听力材料。</li>
+                <li>现有页面引用的音频实际上指向 `c20-test4`，与 Test 7 不对应。</li>
+                <li>仓库中不存在可核对的 `docs/test7/` 文档和对应答案文件。</li>
             </ul>
-        </div>
-
-        <!-- 部分切换 -->
-        <div class="section-tabs">
-            <button class="section-tab active" data-section="1">Section 1</button>
-            <button class="section-tab" data-section="2">Section 2</button>
-            <button class="section-tab" data-section="3">Section 3</button>
-            <button class="section-tab" data-section="4">Section 4</button>
-        </div>
-
-        <!-- 音频播放器容器 -->
-        <div class="audio-players-container">
-            <!-- Section 1 音频播放器 -->
-            <div class="audio-player" id="section1-player-container">
-                <audio id="section1-player" src="../audio/c20-test4/c20_T4S1_48k.mp3" preload="none"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section1-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section1-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section1-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section1-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
+            <p>在补齐真实音频、题目来源和标准答案之前，这一页会保持关闭状态。</p>
+            <div class="actions">
+                <a href="practice.html" class="btn btn-primary">返回练习列表</a>
+                <a href="../index.html" class="btn btn-secondary">返回首页</a>
             </div>
-
-            <!-- Section 2 音频播放器 -->
-            <div class="audio-player" id="section2-player-container" style="display: none;">
-                <audio id="section2-player" src="../audio/c20-test4/c20_T4S2_48k.mp3" preload="none"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section2-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section2-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section2-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section2-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3 音频播放器 -->
-            <div class="audio-player" id="section3-player-container" style="display: none;">
-                <audio id="section3-player" src="../audio/c20-test4/c20_T4S3_48k.mp3" preload="none"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section3-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section3-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section3-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section3-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 4 音频播放器 -->
-            <div class="audio-player" id="section4-player-container" style="display: none;">
-                <audio id="section4-player" src="../audio/c20-test4/c20_T4S4_48k.mp3" preload="none"></audio>
-                <div class="custom-player">
-                    <div class="player-main">
-                        <button class="play-btn" id="section4-play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="progress-bar">
-                            <input type="range" class="progress" id="section4-progress" min="0" max="100" value="0">
-                        </div>
-                        <div class="time" id="section4-time">00:00 / 00:00</div>
-                    </div>
-                    <div class="speed-control">
-                        <select class="playback-speed" id="section4-speed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1.0x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2.0x</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 题目区域 -->
-        <form id="test-form">
-            <div class="section-content active" id="section-1" data-section="1">
-                <div class="questions">
-                    <!-- Section 1 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-2" data-section="2" style="display: none;">
-                <div class="questions">
-                    <!-- Section 2 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-3" data-section="3" style="display: none;">
-                <div class="questions">
-                    <!-- Section 3 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <div class="section-content" id="section-4" data-section="4" style="display: none;">
-                <div class="questions">
-                    <!-- Section 4 题目内容将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-        </form>
+        </section>
     </main>
-
-    <!-- 结果弹窗 -->
-    <div class="result-modal" id="result-modal">
-        <div class="result-content">
-            <span class="close-result" id="close-result">&times;</span>
-            <div class="result-header">
-                <h2>测试结果</h2>
-                <p>您已完成雅思听力测试，以下是您的成绩：</p>
-            </div>
-            <div class="result-score">
-                <div class="score-circle correct">
-                    <div class="score-value" id="correct-count">0</div>
-                    <div class="score-label">正确题数</div>
-                </div>
-                <div class="score-circle ielts">
-                    <div class="score-value" id="ielts-score">0.0</div>
-                    <div class="score-label">雅思分数</div>
-                </div>
-            </div>
-            <div class="result-details">
-                <h3>各部分得分</h3>
-                <div class="section-results" id="section-results">
-                    <!-- 各部分得分将由 JavaScript 动态生成 -->
-                </div>
-            </div>
-            <button class="retry-btn" id="retry-btn">重新测试</button>
-        </div>
-    </div>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>关于我们</h4>
-                <p>专注雅思听力评分解析，助力考生科学备考</p>
-            </div>
-            <div class="footer-section">
-                <h4>快速导航</h4>
-                <ul>
-                    <li><a href="scoring.html">评分详解</a></li>
-                    <li><a href="cases.html">案例分析</a></li>
-                    <li><a href="practice.html">练习题</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- JavaScript -->
-    <script src="../js/universal-audio-player.js" defer></script>
-    <script src="../js/test-data-7.js" defer></script>
-    <script src="../js/test-renderer.js" defer></script>
-    <script src="../js/test-init.js" defer></script>
+<script src="../js/analytics.js" defer></script>
 </body>
-</html> 
+</html>

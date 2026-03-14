@@ -265,7 +265,6 @@ class DeploymentValidator {
         const functionalityTests = [
             { name: '音频播放器类存在', test: () => typeof AudioPlayer !== 'undefined' },
             { name: '音频配置存在', test: () => typeof AUDIO_CONFIG !== 'undefined' },
-            { name: '测试UI类存在', test: () => typeof TestUI !== 'undefined' },
             { name: '评分显示功能存在', test: () => typeof generateScoreResultHTML !== 'undefined' },
             { name: '进阶样式加载', test: () => this.checkCSSLoaded('advanced-tests.css') }
         ];

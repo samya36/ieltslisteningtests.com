@@ -1,55 +1,42 @@
 // Test 2 标准答案
 const standardAnswers2 = {
-    // Section 1 答案 (1-10)
-    1: "Village",
-    2: "organic",
-    3: "October",
-    4: "7:30",
-    5: "9.50",
-    6: "none",
-    7: "lunch",
-    8: "clothing",
-    9: "hostel",
-    10: "bus",
-    
-    // Section 2 答案 (11-20)
-    11: "A",
-    12: "B",
-    13: "B",
+    1: "614381997",
+    2: "post",
+    3: "chemist",
+    4: "garden",
+    5: "balcony",
+    6: "fridge",
+    7: "400",
+    8: "beach",
+    9: "parking",
+    10: "electricity",
+    11: "B",
+    12: "C",
+    13: "A",
     14: "C",
     15: "B",
-    16: "B",
-    17: "B",
-    18: "B",
-    19: "A",
-    20: "A",
-    
-    // Section 3 答案 (21-30)
-    21: "C",
-    22: "C",
-    23: "C",
-    24: "B",
-    25: ["A", "D"], // 25&26题为AD
-    26: ["A", "D"],
-    27: "A",
-    28: "C",
+    16: "C",
+    "17-18": ["B", "D"],
+    "19-20": ["A", "D"],
+    "21-22": ["A", "E"],
+    "23-24": ["A", "D"],
+    "25-26": ["C", "D"],
+    27: "B",
+    28: "A",
     29: "A",
     30: "C",
-    
-    // Section 4 答案 (31-40)
-    31: "ACHOO",
-    32: "25%",
-    33: "bright light",
-    34: "trigeminal",
-    35: "nose",
-    36: "involuntary",
-    37: "hereditary",
-    38: "light",
-    39: "pilots",
-    40: "treatment"
+    31: "deserts",
+    32: "seasonal",
+    33: "olive oil",
+    34: "camels",
+    35: "square",
+    36: "grass",
+    37: "slaves",
+    38: "blue",
+    39: "herds",
+    40: "guides"
 };
 
-// 雅思听力分数换算表
 const listeningScoreTable2 = {
     40: 9.0,
     39: 9.0,
@@ -94,20 +81,16 @@ const listeningScoreTable2 = {
     0: 0.0
 };
 
-// 获取Test 2标准答案
 function getStandardAnswers2() {
     return standardAnswers2;
 }
 
-// 获取雅思分数
 function getIeltsScore2(correctCount) {
     return listeningScoreTable2[correctCount] || 0;
 }
 
-// 为兼容性提供全局函数和变量
-function getIeltsScore(correctCount) {
-    return listeningScoreTable2[correctCount] || 0;
-}
-
-// 设置全局评分表
+window.standardAnswers2 = standardAnswers2;
+window.listeningScoreTable2 = listeningScoreTable2;
 window.listeningScoreTable = listeningScoreTable2;
+window.getStandardAnswers2 = getStandardAnswers2;
+window.getIeltsScore2 = getIeltsScore2;

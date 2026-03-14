@@ -7,29 +7,30 @@
         flex-direction: column;
         padding: 10px;
     }
-    
+
     .nav-menu {
         flex-direction: column;
         width: 100%;
         text-align: center;
     }
-    
+
     .nav-menu li {
         margin: 10px 0;
     }
-    
+
     /* 主要内容区响应式 */
     .hero {
-        padding: 3rem 1rem;
+        padding: 3.5rem 1rem;
     }
 
     .hero h1 {
         font-size: 2rem;
+        letter-spacing: -0.02em;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .calculator-section,
@@ -41,57 +42,72 @@
     .test-container {
         padding: 10px;
     }
-    
+
+    /* section-tabs 移动端横滑 */
     .section-tabs {
-        flex-wrap: wrap;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 4px;
     }
-    
+
+    .section-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
     .section-tab {
-        flex: 1 1 40%;
-        margin: 5px;
+        flex: 0 0 auto;
+        padding: 8px 18px;
         font-size: 14px;
+        white-space: nowrap;
     }
-    
+
     /* 音频播放器适配 */
     .player-controls {
         flex-direction: column;
     }
-    
+
     .custom-player {
         width: 100%;
     }
-    
+
     .progress-bar {
         width: 100%;
     }
-    
+
     /* 答题区域适配 */
     .question-item {
         padding: 15px 10px;
     }
-    
+
     .options-list {
         flex-direction: column;
     }
-    
+
     .option-item {
         margin: 5px 0;
     }
-    
+
     /* 结果展示区域适配 */
     .section-scores {
         flex-wrap: wrap;
     }
-    
+
     .section-score {
         flex: 1 1 45%;
         margin: 5px;
     }
-    
+
     /* 返回顶部按钮 */
     .back-to-top {
         right: 15px;
         bottom: 15px;
+    }
+
+    /* 卡片网格移动端单列 */
+    .tests-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -104,11 +120,15 @@
 
     /* 主要内容区响应式 */
     .hero {
-        padding: 2rem 1rem;
+        padding: 2.5rem 1rem;
     }
 
     .hero h1 {
         font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
     }
 
     .calculator-section,
@@ -166,7 +186,7 @@
     .test-container {
         padding: 20px;
     }
-    
+
     .section-tab {
         font-size: 16px;
     }
@@ -178,4 +198,4 @@
         max-width: 1400px;
         margin: 0 auto;
     }
-} 
+}

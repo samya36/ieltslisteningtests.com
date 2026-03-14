@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', function(){
   try {
     if (typeof TEST_DATA_6 === 'undefined') throw new Error('TEST_DATA_6 未定义，请确保 test-data-6.js 已正确加载');
     if (typeof cambridge20Test3Answers === 'undefined') throw new Error('cambridge20Test3Answers 未定义，请确保 cambridge20_test3_answers.js 已正确加载');
-    if (typeof TestUI === 'undefined') throw new Error('TestUI 类未定义，请确保 test-ui.js 已正确加载');
     window.TEST_DATA = TEST_DATA_6;
     window.standardAnswers = cambridge20Test3Answers;
-    window.testUI = new TestUI();
     if (typeof AudioPlayer !== 'undefined') window.audioConfig = 'cambridge20-test3';
   } catch (error) {
     const errorDiv = document.createElement('div');

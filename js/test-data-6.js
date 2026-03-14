@@ -1,35 +1,38 @@
-// 进阶听力测试 6 数据
+// Test 6 测试数据 - Amateur Dramatic Society, Clifton Bird Park, Shampoo Advertising, Drama Activities in the Classroom
 const TEST_DATA_6 = {
     testInfo: {
-        title: '进阶听力测试 6',
-        description: 'Advanced Listening Practice Test 6',
+        title: 'IELTS Listening Test 6',
+        description: 'Amateur Dramatic Society / Clifton Bird Park / Shampoo Advertising / Drama Activities',
         totalQuestions: 40,
-        timeLimit: 30, // 分钟
+        timeLimit: 30,
         audioPath: '../audio/test6/'
     },
-    
+
     section1: {
         title: "<strong>Section 1</strong>",
-        instructions: "<strong>Questions 1-10</strong>\n\nComplete the form below.\n\nWrite <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.",
+        instructions: "<strong>Questions 1-10</strong>\n\nComplete the form below.\n\nWrite <strong>ONE WORD /OR A NUMBER</strong> for each answer.",
         formContent: {
-            title: "LANGUAGE SCHOOL ENQUIRY",
+            title: "Amateur Dramatic Society",
+            subtitle: "Secretary: Jane Caulfield\n\nMailing address: 117 Green Road, Prestwin",
             items: [
-                { text: "Student name: Maria [1] ........................" },
-                { text: "Nationality: [2] ........................" },
-                { text: "Current English level: [3] ........................" },
-                { text: "Course type required: [4] ........................ English" },
-                { text: "Preferred start date: [5] ........................" },
-                { text: "Length of course: [6] ........................ weeks" },
-                { text: "Accommodation needed:", type: "text" },
-                { text: "• type: [7] ........................", type: "bullet" },
-                { text: "• special requirements: [8] ........................ diet", type: "bullet" },
-                { text: "Additional services:", type: "text" },
-                { text: "• airport [9] ........................", type: "bullet" },
-                { text: "Method of payment: by [10] ........................" }
+                { text: "Location for rehearsals: The [1]........................ House, Wynn" },
+                { text: "No experience necessary" },
+                { text: "They need actors and [2]........................ singers" },
+                { text: "Also need people who can [3]........................" },
+                { text: "Meetings 6-8 p.m. every [4]........................" },
+                { text: "Closed in [5]........................ (for 2 weeks)" },
+                { text: "Membership costs:", type: "text" },
+                { text: "Standard: £ 40 (includes a [6]........................ once a year)", type: "bullet" },
+                { text: "Over 60s or unemployed: £ [7]........................", type: "bullet" },
+                { text: "Youth group: for people aged [8]........................ years old and under", type: "bullet" },
+                { text: "Shows:", type: "text" },
+                { text: "• mostly plays by [9]........................ authors", type: "bullet" },
+                { text: "• family show in December", type: "bullet" },
+                { text: "(raises money for children's [10]........................)", type: "bullet" }
             ]
         }
     },
-    
+
     section2: {
         title: "<strong>Section 2</strong>",
         parts: [
@@ -39,277 +42,200 @@ const TEST_DATA_6 = {
                 questions: [
                     {
                         id: 11,
-                        text: "The Coastal Museum was originally",
+                        text: "The speaker stresses the importance to Clifton Bird Park of",
                         type: "radio",
                         options: [
-                            { value: "A", text: "a fish market" },
-                            { value: "B", text: "a railway station" },
-                            { value: "C", text: "a customs house" }
+                            { value: "A", text: "birds that are now endangered." },
+                            { value: "B", text: "birds from all over the world." },
+                            { value: "C", text: "birds that are common in the local area." }
                         ]
                     },
                     {
                         id: 12,
-                        text: "The museum's main exhibition focuses on",
+                        text: "People who volunteer to help with gardening at the park",
                         type: "radio",
                         options: [
-                            { value: "A", text: "local fishing industry" },
-                            { value: "B", text: "maritime archaeology" },
-                            { value: "C", text: "shipbuilding history" }
+                            { value: "A", text: "must work at weekends." },
+                            { value: "B", text: "need to come at least once a month." },
+                            { value: "C", text: "will only be required in the busy season." }
                         ]
                     },
                     {
                         id: 13,
-                        text: "The museum shop specializes in",
+                        text: "According to the speaker, who would be the ideal gardening volunteer?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "maritime books" },
-                            { value: "B", text: "nautical instruments" },
-                            { value: "C", text: "local crafts" }
+                            { value: "A", text: "someone who can work independently" },
+                            { value: "B", text: "someone who is willing to work in any weather" },
+                            { value: "C", text: "someone who knows a lot about plants" }
                         ]
                     },
                     {
                         id: 14,
-                        text: "Guided tours are available",
+                        text: "Volunteer guides will mainly be working with",
                         type: "radio",
                         options: [
-                            { value: "A", text: "every hour" },
-                            { value: "B", text: "twice daily" },
-                            { value: "C", text: "by appointment only" }
+                            { value: "A", text: "international visitors." },
+                            { value: "B", text: "local people from Clifton." },
+                            { value: "C", text: "school groups." }
                         ]
                     },
                     {
                         id: 15,
-                        text: "Children under 12",
+                        text: "What is still required for the Maintenance Day at the bird park?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "enter free" },
-                            { value: "B", text: "pay half price" },
-                            { value: "C", text: "must be accompanied" }
+                            { value: "A", text: "food and drink" },
+                            { value: "B", text: "transport" },
+                            { value: "C", text: "tools" }
                         ]
                     }
                 ]
             },
             {
                 title: "<strong>Questions 16 – 20</strong>",
-                instructions: "Complete the floor plan notes.\n\nWrite <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.",
-                mapContent: {
-                    title: "Museum Floor Plan",
-                    description: "Ground Floor Layout"
-                },
+                instructions: "Choose the correct letter, <strong>A-H</strong>, for each building.",
                 questions: [
-                    {
-                        id: 16,
-                        text: "Entrance Hall: Information desk and [16] ........................",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 17,
-                        text: "Gallery 1: [17] ........................ exhibition",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 18,
-                        text: "Gallery 2: Interactive [18] ........................",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 19,
-                        text: "Cafe: Serves [19] ........................ and refreshments",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 20,
-                        text: "Theatre: Capacity [20] ........................ people",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    }
-                ]
+                    { id: 16, text: "Wooden bridge", type: "text", placeholder: "A-H" },
+                    { id: 17, text: "Observation tower", type: "text", placeholder: "A-H" },
+                    { id: 18, text: "Visitor cabins", type: "text", placeholder: "A-H" },
+                    { id: 19, text: "Nesting boxes", type: "text", placeholder: "A-H" },
+                    { id: 20, text: "Boat sheds", type: "text", placeholder: "A-H" }
+                ],
+                boxContent: {
+                    title: "Building",
+                    content: [
+                        { type: "text", text: "Write the correct letter A-H next to Questions 16-20." }
+                    ]
+                }
             }
         ]
     },
-    
+
     section3: {
         title: "<strong>Section 3</strong>",
         parts: [
             {
-                title: "<strong>Questions 21 – 25</strong>",
+                title: "<strong>Questions 21 – 26</strong>",
                 instructions: "Choose the correct letter, <strong>A, B or C</strong>.",
                 questions: [
                     {
                         id: 21,
-                        text: "What is the main purpose of Helen and David's research project?",
+                        text: "Janet says that over time, shampoo has become",
                         type: "radio",
                         options: [
-                            { value: "A", text: "to compare different teaching methods" },
-                            { value: "B", text: "to evaluate student performance" },
-                            { value: "C", text: "to assess technology in education" }
+                            { value: "A", text: "a cheaper product." },
+                            { value: "B", text: "more hygienic in its effects." },
+                            { value: "C", text: "a different kind of commodity." }
                         ]
                     },
                     {
                         id: 22,
-                        text: "They chose their research topic because",
+                        text: "What does Janet say about bad hair days?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "it relates to their teaching experience" },
-                            { value: "B", text: "it's an area of current debate" },
-                            { value: "C", text: "it has practical applications" }
+                            { value: "A", text: "They really do exist." },
+                            { value: "B", text: "Women worry about them more than men." },
+                            { value: "C", text: "Their name is inaccurate." }
                         ]
                     },
                     {
                         id: 23,
-                        text: "What does Helen say about their literature review?",
+                        text: "What do Janet and Michael say about the chemicals used in shampoos?",
                         type: "radio",
                         options: [
-                            { value: "A", text: "It took longer than expected" },
-                            { value: "B", text: "It revealed conflicting opinions" },
-                            { value: "C", text: "It was more extensive than needed" }
+                            { value: "A", text: "All shampoos contain the same chemicals." },
+                            { value: "B", text: "The chemicals are believed to be dangerous." },
+                            { value: "C", text: "The presence of the chemicals is rarely publicised." }
                         ]
                     },
                     {
                         id: 24,
-                        text: "For their data collection, they decided to",
+                        text: "According to Janet, printing directly onto shampoo bottles, rather than onto labels",
                         type: "radio",
                         options: [
-                            { value: "A", text: "interview teachers only" },
-                            { value: "B", text: "use questionnaires and interviews" },
-                            { value: "C", text: "observe classroom activities" }
+                            { value: "A", text: "costs more." },
+                            { value: "B", text: "looks less attractive." },
+                            { value: "C", text: "takes a lot longer." }
                         ]
                     },
                     {
                         id: 25,
-                        text: "The supervisor's main suggestion was to",
+                        text: "With regard to environmental issues, Michael and Janet want to investigate",
                         type: "radio",
                         options: [
-                            { value: "A", text: "narrow down their focus" },
-                            { value: "B", text: "increase their sample size" },
-                            { value: "C", text: "change their methodology" }
+                            { value: "A", text: "the appearance of shampoo bottles." },
+                            { value: "B", text: "variations in the weight of shampoo bottles." },
+                            { value: "C", text: "the source of recycled plastic in shampoo bottles." }
+                        ]
+                    },
+                    {
+                        id: 26,
+                        text: "Michael bases his own shampoo purchase decisions on his",
+                        type: "radio",
+                        options: [
+                            { value: "A", text: "loyalty to certain brands." },
+                            { value: "B", text: "desire to get value for money." },
+                            { value: "C", text: "willingness to try new products." }
                         ]
                     }
                 ]
             },
             {
-                title: "<strong>Questions 26 – 30</strong>",
-                instructions: "Complete the notes below.\n\nWrite <strong>NO MORE THAN TWO WORDS</strong> for each answer.",
+                title: "<strong>Questions 27 – 30</strong>",
+                instructions: "Choose the correct answer from the box and write the correct letter, <strong>A-G</strong>.",
                 questions: [
-                    {
-                        id: 26,
-                        text: "Research participants: [26] ........................ from three local schools",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 27,
-                        text: "Data collection period: [27] ........................",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 28,
-                        text: "Interview duration: approximately [28] ........................ each",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 29,
-                        text: "Analysis software: [29] ........................ program",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    },
-                    {
-                        id: 30,
-                        text: "Expected completion date: [30] ........................",
-                        type: "text",
-                        placeholder: "Enter your answer"
-                    }
-                ]
+                    { id: 27, text: "Zing", type: "text", placeholder: "A-G" },
+                    { id: 28, text: "Splash", type: "text", placeholder: "A-G" },
+                    { id: 29, text: "Just go", type: "text", placeholder: "A-G" },
+                    { id: 30, text: "Brozene", type: "text", placeholder: "A-G" }
+                ],
+                boxContent: {
+                    title: "Advertising focuses",
+                    content: [
+                        { type: "text", text: "A. link to relaxation" },
+                        { type: "text", text: "B. enviable lifestyle" },
+                        { type: "text", text: "C. natural ingredients" },
+                        { type: "text", text: "D. masculine image" },
+                        { type: "text", text: "E. product reliability" },
+                        { type: "text", text: "F. romantic interest" },
+                        { type: "text", text: "G. use by celebrities" }
+                    ]
+                }
             }
         ]
     },
-    
+
     section4: {
         title: "<strong>Section 4</strong>",
-        instructions: "<strong>Questions 31-40</strong>\n\nComplete the notes below.\n\nWrite <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.",
+        instructions: "<strong>Questions 31-40</strong>\n\nComplete the notes below.\n\nWrite <strong>ONE WORD ONLY</strong> for each answer.",
         boxContent: {
-            title: "The Impact of Social Media on Modern Communication",
+            title: "Benefits of using drama activities in the classroom",
             content: [
-                {
-                    type: "header",
-                    text: "Historical Context"
-                },
-                {
-                    type: "text",
-                    text: "Traditional communication relied on [31] ........................ methods"
-                },
-                {
-                    type: "text",
-                    text: "Internet adoption accelerated in the [32] ........................"
-                },
-                {
-                    type: "header",
-                    text: "Social Media Evolution"
-                },
-                {
-                    type: "text",
-                    text: "First platforms focused on [33] ........................ connections"
-                },
-                {
-                    type: "text",
-                    text: "Mobile technology enabled [34] ........................ communication"
-                },
-                {
-                    type: "header",
-                    text: "Communication Changes"
-                },
-                {
-                    type: "subheader",
-                    text: "Positive aspects:"
-                },
-                {
-                    type: "text",
-                    text: "• Increased [35] ........................ of communication"
-                },
-                {
-                    type: "text",
-                    text: "• Global [36] ........................ building"
-                },
-                {
-                    type: "subheader",
-                    text: "Concerns:"
-                },
-                {
-                    type: "text",
-                    text: "• Reduced [37] ........................ interaction"
-                },
-                {
-                    type: "text",
-                    text: "• Information [38] ........................ problems"
-                },
-                {
-                    type: "header",
-                    text: "Future Implications"
-                },
-                {
-                    type: "text",
-                    text: "Artificial intelligence will enable [39] ........................ communication"
-                },
-                {
-                    type: "text",
-                    text: "Society must address [40] ........................ and privacy issues"
-                }
+                { type: "header", text: "Child's personal development" },
+                { type: "text", text: "• Group participation develops [31]........................ in own ideas." },
+                { type: "text", text: "• Unscripted, imaginative activities allow children to take [32]........................" },
+                { type: "header", text: "Child's educational development" },
+                { type: "text", text: "• Working as a group teaches the importance of [33]........................ to others." },
+                { type: "text", text: "• Performing makes children [34]........................ for their learning and behavior." },
+                { type: "header", text: "Role-play can be used:" },
+                { type: "text", text: "• as a form of [35]........................" },
+                { type: "text", text: "• for children experiencing problems" },
+                { type: "text", text: "• to help children be objective about their behaviour problems" },
+                { type: "text", text: "• to explore controversial issues with a class in a [36]........................ environment" },
+                { type: "text", text: "• to explore children's self-knowledge and understanding of [37]........................" },
+                { type: "header", text: "Advantages of using role-play in the study of history" },
+                { type: "text", text: "• Drama activities increase children's [38]........................ in class" },
+                { type: "text", text: "• Makes it easier for children to [39]........................ and understand historical events" },
+                { type: "text", text: "• Can find answers to [40]........................ in history to see why certain decisions were made" }
             ]
         }
     }
 };
 
-// 获取测试数据的函数
 function getTestData6() {
     return TEST_DATA_6;
 }
 
-// 导出函数
 window.getTestData6 = getTestData6;
 window.TEST_DATA_6 = TEST_DATA_6;

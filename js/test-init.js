@@ -4,18 +4,58 @@
     'use strict';
 
     function detectTestNumber() {
-        const path = window.location.pathname.toLowerCase();
-        if (path.includes('test2')) return 2;
-        if (path.includes('test3')) return 3;
-        if (path.includes('test4')) return 4;
-        if (path.includes('test5')) return 5;
-        if (path.includes('test6')) return 6;
-        if (path.includes('test7')) return 7;
+        var path = window.location.pathname.toLowerCase();
+        var m = path.match(/test(\d+)/);
+        if (m) return parseInt(m[1], 10);
         return 1;
     }
 
     const testNumber = detectTestNumber();
     const storageKey = `ielts-test${testNumber}-answers`;
+    const resultStorageKey = `ielts-test${testNumber}-result`;
+    const defaultListeningScoreTable = {
+        40: 9.0,
+        39: 9.0,
+        38: 8.5,
+        37: 8.5,
+        36: 8.0,
+        35: 8.0,
+        34: 7.5,
+        33: 7.5,
+        32: 7.0,
+        31: 7.0,
+        30: 7.0,
+        29: 6.5,
+        28: 6.5,
+        27: 6.5,
+        26: 6.0,
+        25: 6.0,
+        24: 6.0,
+        23: 6.0,
+        22: 5.5,
+        21: 5.5,
+        20: 5.5,
+        19: 5.0,
+        18: 5.0,
+        17: 5.0,
+        16: 5.0,
+        15: 4.5,
+        14: 4.5,
+        13: 4.5,
+        12: 4.0,
+        11: 4.0,
+        10: 4.0,
+        9: 3.5,
+        8: 3.5,
+        7: 3.5,
+        6: 3.5,
+        5: 3.0,
+        4: 3.0,
+        3: 2.5,
+        2: 2.0,
+        1: 1.0,
+        0: 0.0
+    };
 
     const TEST_AUDIO_CONFIG = {
         1: {
@@ -98,6 +138,8 @@
         initSectionTabs();
         initAnswerSaving();
         loadSavedAnswers();
+        injectGlobalSubmitButton();
+        bindResultModal();
         checkServiceWorkerUpdate();
 
         console.log(`IELTS听力测试 ${testNumber} 初始化完成`);
@@ -481,6 +523,9 @@
 
     function initAnswerSaving() {
         document.querySelectorAll('.answer-input').forEach(function(input) {
+            if (input.dataset.answerBound === 'true') return;
+            input.dataset.answerBound = 'true';
+
             if (input.type === 'text') {
                 input.addEventListener('input', function() {
                     saveTextAnswer(this.dataset.question, this.value);
@@ -597,19 +642,409 @@
         }
     }
 
+    function readGlobalBinding(name) {
+        if (!name) return undefined;
+        if (typeof window[name] !== 'undefined') return window[name];
+
+        try {
+            return Function(`return typeof ${name} !== "undefined" ? ${name} : undefined;`)();
+        } catch (_) {
+            return undefined;
+        }
+    }
+
+    function getAnswerKeyForTest() {
+        return readGlobalBinding(`standardAnswers${testNumber}`) || readGlobalBinding('standardAnswers');
+    }
+
+    function getListeningScoreTableForTest() {
+        return (
+            readGlobalBinding(`listeningScoreTable${testNumber}`) ||
+            readGlobalBinding('listeningScoreTable') ||
+            defaultListeningScoreTable
+        );
+    }
+
+    function parseQuestionRange(key) {
+        const text = String(key).trim();
+        const rangeMatch = text.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (rangeMatch) {
+            return {
+                start: parseInt(rangeMatch[1], 10),
+                end: parseInt(rangeMatch[2], 10)
+            };
+        }
+
+        const numberMatch = text.match(/^(\d+)$/);
+        if (numberMatch) {
+            const value = parseInt(numberMatch[1], 10);
+            return { start: value, end: value };
+        }
+
+        return null;
+    }
+
+    function normalizeText(value) {
+        if (value === null || value === undefined) return '';
+
+        return String(value)
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, ' ')
+            .replace(/^[,.;:()\[\]\s]+|[,.;:()\[\]\s]+$/g, '');
+    }
+
+    function parseAlternatives(value) {
+        if (Array.isArray(value)) {
+            return value.map(normalizeText).filter(Boolean);
+        }
+
+        const text = String(value === null || value === undefined ? '' : value);
+        if (!text.trim()) return [];
+
+        return text
+            .split(/\s*\/\s*|\s*\|\s*|\s*;\s*/)
+            .map(normalizeText)
+            .filter(Boolean);
+    }
+
+    function splitExpectedRangeValues(expected, count) {
+        if (Array.isArray(expected)) {
+            if (expected.length === count) return expected;
+            return expected.slice(0, count);
+        }
+
+        const alternatives = parseAlternatives(expected);
+        if (alternatives.length === count) return alternatives;
+
+        const compact = normalizeText(expected).replace(/\s+/g, '');
+        if (compact.length === count) {
+            return compact.split('');
+        }
+
+        return [];
+    }
+
+    function stringifyAnswer(value) {
+        if (Array.isArray(value)) return value.join(', ');
+        return value === null || value === undefined ? '' : String(value);
+    }
+
+    function expandAnswerKey(answerKey) {
+        const entries = [];
+
+        Object.entries(answerKey || {}).forEach(function(entry) {
+            const key = entry[0];
+            const expected = entry[1];
+            const range = parseQuestionRange(key);
+
+            if (!range) return;
+
+            if (range.start !== range.end) {
+                const values = splitExpectedRangeValues(expected, range.end - range.start + 1);
+                for (let questionNumber = range.start; questionNumber <= range.end; questionNumber++) {
+                    const index = questionNumber - range.start;
+                    entries.push({
+                        questionNumber: questionNumber,
+                        sourceKey: key,
+                        expected: values[index] !== undefined ? values[index] : expected
+                    });
+                }
+                return;
+            }
+
+            entries.push({
+                questionNumber: range.start,
+                sourceKey: key,
+                expected: expected
+            });
+        });
+
+        return entries.sort(function(a, b) {
+            return a.questionNumber - b.questionNumber;
+        });
+    }
+
+    function getUserAnswerForEntry(entry, answers) {
+        if (Object.prototype.hasOwnProperty.call(answers, entry.sourceKey)) {
+            return answers[entry.sourceKey];
+        }
+
+        const numericKey = String(entry.questionNumber);
+        if (Object.prototype.hasOwnProperty.call(answers, numericKey)) {
+            return answers[numericKey];
+        }
+
+        return '';
+    }
+
+    function isAnswered(value) {
+        if (Array.isArray(value)) return value.length > 0;
+        return normalizeText(value) !== '';
+    }
+
+    function compareAnswer(userAnswer, expected) {
+        if (Array.isArray(expected)) {
+            const expectedValues = expected.map(normalizeText).filter(Boolean);
+            const actualValues = Array.isArray(userAnswer)
+                ? userAnswer.map(normalizeText).filter(Boolean)
+                : parseAlternatives(userAnswer);
+
+            if (actualValues.length === 0 || expectedValues.length === 0) return false;
+            return expectedValues.every(function(item) {
+                return actualValues.includes(item);
+            });
+        }
+
+        const expectedAlternatives = parseAlternatives(expected);
+        if (expectedAlternatives.length === 0) return false;
+
+        if (Array.isArray(userAnswer)) {
+            const actualValues = userAnswer.map(normalizeText).filter(Boolean);
+            return actualValues.some(function(item) {
+                return expectedAlternatives.includes(item);
+            });
+        }
+
+        return expectedAlternatives.includes(normalizeText(userAnswer));
+    }
+
+    function getSectionForQuestion(questionNumber) {
+        if (questionNumber <= 10) return 1;
+        if (questionNumber <= 20) return 2;
+        if (questionNumber <= 30) return 3;
+        return 4;
+    }
+
+    function countAnsweredQuestions(entries, answers) {
+        return entries.filter(function(entry) {
+            return isAnswered(getUserAnswerForEntry(entry, answers));
+        }).length;
+    }
+
+    function lookupBandScore(correctCount, table) {
+        const safeScore = Math.max(0, Math.min(40, parseInt(correctCount, 10) || 0));
+        if (Object.prototype.hasOwnProperty.call(table, safeScore)) {
+            return table[safeScore];
+        }
+        return defaultListeningScoreTable[safeScore] || 0;
+    }
+
+    function buildImprovementTips(sectionScores, answeredCount) {
+        const tips = [];
+
+        if (answeredCount < 40) {
+            tips.push(`还有 ${40 - answeredCount} 题未作答，建议优先优化时间分配。`);
+        }
+
+        Object.keys(sectionScores).forEach(function(key) {
+            const section = sectionScores[key];
+            const accuracy = section.total === 0 ? 0 : section.correct / section.total;
+            if (accuracy < 0.6) {
+                tips.push(`Section ${section.section} 正确率偏低，建议回放该部分音频并复盘干扰项。`);
+            }
+        });
+
+        if (tips.length === 0) {
+            tips.push('整体表现稳定，建议继续通过限时练习巩固节奏与拼写准确率。');
+        }
+
+        return tips;
+    }
+
+    function renderSectionResults(result) {
+        const sectionResultsContainer = document.getElementById('section-results');
+        if (!sectionResultsContainer) return;
+
+        const html = result.sectionOrder.map(function(sectionKey) {
+            const section = result.sectionScores[sectionKey];
+            const detailsHtml = section.details.map(function(detail) {
+                return `<div class="question-result ${detail.status}">
+                    <div class="question-result__head">
+                        <span class="question-result__number">Q${detail.questionNumber}</span>
+                        <span class="question-result__status">${detail.status === 'correct' ? '对' : (detail.status === 'unanswered' ? '未答' : '错')}</span>
+                    </div>
+                    <div class="question-result__meta">你的答案：${escapeHtml(detail.userAnswer || '未作答')}</div>
+                    <div class="question-result__meta">正确答案：${escapeHtml(detail.correctAnswer)}</div>
+                </div>`;
+            }).join('');
+
+            return `<div class="section-result">
+                <span class="section-name">Section ${section.section}</span>
+                <span class="section-score">${section.correct}/${section.total}</span>
+            </div>
+            <div class="question-results">${detailsHtml}</div>`;
+        }).join('');
+
+        const tipsHtml = result.tips.map(function(tip) {
+            return `<li>${escapeHtml(tip)}</li>`;
+        }).join('');
+
+        sectionResultsContainer.innerHTML = `${html}
+            <div class="result-suggestions">
+                <h4>改进建议</h4>
+                <ul>${tipsHtml}</ul>
+            </div>`;
+    }
+
+    function escapeHtml(value) {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function showResultModal() {
+        const modal = document.getElementById('result-modal');
+        if (modal) modal.classList.add('show');
+    }
+
+    function hideResultModal() {
+        const modal = document.getElementById('result-modal');
+        if (modal) modal.classList.remove('show');
+    }
+
+    function bindResultModal() {
+        const modal = document.getElementById('result-modal');
+        const closeButton = document.getElementById('close-result');
+        const retryButton = document.getElementById('retry-btn');
+
+        if (closeButton && closeButton.dataset.bound !== 'true') {
+            closeButton.dataset.bound = 'true';
+            closeButton.addEventListener('click', hideResultModal);
+        }
+
+        if (modal && modal.dataset.bound !== 'true') {
+            modal.dataset.bound = 'true';
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) hideResultModal();
+            });
+        }
+
+        if (retryButton && retryButton.dataset.bound !== 'true') {
+            retryButton.dataset.bound = 'true';
+            retryButton.addEventListener('click', function() {
+                const confirmed = window.confirm('重新测试会清除当前答案和成绩，是否继续？');
+                if (!confirmed) return;
+
+                localStorage.removeItem(storageKey);
+                localStorage.removeItem(resultStorageKey);
+                window.location.reload();
+            });
+        }
+    }
+
+    function injectGlobalSubmitButton() {
+        if (document.getElementById('submit-all-answers-btn')) return;
+
+        const sectionTabs = document.querySelector('.section-tabs');
+        if (!sectionTabs || !sectionTabs.parentNode) return;
+
+        const actionWrap = document.createElement('div');
+        actionWrap.className = 'test-actions';
+        actionWrap.innerHTML = '<button type="button" class="submit-answers-btn submit-all-answers-btn" id="submit-all-answers-btn">提交全部答案</button>';
+        sectionTabs.parentNode.insertBefore(actionWrap, sectionTabs.nextSibling);
+
+        const button = document.getElementById('submit-all-answers-btn');
+        if (button) {
+            button.addEventListener('click', function() {
+                window.submitAnswers();
+            });
+        }
+    }
+
+    window.saveSectionAnswers = function(sectionNum) {
+        const sectionElement = document.getElementById(`section-${sectionNum}`);
+        if (!sectionElement) return;
+
+        const answeredCount = Array.from(sectionElement.querySelectorAll('.answer-input')).filter(function(input) {
+            if (input.type === 'radio' || input.type === 'checkbox') return input.checked;
+            return String(input.value || '').trim() !== '';
+        }).length;
+
+        localStorage.setItem(
+            `ielts-test${testNumber}-section${sectionNum}-savedAt`,
+            JSON.stringify({ answeredCount: answeredCount, savedAt: Date.now() })
+        );
+
+        const button = sectionElement.querySelector('.section-save-btn');
+        if (button) {
+            const originalText = button.textContent;
+            button.textContent = `Section ${sectionNum} 已保存`;
+            window.setTimeout(function() {
+                button.textContent = originalText;
+            }, 1200);
+        }
+    };
+
     window.submitAnswers = function() {
         const answers = JSON.parse(localStorage.getItem(storageKey) || '{}');
-        const answeredCount = Object.keys(answers).length;
+        const answerKey = getAnswerKeyForTest();
+
+        if (!answerKey) {
+            alert(`Test ${testNumber} 的标准答案尚未加载，无法评分。`);
+            return;
+        }
+
+        const entries = expandAnswerKey(answerKey);
+        const answeredCount = countAnsweredQuestions(entries, answers);
 
         if (answeredCount === 0) {
             alert('请先回答一些题目再提交！');
             return;
         }
 
-        const result = `Test ${testNumber} 答题完成！\n\n已完成题目: ${answeredCount}/40\n\n请点击确定查看详细结果。`;
-        alert(result);
+        const sectionScores = {
+            section1: { section: 1, correct: 0, total: 10, details: [] },
+            section2: { section: 2, correct: 0, total: 10, details: [] },
+            section3: { section: 3, correct: 0, total: 10, details: [] },
+            section4: { section: 4, correct: 0, total: 10, details: [] }
+        };
 
-        console.log('答案已提交:', answers);
+        let correctCount = 0;
+
+        entries.forEach(function(entry) {
+            const userAnswer = getUserAnswerForEntry(entry, answers);
+            const isCorrect = compareAnswer(userAnswer, entry.expected);
+            const sectionKey = `section${getSectionForQuestion(entry.questionNumber)}`;
+
+            if (isCorrect) {
+                correctCount += 1;
+                sectionScores[sectionKey].correct += 1;
+            }
+
+            sectionScores[sectionKey].details.push({
+                questionNumber: entry.questionNumber,
+                userAnswer: stringifyAnswer(userAnswer),
+                correctAnswer: stringifyAnswer(entry.expected),
+                status: isAnswered(userAnswer) ? (isCorrect ? 'correct' : 'incorrect') : 'unanswered'
+            });
+        });
+
+        const listeningScoreTable = getListeningScoreTableForTest();
+        const bandScore = lookupBandScore(correctCount, listeningScoreTable);
+        const result = {
+            correctCount: correctCount,
+            answeredCount: answeredCount,
+            bandScore: bandScore,
+            sectionScores: sectionScores,
+            sectionOrder: ['section1', 'section2', 'section3', 'section4'],
+            tips: buildImprovementTips(sectionScores, answeredCount),
+            submittedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(resultStorageKey, JSON.stringify(result));
+
+        const correctCountEl = document.getElementById('correct-count');
+        const ieltsScoreEl = document.getElementById('ielts-score');
+        if (correctCountEl) correctCountEl.textContent = String(correctCount);
+        if (ieltsScoreEl) ieltsScoreEl.textContent = bandScore.toFixed(1);
+
+        renderSectionResults(result);
+        bindResultModal();
+        showResultModal();
     };
 
     window.switchToSection = switchToSection;
