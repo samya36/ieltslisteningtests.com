@@ -283,6 +283,7 @@ export default defineConfig({
         'about-en': resolve(__dirname, 'about-en.html'),
         contact: resolve(__dirname, 'contact.html'),
         'contact-en': resolve(__dirname, 'contact-en.html'),
+        'recent-tests': resolve(__dirname, 'pages/recent-tests.html'),
         // 动态添加 test8-test75 页面
         ...Object.fromEntries(
           readdirSync(resolve(__dirname, 'pages'))
