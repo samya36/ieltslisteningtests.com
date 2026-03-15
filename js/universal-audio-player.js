@@ -68,7 +68,7 @@ const UNIVERSAL_AUDIO_CONFIG = {
 class UniversalAudioPlayer {
     constructor() {
         this.currentTest = this.detectCurrentTest();
-        this.audioConfig = UNIVERSAL_AUDIO_CONFIG[this.currentTest] || UNIVERSAL_AUDIO_CONFIG.test1;
+        this.audioConfig = UNIVERSAL_AUDIO_CONFIG[this.currentTest] || null;
         this.players = {};
         this.currentSection = 1;
         this.isInitialized = false;
@@ -80,6 +80,7 @@ class UniversalAudioPlayer {
     // 检测当前测试
     detectCurrentTest() {
         const path = window.location.pathname.toLowerCase();
+        const match = path.match(/test(\d+)/);
         
         if (path.includes('test1') || path.includes('/test.html')) return 'test1';
         if (path.includes('test2')) return 'test2';
@@ -88,6 +89,7 @@ class UniversalAudioPlayer {
         if (path.includes('test5')) return 'test5';
         if (path.includes('test6')) return 'test6';
         if (path.includes('test7')) return 'test7';
+        if (match) return `test${match[1]}`;
         
         return 'test1';
     }
@@ -159,9 +161,13 @@ class UniversalAudioPlayer {
             }
 
             if (audioElement) {
-                const audioPath = this.getAudioPath(section);
-                audioElement.src = audioPath;
-                console.log(`✅ Section ${section} 音频路径更新: ${audioPath}`);
+                const audioPath = this.getAudioPath(section, audioElement);
+                if (audioPath) {
+                    audioElement.src = audioPath;
+                    console.log(`✅ Section ${section} 音频路径更新: ${audioPath}`);
+                } else {
+                    console.log(`ℹ️ Section ${section} 保留页面内已有音频地址`);
+                }
             } else {
                 console.warn(`❌ Section ${section} 音频元素未找到`);
             }
@@ -169,7 +175,12 @@ class UniversalAudioPlayer {
     }
 
     // 获取音频路径（对文件名进行URL编码，防止空格等特殊字符导致404）
-    getAudioPath(section) {
+    getAudioPath(section, audioElement = null) {
+        if (!this.audioConfig) {
+            const existingSrc = audioElement ? (audioElement.getAttribute('src') || '') : '';
+            return existingSrc || null;
+        }
+
         const sectionIndex = section - 1;
         if (this.audioConfig && this.audioConfig.sections[sectionIndex]) {
             const fileName = this.audioConfig.sections[sectionIndex];
@@ -177,8 +188,8 @@ class UniversalAudioPlayer {
             const encodedFileName = encodeURIComponent(fileName);
             return this.audioConfig.basePath + encodedFileName;
         }
-        // 备用路径
-        return `audio/test1/section${section}.mp3`;
+        const existingSrc = audioElement ? (audioElement.getAttribute('src') || '') : '';
+        return existingSrc || null;
     }
 
     // 初始化单个播放器
