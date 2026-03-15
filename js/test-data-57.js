@@ -5,7 +5,7 @@ const TEST_DATA_57 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -13,10 +13,16 @@ const TEST_DATA_57 = {
                             "text": "- Location: [1] ........................ Street, Oxford"
                         },
                         {
+                            "text": "- Opening hours:"
+                        },
+                        {
                             "text": "- Tuesday-Saturday: 10 am to [2] ........................ pm"
                         },
                         {
                             "text": "- Sundays: [3] ........................ to 5 pm"
+                        },
+                        {
+                            "text": "- Thursdays (summer only): 10 am to 7 pm"
                         },
                         {
                             "text": "- Closed for 3 days over: [4] ........................"
@@ -26,7 +32,7 @@ const TEST_DATA_57 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -99,7 +105,7 @@ const TEST_DATA_57 = {
             },
             {
                 "title": "<strong>Questions 13 – 20</strong>",
-                "instructions": "<strong>Questions 13-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 13-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -137,7 +143,7 @@ const TEST_DATA_57 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 26</strong>",
-                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -245,7 +251,7 @@ const TEST_DATA_57 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -269,7 +275,7 @@ const TEST_DATA_57 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

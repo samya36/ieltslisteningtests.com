@@ -72,7 +72,21 @@ def parse_answers(answer_text):
     for line in lines:
         line = line.strip()
 
-        # Table format: | 1 | dishwasher | or | 1 | **dishwasher** |
+        # Table format: | 1 | answer | or | 1 | answer | 21 | answer | (two-column)
+        # First try two-column: | N | ans | N | ans |
+        tm2 = re.match(
+            r'^\|\s*(\d+)\s*\|\s*\*?\*?(.+?)\*?\*?\s*\|\s*(\d+)\s*\|\s*\*?\*?(.+?)\*?\*?\s*\|?\s*$',
+            line
+        )
+        if tm2:
+            for g_num, g_ans in [(1, 2), (3, 4)]:
+                qnum = int(tm2.group(g_num))
+                ans = tm2.group(g_ans).strip().strip('*').strip()
+                if ans and ans.lower() not in ('answer', 'answers', '---', 'question', 'details'):
+                    answers[qnum] = ans
+            continue
+
+        # Single column: | 1 | dishwasher |
         tm = re.match(r'^\|\s*(\d+)\s*\|\s*\*?\*?(.+?)\*?\*?\s*\|?\s*$', line)
         if tm:
             qnum = int(tm.group(1))
@@ -101,14 +115,19 @@ def parse_answers(answer_text):
 # ---- Blank normalization ----
 def normalize_blanks(text):
     """Convert all blank representations to [N] format."""
+    # Pre-process: unescape markdown-escaped underscores (\_) to plain underscores
+    text = text.replace('\\_', '_')
+
     # Pattern: ___(N)___ or ____(N)____ (underscores wrapping parenthetical number)
     text = re.sub(r'_+\((\d+)\)_+', r'[\1] ........................', text)
 
-    # Pattern: **(N)** ___ or **(N).** ___
+    # Pattern: **(N)** ___ or **(N).** ___ (with optional currency prefix)
+    text = re.sub(r'\*\*\((\d+)\)\.?\*\*\s*\$_+', r'$[\1] ........................', text)
+    text = re.sub(r'\*\*\((\d+)\)\.?\*\*\s*£_+', r'£[\1] ........................', text)
     text = re.sub(r'\*\*\((\d+)\)\.?\*\*\s*_+', r'[\1] ........................', text)
-    text = re.sub(r'\*\*(\d+)\.\*\*\s*_+', r'[\1] ........................', text)
     text = re.sub(r'\*\*(\d+)\.\*\*\s*\$_+', r'$[\1] ........................', text)
     text = re.sub(r'\*\*(\d+)\.\*\*\s*£_+', r'£[\1] ........................', text)
+    text = re.sub(r'\*\*(\d+)\.\*\*\s*_+', r'[\1] ........................', text)
 
     # Pattern: (N) ___ with possible currency prefix
     text = re.sub(r'\((\d+)\)\s*\$_+', r'$[\1] ........................', text)
@@ -141,6 +160,71 @@ def normalize_blanks(text):
         flags=re.MULTILINE
     )
 
+    # Pattern: **N.** text ___ text (bold number at line start, blank in sentence)
+    # e.g. "**15.** Amy's total sales are about £___ ."
+    def replace_bold_mid_sentence(match):
+        num = match.group(1)
+        before = match.group(2)
+        after = match.group(3)
+        return f'**{num}.** {before}[{num}] ........................{after}'
+
+    text = re.sub(
+        r'^\*\*(\d+)\.\*\*\s+(.*?)_{3,}(.*?)$',
+        replace_bold_mid_sentence,
+        text,
+        flags=re.MULTILINE
+    )
+
+    # Pattern: **N** text ___ text (bold number without period)
+    # e.g. "**15** The company was founded in ___"
+    def replace_bold_noperiod_mid_sentence(match):
+        num = match.group(1)
+        before = match.group(2)
+        after = match.group(3)
+        return f'**{num}** {before}[{num}] ........................{after}'
+
+    text = re.sub(
+        r'^\*\*(\d+)\*\*\.?\s+(.*?)_{3,}(.*?)$',
+        replace_bold_noperiod_mid_sentence,
+        text,
+        flags=re.MULTILINE
+    )
+
+    # Pattern: **N.** ___ (bold number directly followed by blank, no text between)
+    text = re.sub(r'\*\*(\d+)\*\*\s*_+', r'[\1] ........................', text)
+
+    # Pattern: dash-prefixed numbered blanks "- N. text ___" (bullet list with question number)
+    # e.g. "- 25. Always read the ___ and questions carefully."
+    def replace_dash_numbered_blank(match):
+        prefix = match.group(1)  # "- " or "• "
+        num = match.group(2)
+        before = match.group(3)
+        after = match.group(4)
+        return f'{prefix}{num}. {before}[{num}] ........................{after}'
+
+    text = re.sub(
+        r'^([-•]\s+)(\d+)\.\s+(.*?)_{3,}(.*?)$',
+        replace_dash_numbered_blank,
+        text,
+        flags=re.MULTILINE
+    )
+
+    # Pattern: dash-prefixed bold numbered blanks "- **N** text: ___"
+    # e.g. "- **16** Vital's: _______________"
+    def replace_dash_bold_blank(match):
+        prefix = match.group(1)
+        num = match.group(2)
+        before = match.group(3)
+        after = match.group(4)
+        return f'{prefix}**{num}** {before}[{num}] ........................{after}'
+
+    text = re.sub(
+        r'^([-•]\s+)\*\*(\d+)\*\*\.?\s+(.*?)_{3,}(.*?)$',
+        replace_dash_bold_blank,
+        text,
+        flags=re.MULTILINE
+    )
+
     return text
 
 
@@ -154,11 +238,27 @@ def is_multiple_choice(text):
 
 
 def is_matching_question(text):
-    """Check if this is a matching question type."""
+    """Check if this is a matching question type (letter matching, not standard MC)."""
     text_lower = text.lower()
-    return ('write the correct letter' in text_lower or
-            'match the' in text_lower or
-            ('who' in text_lower and ('correct letter' in text_lower or 'a, b' in text_lower)))
+    # "Choose TWO letters" is checkbox MC, not matching
+    if 'choose two' in text_lower or 'choose 2' in text_lower:
+        return False
+    # "Write the correct letter" is always matching
+    if 'write the correct letter' in text_lower:
+        return True
+    if 'match the' in text_lower:
+        return True
+    # "Which ... said" type matching - check instruction area only (first 500 chars)
+    instr_area = text_lower[:500]
+    if 'who' in instr_area and 'write' in instr_area and 'letter' in instr_area:
+        return True
+    # "Choose the correct letter" with A-B/A-E range (matching) vs A, B or C (standard MC)
+    # Standard MC: "A, B, or C" or "A, B or C" or "A, B, C, or D"
+    # Matching: "A-E", "A-F", "A-G", "A-H" (letter range)
+    if re.search(r'[A-H]\s*[-–]\s*[A-H]', text[:500]):
+        if 'write' in instr_area or 'letter' in instr_area:
+            return True
+    return False
 
 
 # ---- Multiple choice parser ----
@@ -174,10 +274,19 @@ def parse_mc_questions(text, q_type='radio'):
     )
 
     # Alternative: try splitting by bold numbered markers
+    # Pattern 1: **N.** text (bold number only)
     blocks = re.split(r'\n(?=\s*\*\*\d+[\.\)]\*\*\s)', text)
     if len(blocks) <= 1:
+        # Pattern 2: **N** text (bold number, no period)
         blocks = re.split(r'\n(?=\s*\*\*\d+\*\*[\.\s])', text)
     if len(blocks) <= 1:
+        # Pattern 3: **N. text** (bold wraps entire question)
+        blocks = re.split(r'\n(?=\*\*\d+\.\s+\S)', text)
+    if len(blocks) <= 1:
+        # Pattern 4: **Question N:** format (individual question headers)
+        blocks = re.split(r'\n(?=\*\*Questions?\s+\d+)', text)
+    if len(blocks) <= 1:
+        # Pattern 5: plain N. text
         blocks = re.split(r'\n(?=\d+\.\s+[A-Z])', text)
 
     for block in blocks:
@@ -186,18 +295,58 @@ def parse_mc_questions(text, q_type='radio'):
             continue
 
         # Extract question number and text
+        qnum = None
+        rest = None
+
+        # Pattern 1: **N.** text or **N)** text (bold wraps number only)
         qm = re.match(r'\*\*(\d+)[\.\)]*\*\*\.?\s*(.*)', block, re.DOTALL)
-        if not qm:
+        if qm:
+            qnum = int(qm.group(1))
+            rest = qm.group(2).strip()
+
+        # Pattern 2: **N. text?** (bold wraps entire question including number)
+        if qnum is None:
+            qm = re.match(r'\*\*(\d+)\.\s+(.+?)\*\*\s*(.*)', block, re.DOTALL)
+            if qm:
+                qnum = int(qm.group(1))
+                q_text_inner = qm.group(2).strip()
+                rest_after = qm.group(3).strip()
+                rest = q_text_inner + '\n' + rest_after
+
+        # Pattern 3: **Question N:** format (individual question header)
+        if qnum is None:
+            qm = re.match(r'\*\*Questions?\s+(\d+)(?:\s*[-–—]\s*(\d+))?\s*[:：]\*\*\s*(.*)', block, re.DOTALL)
+            if qm:
+                qnum = int(qm.group(1))
+                # Skip instruction line (Choose the correct letter...)
+                rest_text = qm.group(3).strip()
+                # Find the actual question text (after instruction line)
+                lines_rest = rest_text.split('\n')
+                q_lines = []
+                skip_instr = True
+                for ln in lines_rest:
+                    ln_s = ln.strip()
+                    if skip_instr and re.match(r'^(Choose|Write|Complete|Label|Select)', ln_s, re.IGNORECASE):
+                        continue
+                    skip_instr = False
+                    q_lines.append(ln)
+                rest = '\n'.join(q_lines).strip()
+
+        # Pattern 4: plain N. text
+        if qnum is None:
             qm = re.match(r'(\d+)\.\s+(.*)', block, re.DOTALL)
-        if not qm:
+            if qm:
+                qnum = int(qm.group(1))
+                rest = qm.group(2).strip()
+
+        if qnum is None:
             continue
 
-        qnum = int(qm.group(1))
-        rest = qm.group(2).strip()
-
         # Split question text from options
-        # Options start with - A. or A. at line beginning
-        option_start = re.search(r'\n\s*-?\s*A[\.\)]', rest)
+        # Options start with - A. or A. or A) at line beginning
+        option_start = re.search(r'\n\s*-?\s*A[\.\)]\s', rest)
+        if not option_start:
+            option_start = re.search(r'\n\s*-?\s*[Aa]\)', rest)
         if option_start:
             q_text = rest[:option_start.start()].strip()
             options_text = rest[option_start.start():]
@@ -205,6 +354,10 @@ def parse_mc_questions(text, q_type='radio'):
             # Options might be inline
             q_text = rest.split('\n')[0].strip()
             options_text = '\n'.join(rest.split('\n')[1:])
+
+        # Clean up trailing ** from bold-wrapped question text
+        q_text = re.sub(r'\*\*\s*$', '', q_text).strip()
+        q_text = clean_md(q_text)
 
         # Parse options: handle "- A. text", "- A) text", "A. text", "  A. text"
         options = []
@@ -234,10 +387,27 @@ def parse_mc_questions(text, q_type='radio'):
 
 
 # ---- Fill-in parser ----
-def parse_fill_section(text, part_num):
+def parse_fill_section(text, part_num, q_start=None, q_end=None):
     """Parse fill-in-the-blank content from a question group."""
     # First normalize all blank patterns
     normalized = normalize_blanks(text)
+
+    # Handle anonymous blanks: if there are still un-numbered ___ and we know the range,
+    # assign sequential question numbers to them
+    if q_start is not None and q_end is not None:
+        # Count already-numbered blanks
+        existing_nums = set(int(m) for m in re.findall(r'\[(\d+)\]', normalized))
+        remaining_nums = [n for n in range(q_start, q_end + 1) if n not in existing_nums]
+        if remaining_nums and re.search(r'_{3,}', normalized):
+            idx = 0
+            def replace_anon_blank(match):
+                nonlocal idx
+                if idx < len(remaining_nums):
+                    num = remaining_nums[idx]
+                    idx += 1
+                    return f'[{num}] ........................'
+                return match.group(0)
+            normalized = re.sub(r'_{3,}', replace_anon_blank, normalized)
 
     items = []
     lines = normalized.split('\n')
@@ -258,8 +428,10 @@ def parse_fill_section(text, part_num):
             continue
 
         # Skip instruction-only lines (no blanks)
+        # But NOT numbered items like **25. text** which are questions
         if stripped.startswith('*') and stripped.endswith('*') and '[' not in stripped:
-            continue
+            if not re.match(r'^\*\*\d+', stripped):
+                continue
         if re.match(r'^\*\*(Complete|Write|Choose|Label|Match)', stripped) and '[' not in stripped:
             continue
         if re.match(r'^(Complete|Write|Choose|Label|Match)', stripped) and '[' not in stripped:
@@ -285,11 +457,15 @@ def parse_fill_section(text, part_num):
             # Clean up markdown formatting
             cleaned = clean_md(stripped)
             if cleaned:
+                # Remove leading **N.** or **N** if present (already captured in [N])
+                cleaned = re.sub(r'^\*?\*?\d+[\.\)]*\*?\*?\s*', '', cleaned).strip()
+                if not cleaned:
+                    cleaned = clean_md(stripped)
                 items.append({'text': cleaned})
             continue
 
         # Check for numbered lines that should have blanks (N. ___ text)
-        if re.match(r'^\d+\.\s', stripped) and '___' in stripped:
+        if re.match(r'^\*?\*?\d+[\.\)]*\*?\*?\s', stripped) and '___' in stripped:
             cleaned = clean_md(stripped)
             # Try to convert remaining underscores
             cleaned = re.sub(r'_{3,}', '........................', cleaned)
@@ -297,19 +473,35 @@ def parse_fill_section(text, part_num):
                 items.append({'text': cleaned})
             continue
 
+        # Check for numbered items WITHOUT blanks (matching questions: "15. Adjusting")
+        # These are items where the student writes a letter answer
+        nm = re.match(r'^\*?\*?(\d+)[\.\)]\*?\*?\s+(.+)', stripped)
+        if nm:
+            qnum = nm.group(1)
+            item_text = clean_md(nm.group(2).strip())
+            # Don't add blank for instruction-like lines
+            if item_text and not re.match(r'^(Complete|Write|Choose|Label|Match|Questions?)', item_text, re.IGNORECASE):
+                items.append({'text': f'{item_text} [{qnum}] ........................'})
+            continue
+
         # Include context lines (bold headers, bullet points with content)
-        if re.match(r'^\*\*[^*]+\*\*$', stripped):
-            # Bold header line
+        if re.match(r'^\*\*[^*]+\*\*:?\s*$', stripped):
+            # Bold header line (with optional colon)
             cleaned = clean_md(stripped)
             items.append({'text': cleaned, 'type': 'header'})
             continue
 
-        # Bullet points or dashes with blanks
+        # Bullet points or dashes - include those with blanks AND context ones
         if stripped.startswith('-') or stripped.startswith('•'):
             content = stripped.lstrip('-•').strip()
             if re.search(r'\[\d+\]', content):
                 cleaned = clean_md(content)
                 items.append({'text': cleaned})
+            elif content and not re.match(r'^(Complete|Write|Choose|Label|Match)', content):
+                # Include context bullet points (non-instruction ones)
+                cleaned = clean_md(content)
+                if cleaned and len(cleaned) > 3:
+                    items.append({'text': '- ' + cleaned})
 
     # Flush remaining table
     if table_lines:
@@ -328,9 +520,32 @@ def process_table_lines(lines):
         # Skip header rows
         if any(c.lower() in ('field', 'feature', 'item', 'details', 'information', '')
                for c in cells if c.strip()):
-            # Only skip if no blanks in cells
+            # Only skip if no blanks in cells and no numbered cells
             if not any(re.search(r'\[\d+\]', c) for c in cells):
-                continue
+                if not any(re.search(r'_{3,}', c) for c in cells):
+                    continue
+
+        # Handle case: question number in one cell, blank in another
+        # e.g. | 28. Lowland marsh | ___ |  or  | **11 Name** | ___ |
+        row_qnum = None
+        for cell in cells:
+            cell_s = cell.strip()
+            # Check for "N. text" or "**N text**" or "**N. text**" at cell start
+            nm = re.match(r'^\*?\*?(\d+)[\.\)]*\*?\*?[\.\s]', cell_s)
+            if nm:
+                row_qnum = nm.group(1)
+                break
+
+        # If we found a question number and there's a raw blank (___) in another cell,
+        # convert it to [N] format
+        if row_qnum:
+            new_cells = []
+            for cell in cells:
+                cell_s = cell.strip()
+                if re.match(r'^_{3,}\s*$', cell_s) or re.match(r'^\$?£?_{3,}', cell_s):
+                    cell_s = f'[{row_qnum}] ........................'
+                new_cells.append(cell_s)
+            cells = new_cells
 
         # Build a readable text from cells that have blanks
         cell_texts = []
@@ -392,12 +607,27 @@ def convert_part_to_section(part_text, part_num):
                 }
         return section
 
+    # Also detect individual **Question N:** markers and add as single-question groups
+    # This handles mixed formats like **Questions 1-2:** (checkbox) + **Question 3:** (radio)
+    single_q_markers = list(re.finditer(
+        r'(?:^|\n)\*\*Questions?\s+(\d+)(?:\s*[-–—]\s*(\d+))?\s*[:：]\*\*',
+        part_text, re.IGNORECASE
+    ))
+    if single_q_markers:
+        # Merge single markers into group_markers list
+        existing_positions = {gm.start() for gm in group_markers}
+        for sq in single_q_markers:
+            if sq.start() not in existing_positions:
+                group_markers.append(sq)
+        # Sort by position
+        group_markers.sort(key=lambda m: m.start())
+
     # Process each question group
     parts_list = []
 
     for gi, gm in enumerate(group_markers):
         q_start = int(gm.group(1))
-        q_end = int(gm.group(2))
+        q_end = int(gm.group(2)) if gm.group(2) else q_start
 
         # Extract text for this group (from marker to next marker or end)
         start_pos = gm.start()
@@ -431,12 +661,12 @@ def convert_part_to_section(part_text, part_num):
                 })
             else:
                 # MC parsing failed, try as fill-in
-                items = parse_fill_section(group_text, part_num)
+                items = parse_fill_section(group_text, part_num, q_start, q_end)
                 if items:
                     parts_list.append(build_fill_part(items, q_start, q_end, group_text))
         else:
             # Fill-in or matching (treat matching as fill-in)
-            items = parse_fill_section(group_text, part_num)
+            items = parse_fill_section(group_text, part_num, q_start, q_end)
             if items:
                 parts_list.append(build_fill_part(items, q_start, q_end, group_text))
             else:
@@ -469,25 +699,46 @@ def build_fill_part(items, q_start, q_end, group_text):
     """Build a part object for fill-in questions."""
     instr = f'<strong>Questions {q_start}-{q_end}</strong>'
 
-    # Extract instruction text
-    for pattern in [
-        r'(Complete\s+.*?(?:below|form|table|notes|sentences?|summary|plan)[.\s]*)',
-        r'(Write\s+.*?(?:answer|each answer)[.\s]*)',
-        r'(Label\s+.*?(?:map|plan|diagram)[.\s]*)',
-    ]:
+    # Extract instruction text - try multiple patterns to capture full instructions
+    instr_patterns = [
+        r'(Complete\s+.*?(?:below|form|table|notes|sentences?|summary|plan|flow[- ]?chart|details|booking|diagram)[^.\n]*\.)',
+        r'(Write\s+.*?(?:answer|each answer)[^.\n]*\.)',
+        r'(Label\s+.*?(?:map|plan|diagram)[^.\n]*\.)',
+        r'(Answer\s+.*?(?:questions?|below)[^.\n]*\.)',
+    ]
+    instr_text = ''
+    for pattern in instr_patterns:
         m = re.search(pattern, group_text, re.IGNORECASE)
         if m:
-            instr += '\n\n' + clean_md(m.group(1).strip())
+            instr_text = clean_md(m.group(1).strip())
             break
 
-    # Separate header items from content items
+    # Also try to capture word limit instruction
+    wl_match = re.search(
+        r'(Write\s+.*?(?:NO MORE THAN|ONE WORD|TWO WORDS|THREE WORDS)[^.\n]*\.)',
+        group_text, re.IGNORECASE
+    )
+    if wl_match:
+        wl_text = clean_md(wl_match.group(1).strip())
+        if wl_text != instr_text:
+            if instr_text:
+                instr_text += '\n' + wl_text
+            else:
+                instr_text = wl_text
+
+    if instr_text:
+        instr += '\n\n' + instr_text
+
+    # Include all items - headers, blanks, and context lines
     content_items = []
     for item in items:
         if item.get('type') == 'header':
             content_items.append(item)
         elif re.search(r'\[\d+\]', item.get('text', '')):
             content_items.append(item)
-        # Skip items without blanks and without header type
+        elif item.get('text', '').startswith('- '):
+            # Context bullet points
+            content_items.append(item)
 
     return {
         'title': f'<strong>Questions {q_start} – {q_end}</strong>',
@@ -531,7 +782,7 @@ def convert_test(test_entry, test_num):
 
     # Validate: count how many [N] blanks we generated
     data_str = json.dumps(test_data)
-    blank_count = len(re.findall(r'\\\[\d+\\\]', data_str))
+    blank_count = len(re.findall(r'\[\d+\]', data_str))
     mc_count = sum(1 for _ in re.finditer(r'"type":\s*"radio"', data_str))
     mc_count += sum(1 for _ in re.finditer(r'"type":\s*"checkbox"', data_str))
 

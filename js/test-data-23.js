@@ -5,7 +5,7 @@ const TEST_DATA_23 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the registration form",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the registration form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,10 +26,13 @@ const TEST_DATA_23 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Student daily rate: $15"
+                        },
                         {
                             "text": "- Student 3-day rate: $[5] ........................"
                         },
@@ -37,7 +40,13 @@ const TEST_DATA_23 = {
                             "text": "- Type: [6] ........................ with shared bathroom"
                         },
                         {
+                            "text": "- Cost: $45 per night"
+                        },
+                        {
                             "text": "- Will take: [7] ........................ only ($10 per day)"
+                        },
+                        {
+                            "text": "- Not taking: Dinner or breakfast"
                         },
                         {
                             "text": "- Friday choice: [8] ........................"
@@ -58,7 +67,7 @@ const TEST_DATA_23 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -85,21 +94,21 @@ const TEST_DATA_23 = {
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "17. Between 1935 and 1941, crews from the [17] ........................ provided most of the labor."
+                            "text": "Between 1935 and 1941, crews from the [17] ........................ provided most of the labor."
                         },
                         {
-                            "text": "18. The Arboretum's collection of restored ecosystems is the oldest and [18] ........................ such collection."
+                            "text": "The Arboretum's collection of restored ecosystems is the oldest and [18] ........................ such collection."
                         },
                         {
-                            "text": "19. The Civilian Conservation Corps helped establish [19] ........................ within the Arboretum."
+                            "text": "The Civilian Conservation Corps helped establish [19] ........................ within the Arboretum."
                         },
                         {
-                            "text": "20. The horticultural collections featuring trees and shrubs are the state's largest [20] ........................."
+                            "text": "The horticultural collections featuring trees and shrubs are the state's largest [20] ........................."
                         }
                     ]
                 }
@@ -231,21 +240,21 @@ const TEST_DATA_23 = {
             },
             {
                 "title": "<strong>Questions 27 – 30</strong>",
-                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "27. The tutor believes taking good notes improves your [27] ........................ rather than your writing."
+                            "text": "The tutor believes taking good notes improves your [27] ........................ rather than your writing."
                         },
                         {
-                            "text": "28. Students should avoid reading too much to prevent including [28] ........................ in their essays."
+                            "text": "Students should avoid reading too much to prevent including [28] ........................ in their essays."
                         },
                         {
-                            "text": "29. When breaking down questions, students should make sure they understand all the [29] ........................ perfectly."
+                            "text": "When breaking down questions, students should make sure they understand all the [29] ........................ perfectly."
                         },
                         {
-                            "text": "30. Students should try to use [30] ........................ as far as possible, rather than too many quotations."
+                            "text": "Students should try to use [30] ........................ as far as possible, rather than too many quotations."
                         }
                     ]
                 }
@@ -257,7 +266,7 @@ const TEST_DATA_23 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -281,24 +290,24 @@ const TEST_DATA_23 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "36. Wild rice is susceptible to failure due to [36] ........................."
+                            "text": "Wild rice is susceptible to failure due to [36] ........................."
                         },
                         {
-                            "text": "37. Wild rice is considered a delicacy by many [37] ........................."
+                            "text": "Wild rice is considered a delicacy by many [37] ........................."
                         },
                         {
-                            "text": "38. Recent improvements in harvesting have come from using [38] ........................."
+                            "text": "Recent improvements in harvesting have come from using [38] ........................."
                         },
                         {
-                            "text": "39. It takes about [39] ........................ of grass seed to yield one pound of wild rice."
+                            "text": "It takes about [39] ........................ of grass seed to yield one pound of wild rice."
                         },
                         {
-                            "text": "40. Hand-harvested wild rice makes up less than [40] ........................ of the market today."
+                            "text": "Hand-harvested wild rice makes up less than [40] ........................ of the market today."
                         }
                     ]
                 }

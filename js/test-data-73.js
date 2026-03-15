@@ -2,7 +2,7 @@
 const TEST_DATA_73 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -44,31 +44,31 @@ const TEST_DATA_73 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. Mark's presentation is about [11] ........................."
+                            "text": "Mark's presentation is about [11] ........................."
                         },
                         {
-                            "text": "12. He must hand in the draft on Wednesday at [12] ........................ a.m."
+                            "text": "He must hand in the draft on Wednesday at [12] ........................ a.m."
                         },
                         {
-                            "text": "13. The presentation is scheduled for [13] ........................ a.m. on Friday."
+                            "text": "The presentation is scheduled for [13] ........................ a.m. on Friday."
                         },
                         {
-                            "text": "14. One common time management problem is [14] ........................ things off."
+                            "text": "One common time management problem is [14] ........................ things off."
                         },
                         {
-                            "text": "15. Another problem is relying too much on your [15] ........................."
+                            "text": "Another problem is relying too much on your [15] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -97,7 +97,7 @@ const TEST_DATA_73 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -121,7 +121,7 @@ const TEST_DATA_73 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the timeline below.",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the timeline below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -130,6 +130,9 @@ const TEST_DATA_73 = {
                         },
                         {
                             "text": "- 1600s: In Britain, grown as [27] ........................ plant; thought to be [28] ........................"
+                        },
+                        {
+                            "text": "- 1700s: Became part of British daily diet"
                         },
                         {
                             "text": "- [29] ........................: Johnson proved tomatoes were safe in Salem, Massachusetts"
@@ -144,7 +147,7 @@ const TEST_DATA_73 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the summary",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [

@@ -5,7 +5,7 @@ const TEST_DATA_68 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,7 +26,7 @@ const TEST_DATA_68 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,28 +58,28 @@ const TEST_DATA_68 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 14</strong>",
-                "instructions": "<strong>Questions 11-14</strong>\n\nLabel the map",
+                "instructions": "<strong>Questions 11-14</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. Proposed motorway route: [11] ........................"
+                            "text": "Proposed motorway route: [11] ........................"
                         },
                         {
-                            "text": "12. Location of 1,000 new houses: [12] ........................"
+                            "text": "Location of 1,000 new houses: [12] ........................"
                         },
                         {
-                            "text": "13. Industrial estate (new technology companies): [13] ........................"
+                            "text": "Industrial estate (new technology companies): [13] ........................"
                         },
                         {
-                            "text": "14. New center with swimming pool and sports facilities: [14] ........................"
+                            "text": "New center with swimming pool and sports facilities: [14] ........................"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -197,24 +197,24 @@ const TEST_DATA_68 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "26. Salads are the [26] ........................ most commonly eaten food in Canadian restaurants."
+                            "text": "Salads are the [26] ........................ most commonly eaten food in Canadian restaurants."
                         },
                         {
-                            "text": "27. A recent survey showed that [27] ........................ of shoppers check fat and nutritional information."
+                            "text": "A recent survey showed that [27] ........................ of shoppers check fat and nutritional information."
                         },
                         {
-                            "text": "28. The government approved a new naming system for cuts of meat based on [28] ........................."
+                            "text": "The government approved a new naming system for cuts of meat based on [28] ........................."
                         },
                         {
-                            "text": "29. There are [29] ........................ new categories in the meat naming system."
+                            "text": "There are [29] ........................ new categories in the meat naming system."
                         },
                         {
-                            "text": "30. Healthy snacks are called [30] ........................ in food marketing jargon."
+                            "text": "Healthy snacks are called [30] ........................ in food marketing jargon."
                         }
                     ]
                 }
@@ -226,7 +226,7 @@ const TEST_DATA_68 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 33</strong>",
-                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -244,7 +244,7 @@ const TEST_DATA_68 = {
             },
             {
                 "title": "<strong>Questions 34 – 40</strong>",
-                "instructions": "<strong>Questions 34-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 34-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

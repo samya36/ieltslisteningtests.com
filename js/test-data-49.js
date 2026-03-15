@@ -5,7 +5,7 @@ const TEST_DATA_49 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,7 +26,7 @@ const TEST_DATA_49 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,25 +58,25 @@ const TEST_DATA_49 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 13</strong>",
-                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. The tutor's main function is to provide [11] ........................ help to students."
+                            "text": "The tutor's main function is to provide [11] ........................ help to students."
                         },
                         {
-                            "text": "12. For personal matters, students can be referred to university [12] ........................ services."
+                            "text": "For personal matters, students can be referred to university [12] ........................ services."
                         },
                         {
-                            "text": "13. To make an appointment, students should write their name on the [13] ........................ on the tutor's door."
+                            "text": "To make an appointment, students should write their name on the [13] ........................ on the tutor's door."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 14 – 20</strong>",
-                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -111,7 +111,7 @@ const TEST_DATA_49 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -123,24 +123,24 @@ const TEST_DATA_49 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "26. High achievers consider how to [26] ........................ a situation before taking risks."
+                            "text": "High achievers consider how to [26] ........................ a situation before taking risks."
                         },
                         {
-                            "text": "27. Some people prefer to stay in the [27] ........................ for security."
+                            "text": "Some people prefer to stay in the [27] ........................ for security."
                         },
                         {
-                            "text": "28. Top achievers are not [28] ........................ and learn from their mistakes."
+                            "text": "Top achievers are not [28] ........................ and learn from their mistakes."
                         },
                         {
-                            "text": "29. They focus on [29] ........................ rather than beating competitors."
+                            "text": "They focus on [29] ........................ rather than beating competitors."
                         },
                         {
-                            "text": "30. They are [30] ........................ who let others share the work."
+                            "text": "They are [30] ........................ who let others share the work."
                         }
                     ]
                 }
@@ -152,7 +152,7 @@ const TEST_DATA_49 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -176,7 +176,7 @@ const TEST_DATA_49 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

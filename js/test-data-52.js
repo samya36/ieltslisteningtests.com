@@ -5,12 +5,18 @@ const TEST_DATA_52 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
+                            "text": "- Location: Parkville campus"
+                        },
+                        {
                             "text": "- Distinction: the [1] ........................ in the city"
+                        },
+                        {
+                            "text": "- Popularity: very popular with students"
                         },
                         {
                             "text": "- Weekday opening hours: 8 a.m. to [2] ........................ p.m."
@@ -22,10 +28,16 @@ const TEST_DATA_52 = {
                             "text": "- Location: corner of Stratton Street and [4] ........................"
                         },
                         {
+                            "text": "- Opening hours: 7 a.m. to 2 a.m. daily"
+                        },
+                        {
                             "text": "- Restriction: only open to [5] ........................ students"
                         },
                         {
                             "text": "- Address: Level 5, Building 8, [6] ........................ Swan Street"
+                        },
+                        {
+                            "text": "- Weekday hours: 10 a.m. to midnight"
                         },
                         {
                             "text": "- Weekend hours: 10 a.m. to [7] ........................ p.m."
@@ -38,7 +50,7 @@ const TEST_DATA_52 = {
             },
             {
                 "title": "<strong>Questions 9 – 10</strong>",
-                "instructions": "<strong>Questions 9-10</strong>\n\nComplete the booking details below.",
+                "instructions": "<strong>Questions 9-10</strong>\n\nComplete the booking details below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,28 +70,28 @@ const TEST_DATA_52 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 14</strong>",
-                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. The website was founded by a group of [11] ........................ in the north of England."
+                            "text": "The website was founded by a group of [11] ........................ in the north of England."
                         },
                         {
-                            "text": "12. Before starting the website, the founders exchanged belongings among [12] ........................."
+                            "text": "Before starting the website, the founders exchanged belongings among [12] ........................."
                         },
                         {
-                            "text": "13. The website took [13] ........................ to set up."
+                            "text": "The website took [13] ........................ to set up."
                         },
                         {
-                            "text": "14. The website currently has approximately [14] ........................ registered users."
+                            "text": "The website currently has approximately [14] ........................ registered users."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -197,7 +209,7 @@ const TEST_DATA_52 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -220,7 +232,7 @@ const TEST_DATA_52 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -231,7 +243,13 @@ const TEST_DATA_52 = {
                             "text": "- Degree subject: [32] ........................"
                         },
                         {
+                            "text": "- Initially worked as: a painter"
+                        },
+                        {
                             "text": "- Later moved to: [33] ........................"
+                        },
+                        {
+                            "text": "- Difficulty finding market for work"
                         },
                         {
                             "text": "- Publishers want to know drawings will [34] ........................ well"
@@ -244,7 +262,7 @@ const TEST_DATA_52 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

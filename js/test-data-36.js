@@ -5,7 +5,7 @@ const TEST_DATA_36 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,21 +32,21 @@ const TEST_DATA_36 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "7. According to a survey, [7] ........................ of people find their work very stressful."
+                            "text": "According to a survey, [7] ........................ of people find their work very stressful."
                         },
                         {
                             "text": "[8] ........................ of workers develop mental or physical diseases."
                         },
                         {
-                            "text": "9. Occupational stress can lead to illnesses ranging from insomnia and headaches to [9] ........................."
+                            "text": "Occupational stress can lead to illnesses ranging from insomnia and headaches to [9] ........................."
                         },
                         {
-                            "text": "10. To cope with stress, Alan recommends keeping a journal, taking short walks, or taking a [10] ........................."
+                            "text": "To cope with stress, Alan recommends keeping a journal, taking short walks, or taking a [10] ........................."
                         }
                     ]
                 }
@@ -58,7 +58,7 @@ const TEST_DATA_36 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -82,7 +82,7 @@ const TEST_DATA_36 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -99,7 +99,7 @@ const TEST_DATA_36 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -120,24 +120,24 @@ const TEST_DATA_36 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "26. Martha is going to a conference in [26] ........................."
+                            "text": "Martha is going to a conference in [26] ........................."
                         },
                         {
-                            "text": "27. She is giving a paper on Tuesday the [27] ........................."
+                            "text": "She is giving a paper on Tuesday the [27] ........................."
                         },
                         {
-                            "text": "28. She hopes to meet her former teacher who now teaches at [28] ........................."
+                            "text": "She hopes to meet her former teacher who now teaches at [28] ........................."
                         },
                         {
-                            "text": "29. John will find a meal of [29] ........................ in the refrigerator."
+                            "text": "John will find a meal of [29] ........................ in the refrigerator."
                         },
                         {
-                            "text": "30. Martha needs John to cancel her dentist appointment on Thursday the [30] ........................."
+                            "text": "Martha needs John to cancel her dentist appointment on Thursday the [30] ........................."
                         }
                     ]
                 }
@@ -149,7 +149,7 @@ const TEST_DATA_36 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -173,7 +173,7 @@ const TEST_DATA_36 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

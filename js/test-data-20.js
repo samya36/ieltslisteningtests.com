@@ -5,15 +5,31 @@ const TEST_DATA_20 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "Complete the answers for questions 1-5.",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "1. Full name : Selena [1] ........................"
+                        },
+                        {
+                            "text": "2. Occupation : [2] ........................"
+                        },
+                        {
+                            "text": "3. Age group : [3] ........................"
+                        },
+                        {
+                            "text": "4. Type of membership : [4] ........................"
+                        },
+                        {
+                            "text": "5. Years of membership : [5] ........................"
+                        }
+                    ]
                 }
             },
             {
                 "title": "<strong>Questions 6 – 10</strong>",
-                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -25,6 +41,9 @@ const TEST_DATA_20 = {
                         },
                         {
                             "text": "- Facility never used: [9] ........................ (reason: not happy paying extra)"
+                        },
+                        {
+                            "text": "- Suggestions for improvement:"
                         },
                         {
                             "text": "- More [10] ........................"
@@ -45,28 +64,52 @@ const TEST_DATA_20 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 13</strong>",
-                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. The trail stretches from Brookville to [11] ........................"
+                            "text": "The trail stretches from Brookville to [11] ........................"
                         },
                         {
-                            "text": "12. By car, the closest point is [12] ........................ minutes from the CBD"
+                            "text": "By car, the closest point is [12] ........................ minutes from the CBD"
                         },
                         {
-                            "text": "13. Visitors are NOT recommended to see [13] ........................ here"
+                            "text": "Visitors are NOT recommended to see [13] ........................ here"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 14 – 20</strong>",
-                "instructions": "<strong>Questions 14-20</strong>\n\nLabel the map",
+                "instructions": "<strong>Questions 14-20</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- A. Magic Coffee (next to chocolate company on corner)"
+                        },
+                        {
+                            "text": "- B. Chocolate Company (on corner, near Magic Coffee)"
+                        },
+                        {
+                            "text": "- C. Fresh Produce Shop (past ice cream shop on corner of John Street)"
+                        },
+                        {
+                            "text": "- D. Ice Cream Shop (on corner of John Street)"
+                        },
+                        {
+                            "text": "- E. Organic Market (near corner of Memorial Avenue)"
+                        },
+                        {
+                            "text": "- F. Olive Farm (opposite Olive Road)"
+                        },
+                        {
+                            "text": "- G. The Honeypot (practically opposite coffee house)"
+                        },
+                        {
+                            "text": "- H. Second Chocolate Company (sells nougat, nearby)"
+                        },
                         {
                             "text": "[14] ........................"
                         },
@@ -218,7 +261,7 @@ const TEST_DATA_20 = {
             },
             {
                 "title": "<strong>Questions 27 – 30</strong>",
-                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -238,7 +281,7 @@ const TEST_DATA_20 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -250,6 +293,9 @@ const TEST_DATA_20 = {
                 },
                 {
                     "text": "- Ensure correct [34] ........................ directions"
+                },
+                {
+                    "text": "- Close the battery door"
                 },
                 {
                     "text": "- Press [35] ........................ key first"

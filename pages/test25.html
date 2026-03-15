@@ -7,35 +7,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- 关键CSS内联 -->
     <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    :root{--primary:#1a56db;--primary-light:#3b82f6;--primary-dark:#1e3a5f;--primary-color:#1a56db;--accent:#f59e0b;--success:#10b981;--surface:#f8fafc;--surface-raised:#ffffff;--background-color:#f8fafc;--text:#0f172a;--text-color:#0f172a;--text-secondary:#64748b;--gray-light:#f1f5f9;--gray-medium:#e2e8f0;--secondary-color:#1e3a5f;--max-width:1200px;--border-radius:8px;--radius-lg:12px;--radius-xl:16px;--font-display:"Space Grotesk",sans-serif;--font-body:"IBM Plex Sans","PingFang SC",-apple-system,sans-serif;--font-mono:"JetBrains Mono",monospace;--box-shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--shadow-md:0 4px 12px rgba(15,23,42,.08)}
+    :root{--primary:#1a56db;--primary-light:#3b82f6;--primary-dark:#1e3a5f;--primary-color:#1a56db;--accent:#f59e0b;--success:#10b981;--surface:#f8fafc;--surface-raised:#ffffff;--background-color:#f8fafc;--text:#0f172a;--text-color:#0f172a;--text-secondary:#64748b;--gray-light:#f1f5f9;--gray-medium:#e2e8f0;--secondary-color:#1e3a5f;--max-width:1200px;--border-radius:8px;--radius-lg:12px;--radius-xl:16px;--font-display:'Space Grotesk',sans-serif;--font-body:'IBM Plex Sans','PingFang SC',-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;--box-shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);--shadow-md:0 4px 12px rgba(15,23,42,0.08)}
     body{font-family:var(--font-body);line-height:1.6;color:var(--text);background-color:var(--surface);-webkit-font-smoothing:antialiased}
-    .nav-bar{background:rgba(30,58,95,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:.875rem 0;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,.12);border-bottom:1px solid rgba(59,130,246,.15)}
+    .nav-bar{background:rgba(30,58,95,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:0.875rem 0;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.12);border-bottom:1px solid rgba(59,130,246,0.15)}
     .nav-container{max-width:var(--max-width);margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-    .logo{color:#fff;font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+    .logo{color:white;font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.02em}
     .logo-img{height:40px;margin-right:10px;vertical-align:middle}
     .home-link{text-decoration:none;color:inherit;display:flex;align-items:center}
     .nav-menu{display:flex;list-style:none;gap:2rem}
-    .nav-menu a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:500;font-size:.875rem}
+    .nav-menu a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:500;font-size:0.875rem}
     main{margin-top:4rem;padding:2rem 1rem}
     .test-container{max-width:860px;margin:2rem auto;padding:0 1rem;font-family:var(--font-body);line-height:1.5}
-    .test-intro{background:linear-gradient(180deg,rgba(255,255,255,.98) 0%,rgba(248,250,252,.98) 100%);padding:1.5rem;border-radius:12px;margin-bottom:2rem;border:1px solid var(--gray-medium);border-left:4px solid var(--primary);box-shadow:var(--box-shadow)}
-    .test-intro h1,.test-intro h2{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;color:var(--text)}
-    .section-tabs{display:flex;gap:.5rem;margin:20px 0;border-bottom:none;background:var(--gray-light);padding:4px;border-radius:9999px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .test-intro{background:linear-gradient(180deg,rgba(255,255,255,0.98) 0%,rgba(248,250,252,0.98) 100%);padding:1.5rem;border-radius:12px;margin-bottom:2rem;border:1px solid var(--gray-medium);border-left:4px solid var(--primary);box-shadow:var(--box-shadow)}
+    .test-intro h1,.test-intro h2{font-family:var(--font-display);font-weight:700;letter-spacing:-0.02em;color:var(--text)}
+    .section-tabs{display:flex;gap:0.5rem;margin:20px 0;border-bottom:none;background:var(--gray-light);padding:4px;border-radius:9999px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     .section-tabs::-webkit-scrollbar{display:none}
     .section-tab{padding:10px 24px;background:transparent;border:none;cursor:pointer;margin-right:0;border-radius:9999px;font-weight:500;color:var(--text-secondary);transition:all .25s ease;white-space:nowrap}
-    .section-tab.active{background:var(--primary);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(26,86,219,.3)}
+    .section-tab.active{background:var(--primary);color:white;font-weight:600;box-shadow:0 2px 8px rgba(26,86,219,0.3)}
     .audio-player,.custom-player{background:var(--surface);border-radius:12px;border:1px solid var(--gray-medium);box-shadow:var(--box-shadow)}
-    .play-btn{background:var(--primary);color:#fff}
+    .play-btn{background:var(--primary);color:white}
     .time{font-family:var(--font-mono);color:var(--text-secondary)}
     a{color:var(--primary)}
-    @media(max-width:768px){.nav-menu{display:none}.section-tab{padding:8px 18px;font-size:14px}.test-container{padding:0 .75rem}}
+    @media(max-width:768px){.nav-menu{display:none}.section-tab{padding:8px 18px;font-size:14px}.test-container{padding:0 0.75rem}}
     </style>
 
     <link rel="stylesheet" href="../css/main.css" media="print" onload="this.media='all'">
@@ -83,7 +82,7 @@
 
         <div class="audio-players-container">
             <div class="audio-player" id="section1-player-container">
-                <audio id="section1-player" src="https://audio.ieltslisteningtests.com/audio/test25/full_test.mp3" preload="none"></audio>
+                <audio id="section1-player" src="../audio/test25/full_test.mp3" preload="none"></audio>
                 <div class="custom-player">
                     <div class="player-main">
                         <button class="play-btn" id="section1-play"><i class="fas fa-play"></i></button>
@@ -179,6 +178,6 @@
     <script src="../js/test-answers-25.js" defer></script>
     <script src="../js/test-renderer.js" defer></script>
     <script src="../js/test-init.js" defer></script>
-<script src="../js/analytics.js" defer></script>
+    <script src="../js/analytics.js" defer></script>
 </body>
 </html>

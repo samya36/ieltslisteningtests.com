@@ -5,7 +5,7 @@ const TEST_DATA_53 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -13,7 +13,13 @@ const TEST_DATA_53 = {
                             "text": "- Dates: 25th April for [1] ........................ weeks"
                         },
                         {
+                            "text": "- Guest: Mr. and Mrs. (couple)"
+                        },
+                        {
                             "text": "- Daytime temperature in late April/early May: shouldn't exceed [2] ........................ °C"
+                        },
+                        {
+                            "text": "- Note: Weather has been erratic recently"
                         },
                         {
                             "text": "- Airport shuttle: [3] ........................ pickup service provided"
@@ -26,7 +32,7 @@ const TEST_DATA_53 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -40,6 +46,12 @@ const TEST_DATA_53 = {
                             "text": "- Spring rate for sea view room: €[7] ........................ per night"
                         },
                         {
+                            "text": "- Total for 14 nights: €3,024"
+                        },
+                        {
+                            "text": "- Gym and spa facilities"
+                        },
+                        {
                             "text": "- Large outdoor [8] ........................ pool"
                         },
                         {
@@ -47,6 +59,18 @@ const TEST_DATA_53 = {
                         },
                         {
                             "text": "- Doubles tournament prize: two all-inclusive [10] ........................ vouchers"
+                        },
+                        {
+                            "text": "- Tuesdays: Cooking class with Michelin-starred chef Enrique + piano performance by Pedro"
+                        },
+                        {
+                            "text": "- Wednesdays: Mountain exploration by helicopter, then to tropical Cretan garden"
+                        },
+                        {
+                            "text": "- Thursdays: Fireworks display viewed from cable car"
+                        },
+                        {
+                            "text": "- Special occasion: Wedding anniversary on 30th June"
                         }
                     ]
                 }
@@ -58,31 +82,34 @@ const TEST_DATA_53 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 14</strong>",
-                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. Doors Open takes place every year in [11] ........................."
+                            "text": "Doors Open takes place every year in [11] ........................."
                         },
                         {
-                            "text": "12. The observatory is one of [12] ........................ buildings that open their doors to visitors."
+                            "text": "The observatory is one of [12] ........................ buildings that open their doors to visitors."
                         },
                         {
-                            "text": "13. The observatory has been involved in this event for more than [13] ........................ years."
+                            "text": "The observatory has been involved in this event for more than [13] ........................ years."
                         },
                         {
-                            "text": "14. Entry to all events is [14] ........................."
+                            "text": "Entry to all events is [14] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Four shows daily (today and Sunday)"
+                        },
                         {
                             "text": "- Morning shows (10:30 and 11:30): tickets available on [15] ........................ basis at information point"
                         },
@@ -93,7 +120,13 @@ const TEST_DATA_53 = {
                             "text": "- Tour includes telescope dome and access to the [17] ........................"
                         },
                         {
+                            "text": "- Requirements: comfortable shoes, able to keep up the pace"
+                        },
+                        {
                             "text": "- Type: [18] ........................ library"
+                        },
+                        {
+                            "text": "- Significance: one of the most important in the world"
                         },
                         {
                             "text": "- Craft workshop: make model telescope and color own [19] ........................"
@@ -212,7 +245,7 @@ const TEST_DATA_53 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -226,7 +259,7 @@ const TEST_DATA_53 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -238,6 +271,9 @@ const TEST_DATA_53 = {
                 },
                 {
                     "text": "- Languages spoken: [33] ........................ (native), Castellian Spanish, English"
+                },
+                {
+                    "text": "- City center surrounded by ring road with grid pattern"
                 },
                 {
                     "text": "- Two major diagonal roads: Avenidas Diagonal and [34] ........................"
@@ -255,10 +291,40 @@ const TEST_DATA_53 = {
                     "text": "- Declined after: [38] ........................"
                 },
                 {
+                    "text": "- 1640: Center of Catalan Revolution against King Philip IV"
+                },
+                {
                     "text": "- Olympic Games held: [39] ........................"
                 },
                 {
+                    "text": "- Active period: 1880s until his death in 1926"
+                },
+                {
                     "text": "- Style: decorative form of [40] ........................ based on organic natural forms"
+                },
+                {
+                    "text": "Guell Palace - built for Count of Guell; features two arched gates, circular staircases, fantastic roof with colored sculptures [1] ........................"
+                },
+                {
+                    "text": "Guell Park - meant to be garden city with 50 houses (only 2 finished); cave-like spaces and animal figures [2] ........................"
+                },
+                {
+                    "text": "Sagrada Familia (Cathedral of the Holy Family): [3] ........................"
+                },
+                {
+                    "text": "- Started: 1882"
+                },
+                {
+                    "text": "- Expected completion: 2041 (159 years total)"
+                },
+                {
+                    "text": "- 18 towers, highest: 170 meters"
+                },
+                {
+                    "text": "- Dimensions: 95m long x 60m wide"
+                },
+                {
+                    "text": "- Capacity: 13,000 people"
                 }
             ]
         }

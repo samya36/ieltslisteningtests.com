@@ -3,341 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="雅思听力评分标准详细解析，包括40道题目分值分布、分数转换表和各分数段特点分析">
-    <meta name="keywords" content="雅思听力评分,IELTS听力,分数转换,评分标准,分数段分析">
+    <meta name="description" content="雅思听力评分标准详解：分数转换表、各分数段备考重点、30/35/40题对应水平分析，帮你精准定位薄弱环节">
+    <meta name="keywords" content="雅思听力评分,IELTS听力评分标准,分数转换表,听力提分,分数段分析">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <link rel="canonical" href="https://ieltslisteningtests.com/pages/scoring.html">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="zh_CN">
-    <meta property="og:title" content="雅思听力评分标准详解 - 专业解析助您提分">
-    <meta property="og:description" content="完整展示雅思听力原始分与 Band 分对应关系，并给出各分段提分建议。">
+    <meta property="og:title" content="雅思听力评分标准详解：每个分数段该怎么练">
+    <meta property="og:description" content="完整分数转换表 + 5.5到8.0各段备考重点差异，告诉你不是刷题越多越好。">
     <meta property="og:url" content="https://ieltslisteningtests.com/pages/scoring.html">
     <meta property="og:site_name" content="IELTS听力评分解析">
     <meta property="og:image" content="https://ieltslisteningtests.com/images/logo.webp">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="雅思听力评分标准详解 - 专业解析助您提分">
-    <meta name="twitter:description" content="一页看懂 40 题听力如何换算到 Band 分，并附可执行提分策略。">
+    <meta name="twitter:title" content="雅思听力评分标准详解：每个分数段该怎么练">
+    <meta name="twitter:description" content="完整分数转换表 + 5.5到8.0各段备考重点差异，告诉你不是刷题越多越好。">
     <meta name="twitter:image" content="https://ieltslisteningtests.com/images/logo.webp">
-    
-    <!-- 安全HTTP头 -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline';
-        style-src 'self' 'unsafe-inline';
-        font-src 'self' data:;
-        img-src 'self' data: blob:;
-        connect-src 'self';
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self';
-        frame-ancestors 'none';
-        upgrade-insecure-requests;
-    ">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
-    
-    <title>雅思听力评分标准详解 - 专业解析助您提分</title>
+    <title>雅思听力评分标准详解：每个分数段该怎么练</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
-        .score-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        .score-table th, .score-table td {
-            border: 1px solid var(--gray-light);
-            padding: 0.75rem;
-            text-align: center;
-        }
-        .score-table th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .score-table tr:nth-child(even) {
-            background-color: var(--gray-light);
-        }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        .feature-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .feature-list li::before {
-            content: "•";
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
+        .score-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .score-table th, .score-table td { border: 1px solid var(--gray-light); padding: 0.75rem; text-align: center; }
+        .score-table th { background-color: var(--primary-color); color: white; }
+        .score-table tr:nth-child(even) { background-color: var(--gray-light); }
+        .score-table tr:hover { background-color: #e8f4fd; }
+        .level-card { background: #f8f9fa; border-left: 4px solid var(--primary-color); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        .level-card h3 { color: var(--primary-color); margin-bottom: 0.75rem; }
+        .level-card ul { padding-left: 1.2rem; }
+        .level-card li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .myth-box { background: #fff3e0; border: 1px solid #ffcc80; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .myth-box h3 { color: #e65100; margin-bottom: 0.75rem; }
+        .myth-box p { line-height: 1.8; margin-bottom: 0.75rem; }
+        .highlight-row { background-color: #e3f2fd !important; font-weight: bold; }
     </style>
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="nav">
-        <div class="container nav__container">
-            <a href="/" class="nav__logo">雅思听力评分解析</a>
-            <ul class="nav__menu">
-                <li><a href="scoring.html" class="nav__link">评分标准</a></li>
-                <li><a href="calculator.html" class="nav__link">分数计算器</a></li>
-                <li><a href="cases.html" class="nav__link">案例分析</a></li>
-                <li><a href="feedback.html" class="nav__link">反馈建议</a></li>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo"><a href="../index.html" class="home-link">IELTS听力评分解析</a></div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="scoring.html" class="active">评分详解</a></li>
+                <li><a href="cases.html">案例分析</a></li>
+                <li><a href="practice.html">练习题</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 主要内容区 -->
-    <main class="main">
-        <div class="container">
-            <!-- 页面标题 -->
-            <section class="card">
-                <h1 class="card__title">雅思听力评分标准详解</h1>
-                <p>深入了解雅思听力考试的评分机制，掌握提分关键。</p>
-            </section>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>雅思听力评分标准详解</h1>
+                <p>搞清楚分数怎么算，才能知道该练什么</p>
+            </div>
+        </section>
 
-            <!-- 题目分值分布 -->
-            <section class="card">
-                <h2 class="card__title">题目分值分布</h2>
-                <p>雅思听力考试共40道题目，分为4个部分，每部分10题。每答对一题得1分，满分40分。</p>
-                <div style="overflow-x: auto;">
+        <section class="content-section">
+            <div class="content-container">
+
+                <!-- 基本规则 -->
+                <h2>评分基本规则</h2>
+                <p>雅思听力共 40 道题，每答对一题得 1 分，满分 40 分。没有倒扣分机制——不确定的题也要写上答案。原始分最终映射为 Band 1.0–9.0。</p>
+
+                <div style="overflow-x:auto;">
                     <table class="score-table">
                         <thead>
-                            <tr>
-                                <th>部分</th>
-                                <th>题目数量</th>
-                                <th>题型</th>
-                                <th>难度</th>
-                            </tr>
+                            <tr><th>部分</th><th>题数</th><th>典型题型</th><th>难度</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Section 1</td>
-                                <td>10题</td>
-                                <td>日常对话</td>
-                                <td>较简单</td>
-                            </tr>
-                            <tr>
-                                <td>Section 2</td>
-                                <td>10题</td>
-                                <td>独白/讲解</td>
-                                <td>中等</td>
-                            </tr>
-                            <tr>
-                                <td>Section 3</td>
-                                <td>10题</td>
-                                <td>学术讨论</td>
-                                <td>较难</td>
-                            </tr>
-                            <tr>
-                                <td>Section 4</td>
-                                <td>10题</td>
-                                <td>学术讲座</td>
-                                <td>最难</td>
-                            </tr>
+                            <tr><td>Section 1</td><td>10</td><td>日常对话 · 填表</td><td>较简单</td></tr>
+                            <tr><td>Section 2</td><td>10</td><td>独白 · 场景介绍</td><td>中等</td></tr>
+                            <tr><td>Section 3</td><td>10</td><td>学术讨论 · 多选</td><td>较难</td></tr>
+                            <tr><td>Section 4</td><td>10</td><td>学术讲座 · 填空</td><td>最难</td></tr>
                         </tbody>
                     </table>
                 </div>
-            </section>
 
-            <!-- 分数转换表 -->
-            <section class="card">
-                <h2 class="card__title">分数转换对照表</h2>
-                <p>原始分数（答对题数）与雅思分数的对应关系：</p>
-                <div style="overflow-x: auto;">
+                <!-- 分数转换表 -->
+                <h2>分数转换对照表</h2>
+                <p>下面是官方公布的原始分 → Band 分对应关系。注意：不同场次可能有 ±1 题的浮动。</p>
+
+                <div style="overflow-x:auto;">
                     <table class="score-table">
                         <thead>
-                            <tr>
-                                <th>答对题数</th>
-                                <th>雅思分数</th>
-                                <th>水平等级</th>
-                            </tr>
+                            <tr><th>答对题数</th><th>Band 分</th><th>水平描述</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>39-40</td>
-                                <td>9.0</td>
-                                <td>专家级</td>
-                            </tr>
-                            <tr>
-                                <td>37-38</td>
-                                <td>8.5</td>
-                                <td>优秀</td>
-                            </tr>
-                            <tr>
-                                <td>35-36</td>
-                                <td>8.0</td>
-                                <td>很好</td>
-                            </tr>
-                            <tr>
-                                <td>33-34</td>
-                                <td>7.5</td>
-                                <td>良好</td>
-                            </tr>
-                            <tr>
-                                <td>30-32</td>
-                                <td>7.0</td>
-                                <td>较好</td>
-                            </tr>
-                            <tr>
-                                <td>27-29</td>
-                                <td>6.5</td>
-                                <td>中等偏上</td>
-                            </tr>
-                            <tr>
-                                <td>23-26</td>
-                                <td>6.0</td>
-                                <td>中等</td>
-                            </tr>
-                            <tr>
-                                <td>20-22</td>
-                                <td>5.5</td>
-                                <td>中等偏下</td>
-                            </tr>
-                            <tr>
-                                <td>16-19</td>
-                                <td>5.0</td>
-                                <td>初级</td>
-                            </tr>
-                            <tr>
-                                <td>13-15</td>
-                                <td>4.5</td>
-                                <td>基础</td>
-                            </tr>
-                            <tr>
-                                <td>10-12</td>
-                                <td>4.0</td>
-                                <td>入门</td>
-                            </tr>
-                            <tr>
-                                <td>6-9</td>
-                                <td>3.5</td>
-                                <td>初学</td>
-                            </tr>
-                            <tr>
-                                <td>4-5</td>
-                                <td>3.0</td>
-                                <td>基础薄弱</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>2.5</td>
-                                <td>需加强</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2.0</td>
-                                <td>需努力</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1.0</td>
-                                <td>需重点关注</td>
-                            </tr>
-                            <tr>
-                                <td>0</td>
-                                <td>0.0</td>
-                                <td>未掌握</td>
-                            </tr>
+                            <tr><td>39–40</td><td>9.0</td><td>专家级</td></tr>
+                            <tr><td>37–38</td><td>8.5</td><td>优秀</td></tr>
+                            <tr class="highlight-row"><td>35–36</td><td>8.0</td><td>很好</td></tr>
+                            <tr><td>33–34</td><td>7.5</td><td>良好</td></tr>
+                            <tr class="highlight-row"><td>30–32</td><td>7.0</td><td>较好</td></tr>
+                            <tr><td>27–29</td><td>6.5</td><td>中等偏上</td></tr>
+                            <tr class="highlight-row"><td>23–26</td><td>6.0</td><td>中等</td></tr>
+                            <tr><td>20–22</td><td>5.5</td><td>中等偏下</td></tr>
+                            <tr><td>16–19</td><td>5.0</td><td>初级</td></tr>
+                            <tr><td>13–15</td><td>4.5</td><td>基础</td></tr>
+                            <tr><td>10–12</td><td>4.0</td><td>入门</td></tr>
+                            <tr><td>6–9</td><td>3.5</td><td>初学</td></tr>
+                            <tr><td>4–5</td><td>3.0</td><td>基础薄弱</td></tr>
                         </tbody>
                     </table>
                 </div>
-            </section>
 
-            <!-- 各分数段特点分析 -->
-            <section class="card">
-                <h2 class="card__title">各分数段特点分析</h2>
-                
-                <div class="card" style="margin: 1rem 0;">
-                    <h3 style="color: var(--primary-color);">8-9分段（35-40题）</h3>
-                    <ul class="feature-list">
-                        <li>能准确理解各种口音和语速的对话</li>
-                        <li>掌握丰富的词汇和复杂的句式结构</li>
-                        <li>能捕捉细节信息和言外之意</li>
-                        <li>Section 3和4的正确率极高</li>
+                <!-- 答对题数意味着什么 -->
+                <h2>30题 / 35题 / 40题 分别意味着什么？</h2>
+
+                <div class="level-card">
+                    <h3>答对 20–22 题 → Band 5.5</h3>
+                    <p>Section 1 基本能对，Section 2 会丢 2–3 题，Section 3/4 靠运气。说明<strong>基础听力能力还行，但定位速度和词汇识别跟不上考试节奏</strong>。</p>
+                </div>
+
+                <div class="level-card">
+                    <h3>答对 23–26 题 → Band 6.0</h3>
+                    <p>Section 1/2 稳定拿分，Section 3 对一半，Section 4 对 3–5 题。<strong>最大瓶颈是同义替换识别和多选题逻辑判断</strong>。</p>
+                </div>
+
+                <div class="level-card">
+                    <h3>答对 30–32 题 → Band 7.0</h3>
+                    <p>前两个 Section 几乎不丢分，Section 3/4 各错 3–4 题。<strong>这个阶段的错误通常不是"没听懂"，而是"没抓住出题点"或拼写失误</strong>。</p>
+                </div>
+
+                <div class="level-card">
+                    <h3>答对 35–36 题 → Band 8.0</h3>
+                    <p>全卷只能错 4–5 题。<strong>错的往往是 Section 4 的学术填空和 Section 3 的多选干扰项</strong>，需要极高的专注力和词汇精确度。</p>
+                </div>
+
+                <div class="level-card">
+                    <h3>答对 39–40 题 → Band 9.0</h3>
+                    <p>几乎零失误。除了听力能力本身，<strong>拼写零差错 + 读题预判 + 全程高度集中</strong>缺一不可。</p>
+                </div>
+
+                <!-- 各分数段备考重点 -->
+                <h2>5.5 / 6.0 / 6.5 / 7.0 / 8.0 备考重点差异</h2>
+
+                <div class="level-card">
+                    <h3>目标 5.5：先把 Section 1/2 吃透</h3>
+                    <ul>
+                        <li>重点练数字、日期、人名拼写——这些是 Section 1 送分题，不能丢</li>
+                        <li>熟悉租房、旅游、课程咨询等高频场景词汇</li>
+                        <li>每次做完题对答案时，把没听懂的句子逐句精听</li>
+                        <li>暂时不要死磕 Section 4，把时间花在前两部分</li>
                     </ul>
                 </div>
 
-                <div class="card" style="margin: 1rem 0;">
-                    <h3 style="color: var(--primary-color);">7-7.5分段（30-34题）</h3>
-                    <ul class="feature-list">
-                        <li>能理解大部分内容和主要观点</li>
-                        <li>Section 1和2基本不会出错</li>
-                        <li>对数字、时间等具体信息把握准确</li>
-                        <li>在快速对话和专业术语方面偶有疏漏</li>
+                <div class="level-card">
+                    <h3>目标 6.0：补同义替换 + 稳住 Section 3</h3>
+                    <ul>
+                        <li>开始系统积累同义替换词对（题目说 "reduce"，原文说 "cut down"）</li>
+                        <li>Section 3 的学术讨论通常有 2–3 人对话，练习区分说话人观点</li>
+                        <li>做题时先划出每道题的关键词，带着预判去听</li>
+                        <li>错题复盘重点：不是"我没听到"，而是"信号词在哪里"</li>
                     </ul>
                 </div>
 
-                <div class="card" style="margin: 1rem 0;">
-                    <h3 style="color: var(--primary-color);">6-6.5分段（23-29题）</h3>
-                    <ul class="feature-list">
-                        <li>能理解基本对话和主要信息</li>
-                        <li>Section 1和2正确率较高</li>
-                        <li>在复杂话题和快速对话中容易失分</li>
-                        <li>细节信息的准确性需要提高</li>
+                <div class="level-card">
+                    <h3>目标 6.5：提升答题精度</h3>
+                    <ul>
+                        <li>Section 1/2 目标零失误，容错空间全留给后半场</li>
+                        <li>多选题和匹配题要练"排除法"——听到 A 不代表选 A，要等完整信息</li>
+                        <li>开始接触 Section 4 学术类场景词（环保、心理、城市规划等）</li>
+                        <li>注意单复数、大小写等拼写细节，这些每次丢 1–2 分很亏</li>
                     </ul>
                 </div>
 
-                <div class="card" style="margin: 1rem 0;">
-                    <h3 style="color: var(--primary-color);">5-5.5分段（16-22题）</h3>
-                    <ul class="feature-list">
-                        <li>能理解简单的日常对话</li>
-                        <li>在Section 1中表现较好</li>
-                        <li>学术内容理解有限</li>
-                        <li>词汇量和听力速度需要提升</li>
+                <div class="level-card">
+                    <h3>目标 7.0：精练 Section 3/4 + 消灭低级失误</h3>
+                    <ul>
+                        <li>7 分考生的错误集中在 Section 3 的逻辑判断和 Section 4 的学术填空</li>
+                        <li>练习"转折后才是答案"的识别能力（but, however, actually, in fact）</li>
+                        <li>Section 4 一次性听完不暂停，模拟真实考场节奏</li>
+                        <li>每周至少 2 次完整模考，训练 30 分钟持续集中力</li>
                     </ul>
                 </div>
-            </section>
 
-            <!-- 提分建议 -->
-            <section class="card">
-                <h2 class="card__title">提分建议</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                    <div>
-                        <h3 style="color: var(--primary-color);">基础训练</h3>
-                        <ul class="feature-list">
-                            <li>每天坚持听力练习</li>
-                            <li>积累核心词汇</li>
-                            <li>练习数字和时间的快速识别</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="color: var(--primary-color);">进阶技巧</h3>
-                        <ul class="feature-list">
-                            <li>预测题目内容</li>
-                            <li>掌握不同口音特点</li>
-                            <li>提高笔记速度</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="color: var(--primary-color);">考试策略</h3>
-                        <ul class="feature-list">
-                            <li>合理分配时间</li>
-                            <li>注意题目关键词</li>
-                            <li>检查拼写准确性</li>
-                        </ul>
-                    </div>
+                <div class="level-card">
+                    <h3>目标 8.0：极限精度 + 全题型覆盖</h3>
+                    <ul>
+                        <li>全卷只允许错 4–5 题，任何一个 Section 都不能"放弃"</li>
+                        <li>重点攻克地图题方位词、流程图顺序词、多选题干扰项</li>
+                        <li>听力材料换成 BBC 6 Minute English、TED-Ed 等提升泛听能力</li>
+                        <li>模考后逐题分析错因，建立个人错题本分类统计</li>
+                    </ul>
                 </div>
-            </section>
-        </div>
+
+                <!-- 常见误区 -->
+                <h2>备考常见误区</h2>
+
+                <div class="myth-box">
+                    <h3>误区一："刷题越多分越高"</h3>
+                    <p>刷 50 套题不复盘，不如认真做 10 套题每套精听 3 遍。提分的关键不在于做了多少题，而在于<strong>每次错题之后有没有搞清楚"为什么错"</strong>。是没听到？没听懂？还是听懂了但没定位到出题点？</p>
+                </div>
+
+                <div class="myth-box">
+                    <h3>误区二："Section 4 太难了先跳过"</h3>
+                    <p>Section 4 看起来难，但题型单一（基本都是填空），而且题目顺序跟音频顺序完全一致。如果你能提前读题划出关键词，<strong>Section 4 反而是最容易通过技巧提分的部分</strong>。</p>
+                </div>
+
+                <div class="myth-box">
+                    <h3>误区三："听写就是逐字逐句写下来"</h3>
+                    <p>精听不等于听写。有效的复盘方式是：<strong>先盲听 → 对照原文找到没听出的词 → 分析是发音问题还是词汇问题 → 针对性补短板</strong>。逐字听写非常耗时但收益有限。</p>
+                </div>
+
+                <div class="myth-box">
+                    <h3>误区四："答案写了就行，拼写差不多没关系"</h3>
+                    <p>雅思听力拼写必须完全正确。"accommodation" 少写一个 m、"library" 写成 "libary"、"Wednesday" 拼错，<strong>都是 0 分</strong>。建议建一个高频易错拼写清单，考前反复过。</p>
+                </div>
+
+            </div>
+        </section>
     </main>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container footer__content">
-            <div class="footer-legal">
-                <a href="../about.html">About</a>
-                <a href="../privacy.html">Privacy</a>
-                <a href="../terms.html">Terms</a>
-                <a href="../contact.html">Contact</a>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>关于我们</h4>
+                <p>专注雅思听力评分解析，助力考生科学备考</p>
             </div>
-            <p>© 2024 雅思听力评分解析. 保留所有权利.</p>
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="scoring.html">评分详解</a></li>
+                    <li><a href="practice.html">练习题</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <a href="../about.html">About</a>
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+            <a href="../contact.html">Contact</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 雅思听力评分解析. All rights reserved.</p>
         </div>
     </footer>
-<script src="../js/analytics.js" defer></script>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/analytics.js" defer></script>
 </body>
-</html> 
+</html>

@@ -5,7 +5,7 @@ const TEST_DATA_37 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -23,7 +23,7 @@ const TEST_DATA_37 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -194,18 +194,18 @@ const TEST_DATA_37 = {
             },
             {
                 "title": "<strong>Questions 18 – 20</strong>",
-                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "18. On Monday, the bus to the Land Hotel leaves at [18] ........................."
+                            "text": "On Monday, the bus to the Land Hotel leaves at [18] ........................."
                         },
                         {
-                            "text": "19. On Thursday, students need to bring a [19] ........................ because the canteen is closed."
+                            "text": "On Thursday, students need to bring a [19] ........................ because the canteen is closed."
                         },
                         {
-                            "text": "20. On Friday, students wearing [20] ........................ will be available to answer questions."
+                            "text": "On Friday, students wearing [20] ........................ will be available to answer questions."
                         }
                     ]
                 }
@@ -217,19 +217,108 @@ const TEST_DATA_37 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>",
-                "formContent": {
-                    "title": "",
-                    "items": [
-                        {
-                            "text": "22. In \"Wronged,\" Thompson receives [22] ........................ for a murder he didn't commit."
-                        }
-                    ]
-                }
+                "instructions": "<strong>Questions 21 – 25</strong>\n\nChoose the correct letter, A, B, or C.",
+                "questions": [
+                    {
+                        "id": 21,
+                        "text": "Which film does Ronald consider the best?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "The Kid Rides Again"
+                            },
+                            {
+                                "value": "B",
+                                "text": "When You Find Love"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Wronged"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "text": "In \"Wronged,\" Thompson receives ___ for a murder he didn't commit.",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "the death penalty"
+                            },
+                            {
+                                "value": "B",
+                                "text": "a life sentence"
+                            },
+                            {
+                                "value": "C",
+                                "text": "15 years community service"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 23,
+                        "text": "Who plays Thompson's wife in \"Wronged\"?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Henry Michaelelsson"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Joanne Seymour"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Sally Evans"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "text": "What does Ronald say about \"When You Find Love\"?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "It has excellent special effects"
+                            },
+                            {
+                                "value": "B",
+                                "text": "It has a silly story"
+                            },
+                            {
+                                "value": "C",
+                                "text": "It is suitable for all ages"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "text": "Where is \"When You Find Love\" set?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "On a New England college campus"
+                            },
+                            {
+                                "value": "B",
+                                "text": "In Hollywood"
+                            },
+                            {
+                                "value": "C",
+                                "text": "In the Old West"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -255,7 +344,7 @@ const TEST_DATA_37 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -284,7 +373,13 @@ const TEST_DATA_37 = {
                     "text": "- Porters: [38] ........................ per suitcase"
                 },
                 {
+                    "text": "- Hairdressers: £2 plus 50p to the assistant"
+                },
+                {
                     "text": "- Drive on the: [39] ........................"
+                },
+                {
+                    "text": "- Highway Code available from: AA or RAC offices"
                 },
                 {
                     "text": "- Emergency telephone number: [40] ........................"

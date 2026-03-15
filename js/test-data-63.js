@@ -5,7 +5,7 @@ const TEST_DATA_63 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -23,13 +23,25 @@ const TEST_DATA_63 = {
                         },
                         {
                             "text": "- Only available to students living in the [5] ........................"
+                        },
+                        {
+                            "text": "- Location: North Campus"
+                        },
+                        {
+                            "text": "- Free for up to 8 sessions"
+                        },
+                        {
+                            "text": "- Run from Central Campus"
+                        },
+                        {
+                            "text": "- Phone number: 09007625913"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 6 – 10</strong>",
-                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,10 +70,16 @@ const TEST_DATA_63 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 17</strong>",
-                "instructions": "<strong>Questions 11-17</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-17</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Student name: VJ Pares"
+                        },
+                        {
+                            "text": "- Contact number: 9092467"
+                        },
                         {
                             "text": "- Building for classes: [11] ........................"
                         },
@@ -97,18 +115,18 @@ const TEST_DATA_63 = {
             },
             {
                 "title": "<strong>Questions 18 – 20</strong>",
-                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "18. The college offers competitive [18] ........................ rates to students."
+                            "text": "The college offers competitive [18] ........................ rates to students."
                         },
                         {
-                            "text": "19. The travel agency is located at the [19] ........................ end of the building."
+                            "text": "The travel agency is located at the [19] ........................ end of the building."
                         },
                         {
-                            "text": "20. The travel agency is next to the [20] ........................."
+                            "text": "The travel agency is next to the [20] ........................."
                         }
                     ]
                 }
@@ -120,7 +138,7 @@ const TEST_DATA_63 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 27</strong>",
-                "instructions": "<strong>Questions 21-27</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 21-27</strong>\n\nComplete the table below showing what should be included in the research proposal.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -141,7 +159,7 @@ const TEST_DATA_63 = {
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -162,6 +180,9 @@ const TEST_DATA_63 = {
                         },
                         {
                             "text": "- Participants sign a [30] ........................"
+                        },
+                        {
+                            "text": "- Names must be given and data stored on college computer network"
                         }
                     ]
                 }
@@ -170,7 +191,7 @@ const TEST_DATA_63 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the summary",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [

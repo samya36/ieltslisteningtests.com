@@ -153,7 +153,7 @@ class EnhancedAudioPlayer {
         }
     }
 
-    // 初始化音频源（本地优先，CDN备份）
+    // 初始化音频源（R2 域名优先，本地备份）
     async initializeAudioSources() {
         for (let section = 1; section <= 4; section++) {
             const player = this.players[section];
@@ -164,17 +164,15 @@ class EnhancedAudioPlayer {
             // 对文件名进行URL编码（空格→%20），防止路径解析失败
             const encodedFileName = encodeURIComponent(fileName);
             
-            // 优先尝试本地路径（更可靠），CDN作为备份
-            const localUrl = this.audioConfig.localPath + encodedFileName;
-            const cdnUrl = this.audioConfig.cdnPath + encodedFileName;
-
+            const primaryUrl = this.audioConfig.cdnPath + encodedFileName;
+            const fallbackUrl = this.audioConfig.localPath + encodedFileName;
             try {
-                await this.loadAudioWithFallback(player.audio, localUrl, cdnUrl);
+                await this.loadAudioWithFallback(player.audio, primaryUrl, fallbackUrl);
                 console.log(`✅ Section ${section} 音频加载成功`);
             } catch (error) {
                 console.error(`❌ Section ${section} 音频加载失败:`, error);
-                console.error(`  本地路径: ${localUrl}`);
-                console.error(`  CDN路径: ${cdnUrl}`);
+                console.error(`  R2路径: ${primaryUrl}`);
+                console.error(`  本地路径: ${fallbackUrl}`);
                 this.showAudioError(section);
             }
         }
@@ -200,7 +198,7 @@ class EnhancedAudioPlayer {
                     attemptCount++;
                     
                     if (attemptCount < maxAttempts && url === primaryUrl) {
-                        console.warn(`CDN加载失败，切换到本地备份: ${fallbackUrl}`);
+                        console.warn(`R2音频加载失败，切换到本地备份: ${fallbackUrl}`);
                         tryLoad(fallbackUrl);
                     } else {
                         reject(new Error(`所有音频源加载失败`));
@@ -526,6 +524,7 @@ if (typeof window !== 'undefined') {
     window.EnhancedAudioPlayer = EnhancedAudioPlayer;
     window.enhancedAudioPlayer = enhancedAudioPlayer;
 }
+
 })();
 
 // --- js/enhanced-answer-sheet.js ---
@@ -1994,6 +1993,8 @@ const TEST_DATA = {
     }
 };
 
+window.TEST_DATA = TEST_DATA;
+
 // 获取测试数据的函数
 function getTestData() {
     return TEST_DATA;
@@ -2006,9 +2007,8 @@ window.getTestData = getTestData;
 
 // --- js/test-answers.js ---
 ;(function(){
-// 测试标准答案
+// Test 1 标准答案
 const standardAnswers = {
-    // Section 1 答案 (1-10)
     1: "Club",
     2: "male",
     3: "drive",
@@ -2016,11 +2016,9 @@ const standardAnswers = {
     5: "August",
     6: "dinner",
     7: "25",
-    8: "16", // 或者设置为接受两种格式 ["16", "sixteen"]
+    8: "16",
     9: "modern",
     10: "hospital",
-    
-    // Section 2 答案 (11-20)
     11: "C",
     12: "A",
     13: "A",
@@ -2031,20 +2029,13 @@ const standardAnswers = {
     18: "I",
     19: "A",
     20: "E",
-    
-    // Section 3 答案 (21-30)
     21: "B",
     22: "A",
     23: "B",
     24: "A",
-    25: ["C", "E"], // 25&26题为CE
-    26: ["C", "E"],
-    27: ["A", "D"], // 27&28题为AD
-    28: ["A", "D"],
-    29: ["B", "E"], // 29&30题为BE
-    30: ["B", "E"],
-    
-    // Section 4 答案 (31-40)
+    "25-26": ["C", "E"],
+    "27-28": ["A", "D"],
+    "29-30": ["B", "E"],
     31: "flexible",
     32: "film",
     33: "gas",
@@ -2057,7 +2048,6 @@ const standardAnswers = {
     40: "medical"
 };
 
-// 雅思听力分数换算表
 const listeningScoreTable = {
     40: 9.0,
     39: 9.0,
@@ -2102,15 +2092,19 @@ const listeningScoreTable = {
     0: 0.0
 };
 
-// 获取标准答案
 function getStandardAnswers() {
     return standardAnswers;
 }
 
-// 获取雅思分数
 function getIeltsScore(correctCount) {
     return listeningScoreTable[correctCount] || 0;
-} 
+}
+
+window.standardAnswers = standardAnswers;
+window.listeningScoreTable = listeningScoreTable;
+window.getStandardAnswers = getStandardAnswers;
+window.getIeltsScore = getIeltsScore;
+
 })();
 
 // --- js/universal-test-generator.js ---
@@ -3424,18 +3418,20 @@ function submitTest() {
         if (score >= 39) return 9.0;
         if (score >= 37) return 8.5;
         if (score >= 35) return 8.0;
-        if (score >= 32) return 7.5;
+        if (score >= 33) return 7.5;
         if (score >= 30) return 7.0;
         if (score >= 27) return 6.5;
         if (score >= 23) return 6.0;
-        if (score >= 18) return 5.5;
-        if (score >= 15) return 5.0;
-        if (score >= 11) return 4.5;
-        if (score >= 8) return 4.0;
-        if (score >= 5) return 3.5;
-        if (score >= 2) return 3.0;
-        if (score >= 1) return 2.5;
-        return 2.0;
+        if (score >= 20) return 5.5;
+        if (score >= 16) return 5.0;
+        if (score >= 13) return 4.5;
+        if (score >= 10) return 4.0;
+        if (score >= 6) return 3.5;
+        if (score >= 4) return 3.0;
+        if (score >= 3) return 2.5;
+        if (score >= 2) return 2.0;
+        if (score >= 1) return 1.0;
+        return 0.0;
     }
 
     function buildProblemAreas(sectionScores, sectionAnalysis) {
@@ -3520,7 +3516,6 @@ function submitTest() {
         calculate
     };
 })();
-
 
 })();
 

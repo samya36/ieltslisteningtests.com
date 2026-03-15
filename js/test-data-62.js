@@ -5,7 +5,7 @@ const TEST_DATA_62 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,7 +26,7 @@ const TEST_DATA_62 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,31 +58,31 @@ const TEST_DATA_62 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. Darwin is located in what is called the [11] ........................ of Australia."
+                            "text": "Darwin is located in what is called the [11] ........................ of Australia."
                         },
                         {
-                            "text": "12. The city has a very strong [12] ........................ influence."
+                            "text": "The city has a very strong [12] ........................ influence."
                         },
                         {
-                            "text": "13. The average age of Darwin's population is just [13] ........................."
+                            "text": "The average age of Darwin's population is just [13] ........................."
                         },
                         {
-                            "text": "14. The Chinese temple was almost destroyed by a [14] ........................ in the 1970s."
+                            "text": "The Chinese temple was almost destroyed by a [14] ........................ in the 1970s."
                         },
                         {
-                            "text": "15. Joanne recommends [15] ........................ rather than hiring a bicycle."
+                            "text": "Joanne recommends [15] ........................ rather than hiring a bicycle."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -231,7 +231,7 @@ const TEST_DATA_62 = {
             },
             {
                 "title": "<strong>Questions 27 – 30</strong>",
-                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -257,31 +257,31 @@ const TEST_DATA_62 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "31. The speaker's group originally planned to use a [31] ........................ with 40 questions."
+                            "text": "The speaker's group originally planned to use a [31] ........................ with 40 questions."
                         },
                         {
-                            "text": "32. A postgraduate student suggested showing people [32] ........................ of buildings instead."
+                            "text": "A postgraduate student suggested showing people [32] ........................ of buildings instead."
                         },
                         {
-                            "text": "33. The scale used ranged from 1 (unhappy) to [33] ........................ (very happy)."
+                            "text": "The scale used ranged from 1 (unhappy) to [33] ........................ (very happy)."
                         },
                         {
-                            "text": "34. The final number of images used in the study was [34] ........................."
+                            "text": "The final number of images used in the study was [34] ........................."
                         },
                         {
-                            "text": "35. The images were produced with help from the [35] ........................ building."
+                            "text": "The images were produced with help from the [35] ........................ building."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

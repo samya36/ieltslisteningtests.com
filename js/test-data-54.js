@@ -5,7 +5,7 @@ const TEST_DATA_54 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -17,6 +17,9 @@ const TEST_DATA_54 = {
                         },
                         {
                             "text": "- Bedrooms: [3] ........................"
+                        },
+                        {
+                            "text": "- Living area: open plan"
                         },
                         {
                             "text": "- Distance from shops: quite [4] ........................"
@@ -31,6 +34,9 @@ const TEST_DATA_54 = {
                             "text": "- Views: overlooks [8] ........................ on other side"
                         },
                         {
+                            "text": "- Type: three-bedroom house with dining room"
+                        },
+                        {
                             "text": "- Booking method: phone owner on [9] ........................"
                         }
                     ]
@@ -38,7 +44,7 @@ const TEST_DATA_54 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -64,31 +70,31 @@ const TEST_DATA_54 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. In the past, student union membership was [11] ........................, but now it is optional."
+                            "text": "In the past, student union membership was [11] ........................, but now it is optional."
                         },
                         {
-                            "text": "12. The student union is completely [12] ........................ of the educational body."
+                            "text": "The student union is completely [12] ........................ of the educational body."
                         },
                         {
-                            "text": "13. The student union organized the festivities at the end of the [13] ........................ week."
+                            "text": "The student union organized the festivities at the end of the [13] ........................ week."
                         },
                         {
-                            "text": "14. Student union events always take place on the [14] ........................."
+                            "text": "Student union events always take place on the [14] ........................."
                         },
                         {
-                            "text": "15. The three basic functions of the student union are social, organizational, and [15] ........................."
+                            "text": "The three basic functions of the student union are social, organizational, and [15] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -218,7 +224,7 @@ const TEST_DATA_54 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -244,7 +250,7 @@ const TEST_DATA_54 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -277,6 +283,9 @@ const TEST_DATA_54 = {
                 },
                 {
                     "text": "- Kennedy was assassinated in [40] ........................, Texas"
+                },
+                {
+                    "text": "- Both were shot while sitting next to their wives"
                 }
             ]
         }

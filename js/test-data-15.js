@@ -5,7 +5,7 @@ const TEST_DATA_15 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,10 +32,16 @@ const TEST_DATA_15 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Height: 1.80m"
+                        },
+                        {
+                            "text": "- Age: Around 35"
+                        },
                         {
                             "text": "- Distinguishing features: Blue eyes, [7] ........................ hair"
                         },
@@ -44,6 +50,12 @@ const TEST_DATA_15 = {
                         },
                         {
                             "text": "- Spoke with: [9] ........................ accent"
+                        },
+                        {
+                            "text": "- Make/Model: Ford Escort"
+                        },
+                        {
+                            "text": "- Colour: Dark blue"
                         },
                         {
                             "text": "- Registration number: [10] ........................"
@@ -58,7 +70,7 @@ const TEST_DATA_15 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -84,6 +96,9 @@ const TEST_DATA_15 = {
                     "title": "",
                     "items": [
                         {
+                            "text": "- +------------------"
+                        },
+                        {
                             "text": "[16] ........................"
                         },
                         {
@@ -93,10 +108,10 @@ const TEST_DATA_15 = {
                             "text": "[18] ........................"
                         },
                         {
-                            "text": "19. Where can students get coffee? [19] ........................"
+                            "text": "Where can students get coffee? [19] ........................"
                         },
                         {
-                            "text": "20. Where should the student go to collect luggage sent ahead? [20] ........................"
+                            "text": "Where should the student go to collect luggage sent ahead? [20] ........................"
                         }
                     ]
                 }
@@ -105,28 +120,153 @@ const TEST_DATA_15 = {
     },
     "section3": {
         "title": "<strong>Section 3</strong>",
-        "instructions": "<strong>Questions 27-30</strong>\n\nComplete the table",
-        "formContent": {
-            "title": "",
-            "items": [
-                {
-                    "text": "Blues Club : Blues : Poor - minimal [27] ........................"
-                },
-                {
-                    "text": "Sansu : [28] ........................ : Excellent - lively venue"
-                },
-                {
-                    "text": "Pier Hotel : Folk : Average - basement location, [29] ........................ lighting"
-                },
-                {
-                    "text": "Baldrop Cafe : Rock : [30] ........................ - popular with students"
+        "parts": [
+            {
+                "title": "<strong>Questions 21 – 26</strong>",
+                "instructions": "<strong>Questions 21 – 26</strong>\n\nChoose the correct letter, A, B, or C.",
+                "questions": [
+                    {
+                        "id": 21,
+                        "text": "What is the title of Rosie and Mike's project?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Entertainment on Campus"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Out and About"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Local Facilities Survey"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "text": "Which entertainment category did they deliberately NOT include in their survey?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Cinema"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Theater"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Campus facilities"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 23,
+                        "text": "Which cinema is most popular with students?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Multiscreen complex"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Park Cinema"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Late night Odeon"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "text": "Why don't students prefer the multiscreen complex?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "It doesn't show the latest films"
+                            },
+                            {
+                                "value": "B",
+                                "text": "It is expensive and far from town"
+                            },
+                            {
+                                "value": "C",
+                                "text": "It has poor seating"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "text": "Which theater is described as \"old and architecturally beautiful\"?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "The Stage Theater"
+                            },
+                            {
+                                "value": "B",
+                                "text": "The Ashtop"
+                            },
+                            {
+                                "value": "C",
+                                "text": "The Campus Theater"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 26,
+                        "text": "When do students go to the theater most frequently?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "April/May"
+                            },
+                            {
+                                "value": "B",
+                                "text": "June/July"
+                            },
+                            {
+                                "value": "C",
+                                "text": "November/December"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "<strong>Questions 27 – 30</strong>",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS for each answer.",
+                "formContent": {
+                    "title": "",
+                    "items": [
+                        {
+                            "text": "Blues Club : Blues : Poor - minimal [27] ........................"
+                        },
+                        {
+                            "text": "Sansu : [28] ........................ : Excellent - lively venue"
+                        },
+                        {
+                            "text": "Pier Hotel : Folk : Average - basement location, [29] ........................ lighting"
+                        },
+                        {
+                            "text": "Baldrop Cafe : Rock : [30] ........................ - popular with students"
+                        }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -141,6 +281,9 @@ const TEST_DATA_15 = {
                 },
                 {
                     "text": "- Diet: [34] ........................ and fruit"
+                },
+                {
+                    "text": "- Native to: British Isles, Finland, most of Europe, parts of Asia and Africa"
                 },
                 {
                     "text": "- Declining in: British Isles and [35] ........................"

@@ -5,7 +5,7 @@ const TEST_DATA_43 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -29,7 +29,7 @@ const TEST_DATA_43 = {
             },
             {
                 "title": "<strong>Questions 6 – 10</strong>",
-                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,34 +58,34 @@ const TEST_DATA_43 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nLabel the map",
+                "instructions": "<strong>Questions 11-16</strong>\n\nLabel the map/plan below.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. Wilson's (clothing and hardware) [11] ........................"
+                            "text": "Wilson's (clothing and hardware) [11] ........................"
                         },
                         {
-                            "text": "12. DVD shop [12] ........................"
+                            "text": "DVD shop [12] ........................"
                         },
                         {
-                            "text": "13. Student Union office [13] ........................"
+                            "text": "Student Union office [13] ........................"
                         },
                         {
-                            "text": "14. Bookshop [14] ........................"
+                            "text": "Bookshop [14] ........................"
                         },
                         {
-                            "text": "15. Fitness room [15] ........................"
+                            "text": "Fitness room [15] ........................"
                         },
                         {
-                            "text": "16. H Building (across the road) [16] ........................"
+                            "text": "H Building (across the road) [16] ........................"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -209,7 +209,7 @@ const TEST_DATA_43 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -229,10 +229,16 @@ const TEST_DATA_43 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 37</strong>",
-                "instructions": "<strong>Questions 31-37</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-37</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Mammals use lungs to take oxygen from the atmosphere"
+                        },
+                        {
+                            "text": "- Fish use gills to take oxygen from water"
+                        },
                         {
                             "text": "- Jacques Cousteau predicted [31] ........................ could give humans gills"
                         },
@@ -259,18 +265,18 @@ const TEST_DATA_43 = {
             },
             {
                 "title": "<strong>Questions 38 – 40</strong>",
-                "instructions": "<strong>Questions 38-40</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 38-40</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "38. The speaker lasted underwater for nearly [38] ........................ using her artificial gill."
+                            "text": "The speaker lasted underwater for nearly [38] ........................ using her artificial gill."
                         },
                         {
-                            "text": "39. Artificial gills don't work at great depths because of the [39] ........................."
+                            "text": "Artificial gills don't work at great depths because of the [39] ........................."
                         },
                         {
-                            "text": "40. Two applications suggested for this technology are providing oxygen for submarines and powering [40] ........................."
+                            "text": "Two applications suggested for this technology are providing oxygen for submarines and powering [40] ........................."
                         }
                     ]
                 }

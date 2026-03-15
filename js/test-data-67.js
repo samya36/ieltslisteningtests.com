@@ -5,7 +5,7 @@ const TEST_DATA_67 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,10 +32,23 @@ const TEST_DATA_67 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "Complete the answers for questions 7-10.",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "The cheapest flight leaves on the 25th and changes in [7] ........................."
+                        },
+                        {
+                            "text": "The return flight is available on the 14th or the [8] ........................."
+                        },
+                        {
+                            "text": "The Gold Star insurance costs £[9] ........................."
+                        },
+                        {
+                            "text": "The City Museum has a special exhibition of [10] ........................."
+                        }
+                    ]
                 }
             }
         ]
@@ -45,7 +58,7 @@ const TEST_DATA_67 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -69,10 +82,26 @@ const TEST_DATA_67 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "Complete the answers for questions 16-20.",
+                "instructions": "<strong>Questions 16-20</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "Vital's [16] ........................"
+                        },
+                        {
+                            "text": "Olive Garden [17] ........................"
+                        },
+                        {
+                            "text": "Fuddruckers [18] ........................"
+                        },
+                        {
+                            "text": "The Cattle Company [19] ........................"
+                        },
+                        {
+                            "text": "Hartford Shopping Mall [20] ........................"
+                        }
+                    ]
                 }
             }
         ]
@@ -82,15 +111,25 @@ const TEST_DATA_67 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 23</strong>",
-                "instructions": "Complete the answers for questions 21-23.",
+                "instructions": "<strong>Questions 21-23</strong>",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "In November 1992, people at beaches noticed: [21] ........................"
+                        },
+                        {
+                            "text": "How many containers were washed overboard during the storm? [22] ........................"
+                        },
+                        {
+                            "text": "The oceanographers were excited about the plastic toys because: [23] ........................"
+                        }
+                    ]
                 }
             },
             {
                 "title": "<strong>Questions 24 – 30</strong>",
-                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -125,7 +164,7 @@ const TEST_DATA_67 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 33</strong>",
-                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -143,7 +182,7 @@ const TEST_DATA_67 = {
             },
             {
                 "title": "<strong>Questions 34 – 40</strong>",
-                "instructions": "<strong>Questions 34-40</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 34-40</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

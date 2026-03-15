@@ -2,7 +2,7 @@
 const TEST_DATA_60 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -41,7 +41,7 @@ const TEST_DATA_60 = {
     },
     "section2": {
         "title": "<strong>Section 2</strong>",
-        "instructions": "<strong>Questions 11-20</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 11-20</strong>\n\nComplete the notes below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -52,13 +52,28 @@ const TEST_DATA_60 = {
                     "text": "- Group meets at a [12] ........................ near Island Lake recreation area"
                 },
                 {
+                    "text": "- Equipment is transported from vehicles to the lake using wheels"
+                },
+                {
                     "text": "- Canoe price range: £300 to £[13] ........................"
+                },
+                {
+                    "text": "- Essential safety gear: hard helmet"
                 },
                 {
                     "text": "- Beginners must wear a [14] ........................"
                 },
                 {
+                    "text": "- Life jacket required when alone"
+                },
+                {
                     "text": "- Good for the [15] ........................ and lungs"
+                },
+                {
+                    "text": "- Builds upper body strength and mobility"
+                },
+                {
+                    "text": "- Total body workout and calorie burner"
                 },
                 {
                     "text": "- Described as \"[16] ........................ medicine for the soul\""
@@ -80,7 +95,7 @@ const TEST_DATA_60 = {
     },
     "section3": {
         "title": "<strong>Section 3</strong>",
-        "instructions": "<strong>Questions 21-30</strong>\n\nComplete the summary",
+        "instructions": "<strong>Questions 21-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -95,39 +110,39 @@ const TEST_DATA_60 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the sentences",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [
                 {
-                    "text": "31. Liz investigated various advertising [31] ........................ including billboards, television, and films."
+                    "text": "Liz investigated various advertising [31] ........................ including billboards, television, and films."
                 },
                 {
-                    "text": "32. In magazine advertisements, women are typically shown in [32] ........................ roles such as doing housework."
+                    "text": "In magazine advertisements, women are typically shown in [32] ........................ roles such as doing housework."
                 },
                 {
-                    "text": "33. Men are usually portrayed wearing sports clothes or [33] ........................."
+                    "text": "Men are usually portrayed wearing sports clothes or [33] ........................."
                 },
                 {
-                    "text": "34. In films, women are often depicted working as a [34] ........................ to a male boss."
+                    "text": "In films, women are often depicted working as a [34] ........................ to a male boss."
                 },
                 {
-                    "text": "35. The woman's office is shared and open to the [35] ........................, unlike the man's private office."
+                    "text": "The woman's office is shared and open to the [35] ........................, unlike the man's private office."
                 },
                 {
-                    "text": "36. When women are shown as superior, they are portrayed as having [36] ........................ powers."
+                    "text": "When women are shown as superior, they are portrayed as having [36] ........................ powers."
                 },
                 {
-                    "text": "37. Liz describes the internet as a type of [37] ........................ where there is little control."
+                    "text": "Liz describes the internet as a type of [37] ........................ where there is little control."
                 },
                 {
-                    "text": "38. According to the survey, the majority of people over age [38] ........................ supported restricting internet content."
+                    "text": "According to the survey, the majority of people over age [38] ........................ supported restricting internet content."
                 },
                 {
-                    "text": "39. Only about [39] ........................ percent of respondents believed information should be restricted."
+                    "text": "Only about [39] ........................ percent of respondents believed information should be restricted."
                 },
                 {
-                    "text": "40. Children accept media information without [40] ........................ it first."
+                    "text": "Children accept media information without [40] ........................ it first."
                 }
             ]
         }

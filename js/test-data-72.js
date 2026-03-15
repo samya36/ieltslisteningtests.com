@@ -5,7 +5,7 @@ const TEST_DATA_72 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,7 +32,7 @@ const TEST_DATA_72 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,7 +58,7 @@ const TEST_DATA_72 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -70,7 +70,7 @@ const TEST_DATA_72 = {
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -96,25 +96,118 @@ const TEST_DATA_72 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 24</strong>",
-                "instructions": "Complete the answers for questions 21-24.",
-                "formContent": {
-                    "title": "",
-                    "items": []
-                }
+                "instructions": "<strong>Questions 21 – 24</strong>\n\nChoose the correct letter, A, B, or C.",
+                "questions": [
+                    {
+                        "id": 21,
+                        "text": "The project must be handed in by",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "April 6th"
+                            },
+                            {
+                                "value": "B",
+                                "text": "March 21st"
+                            },
+                            {
+                                "value": "C",
+                                "text": "March 25th"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "text": "The previous study was about",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "older workers"
+                            },
+                            {
+                                "value": "B",
+                                "text": "staff benefits"
+                            },
+                            {
+                                "value": "C",
+                                "text": "business growth"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 23,
+                        "text": "Who will mark the assignments?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Professor Barkley"
+                            },
+                            {
+                                "value": "B",
+                                "text": "PhD students"
+                            },
+                            {
+                                "value": "C",
+                                "text": "A senior lecturer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "text": "The students decide NOT to use",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "questionnaires"
+                            },
+                            {
+                                "value": "B",
+                                "text": "focus groups"
+                            },
+                            {
+                                "value": "C",
+                                "text": "interviews"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "Complete the answers for questions 25-30.",
+                "instructions": "<strong>Questions 25-30</strong>",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "Designing the timetable** [25] ........................"
+                        },
+                        {
+                            "text": "Contacting businesses** [26] ........................"
+                        },
+                        {
+                            "text": "Inputting the data** [27] ........................"
+                        },
+                        {
+                            "text": "Taking photographs of staff** [28] ........................"
+                        },
+                        {
+                            "text": "Writing the analysis** [29] ........................"
+                        },
+                        {
+                            "text": "Giving the presentation** [30] ........................"
+                        }
+                    ]
                 }
             }
         ]
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the lecture notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the lecture notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -134,6 +227,9 @@ const TEST_DATA_72 = {
                     "text": "- Step 1: Soak in lime in large [35] ........................ or bury the hides"
                 },
                 {
+                    "text": "- Step 2: Place on stretcher frames and pull tight"
+                },
+                {
                     "text": "- Step 3: Scrape with a [36] ........................-shaped knife"
                 },
                 {
@@ -141,6 +237,12 @@ const TEST_DATA_72 = {
                 },
                 {
                     "text": "- Create a [38] ........................ using manuscripts of known origin"
+                },
+                {
+                    "text": "- Compare DNA characteristics between known and unknown manuscripts"
+                },
+                {
+                    "text": "- Identify origins of individual books"
                 },
                 {
                     "text": "- Understand the [39] ........................ of manuscript production"

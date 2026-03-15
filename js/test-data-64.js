@@ -5,7 +5,7 @@ const TEST_DATA_64 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -29,7 +29,7 @@ const TEST_DATA_64 = {
             },
             {
                 "title": "<strong>Questions 6 – 10</strong>",
-                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,7 +58,7 @@ const TEST_DATA_64 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -111,15 +111,108 @@ const TEST_DATA_64 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "Complete the answers for questions 21-25.",
-                "formContent": {
-                    "title": "",
-                    "items": []
-                }
+                "instructions": "<strong>Questions 21 – 25</strong>\n\nChoose the correct letter, A, B, or C.",
+                "questions": [
+                    {
+                        "id": 21,
+                        "text": "What is the main concern of the staff about restructuring?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "They will have to work longer hours"
+                            },
+                            {
+                                "value": "B",
+                                "text": "They are worried about job security"
+                            },
+                            {
+                                "value": "C",
+                                "text": "They don't understand the new policies"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "text": "What does the manager say about redundancies?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "All redundancies will be compulsory"
+                            },
+                            {
+                                "value": "B",
+                                "text": "They haven't met their target yet"
+                            },
+                            {
+                                "value": "C",
+                                "text": "All redundancies will be voluntary"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 23,
+                        "text": "Why is the company encouraging redundancies?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "To reduce costs significantly"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Many employees are close to retirement age"
+                            },
+                            {
+                                "value": "C",
+                                "text": "The company is losing money"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "text": "What does the manager say about the salary review?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Salaries will be frozen"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Top performers can expect bonuses and increases"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Only new staff will get raises"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "text": "What type of candidate is the company looking for in promotions?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Someone with extensive external experience"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Someone with a proven track record who is performance-driven"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Someone who has worked for at least 10 years"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the inform",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the information below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -145,7 +238,7 @@ const TEST_DATA_64 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [

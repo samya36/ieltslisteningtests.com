@@ -5,7 +5,7 @@ const TEST_DATA_30 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -29,7 +29,7 @@ const TEST_DATA_30 = {
             },
             {
                 "title": "<strong>Questions 6 – 10</strong>",
-                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -156,15 +156,40 @@ const TEST_DATA_30 = {
             },
             {
                 "title": "<strong>Questions 15 – 17</strong>",
-                "instructions": "Complete the answers for questions 15-17.",
+                "instructions": "<strong>Questions 15-17</strong>",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "Academic fair [15] ........................"
+                        },
+                        {
+                            "text": "Societies fair [16] ........................"
+                        },
+                        {
+                            "text": "Trade fair [17] ........................"
+                        },
+                        {
+                            "text": "- A. Monday at 1:00 p.m."
+                        },
+                        {
+                            "text": "- B. Tuesday the 16th at 1:00 p.m."
+                        },
+                        {
+                            "text": "- C. Wednesday from 2:00 p.m. to 5:00 p.m."
+                        },
+                        {
+                            "text": "- D. Thursday the 18th at 2:30 p.m."
+                        },
+                        {
+                            "text": "- E. Saturday at 9:00 p.m."
+                        }
+                    ]
                 }
             },
             {
                 "title": "<strong>Questions 18 – 20</strong>",
-                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -187,10 +212,13 @@ const TEST_DATA_30 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 26</strong>",
-                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the notes about the steam pit method.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Required materials: dry sticks, grass, loose earth, stones, and matches"
+                        },
                         {
                             "text": "- Pit dimensions: [21] ........................ cm deep and 30 cm wide"
                         },
@@ -317,7 +345,7 @@ const TEST_DATA_30 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the table comparing loan options.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -338,24 +366,24 @@ const TEST_DATA_30 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "36. The HSBC bank branch is located in [36] ........................."
+                            "text": "The HSBC bank branch is located in [36] ........................."
                         },
                         {
-                            "text": "37. International students must provide documentation proving they have sufficient [37] ........................ for their studies."
+                            "text": "International students must provide documentation proving they have sufficient [37] ........................ for their studies."
                         },
                         {
-                            "text": "38. Bank cards can be used for withdrawals and deposits at automatic [38] ........................ machines."
+                            "text": "Bank cards can be used for withdrawals and deposits at automatic [38] ........................ machines."
                         },
                         {
-                            "text": "39. The [39] ........................ system allows students to set up automatic monthly payments."
+                            "text": "The [39] ........................ system allows students to set up automatic monthly payments."
                         },
                         {
-                            "text": "40. Students should check what [40] ........................ apply to different banking services."
+                            "text": "Students should check what [40] ........................ apply to different banking services."
                         }
                     ]
                 }

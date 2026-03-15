@@ -5,7 +5,7 @@ const TEST_DATA_59 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -29,7 +29,7 @@ const TEST_DATA_59 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -55,7 +55,7 @@ const TEST_DATA_59 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 17</strong>",
-                "instructions": "<strong>Questions 11-17</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-17</strong>\n\nComplete the notes below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -85,10 +85,20 @@ const TEST_DATA_59 = {
             },
             {
                 "title": "<strong>Questions 18 – 20</strong>",
-                "instructions": "Complete the answers for questions 18-20.",
+                "instructions": "<strong>Questions 18-20</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "Whitfield family house [18] ........................"
+                        },
+                        {
+                            "text": "Old Oxford School [19] ........................"
+                        },
+                        {
+                            "text": "School of Navigation [20] ........................"
+                        }
+                    ]
                 }
             }
         ]
@@ -98,7 +108,7 @@ const TEST_DATA_59 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 26</strong>",
-                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -212,28 +222,28 @@ const TEST_DATA_59 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 34</strong>",
-                "instructions": "<strong>Questions 31-34</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-34</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "1. Must provide a clean and [31] ........................ environment"
+                            "text": "Must provide a clean and [31] ........................ environment"
                         },
                         {
-                            "text": "2. Must satisfy [32] ........................ basic needs"
+                            "text": "Must satisfy [32] ........................ basic needs"
                         },
                         {
-                            "text": "3. Must have accessible [33] ........................"
+                            "text": "Must have accessible [33] ........................"
                         },
                         {
-                            "text": "4. Local government should involve the [34] ........................"
+                            "text": "Local government should involve the [34] ........................"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 35 – 40</strong>",
-                "instructions": "<strong>Questions 35-40</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 35-40</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

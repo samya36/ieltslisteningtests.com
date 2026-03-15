@@ -5,12 +5,15 @@ const TEST_DATA_40 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- From the [1] ........................ on the first floor"
+                        },
+                        {
+                            "text": "- Days: Monday through Friday (weekdays)"
                         },
                         {
                             "text": "- Start time: [2] ........................"
@@ -35,18 +38,18 @@ const TEST_DATA_40 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "8. The woman's surname is spelled [8] ........................"
+                            "text": "The woman's surname is spelled [8] ........................"
                         },
                         {
-                            "text": "9. Her address is Apartment 12, [9] ........................ Street"
+                            "text": "Her address is Apartment 12, [9] ........................ Street"
                         },
                         {
-                            "text": "10. New members receive a free [10] ........................ (color: yellow)"
+                            "text": "New members receive a free [10] ........................ (color: yellow)"
                         }
                     ]
                 }
@@ -58,7 +61,7 @@ const TEST_DATA_40 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -75,10 +78,19 @@ const TEST_DATA_40 = {
                     "title": "",
                     "items": [
                         {
+                            "text": "- A long tube"
+                        },
+                        {
                             "text": "- A [16] ........................"
                         },
                         {
                             "text": "- A large barrel of [17] ........................"
+                        },
+                        {
+                            "text": "- Students hit the tuning fork to create sound"
+                        },
+                        {
+                            "text": "- They move the tube up and down slowly"
                         },
                         {
                             "text": "- When there is a whole number of waves in the tube, [18] ........................ occurs and the sound gets louder"
@@ -200,24 +212,24 @@ const TEST_DATA_40 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "26. The students said the crossword helped them focus without being [26] ........................"
+                            "text": "The students said the crossword helped them focus without being [26] ........................"
                         },
                         {
-                            "text": "27. The student expected benefits related to [27] ........................ of difficult words to be mentioned, but they weren't"
+                            "text": "The student expected benefits related to [27] ........................ of difficult words to be mentioned, but they weren't"
                         },
                         {
-                            "text": "28. The crossword helped students identify [28] ........................ in their memory"
+                            "text": "The crossword helped students identify [28] ........................ in their memory"
                         },
                         {
-                            "text": "29. Unlike the original study, this research found that more [29] ........................ than females liked the technique"
+                            "text": "Unlike the original study, this research found that more [29] ........................ than females liked the technique"
                         },
                         {
-                            "text": "30. Both studies found students would like to use crosswords for [30] ........................ purposes"
+                            "text": "Both studies found students would like to use crosswords for [30] ........................ purposes"
                         }
                     ]
                 }
@@ -229,7 +241,7 @@ const TEST_DATA_40 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -250,7 +262,7 @@ const TEST_DATA_40 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

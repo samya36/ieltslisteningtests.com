@@ -5,7 +5,7 @@ const TEST_DATA_17 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,10 +32,13 @@ const TEST_DATA_17 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Type: Van"
+                        },
                         {
                             "text": "- Make: [7] ........................"
                         },
@@ -121,7 +124,7 @@ const TEST_DATA_17 = {
             },
             {
                 "title": "<strong>Questions 14 – 20</strong>",
-                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -130,6 +133,9 @@ const TEST_DATA_17 = {
                         },
                         {
                             "text": "- Requirements lists can be obtained from the [15] ........................"
+                        },
+                        {
+                            "text": "- Recommendation forms are also available in the admissions office"
                         },
                         {
                             "text": "- Job listings for work-study can be accessed from computers in the [16] ........................"
@@ -257,7 +263,7 @@ const TEST_DATA_17 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -271,7 +277,7 @@ const TEST_DATA_17 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [

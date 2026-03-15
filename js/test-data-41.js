@@ -5,7 +5,7 @@ const TEST_DATA_41 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -37,13 +37,25 @@ const TEST_DATA_41 = {
                     "title": "",
                     "items": [
                         {
+                            "text": "How many times has the woman visited the Arts Centre in the last 6 months? [7] ........................"
+                        },
+                        {
                             "text": "[7] ........................"
+                        },
+                        {
+                            "text": "How did she first find out about the Arts Centre? [8] ........................"
                         },
                         {
                             "text": "[8] ........................"
                         },
                         {
+                            "text": "Has she ever seen a film at the Arts Cinema? [9] ........................"
+                        },
+                        {
                             "text": "[9] ........................"
+                        },
+                        {
+                            "text": "Would she be interested in a free backstage tour? [10] ........................"
                         },
                         {
                             "text": "[10] ........................"
@@ -58,48 +70,48 @@ const TEST_DATA_41 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. The elections for the Students Union committee will be held next [11] ........................."
+                            "text": "The elections for the Students Union committee will be held next [11] ........................."
                         },
                         {
-                            "text": "12. Joanna is considering standing for the position of [12] ........................ Officer."
+                            "text": "Joanna is considering standing for the position of [12] ........................ Officer."
                         },
                         {
-                            "text": "13. This is a paid [13] ........................ post, meaning she would take a year off from studies."
+                            "text": "This is a paid [13] ........................ post, meaning she would take a year off from studies."
                         },
                         {
-                            "text": "14. The post starts in [14] ........................."
+                            "text": "The post starts in [14] ........................."
                         },
                         {
-                            "text": "15. To apply, Joanna must fill in a form at the [15] ........................."
+                            "text": "To apply, Joanna must fill in a form at the [15] ........................."
                         },
                         {
-                            "text": "16. Kamal will help Joanna create [16] ........................ and leaflets for her campaign."
+                            "text": "Kamal will help Joanna create [16] ........................ and leaflets for her campaign."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "17. First, students should [17] ........................ by drawing up a study plan when they receive their timetable."
+                            "text": "First, students should [17] ........................ by drawing up a study plan when they receive their timetable."
                         },
                         {
-                            "text": "18. Students should aim to do [18] ........................ of academic work per week."
+                            "text": "Students should aim to do [18] ........................ of academic work per week."
                         },
                         {
-                            "text": "19. It is important not to miss [19] ........................."
+                            "text": "It is important not to miss [19] ........................."
                         },
                         {
-                            "text": "20. Finally, students must learn to [20] ........................ rather than simply memorising information."
+                            "text": "Finally, students must learn to [20] ........................ rather than simply memorising information."
                         }
                     ]
                 }
@@ -108,7 +120,7 @@ const TEST_DATA_41 = {
     },
     "section3": {
         "title": "<strong>Section 3</strong>",
-        "instructions": "<strong>Questions 21-30</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 21-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -150,7 +162,7 @@ const TEST_DATA_41 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [

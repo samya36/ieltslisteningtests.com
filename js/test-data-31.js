@@ -5,7 +5,7 @@ const TEST_DATA_31 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,7 +32,7 @@ const TEST_DATA_31 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -167,24 +167,24 @@ const TEST_DATA_31 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "16. When searching yourself, check [16] ........................, call landlord companies, and do online searches."
+                            "text": "When searching yourself, check [16] ........................, call landlord companies, and do online searches."
                         },
                         {
-                            "text": "17. Credit reports for rental applications cost between $[17] ........................ and $200."
+                            "text": "Credit reports for rental applications cost between $[17] ........................ and $200."
                         },
                         {
-                            "text": "18. Landlords want to see evidence of steady income and good [18] ........................."
+                            "text": "Landlords want to see evidence of steady income and good [18] ........................."
                         },
                         {
-                            "text": "19. Most landlords require full-time students to have a [19] ........................."
+                            "text": "Most landlords require full-time students to have a [19] ........................."
                         },
                         {
-                            "text": "20. When signing the lease, be prepared to pay the first month's rent and the [20] ........................."
+                            "text": "When signing the lease, be prepared to pay the first month's rent and the [20] ........................."
                         }
                     ]
                 }
@@ -400,7 +400,7 @@ const TEST_DATA_31 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -409,6 +409,9 @@ const TEST_DATA_31 = {
                 },
                 {
                     "text": "- Marketing is the business [32] ........................ that deals most with customers"
+                },
+                {
+                    "text": "- Simple definition: delivery of customer value and satisfaction at a profit"
                 },
                 {
                     "text": "- Physical needs: food, warmth, and [33] ........................"
@@ -424,6 +427,9 @@ const TEST_DATA_31 = {
                 },
                 {
                     "text": "- Method 1: [37] ........................ customers while they shop at supermarkets"
+                },
+                {
+                    "text": "- Method 2: Executives visit stores as ordinary customers"
                 },
                 {
                     "text": "- Method 3: Give away [38] ........................ to attract customers and gather data"

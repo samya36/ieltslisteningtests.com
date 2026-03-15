@@ -5,7 +5,7 @@ const TEST_DATA_14 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,7 +26,7 @@ const TEST_DATA_14 = {
             },
             {
                 "title": "<strong>Questions 5 – 7</strong>",
-                "instructions": "<strong>Questions 5-7</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 5-7</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -44,18 +44,18 @@ const TEST_DATA_14 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "8. The passenger checked in [8] ........................ piece(s) of luggage."
+                            "text": "The passenger checked in [8] ........................ piece(s) of luggage."
                         },
                         {
-                            "text": "9. The luggage is [9] ........................ in colour."
+                            "text": "The luggage is [9] ........................ in colour."
                         },
                         {
-                            "text": "10. The passenger will need to bring [10] ........................, the key, and the ticket with a baggage claim number to collect the luggage."
+                            "text": "The passenger will need to bring [10] ........................, the key, and the ticket with a baggage claim number to collect the luggage."
                         }
                     ]
                 }
@@ -67,7 +67,7 @@ const TEST_DATA_14 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 13</strong>",
-                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -85,7 +85,7 @@ const TEST_DATA_14 = {
             },
             {
                 "title": "<strong>Questions 14 – 20</strong>",
-                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -187,7 +187,7 @@ const TEST_DATA_14 = {
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -210,31 +210,31 @@ const TEST_DATA_14 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "31. River Dance tells the story of [31] ........................ through song and dance."
+                            "text": "River Dance tells the story of [31] ........................ through song and dance."
                         },
                         {
-                            "text": "32. The event that broke the spirit of the Irish people is called [32] ........................."
+                            "text": "The event that broke the spirit of the Irish people is called [32] ........................."
                         },
                         {
-                            "text": "33. In 1840, the population of Ireland was [33] ........................."
+                            "text": "In 1840, the population of Ireland was [33] ........................."
                         },
                         {
-                            "text": "34. All crops were grown to pay the [34] ........................ of the land."
+                            "text": "All crops were grown to pay the [34] ........................ of the land."
                         },
                         {
-                            "text": "35. The only crop grown to eat was the [35] ........................."
+                            "text": "The only crop grown to eat was the [35] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

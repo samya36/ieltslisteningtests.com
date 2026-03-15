@@ -5,7 +5,7 @@ const TEST_DATA_74 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 3</strong>",
-                "instructions": "<strong>Questions 1-3</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-3</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -23,7 +23,7 @@ const TEST_DATA_74 = {
             },
             {
                 "title": "<strong>Questions 4 – 10</strong>",
-                "instructions": "<strong>Questions 4-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 4-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -43,10 +43,19 @@ const TEST_DATA_74 = {
                             "text": "- UK size: [8] ........................"
                         },
                         {
+                            "text": "- Material: traditional leather"
+                        },
+                        {
+                            "text": "- Neck tie type: bow tie"
+                        },
+                        {
                             "text": "- Shirt color: [9] ........................ (recommended by assistant)"
                         },
                         {
                             "text": "- Size: [10] ........................"
+                        },
+                        {
+                            "text": "- Style: one button"
                         }
                     ]
                 }
@@ -58,39 +67,42 @@ const TEST_DATA_74 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. The Apollo Leisure Center opened in the year [11] ........................."
+                            "text": "The Apollo Leisure Center opened in the year [11] ........................."
                         },
                         {
-                            "text": "12. The center currently has approximately [12] ........................ adult members."
+                            "text": "The center currently has approximately [12] ........................ adult members."
                         },
                         {
-                            "text": "13. There are about [13] ........................ family group members at present."
+                            "text": "There are about [13] ........................ family group members at present."
                         },
                         {
-                            "text": "14. The center hopes to build a [14] ........................ in the future."
+                            "text": "The center hopes to build a [14] ........................ in the future."
                         },
                         {
-                            "text": "15. Blue membership allows members to bring a guest at [15] ........................ times."
+                            "text": "Blue membership allows members to bring a guest at [15] ........................ times."
                         },
                         {
-                            "text": "16. Red membership can only be used during [16] ........................ hours."
+                            "text": "Red membership can only be used during [16] ........................ hours."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Closing time: [17] ........................ p.m."
+                        },
+                        {
+                            "text": "- Last orders: 8:30 p.m."
                         },
                         {
                             "text": "- Total duration: [18] ........................ hour(s) ___ quarter / ___ minutes"
@@ -99,7 +111,19 @@ const TEST_DATA_74 = {
                             "text": "- Time with personal trainer: [19] ........................ minutes"
                         },
                         {
+                            "text": "- Facility tour duration: 30 minutes"
+                        },
+                        {
+                            "text": "- 4:00 p.m.: Gentle Exercise"
+                        },
+                        {
+                            "text": "- 5:00 p.m.: Weightlifting"
+                        },
+                        {
                             "text": "- 6:15 p.m.: [20] ........................ Living"
+                        },
+                        {
+                            "text": "- 7:15 p.m. [approx.]: Relaxation"
                         }
                     ]
                 }
@@ -111,7 +135,7 @@ const TEST_DATA_74 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 24</strong>",
-                "instructions": "<strong>Questions 21-24</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 21-24</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -125,14 +149,14 @@ const TEST_DATA_74 = {
                             "text": "[23] ........................ & South : $350 - $650 : Middle market"
                         },
                         {
-                            "text": "24. A 2-3 bedroom house costs approximately [24] ........................ the price of a 1-bedroom flat."
+                            "text": "A 2-3 bedroom house costs approximately [24] ........................ the price of a 1-bedroom flat."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -143,13 +167,22 @@ const TEST_DATA_74 = {
                             "text": "- Public transport: [26] ........................ only (no trains)"
                         },
                         {
+                            "text": "- Located alongside the river"
+                        },
+                        {
                             "text": "- Has many [27] ........................ alongside the river"
+                        },
+                        {
+                            "text": "- Good train services to city center"
                         },
                         {
                             "text": "- Next to the bay (polluted - not suitable for [28] ........................)"
                         },
                         {
                             "text": "- Close to Chapmanville International [29] ........................ (noise problem)"
+                        },
+                        {
+                            "text": "- Low-lying wetlands area"
                         },
                         {
                             "text": "- Has many [30] ........................ (insects)"
@@ -164,21 +197,21 @@ const TEST_DATA_74 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "31. The UK has approximately [31] ........................ million cars."
+                            "text": "The UK has approximately [31] ........................ million cars."
                         },
                         {
-                            "text": "32. In the UK, there is approximately one car for every [32] ........................ people."
+                            "text": "In the UK, there is approximately one car for every [32] ........................ people."
                         },
                         {
-                            "text": "33. The Netherlands has more vehicles per [33] ........................ of population than the UK."
+                            "text": "The Netherlands has more vehicles per [33] ........................ of population than the UK."
                         },
                         {
-                            "text": "34. According to a survey, what people find most frustrating about public transport is [34] ........................."
+                            "text": "According to a survey, what people find most frustrating about public transport is [34] ........................."
                         },
                         {
                             "text": "[35] ........................ cards are being introduced to reduce boarding time."
@@ -188,7 +221,7 @@ const TEST_DATA_74 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

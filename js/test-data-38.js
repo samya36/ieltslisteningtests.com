@@ -5,10 +5,16 @@ const TEST_DATA_38 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Driving license (not available)"
+                        },
+                        {
+                            "text": "- Bank book (has old address)"
+                        },
                         {
                             "text": "- [1] ........................ (accepted - has new address)"
                         },
@@ -26,13 +32,16 @@ const TEST_DATA_38 = {
                         },
                         {
                             "text": "- Normal period: [6] ........................ weeks"
+                        },
+                        {
+                            "text": "- Extension: 2 weeks (must renew at end of week 3)"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,7 +67,7 @@ const TEST_DATA_38 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 17</strong>",
-                "instructions": "<strong>Questions 11-17</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 11-17</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -88,18 +97,18 @@ const TEST_DATA_38 = {
             },
             {
                 "title": "<strong>Questions 18 – 20</strong>",
-                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 18-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "18. The season will start with a [18] ........................ on next Saturday at Magic Park. Guests pay £5."
+                            "text": "The season will start with a [18] ........................ on next Saturday at Magic Park. Guests pay £5."
                         },
                         {
-                            "text": "19. At the end of the season, the club will vote for the [19] ........................ from each team."
+                            "text": "At the end of the season, the club will vote for the [19] ........................ from each team."
                         },
                         {
-                            "text": "20. Players must send a confirmation letter before [20] ........................ to David Black in room 214 (phone: 332567)."
+                            "text": "Players must send a confirmation letter before [20] ........................ to David Black in room 214 (phone: 332567)."
                         }
                     ]
                 }
@@ -212,7 +221,7 @@ const TEST_DATA_38 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -229,12 +238,15 @@ const TEST_DATA_38 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Bees: Essential for [31] ........................; carry pollen from male to female flowers. Without bees, humanity would starve according to Einstein. Also produce honey and [32] ........................ used for candles and furniture polish."
+                        },
+                        {
+                            "text": "- Butterflies: Also aid in pollination."
                         },
                         {
                             "text": "- Dragonflies: Feed mainly on [33] ........................, helping to control their population."
@@ -244,7 +256,7 @@ const TEST_DATA_38 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

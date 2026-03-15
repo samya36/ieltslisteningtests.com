@@ -5,7 +5,7 @@ const TEST_DATA_56 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,18 +32,18 @@ const TEST_DATA_56 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "8. The guest wants [8] ........................ included in the booking."
+                            "text": "The guest wants [8] ........................ included in the booking."
                         },
                         {
-                            "text": "9. Mobile phone number: [9] ........................"
+                            "text": "Mobile phone number: [9] ........................"
                         },
                         {
-                            "text": "10. Restaurant reservation time: [10] ........................"
+                            "text": "Restaurant reservation time: [10] ........................"
                         }
                     ]
                 }
@@ -79,15 +79,24 @@ const TEST_DATA_56 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the plan",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the plan below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
+                            "text": "- Two large halls for yoga, tai chi, pilates, dance and fitness classes"
+                        },
+                        {
                             "text": "- A [16] ........................ and cafeteria"
                         },
                         {
+                            "text": "- Fitness machines and various offices"
+                        },
+                        {
                             "text": "- [17] ........................"
+                        },
+                        {
+                            "text": "- Small therapy rooms with waiting areas"
                         },
                         {
                             "text": "- Three classrooms for teacher training and [18] ........................"
@@ -108,7 +117,7 @@ const TEST_DATA_56 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -132,24 +141,24 @@ const TEST_DATA_56 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "26. The student's research topic is [26] ........................"
+                            "text": "The student's research topic is [26] ........................"
                         },
                         {
-                            "text": "27. The deadline for submissions was [27] ........................"
+                            "text": "The deadline for submissions was [27] ........................"
                         },
                         {
-                            "text": "28. The outline should be no more than [28] ........................ words"
+                            "text": "The outline should be no more than [28] ........................ words"
                         },
                         {
-                            "text": "29. The student must also send a brief [29] ........................"
+                            "text": "The student must also send a brief [29] ........................"
                         },
                         {
-                            "text": "30. The email address is admin@[30] ........................"
+                            "text": "The email address is admin@[30] ........................"
                         }
                     ]
                 }
@@ -161,7 +170,7 @@ const TEST_DATA_56 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -182,7 +191,7 @@ const TEST_DATA_56 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

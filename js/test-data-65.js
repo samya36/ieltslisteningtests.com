@@ -5,7 +5,7 @@ const TEST_DATA_65 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -17,6 +17,9 @@ const TEST_DATA_65 = {
                         },
                         {
                             "text": "- Does not care about the [3] ........................"
+                        },
+                        {
+                            "text": "- Does not want a phone that is too big or too small"
                         },
                         {
                             "text": "- Does not want a [4] ........................ colored phone"
@@ -32,7 +35,7 @@ const TEST_DATA_65 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -159,24 +162,24 @@ const TEST_DATA_65 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "16. Elizabeth has been doing gymnastics since she was a [16] ........................."
+                            "text": "Elizabeth has been doing gymnastics since she was a [16] ........................."
                         },
                         {
-                            "text": "17. Elizabeth's parents got her involved in [17] ........................."
+                            "text": "Elizabeth's parents got her involved in [17] ........................."
                         },
                         {
-                            "text": "18. Elizabeth's best experience was her [18] ........................ at university."
+                            "text": "Elizabeth's best experience was her [18] ........................ at university."
                         },
                         {
-                            "text": "19. In the fall of last year, Elizabeth broke her [19] ........................."
+                            "text": "In the fall of last year, Elizabeth broke her [19] ........................."
                         },
                         {
-                            "text": "20. Elizabeth's motto is: Work hard and [20] ........................."
+                            "text": "Elizabeth's motto is: Work hard and [20] ........................."
                         }
                     ]
                 }
@@ -270,10 +273,13 @@ const TEST_DATA_65 = {
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Cereal, bacon and eggs with fried bread and tomato"
+                        },
                         {
                             "text": "- Toast and [25] ........................"
                         },
@@ -290,6 +296,12 @@ const TEST_DATA_65 = {
                             "text": "- First course: [29] ........................"
                         },
                         {
+                            "text": "- Main course: Meat dish with cheese and sweet"
+                        },
+                        {
+                            "text": "- Eat less and more healthily"
+                        },
+                        {
                             "text": "- Breakfast: Fruit juice and [30] ........................"
                         }
                     ]
@@ -302,7 +314,7 @@ const TEST_DATA_65 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 33</strong>",
-                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -317,7 +329,7 @@ const TEST_DATA_65 = {
             },
             {
                 "title": "<strong>Questions 34 – 40</strong>",
-                "instructions": "<strong>Questions 34-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 34-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -331,10 +343,16 @@ const TEST_DATA_65 = {
                             "text": "- 50% of tutorial time devoted to [36] ........................"
                         },
                         {
+                            "text": "- Weekly homework assignments: 2 hours duration"
+                        },
+                        {
                             "text": "- At least 50% involving [37] ........................"
                         },
                         {
                             "text": "- Includes: Math and four [38] ........................ programs"
+                        },
+                        {
+                            "text": "- At least 60% of homework should involve written work"
                         },
                         {
                             "text": "- Includes short [39] ........................ by students"

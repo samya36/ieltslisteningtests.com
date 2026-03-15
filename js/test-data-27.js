@@ -5,7 +5,7 @@ const TEST_DATA_27 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -119,7 +119,7 @@ const TEST_DATA_27 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 14</strong>",
-                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -265,7 +265,7 @@ const TEST_DATA_27 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 26</strong>",
-                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -364,7 +364,7 @@ const TEST_DATA_27 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -373,6 +373,9 @@ const TEST_DATA_27 = {
                 },
                 {
                     "text": "- Location: northeast coast of Spain in the province of [32] ........................"
+                },
+                {
+                    "text": "- Native language: Catalan"
                 },
                 {
                     "text": "- Famous street: [33] ........................ connects Plaza de Catalonia to the statue of Columbus"

@@ -2,7 +2,7 @@
 const TEST_DATA_33 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -25,6 +25,9 @@ const TEST_DATA_33 = {
                     "text": "- Amount each team member should raise: £[6] ........................"
                 },
                 {
+                    "text": "- Free t-shirt given if team raises: £__________ or more"
+                },
+                {
                     "text": "- Raffle prize: [7] ........................ in __________"
                 },
                 {
@@ -41,7 +44,7 @@ const TEST_DATA_33 = {
     },
     "section2": {
         "title": "<strong>Section 2</strong>",
-        "instructions": "<strong>Questions 11-20</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 11-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -149,7 +152,7 @@ const TEST_DATA_33 = {
             },
             {
                 "title": "<strong>Questions 24 – 30</strong>",
-                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -169,10 +172,19 @@ const TEST_DATA_33 = {
                             "text": "- Content: [28] ........................ marks out of 5"
                         },
                         {
+                            "text": "- Structure: 4 marks"
+                        },
+                        {
                             "text": "- Technique: [29] ........................ marks"
                         },
                         {
                             "text": "- Avoid an [30] ........................ ending"
+                        },
+                        {
+                            "text": "- Include limitations of the research"
+                        },
+                        {
+                            "text": "- Expand the literature review"
                         }
                     ]
                 }
@@ -181,7 +193,7 @@ const TEST_DATA_33 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -214,6 +226,12 @@ const TEST_DATA_33 = {
                 },
                 {
                     "text": "- Joined crew of: Calico Jack [40] ........................"
+                },
+                {
+                    "text": "- Ship name: Revenge"
+                },
+                {
+                    "text": "- Captured in: October 1720"
                 }
             ]
         }

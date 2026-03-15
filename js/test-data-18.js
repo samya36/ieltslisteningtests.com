@@ -5,7 +5,7 @@ const TEST_DATA_18 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,7 +32,7 @@ const TEST_DATA_18 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -121,21 +121,48 @@ const TEST_DATA_18 = {
             },
             {
                 "title": "<strong>Questions 14 – 17</strong>",
-                "instructions": "<strong>Questions 14-17</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 14-17</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "14. Mr. Gold kept his plan to quit smoking a [14] ........................."
+                            "text": "Mr. Gold kept his plan to quit smoking a [14] ........................."
                         },
                         {
-                            "text": "15. He managed to get through 24 hours without a cigarette on the [15] ........................ of July."
+                            "text": "He managed to get through 24 hours without a cigarette on the [15] ........................ of July."
                         },
                         {
-                            "text": "16. When people asked about his smoking, he said he was [16] ........................."
+                            "text": "When people asked about his smoking, he said he was [16] ........................."
                         },
                         {
-                            "text": "17. After quitting, Mr. Gold suffered a couple of bad [17] ........................."
+                            "text": "After quitting, Mr. Gold suffered a couple of bad [17] ........................."
+                        }
+                    ]
+                }
+            },
+            {
+                "title": "<strong>Questions 18 – 20</strong>",
+                "instructions": "<strong>Questions 18-20</strong>",
+                "formContent": {
+                    "title": "",
+                    "items": [
+                        {
+                            "text": "- A. Better physical shape"
+                        },
+                        {
+                            "text": "- B. More money in savings"
+                        },
+                        {
+                            "text": "- C. No colds for over 12 months"
+                        },
+                        {
+                            "text": "- D. Got into drama school"
+                        },
+                        {
+                            "text": "- E. Found a new job immediately"
+                        },
+                        {
+                            "text": "- F. Became a professional actor"
                         }
                     ]
                 }
@@ -147,7 +174,7 @@ const TEST_DATA_18 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 26</strong>",
-                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -159,7 +186,7 @@ const TEST_DATA_18 = {
             },
             {
                 "title": "<strong>Questions 27 – 30</strong>",
-                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the notes about Professor Nitic's schedule below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -185,7 +212,7 @@ const TEST_DATA_18 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -203,7 +230,7 @@ const TEST_DATA_18 = {
             },
             {
                 "title": "<strong>Questions 35 – 40</strong>",
-                "instructions": "<strong>Questions 35-40</strong>\n\nComplete the lecture notes",
+                "instructions": "<strong>Questions 35-40</strong>\n\nComplete the lecture notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

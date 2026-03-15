@@ -66,3 +66,13 @@ original_backup/
 
 # Lock files (keep package-lock.json but ignore yarn.lock)
 yarn.lock
+
+# Test8+ audio files (served from R2 CDN)
+audio/test[89]/
+audio/test[1-9][0-9]*/
+
+# Python cache
+__pycache__/
+
+# Temporary project directories
+final_*/

@@ -5,7 +5,7 @@ const TEST_DATA_22 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite ONE WORD AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,7 +26,7 @@ const TEST_DATA_22 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -52,7 +52,7 @@ const TEST_DATA_22 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -76,24 +76,24 @@ const TEST_DATA_22 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "16. The cost of membership is £[16] ........................ per year."
+                            "text": "The cost of membership is £[16] ........................ per year."
                         },
                         {
-                            "text": "17. Members need to provide a [17] ........................ photo."
+                            "text": "Members need to provide a [17] ........................ photo."
                         },
                         {
-                            "text": "18. Payment can be made by cash or [18] ........................ only."
+                            "text": "Payment can be made by cash or [18] ........................ only."
                         },
                         {
-                            "text": "19. Members save approximately [19] ........................ on ticket prices."
+                            "text": "Members save approximately [19] ........................ on ticket prices."
                         },
                         {
-                            "text": "20. When booking by phone, members should quote their [20] ........................."
+                            "text": "When booking by phone, members should quote their [20] ........................."
                         }
                     ]
                 }
@@ -206,7 +206,7 @@ const TEST_DATA_22 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite ONE WORD OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -232,7 +232,7 @@ const TEST_DATA_22 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [

@@ -5,7 +5,7 @@ const TEST_DATA_44 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,7 +32,7 @@ const TEST_DATA_44 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,31 +58,31 @@ const TEST_DATA_44 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. The candidate is applying for a master's program at the University of [11] ........................ in the UK."
+                            "text": "The candidate is applying for a master's program at the University of [11] ........................ in the UK."
                         },
                         {
-                            "text": "12. The speaking test is scheduled for [12] ........................ while the other tests take place on Saturdays."
+                            "text": "The speaking test is scheduled for [12] ........................ while the other tests take place on Saturdays."
                         },
                         {
-                            "text": "13. Candidates need to bring two passport size photos on a [13] ........................ background."
+                            "text": "Candidates need to bring two passport size photos on a [13] ........................ background."
                         },
                         {
-                            "text": "14. The only accepted forms of ID are original passports and [14] ........................."
+                            "text": "The only accepted forms of ID are original passports and [14] ........................."
                         },
                         {
-                            "text": "15. The three papers (listening, reading, writing) take [15] ........................ hours to complete with no breaks."
+                            "text": "The three papers (listening, reading, writing) take [15] ........................ hours to complete with no breaks."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -108,7 +108,7 @@ const TEST_DATA_44 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 26</strong>",
-                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 21-26</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -222,31 +222,31 @@ const TEST_DATA_44 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "31. The field trip to the salt marsh is scheduled for [31] ........................."
+                            "text": "The field trip to the salt marsh is scheduled for [31] ........................."
                         },
                         {
-                            "text": "32. Students must remember that this trip is an essential part of their [32] ........................."
+                            "text": "Students must remember that this trip is an essential part of their [32] ........................."
                         },
                         {
-                            "text": "33. Students will need to complete two assignments and some [33] ........................ work over the weekend."
+                            "text": "Students will need to complete two assignments and some [33] ........................ work over the weekend."
                         },
                         {
-                            "text": "34. Appropriate footwear for the trip is [34] ........................."
+                            "text": "Appropriate footwear for the trip is [34] ........................."
                         },
                         {
-                            "text": "35. The group will be on the marsh from approximately [35] ........................ to 4:00 PM."
+                            "text": "The group will be on the marsh from approximately [35] ........................ to 4:00 PM."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

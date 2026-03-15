@@ -5,10 +5,19 @@ const TEST_DATA_69 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Two types of membership available:"
+                        },
+                        {
+                            "text": "- Lifetime membership"
+                        },
+                        {
+                            "text": "- Ordinary membership"
+                        },
                         {
                             "text": "- Cost: £[1] ........................"
                         },
@@ -19,6 +28,9 @@ const TEST_DATA_69 = {
                             "text": "- Cost: £[3] ........................ per year"
                         },
                         {
+                            "text": "- Benefits: Visit society, exhibitions, library, arts programs on weekdays 10am-9pm, weekends 10am-5pm"
+                        },
+                        {
                             "text": "- Special events on Saturday: Open until [4] ........................"
                         }
                     ]
@@ -26,7 +38,7 @@ const TEST_DATA_69 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -140,7 +152,7 @@ const TEST_DATA_69 = {
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -235,7 +247,7 @@ const TEST_DATA_69 = {
             },
             {
                 "title": "<strong>Questions 24 – 30</strong>",
-                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -246,7 +258,13 @@ const TEST_DATA_69 = {
                             "text": "- Arrangement of dots is called a: [25] ........................"
                         },
                         {
+                            "text": "- Dot positions numbered 1-2-3 downward on the left, 4-5-6 downward on the right"
+                        },
+                        {
                             "text": "- First 10 letters use dots: [26] ........................"
+                        },
+                        {
+                            "text": "- Short forms for common words:"
                         },
                         {
                             "text": "- \"but\" = [27] ........................"
@@ -270,31 +288,31 @@ const TEST_DATA_69 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "31. The Indian Ocean ranks [31] ........................ in size among the world's five oceans."
+                            "text": "The Indian Ocean ranks [31] ........................ in size among the world's five oceans."
                         },
                         {
-                            "text": "32. The ocean covers approximately [32] ........................ of the Earth's surface."
+                            "text": "The ocean covers approximately [32] ........................ of the Earth's surface."
                         },
                         {
-                            "text": "33. The deepest point is the [33] ........................ at 7,450 metres."
+                            "text": "The deepest point is the [33] ........................ at 7,450 metres."
                         },
                         {
-                            "text": "34. The two largest islands are Madagascar and [34] ........................."
+                            "text": "The two largest islands are Madagascar and [34] ........................."
                         },
                         {
-                            "text": "35. The Seychelles are [35] ........................ of submerged ridges."
+                            "text": "The Seychelles are [35] ........................ of submerged ridges."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

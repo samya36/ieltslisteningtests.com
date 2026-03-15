@@ -2,7 +2,7 @@
 const TEST_DATA_75 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -107,30 +107,30 @@ const TEST_DATA_75 = {
             },
             {
                 "title": "<strong>Questions 14 – 20</strong>",
-                "instructions": "<strong>Questions 14-20</strong>\n\nLabel the map",
+                "instructions": "<strong>Questions 14-20</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "14. Magic Coffee [14] ........................"
+                            "text": "Magic Coffee [14] ........................"
                         },
                         {
-                            "text": "15. Chocolate company (on the corner) [15] ........................"
+                            "text": "Chocolate company (on the corner) [15] ........................"
                         },
                         {
-                            "text": "16. Fresh produce shop [16] ........................"
+                            "text": "Fresh produce shop [16] ........................"
                         },
                         {
-                            "text": "17. Organic market [17] ........................"
+                            "text": "Organic market [17] ........................"
                         },
                         {
-                            "text": "18. Olive Farm [18] ........................"
+                            "text": "Olive Farm [18] ........................"
                         },
                         {
-                            "text": "19. The Honeypot [19] ........................"
+                            "text": "The Honeypot [19] ........................"
                         },
                         {
-                            "text": "20. Chocolate company (selling nougat) [20] ........................"
+                            "text": "Chocolate company (selling nougat) [20] ........................"
                         }
                     ]
                 }
@@ -243,7 +243,7 @@ const TEST_DATA_75 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -255,6 +255,9 @@ const TEST_DATA_75 = {
                         },
                         {
                             "text": "- Stage 3: Global education - working with schools and the [28] ........................"
+                        },
+                        {
+                            "text": "- Step 1: Collect eggs from natural habitat"
                         },
                         {
                             "text": "- Step 2: Rear chicks in safe surroundings (on predator-free islands or [29] ........................)"
@@ -269,7 +272,7 @@ const TEST_DATA_75 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the summary",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [

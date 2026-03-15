@@ -5,7 +5,7 @@ const TEST_DATA_16 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the form below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -32,7 +32,7 @@ const TEST_DATA_16 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,18 +58,50 @@ const TEST_DATA_16 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "Complete the answers for questions 11-15.",
+                "instructions": "<strong>Questions 11-15</strong>",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "11 Peter Adams : [11] ........................"
+                        },
+                        {
+                            "text": "12 Steven Bow : [12] ........................"
+                        },
+                        {
+                            "text": "13 Pam Campbell : [13] ........................"
+                        },
+                        {
+                            "text": "14 C. Ketik : [14] ........................"
+                        },
+                        {
+                            "text": "15 Ari Hussein : [15] ........................"
+                        }
+                    ]
                 }
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "Complete the answers for questions 16-20.",
+                "instructions": "<strong>Questions 16-20</strong>",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "16 Sally Inis : [16] ........................"
+                        },
+                        {
+                            "text": "17 Me Jorgensson : [17] ........................"
+                        },
+                        {
+                            "text": "18 Bruno Murray : [18] ........................"
+                        },
+                        {
+                            "text": "19 Ruby Lee : [19] ........................"
+                        },
+                        {
+                            "text": "20 Helen Young : [20] ........................"
+                        }
+                    ]
                 }
             }
         ]
@@ -79,7 +111,7 @@ const TEST_DATA_16 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 24</strong>",
-                "instructions": "<strong>Questions 21-24</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 21-24</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -100,7 +132,7 @@ const TEST_DATA_16 = {
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -132,7 +164,7 @@ const TEST_DATA_16 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 33</strong>",
-                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-33</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -150,7 +182,7 @@ const TEST_DATA_16 = {
             },
             {
                 "title": "<strong>Questions 34 – 38</strong>",
-                "instructions": "<strong>Questions 34-38</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 34-38</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -168,10 +200,17 @@ const TEST_DATA_16 = {
             },
             {
                 "title": "<strong>Questions 39 – 40</strong>",
-                "instructions": "Complete the answers for questions 39-40.",
+                "instructions": "<strong>Questions 39-40</strong>\n\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "What percentage of Australia's exports go to Japan? [39] ........................"
+                        },
+                        {
+                            "text": "How many airports are there in Australia? [40] ........................"
+                        }
+                    ]
                 }
             }
         ]

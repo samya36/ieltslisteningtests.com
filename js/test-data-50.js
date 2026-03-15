@@ -5,48 +5,48 @@ const TEST_DATA_50 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "1. Name: [1] ........................"
+                            "text": "Name: [1] ........................"
                         },
                         {
-                            "text": "2. Post Office Box: [2] ........................"
+                            "text": "Post Office Box: [2] ........................"
                         },
                         {
-                            "text": "3. City: [3] ........................"
+                            "text": "City: [3] ........................"
                         },
                         {
-                            "text": "4. Fax number: [4] ........................"
+                            "text": "Fax number: [4] ........................"
                         },
                         {
-                            "text": "5. Course selected: [5] ........................"
+                            "text": "Course selected: [5] ........................"
                         },
                         {
-                            "text": "6. Course fee: $ [6] ........................"
+                            "text": "Course fee: $ [6] ........................"
                         },
                         {
-                            "text": "7. Daily insurance fee: $ [7] ........................"
+                            "text": "Daily insurance fee: $ [7] ........................"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "8. Participants must wear sturdy footwear such as [8] ........................."
+                            "text": "Participants must wear sturdy footwear such as [8] ........................."
                         },
                         {
-                            "text": "9. The cost to stay at the campsite is $ [9] ........................ per day."
+                            "text": "The cost to stay at the campsite is $ [9] ........................ per day."
                         },
                         {
-                            "text": "10. They have decided to go on the weekend [10] ........................."
+                            "text": "They have decided to go on the weekend [10] ........................."
                         }
                     ]
                 }
@@ -58,7 +58,7 @@ const TEST_DATA_50 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\ncomplete the notes.",
+                "instructions": "<strong>Questions 11-15</strong>\n\ncomplete the notes.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -82,7 +82,7 @@ const TEST_DATA_50 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -168,7 +168,7 @@ const TEST_DATA_50 = {
             },
             {
                 "title": "<strong>Questions 24 – 30</strong>",
-                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -203,7 +203,7 @@ const TEST_DATA_50 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 36</strong>",
-                "instructions": "<strong>Questions 31-36</strong>\n\nComplete the flow-chart below.",
+                "instructions": "<strong>Questions 31-36</strong>\n\nComplete the flow-chart below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -230,21 +230,21 @@ const TEST_DATA_50 = {
             },
             {
                 "title": "<strong>Questions 37 – 40</strong>",
-                "instructions": "<strong>Questions 37-40</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 37-40</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "37. Students should research the economies of the UK's [37] ........................ main trading partners."
+                            "text": "Students should research the economies of the UK's [37] ........................ main trading partners."
                         },
                         {
-                            "text": "38. The sector to focus on across all countries is [38] ........................."
+                            "text": "The sector to focus on across all countries is [38] ........................."
                         },
                         {
-                            "text": "39. The specific aspect to investigate is fluctuations in [39] ........................."
+                            "text": "The specific aspect to investigate is fluctuations in [39] ........................."
                         },
                         {
-                            "text": "40. The project must be submitted by [40] ........................."
+                            "text": "The project must be submitted by [40] ........................."
                         }
                     ]
                 }

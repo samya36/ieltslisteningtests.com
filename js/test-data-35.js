@@ -5,7 +5,7 @@ const TEST_DATA_35 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 5</strong>",
-                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-5</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -29,12 +29,15 @@ const TEST_DATA_35 = {
             },
             {
                 "title": "<strong>Questions 6 – 10</strong>",
-                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 6-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Original [6] ........................ (only passports and national IDs accepted)"
+                        },
+                        {
+                            "text": "- Copy of ID"
                         },
                         {
                             "text": "- Two [7] ........................ on white background"
@@ -58,7 +61,7 @@ const TEST_DATA_35 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -67,6 +70,12 @@ const TEST_DATA_35 = {
                         },
                         {
                             "text": "- Children's pool: Same green color with [12] ........................ painted everywhere"
+                        },
+                        {
+                            "text": "- Both men's and women's locker rooms have been expanded"
+                        },
+                        {
+                            "text": "- Features bigger lockers and more dressing area space"
                         },
                         {
                             "text": "- Caution: Floor has just been [13] ........................ and may be slippery"
@@ -82,7 +91,7 @@ const TEST_DATA_35 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -99,6 +108,9 @@ const TEST_DATA_35 = {
                             "text": "- Completed in: [19] ........................ (3 months ahead of original 12-month schedule)"
                         },
                         {
+                            "text": "- Budget status: Came in under budget"
+                        },
+                        {
                             "text": "- Next year: Installation of [20] ........................ next to the tennis courts"
                         }
                     ]
@@ -108,28 +120,159 @@ const TEST_DATA_35 = {
     },
     "section3": {
         "title": "<strong>Section 3</strong>",
-        "instructions": "<strong>Questions 27-30</strong>\n\nComplete the notes",
-        "formContent": {
-            "title": "",
-            "items": [
-                {
-                    "text": "- One or two people dominate while others don't [27] ........................"
-                },
-                {
-                    "text": "- Difficulty arranging meetings due to different [28] ........................"
-                },
-                {
-                    "text": "- Staff often arrive [29] ........................ (missing 10-15 minutes of lecture time)"
-                },
-                {
-                    "text": "- Difficult to see lecturers during [30] ........................ times"
+        "parts": [
+            {
+                "title": "<strong>Questions 21 – 26</strong>",
+                "instructions": "<strong>Questions 21 – 26</strong>\n\nChoose the correct letter, A, B, or C.",
+                "questions": [
+                    {
+                        "id": 21,
+                        "text": "What does Turners company manufacture?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Consumer electronics"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Machine components for trade use"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Office equipment"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "text": "When was Turners established?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "1976"
+                            },
+                            {
+                                "value": "B",
+                                "text": "1986"
+                            },
+                            {
+                                "value": "C",
+                                "text": "1996"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 23,
+                        "text": "Why did Sam reject the customer database project?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "It would be too expensive"
+                            },
+                            {
+                                "value": "B",
+                                "text": "It was too straightforward and he wouldn't learn anything new"
+                            },
+                            {
+                                "value": "C",
+                                "text": "The company didn't want it"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "text": "What was the tutor's opinion about the online sales catalog project?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "It would improve competitiveness"
+                            },
+                            {
+                                "value": "B",
+                                "text": "It was too big for the time available"
+                            },
+                            {
+                                "value": "C",
+                                "text": "It should be the priority"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "text": "Which project did the tutor recommend as the best option?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "Payroll system with electronic registration"
+                            },
+                            {
+                                "value": "B",
+                                "text": "Stock inventory system"
+                            },
+                            {
+                                "value": "C",
+                                "text": "Internal security with swipe cards"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 26,
+                        "text": "What concern did the tutor raise about the customer service project?",
+                        "type": "radio",
+                        "options": [
+                            {
+                                "value": "A",
+                                "text": "It might require traveling to customer premises"
+                            },
+                            {
+                                "value": "B",
+                                "text": "It would be too expensive for the company"
+                            },
+                            {
+                                "value": "C",
+                                "text": "It might involve working with difficult customers"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "<strong>Questions 27 – 30</strong>",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
+                "formContent": {
+                    "title": "",
+                    "items": [
+                        {
+                            "text": "- One or two people dominate while others don't [27] ........................"
+                        },
+                        {
+                            "text": "- Reason: Different cultural styles of participating"
+                        },
+                        {
+                            "text": "- Too many members in the group"
+                        },
+                        {
+                            "text": "- Difficulty arranging meetings due to different [28] ........................"
+                        },
+                        {
+                            "text": "- Staff often arrive [29] ........................ (missing 10-15 minutes of lecture time)"
+                        },
+                        {
+                            "text": "- Difficult to see lecturers during [30] ........................ times"
+                        }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -146,19 +289,31 @@ const TEST_DATA_35 = {
                     "text": "- There are no [34] ........................"
                 },
                 {
-                    "text": "1. [35] ........................ - Ask 50-100 questions; advantages: easy to administer and answered by the person who knows subject best"
+                    "text": "- More accurately called assessments rather than tests"
                 },
                 {
-                    "text": "2. Ratings tests - Done by someone who knows the subject well; effectiveness depends on [36] ........................ of the rater"
+                    "text": "[35] ........................ - Ask 50-100 questions; advantages: easy to administer and answered by the person who knows subject best"
                 },
                 {
-                    "text": "3. [37] ........................ - Subject makes sense of unclear information (e.g., ink blot test)"
+                    "text": "Ratings tests - Done by someone who knows the subject well; effectiveness depends on [36] ........................ of the rater"
                 },
                 {
-                    "text": "4. Objective tests - Subject performs [38] ........................ (e.g., blowing up a balloon)"
+                    "text": "[37] ........................ - Subject makes sense of unclear information (e.g., ink blot test)"
+                },
+                {
+                    "text": "Objective tests - Subject performs [38] ........................ (e.g., blowing up a balloon)"
                 },
                 {
                     "text": "- Identify personality [39] ........................ rather than fixed qualities"
+                },
+                {
+                    "text": "- Energy direction: Outer world vs inner world"
+                },
+                {
+                    "text": "- Information processing: Known facts vs possibilities"
+                },
+                {
+                    "text": "- Decision-making: Logic vs personal values"
                 },
                 {
                     "text": "- [40] ........................ : Structured vs flexible"

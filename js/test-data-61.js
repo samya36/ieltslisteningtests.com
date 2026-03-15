@@ -5,7 +5,7 @@ const TEST_DATA_61 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 3</strong>",
-                "instructions": "<strong>Questions 1-3</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-3</strong>\n\nComplete the form below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -23,10 +23,13 @@ const TEST_DATA_61 = {
             },
             {
                 "title": "<strong>Questions 4 – 7</strong>",
-                "instructions": "<strong>Questions 4-7</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 4-7</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Name of group: Community youth theatre group"
+                        },
                         {
                             "text": "- Type: [4] ........................ (not professional)"
                         },
@@ -38,18 +41,30 @@ const TEST_DATA_61 = {
                         },
                         {
                             "text": "- Amount requested: £[7] ........................"
+                        },
+                        {
+                            "text": "- Activity: Produce a short interactive play for young children"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
+                            "text": "- Scenery: Materials to buy"
+                        },
+                        {
+                            "text": "- Costumes: £50"
+                        },
+                        {
                             "text": "- [8] ........................ : Required by law"
+                        },
+                        {
+                            "text": "- Publicity"
                         },
                         {
                             "text": "- [9] ........................ : For unexpected costs"
@@ -71,7 +86,7 @@ const TEST_DATA_61 = {
                 "questions": [
                     {
                         "id": 11,
-                        "text": "The Trillor Valley passenger ferry connects villages along the river with:**",
+                        "text": "The Trillor Valley passenger ferry connects villages along the river with:",
                         "type": "radio",
                         "options": [
                             {
@@ -90,7 +105,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 12,
-                        "text": "The ferry timetable changes according to:**",
+                        "text": "The ferry timetable changes according to:",
                         "type": "radio",
                         "options": [
                             {
@@ -109,7 +124,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 13,
-                        "text": "Where can passengers find the ferry timetable?**",
+                        "text": "Where can passengers find the ferry timetable?",
                         "type": "radio",
                         "options": [
                             {
@@ -128,7 +143,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 14,
-                        "text": "The highlight of the train journey is crossing:**",
+                        "text": "The highlight of the train journey is crossing:",
                         "type": "radio",
                         "options": [
                             {
@@ -149,7 +164,7 @@ const TEST_DATA_61 = {
             },
             {
                 "title": "<strong>Questions 15 – 17</strong>",
-                "instructions": "<strong>Questions 15-17</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 15-17</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -167,10 +182,20 @@ const TEST_DATA_61 = {
             },
             {
                 "title": "<strong>Questions 18 – 20</strong>",
-                "instructions": "Complete the answers for questions 18-20.",
+                "instructions": "<strong>Questions 18-20</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "Museum = [18] ........................"
+                        },
+                        {
+                            "text": "Old Mill = [19] ........................"
+                        },
+                        {
+                            "text": "Potter's Studio = [20] ........................"
+                        }
+                    ]
                 }
             }
         ]
@@ -184,7 +209,7 @@ const TEST_DATA_61 = {
                 "questions": [
                     {
                         "id": 21,
-                        "text": "Rosanna's current course takes place on:**",
+                        "text": "Rosanna's current course takes place on:",
                         "type": "radio",
                         "options": [
                             {
@@ -203,7 +228,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 22,
-                        "text": "How does Rosanna feel about her current course?**",
+                        "text": "How does Rosanna feel about her current course?",
                         "type": "radio",
                         "options": [
                             {
@@ -222,7 +247,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 23,
-                        "text": "The distance learning program is:**",
+                        "text": "The distance learning program is:",
                         "type": "radio",
                         "options": [
                             {
@@ -241,7 +266,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 24,
-                        "text": "How much cheaper is the distance learning program per year?**",
+                        "text": "How much cheaper is the distance learning program per year?",
                         "type": "radio",
                         "options": [
                             {
@@ -260,7 +285,7 @@ const TEST_DATA_61 = {
                     },
                     {
                         "id": 25,
-                        "text": "Rosanna already has:**",
+                        "text": "Rosanna already has:",
                         "type": "radio",
                         "options": [
                             {
@@ -281,12 +306,15 @@ const TEST_DATA_61 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Written course diary: To be kept [26] ........................"
+                        },
+                        {
+                            "text": "- Seminar paper: Must be presented each month"
                         },
                         {
                             "text": "- Written exam: At the end of the course ([27] ........................ of total marks)"
@@ -310,7 +338,7 @@ const TEST_DATA_61 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -334,7 +362,7 @@ const TEST_DATA_61 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

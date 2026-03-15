@@ -2,10 +2,44 @@
 const TEST_DATA_66 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "Complete the answers for questions 1-10.",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
-            "items": []
+            "items": [
+                {
+                    "text": "Age: [1] ........................ years old"
+                },
+                {
+                    "text": "Occupation: [2] ........................"
+                },
+                {
+                    "text": "Annual Salary: $ [3] ........................"
+                },
+                {
+                    "text": "Main reason for listening: To [4] ........................ and unwind"
+                },
+                {
+                    "text": "Daily listening time: [5] ........................ hour(s)"
+                },
+                {
+                    "text": "- Around [6] ........................ time"
+                },
+                {
+                    "text": "- After [7] ........................"
+                },
+                {
+                    "text": "Current programs liked: News and [8] ........................ music"
+                },
+                {
+                    "text": "- [9] ........................ information"
+                },
+                {
+                    "text": "- Lectures and academic programs"
+                },
+                {
+                    "text": "Advice for station director: Pay attention to broadcast [10] ........................"
+                }
+            ]
         }
     },
     "section2": {
@@ -114,10 +148,26 @@ const TEST_DATA_66 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "Complete the answers for questions 16-20.",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "The weight room hours [16] ........................ from time to time."
+                        },
+                        {
+                            "text": "The gymnastics room is mainly used for [17] ........................."
+                        },
+                        {
+                            "text": "Students can check out a maximum of [18] ........................ books at one time."
+                        },
+                        {
+                            "text": "Books can be renewed for a maximum of [19] ........................."
+                        },
+                        {
+                            "text": "The overdue fine is $ [20] ........................ per week."
+                        }
+                    ]
                 }
             }
         ]
@@ -228,20 +278,73 @@ const TEST_DATA_66 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "Complete the answers for questions 26-30.",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "- People crossing streets"
+                        },
+                        {
+                            "text": "- Other [26] ........................"
+                        },
+                        {
+                            "text": "- [27] ........................ riding next to you"
+                        },
+                        {
+                            "text": "- It is better to [28] ........................ than run it"
+                        },
+                        {
+                            "text": "- Move to a [29] ........................ lane"
+                        },
+                        {
+                            "text": "- Remember to [30] ........................"
+                        }
+                    ]
                 }
             }
         ]
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "Complete the answers for questions 31-40.",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
-            "items": []
+            "items": [
+                {
+                    "text": "- Duration: [31] ........................ years (750 BC to 43 AD)"
+                },
+                {
+                    "text": "- Dramatic changes included coinage and wheel-thrown [32] ........................"
+                },
+                {
+                    "text": "- Caesar described Britain as a land of small [33] ........................"
+                },
+                {
+                    "text": "- Daily routine focused on crops and [34] ........................"
+                },
+                {
+                    "text": "- Storage methods: granaries on posts or bell-shaped [35] ........................ 2-3m deep"
+                },
+                {
+                    "text": "- Most common animals: cattle and [36] ........................"
+                },
+                {
+                    "text": "- Well-preserved settlement found at [37] ........................ in Cornwall"
+                },
+                {
+                    "text": "- Typical building in Wessex: large round [38] ........................"
+                },
+                {
+                    "text": "- Walls made of: upright timbers interwoven with coppice wood"
+                },
+                {
+                    "text": "- Weatherproofing material: daub made of clay, soil, straw, and animal [39] ........................"
+                },
+                {
+                    "text": "- Central feature: open hearth fire maintained [40] ........................ hours a day"
+                }
+            ]
         }
     }
 };

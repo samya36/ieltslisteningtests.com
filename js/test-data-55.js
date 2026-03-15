@@ -5,7 +5,7 @@ const TEST_DATA_55 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -35,12 +35,18 @@ const TEST_DATA_55 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Ken will travel by: [8] ........................"
+                        },
+                        {
+                            "text": "- Ken expects to spend approximately: $[9] ........................"
+                        },
+                        {
+                            "text": "- Megan expects to spend approximately: $[10] ........................"
                         }
                     ]
                 }
@@ -134,7 +140,7 @@ const TEST_DATA_55 = {
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the table below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -166,73 +172,77 @@ const TEST_DATA_55 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 23</strong>",
-                "instructions": "<strong>Questions 21 – 23</strong>\n\nChoose the correct letter, A, B, or C.",
-                "questions": [
-                    {
-                        "id": 21,
-                        "text": "What alternative name does the tutor use for binge eating disorder?",
-                        "type": "radio",
-                        "options": [
-                            {
-                                "value": "A",
-                                "text": "BED"
-                            },
-                            {
-                                "value": "B",
-                                "text": "Compulsive eating disorder"
-                            },
-                            {
-                                "value": "C",
-                                "text": "Bulimia"
-                            }
-                        ]
-                    },
-                    {
-                        "id": 22,
-                        "text": "Which symptom do compulsive eating disorder and bulimia have in common?",
-                        "type": "radio",
-                        "options": [
-                            {
-                                "value": "A",
-                                "text": "Eating too much"
-                            },
-                            {
-                                "value": "B",
-                                "text": "Putting on weight"
-                            },
-                            {
-                                "value": "C",
-                                "text": "Becoming clinically depressed"
-                            }
-                        ]
-                    },
-                    {
-                        "id": 23,
-                        "text": "According to the case study, what triggered the student's compulsive eating?",
-                        "type": "radio",
-                        "options": [
-                            {
-                                "value": "A",
-                                "text": "Loneliness"
-                            },
-                            {
-                                "value": "B",
-                                "text": "Stress from exam revision"
-                            },
-                            {
-                                "value": "C",
-                                "text": "Problems with friends"
-                            }
-                        ]
-                    }
-                ]
+                "instructions": "<strong>Questions 21-23</strong>",
+                "formContent": {
+                    "title": "",
+                    "items": [
+                        {
+                            "text": "What alternative name does the tutor use for binge eating disorder? [21] ........................"
+                        },
+                        {
+                            "text": "- A. BED"
+                        },
+                        {
+                            "text": "- B. Compulsive eating disorder"
+                        },
+                        {
+                            "text": "- C. Bulimia"
+                        },
+                        {
+                            "text": "Which symptom do compulsive eating disorder and bulimia have in common? [22] ........................"
+                        },
+                        {
+                            "text": "- A. Eating too much"
+                        },
+                        {
+                            "text": "- B. Putting on weight"
+                        },
+                        {
+                            "text": "- C. Becoming clinically depressed"
+                        },
+                        {
+                            "text": "According to the case study, what triggered the student's compulsive eating? [23] ........................"
+                        },
+                        {
+                            "text": "- A. Loneliness"
+                        },
+                        {
+                            "text": "- B. Stress from exam revision"
+                        },
+                        {
+                            "text": "- C. Problems with friends"
+                        }
+                    ]
+                }
             },
             {
                 "title": "<strong>Questions 24 – 30</strong>",
-                "instructions": "Complete the answers for questions 24-30.",
+                "instructions": "<strong>Questions 24-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "Compulsive eaters find comfort in food and see eating as a way of coping with [24] .........................**"
+                        },
+                        {
+                            "text": "Over time, the sufferer loses control of their [25] .........................**"
+                        },
+                        {
+                            "text": "Overeating blocks out negative emotions such as loneliness, worries about work, and [26] .........................**"
+                        },
+                        {
+                            "text": "To try to lose weight, compulsive eaters will try extreme diets, skipping meals, or going without food for [27] .........................**"
+                        },
+                        {
+                            "text": "The pattern becomes a [28] .........................**"
+                        },
+                        {
+                            "text": "One long-term effect frequently reported is [29] .........................**"
+                        },
+                        {
+                            "text": "One self-help organization mentioned is called [30] .........................**"
+                        }
+                    ]
                 }
             }
         ]
@@ -242,12 +252,15 @@ const TEST_DATA_55 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Founded: [31] ........................"
+                        },
+                        {
+                            "text": "- Original size: 4 teams, 30 players"
                         },
                         {
                             "text": "- Current size: over [32] ........................ teams and 200 players"
@@ -266,12 +279,18 @@ const TEST_DATA_55 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the table/form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "Final registration date : [36] ........................"
+                        },
+                        {
+                            "text": "Late registration fee : $[37] ........................"
+                        },
+                        {
+                            "text": "Membership fee : $[38] ........................"
                         },
                         {
                             "text": "First team meeting : [39] ........................"

@@ -5,7 +5,7 @@ const TEST_DATA_45 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -35,7 +35,7 @@ const TEST_DATA_45 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -140,27 +140,27 @@ const TEST_DATA_45 = {
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nLabel the plan",
+                "instructions": "<strong>Questions 15-20</strong>\n\nLabel the plan below.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "15. New Year Six classroom: [15] ........................"
+                            "text": "New Year Six classroom: [15] ........................"
                         },
                         {
-                            "text": "16. New preschool/after-school club classroom: [16] ........................"
+                            "text": "New preschool/after-school club classroom: [16] ........................"
                         },
                         {
-                            "text": "17. New bicycle bay (60 bikes): [17] ........................"
+                            "text": "New bicycle bay (60 bikes): [17] ........................"
                         },
                         {
-                            "text": "18. Modernized children's toilets: [18] ........................"
+                            "text": "Modernized children's toilets: [18] ........................"
                         },
                         {
-                            "text": "19. New staff toilets: [19] ........................"
+                            "text": "New staff toilets: [19] ........................"
                         },
                         {
-                            "text": "20. New ramp for disabled visitors: [20] ........................"
+                            "text": "New ramp for disabled visitors: [20] ........................"
                         }
                     ]
                 }
@@ -254,7 +254,7 @@ const TEST_DATA_45 = {
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -274,7 +274,7 @@ const TEST_DATA_45 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [

@@ -5,7 +5,7 @@ const TEST_DATA_8 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 6</strong>",
-                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 1-6</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -26,7 +26,7 @@ const TEST_DATA_8 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -57,7 +57,19 @@ const TEST_DATA_8 = {
                     "title": "",
                     "items": [
                         {
+                            "text": "- Reception desk and meeting point are at the entrance."
+                        },
+                        {
+                            "text": "- To the LEFT as you come through reception, follow the corridor:"
+                        },
+                        {
+                            "text": "- Two doors on the RIGHT: first the female changing room, then the men's changing room."
+                        },
+                        {
                             "text": "- At the FAR END of the corridor (back of building): [11] ........................ (three of them, state-of-the-art)"
+                        },
+                        {
+                            "text": "- On the LEFT side of the main corridor (opposite the changing rooms and squash courts):"
                         },
                         {
                             "text": "- At the far end: [12] ........................ (with fixed weights machines, exercise bikes, and rowing machines)"
@@ -69,17 +81,29 @@ const TEST_DATA_8 = {
                             "text": "- Small door next to reception, to the LEFT as you come in: [14] ........................ (also serves as first aid room)"
                         },
                         {
+                            "text": "- Corridor to the RIGHT as you come in leads to:"
+                        },
+                        {
                             "text": "- [15] ........................ on one side"
+                        },
+                        {
+                            "text": "- Swimming pool viewing area on the other side"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Full use of all facilities during all opening hours"
+                        },
+                        {
+                            "text": "- Open every day from 5:00 a.m. to midnight"
+                        },
                         {
                             "text": "- Cost: £[16] ........................ per year"
                         },
@@ -87,13 +111,37 @@ const TEST_DATA_8 = {
                             "text": "- Also gives access to [17] ........................ other clubs nationwide"
                         },
                         {
+                            "text": "- Off-peak: facilities available 10:00 a.m. to 3:00 p.m. on weekdays"
+                        },
+                        {
+                            "text": "- Can also use facilities at any time at weekends"
+                        },
+                        {
+                            "text": "- Cost: £500 per year"
+                        },
+                        {
                             "text": "- Still includes access to a [18] ........................"
+                        },
+                        {
+                            "text": "- Weekday membership"
+                        },
+                        {
+                            "text": "- Cost: £400 per year"
                         },
                         {
                             "text": "- Especially suitable for [19] ........................"
                         },
                         {
                             "text": "- Available for children aged [20] ........................ years old"
+                        },
+                        {
+                            "text": "- Children under 15 must be accompanied by an adult"
+                        },
+                        {
+                            "text": "- Children cannot use the sunbed"
+                        },
+                        {
+                            "text": "- All children's schemes are half price (50%)"
                         }
                     ]
                 }
@@ -206,17 +254,33 @@ const TEST_DATA_8 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "Complete the answers for questions 26-30.",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
-                    "items": []
+                    "items": [
+                        {
+                            "text": "The passage chosen from the author's work must typify the author's interests and [26] ........................."
+                        },
+                        {
+                            "text": "The passage from the literary work has to relate to the biographical extract through a linking [27] ........................."
+                        },
+                        {
+                            "text": "For the video, rather than dramatizing a scene, students should use things like [28] ........................ to create atmosphere."
+                        },
+                        {
+                            "text": "The video must include a [29] ........................ at the end listing all materials used with source details."
+                        },
+                        {
+                            "text": "In the assessment criteria, \"content\" (how successfully students capture the essence of the work) accounts for [30] ........................ of the total mark."
+                        }
+                    ]
                 }
             }
         ]
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -225,6 +289,9 @@ const TEST_DATA_8 = {
                 },
                 {
                     "text": "- A first-year student asked about an article on women's [32] ........................ and whether the issue applied to running"
+                },
+                {
+                    "text": "- Her tutor confirmed interesting research had been done"
                 },
                 {
                     "text": "- Findings would be useful for training programs at a local [33] ........................"
@@ -246,6 +313,9 @@ const TEST_DATA_8 = {
                 },
                 {
                     "text": "- Experiment 1: Divided running time by height; found men were only [39] ........................ ahead of women"
+                },
+                {
+                    "text": "- Experiment 2: Put weights on men's shoulders to equalize height-to-weight ratio; women actually ran faster"
                 },
                 {
                     "text": "- Experiment 3: Measured elasticity (jump height); found men and women had equal levels of [40] ........................"

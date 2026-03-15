@@ -5,7 +5,7 @@ const TEST_DATA_21 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 4</strong>",
-                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-4</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -17,7 +17,7 @@ const TEST_DATA_21 = {
             },
             {
                 "title": "<strong>Questions 5 – 10</strong>",
-                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 5-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -49,28 +49,28 @@ const TEST_DATA_21 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 14</strong>",
-                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-14</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. This year the center is celebrating its [11] ........................ anniversary."
+                            "text": "This year the center is celebrating its [11] ........................ anniversary."
                         },
                         {
-                            "text": "12. The center is located in the center of the [12] ........................."
+                            "text": "The center is located in the center of the [12] ........................."
                         },
                         {
-                            "text": "13. On Wednesday, visitors will participate in a [13] ........................ hike through the forest."
+                            "text": "On Wednesday, visitors will participate in a [13] ........................ hike through the forest."
                         },
                         {
-                            "text": "14. For the pony trek, women must tie their hair up in a [14] ........................."
+                            "text": "For the pony trek, women must tie their hair up in a [14] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 15 – 20</strong>",
-                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 15-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -102,31 +102,31 @@ const TEST_DATA_21 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "21. One of the most important considerations when buying a property is the [21] ........................."
+                            "text": "One of the most important considerations when buying a property is the [21] ........................."
                         },
                         {
-                            "text": "22. You should consider proximity to your place of [22] ........................."
+                            "text": "You should consider proximity to your place of [22] ........................."
                         },
                         {
-                            "text": "23. City suburbs are conveniently located for [23] ........................ to work."
+                            "text": "City suburbs are conveniently located for [23] ........................ to work."
                         },
                         {
-                            "text": "24. Houses in cities can often [24] ........................ the price of suburban houses."
+                            "text": "Houses in cities can often [24] ........................ the price of suburban houses."
                         },
                         {
-                            "text": "25. Families should check the availability of nearby [25] ........................."
+                            "text": "Families should check the availability of nearby [25] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -155,7 +155,7 @@ const TEST_DATA_21 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -179,7 +179,7 @@ const TEST_DATA_21 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

@@ -104,7 +104,7 @@ function bundleScriptsPlugin() {
   };
 
   // 动态添加 test8-test75 到 bundle 配置（与 test2-7 共享 test-core-bundle.js）
-  for (let i = 8; i <= 75; i++) {
+  for (let i = 8; i <= 81; i++) {
     bundleConfigs[`pages/test${i}.html`] = {
       bundleName: 'test-core-bundle.js',
       scripts: ['js/test-renderer.js', 'js/test-init.js']

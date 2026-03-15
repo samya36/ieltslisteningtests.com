@@ -5,7 +5,7 @@ const TEST_DATA_26 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 8</strong>",
-                "instructions": "<strong>Questions 1-8</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-8</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -38,7 +38,7 @@ const TEST_DATA_26 = {
             },
             {
                 "title": "<strong>Questions 9 – 10</strong>",
-                "instructions": "<strong>Questions 9-10</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 9-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -58,25 +58,25 @@ const TEST_DATA_26 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 13</strong>",
-                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 11-13</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "11. To be eligible for NHS treatment, your course of study must be at least [11] ........................ months long."
+                            "text": "To be eligible for NHS treatment, your course of study must be at least [11] ........................ months long."
                         },
                         {
-                            "text": "12. In 1987, the cost for each item of medicine is £[12] ........................."
+                            "text": "In 1987, the cost for each item of medicine is £[12] ........................."
                         },
                         {
-                            "text": "13. The first thing you should do is to [13] ........................ with a doctor."
+                            "text": "The first thing you should do is to [13] ........................ with a doctor."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 14 – 20</strong>",
-                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 14-20</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -111,7 +111,7 @@ const TEST_DATA_26 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -123,24 +123,24 @@ const TEST_DATA_26 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "26. In the problem-solving test, students had to work in groups of [26] ........................."
+                            "text": "In the problem-solving test, students had to work in groups of [26] ........................."
                         },
                         {
-                            "text": "27. The resets are held in [27] ........................."
+                            "text": "The resets are held in [27] ........................."
                         },
                         {
-                            "text": "28. If there is any problem after the reset, it goes to [28] ........................."
+                            "text": "If there is any problem after the reset, it goes to [28] ........................."
                         },
                         {
-                            "text": "29. According to the female student, multiple-choice questions benefit [29] ........................ more than women."
+                            "text": "According to the female student, multiple-choice questions benefit [29] ........................ more than women."
                         },
                         {
-                            "text": "30. The role play test assesses whether students can listen, organize thoughts, and be part of a [30] ........................."
+                            "text": "The role play test assesses whether students can listen, organize thoughts, and be part of a [30] ........................."
                         }
                     ]
                 }
@@ -152,7 +152,7 @@ const TEST_DATA_26 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -176,7 +176,7 @@ const TEST_DATA_26 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -194,6 +194,12 @@ const TEST_DATA_26 = {
                         },
                         {
                             "text": "- The model is [40] ........................ or nothing"
+                        },
+                        {
+                            "text": "- Fulfilling pledges can be very time-consuming"
+                        },
+                        {
+                            "text": "- Cost of rewards may reduce profit margins"
                         }
                     ]
                 }

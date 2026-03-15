@@ -5,7 +5,7 @@ const TEST_DATA_70 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -35,18 +35,18 @@ const TEST_DATA_70 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "8. One reason CFCs were popular in refrigeration is that they are [8] ........................."
+                            "text": "One reason CFCs were popular in refrigeration is that they are [8] ........................."
                         },
                         {
-                            "text": "9. CFCs have a lifespan of more than [9] ........................ in some cases."
+                            "text": "CFCs have a lifespan of more than [9] ........................ in some cases."
                         },
                         {
-                            "text": "10. When ultraviolet radiation breaks down CFCs, it frees [10] ........................ that destroy the ozone."
+                            "text": "When ultraviolet radiation breaks down CFCs, it frees [10] ........................ that destroy the ozone."
                         }
                     ]
                 }
@@ -178,7 +178,7 @@ const TEST_DATA_70 = {
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -195,7 +195,7 @@ const TEST_DATA_70 = {
         "parts": [
             {
                 "title": "<strong>Questions 21 – 25</strong>",
-                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 21-25</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -325,31 +325,31 @@ const TEST_DATA_70 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "31. One obvious drawback of reducing class sizes is that it is [31] ........................."
+                            "text": "One obvious drawback of reducing class sizes is that it is [31] ........................."
                         },
                         {
-                            "text": "32. Better education could help workers perform their jobs more [32] ........................."
+                            "text": "Better education could help workers perform their jobs more [32] ........................."
                         },
                         {
-                            "text": "33. The first study took place in the state of [33] ........................ in the late 1980s."
+                            "text": "The first study took place in the state of [33] ........................ in the late 1980s."
                         },
                         {
-                            "text": "34. In the Tennessee study, small classes had between [34] ........................ students."
+                            "text": "In the Tennessee study, small classes had between [34] ........................ students."
                         },
                         {
-                            "text": "35. The Tennessee study ended in [35] ........................."
+                            "text": "The Tennessee study ended in [35] ........................."
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

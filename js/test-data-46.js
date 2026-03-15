@@ -5,10 +5,13 @@ const TEST_DATA_46 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 3</strong>",
-                "instructions": "<strong>Questions 1-3</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 1-3</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Name: Martin Hill"
+                        },
                         {
                             "text": "- Looking for: a [1] ........................"
                         },
@@ -16,17 +19,29 @@ const TEST_DATA_46 = {
                             "text": "- Number of people: [2] ........................"
                         },
                         {
+                            "text": "- Employment status: All have full-time jobs"
+                        },
+                        {
                             "text": "- Chris and Martin work at: [3] ........................"
+                        },
+                        {
+                            "text": "- Phil works at Hallum Cars"
                         }
                     ]
                 }
             },
             {
                 "title": "<strong>Questions 4 – 6</strong>",
-                "instructions": "<strong>Questions 4-6</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 4-6</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
+                        {
+                            "text": "- Minimum bedrooms needed: 3"
+                        },
+                        {
+                            "text": "- Prefer 4 bedrooms for guests"
+                        },
                         {
                             "text": "- Essential feature in bathroom: [4] ........................"
                         },
@@ -41,7 +56,7 @@ const TEST_DATA_46 = {
             },
             {
                 "title": "<strong>Questions 7 – 10</strong>",
-                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 7-10</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -67,7 +82,7 @@ const TEST_DATA_46 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 15</strong>",
-                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-15</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -75,13 +90,31 @@ const TEST_DATA_46 = {
                             "text": "- Day: [11] ........................"
                         },
                         {
+                            "text": "- Time: 1:00 PM"
+                        },
+                        {
                             "text": "- Maximum group size: [12] ........................ people"
+                        },
+                        {
+                            "text": "- Booking method: By phone"
                         },
                         {
                             "text": "- Available for: Individuals, families, and [13] ........................"
                         },
                         {
+                            "text": "- Cost: Free (donation of £3 per student encouraged)"
+                        },
+                        {
+                            "text": "- Must phone to agree time in advance"
+                        },
+                        {
+                            "text": "- Only one school party allowed at a time"
+                        },
+                        {
                             "text": "- Confirmation: Online booking form or by [14] ........................"
+                        },
+                        {
+                            "text": "- 30-minute tour: £100 (£75 with student discount)"
                         },
                         {
                             "text": "- [15] ........................-minute tour: £130"
@@ -91,24 +124,24 @@ const TEST_DATA_46 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "16. Refreshments are not sold on site, but there is a small [16] ........................ selling souvenirs."
+                            "text": "Refreshments are not sold on site, but there is a small [16] ........................ selling souvenirs."
                         },
                         {
-                            "text": "17. Most exhibits are preserved animal specimens in [17] ........................."
+                            "text": "Most exhibits are preserved animal specimens in [17] ........................."
                         },
                         {
-                            "text": "18. Tours are conducted only in [18] ........................."
+                            "text": "Tours are conducted only in [18] ........................."
                         },
                         {
-                            "text": "19. The lecture room is equipped with a PowerPoint projector and [19] ........................."
+                            "text": "The lecture room is equipped with a PowerPoint projector and [19] ........................."
                         },
                         {
-                            "text": "20. John Hunter moved to a house in [20] ........................ in 1783 and started taking resident students."
+                            "text": "John Hunter moved to a house in [20] ........................ in 1783 and started taking resident students."
                         }
                     ]
                 }
@@ -202,7 +235,7 @@ const TEST_DATA_46 = {
             },
             {
                 "title": "<strong>Questions 25 – 30</strong>",
-                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 25-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -228,12 +261,15 @@ const TEST_DATA_46 = {
         "parts": [
             {
                 "title": "<strong>Questions 31 – 35</strong>",
-                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 31-35</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
                             "text": "- Location: 2,600 km northwest of [31] ........................"
+                        },
+                        {
+                            "text": "- Area: 135 km²"
                         },
                         {
                             "text": "- Coastline: [32] ........................ km"
@@ -252,7 +288,7 @@ const TEST_DATA_46 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN TWO WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

@@ -2,7 +2,7 @@
 const TEST_DATA_39 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -68,24 +68,24 @@ const TEST_DATA_39 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "16. The Health Sciences building is located on the [16] ........................ side of the campus."
+                            "text": "The Health Sciences building is located on the [16] ........................ side of the campus."
                         },
                         {
-                            "text": "17. The course consists of [17] ........................ modules completed over one year."
+                            "text": "The course consists of [17] ........................ modules completed over one year."
                         },
                         {
-                            "text": "18. In the first module, students study current laws regarding [18] ........................ in the workplace."
+                            "text": "In the first module, students study current laws regarding [18] ........................ in the workplace."
                         },
                         {
-                            "text": "19. The most important part of the course is the [19] ........................."
+                            "text": "The most important part of the course is the [19] ........................."
                         },
                         {
-                            "text": "20. Guest speakers will share views on the relevance of health sciences in their [20] ........................."
+                            "text": "Guest speakers will share views on the relevance of health sciences in their [20] ........................."
                         }
                     ]
                 }
@@ -191,7 +191,7 @@ const TEST_DATA_39 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -199,10 +199,22 @@ const TEST_DATA_39 = {
                             "text": "- Can change [26] ........................"
                         },
                         {
+                            "text": "- First aid kit"
+                        },
+                        {
                             "text": "- Topographic map (must be readable by [27] ........................ people)"
                         },
                         {
+                            "text": "- Compass"
+                        },
+                        {
                             "text": "- Falling more than [28] ........................ considered life-threatening"
+                        },
+                        {
+                            "text": "- Tides and high waves near the sea"
+                        },
+                        {
+                            "text": "- Avalanches, mudslides, and flash floods"
                         },
                         {
                             "text": "- Consider physical strength and experience of the [29] ........................"
@@ -217,12 +229,15 @@ const TEST_DATA_39 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
                 {
                     "text": "- In England until the 1950s, job signs read \"[31] ........................ need not apply\""
+                },
+                {
+                    "text": "- Similar to Shanghai park signs excluding Chinese people and dogs"
                 },
                 {
                     "text": "- Formed organizations to help [32] ........................"

@@ -2,7 +2,7 @@
 const TEST_DATA_32 = {
     "section1": {
         "title": "<strong>Section 1</strong>",
-        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form",
+        "instructions": "<strong>Questions 1-10</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -44,7 +44,7 @@ const TEST_DATA_32 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the notes",
+                "instructions": "<strong>Questions 11-16</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -71,21 +71,21 @@ const TEST_DATA_32 = {
             },
             {
                 "title": "<strong>Questions 17 – 20</strong>",
-                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 17-20</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "17. Only [17] ........................ of these French propeller cars were built."
+                            "text": "Only [17] ........................ of these French propeller cars were built."
                         },
                         {
-                            "text": "18. The car was designed by [18] ........................, an aviation pioneer."
+                            "text": "The car was designed by [18] ........................, an aviation pioneer."
                         },
                         {
-                            "text": "19. The Helica used the [19] ........................ wheels for steering rather than the front wheels."
+                            "text": "The Helica used the [19] ........................ wheels for steering rather than the front wheels."
                         },
                         {
-                            "text": "20. During the Second World War, troops tried to steal the car but ended up driving it into a [20] ........................."
+                            "text": "During the Second World War, troops tried to steal the car but ended up driving it into a [20] ........................."
                         }
                     ]
                 }
@@ -217,21 +217,21 @@ const TEST_DATA_32 = {
             },
             {
                 "title": "<strong>Questions 27 – 30</strong>",
-                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 27-30</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "27. The Chinese people probably eat more than [27] ........................ bowls of rice every day."
+                            "text": "The Chinese people probably eat more than [27] ........................ bowls of rice every day."
                         },
                         {
-                            "text": "28. Thailand exports rice to Europe, Africa, and the [28] ........................."
+                            "text": "Thailand exports rice to Europe, Africa, and the [28] ........................."
                         },
                         {
-                            "text": "29. In Thailand, the [29] ........................ ceremony is held every year, attended by the king."
+                            "text": "In Thailand, the [29] ........................ ceremony is held every year, attended by the king."
                         },
                         {
-                            "text": "30. An experimental organic rice farm is located near the city of [30] ........................ in Japan."
+                            "text": "An experimental organic rice farm is located near the city of [30] ........................ in Japan."
                         }
                     ]
                 }
@@ -240,7 +240,7 @@ const TEST_DATA_32 = {
     },
     "section4": {
         "title": "<strong>Section 4</strong>",
-        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes",
+        "instructions": "<strong>Questions 31-40</strong>\n\nComplete the notes below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
         "formContent": {
             "title": "",
             "items": [
@@ -261,6 +261,9 @@ const TEST_DATA_32 = {
                 },
                 {
                     "text": "- Three became [36] ........................"
+                },
+                {
+                    "text": "- Three became doctors"
                 },
                 {
                     "text": "- Most famous graduate became a university teacher who introduced modern [37] ........................ methods"

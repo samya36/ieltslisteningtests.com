@@ -5,7 +5,7 @@ const TEST_DATA_24 = {
         "parts": [
             {
                 "title": "<strong>Questions 1 – 7</strong>",
-                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the form",
+                "instructions": "<strong>Questions 1-7</strong>\n\nComplete the form below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -35,18 +35,18 @@ const TEST_DATA_24 = {
             },
             {
                 "title": "<strong>Questions 8 – 10</strong>",
-                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences",
+                "instructions": "<strong>Questions 8-10</strong>\n\nComplete the sentences below.\nWrite NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
                         {
-                            "text": "8. The passenger is checking in one bag, one carry-on, and one [8] ........................."
+                            "text": "The passenger is checking in one bag, one carry-on, and one [8] ........................."
                         },
                         {
-                            "text": "9. The carry-on bag was purchased in [9] ........................ and exceeds the maximum height by __________ inches."
+                            "text": "The carry-on bag was purchased in [9] ........................ and exceeds the maximum height by __________ inches."
                         },
                         {
-                            "text": "10. The passenger has his own [10] ........................ but no DVDs."
+                            "text": "The passenger has his own [10] ........................ but no DVDs."
                         }
                     ]
                 }
@@ -58,7 +58,7 @@ const TEST_DATA_24 = {
         "parts": [
             {
                 "title": "<strong>Questions 11 – 16</strong>",
-                "instructions": "<strong>Questions 11-16</strong>\n\nLabel the map",
+                "instructions": "<strong>Questions 11-16</strong>\n\nLabel the map below.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -82,7 +82,7 @@ const TEST_DATA_24 = {
             },
             {
                 "title": "<strong>Questions 16 – 20</strong>",
-                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the table",
+                "instructions": "<strong>Questions 16-20</strong>\n\nComplete the table below.\nWrite NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -209,7 +209,7 @@ const TEST_DATA_24 = {
             },
             {
                 "title": "<strong>Questions 26 – 30</strong>",
-                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary",
+                "instructions": "<strong>Questions 26-30</strong>\n\nComplete the summary below.\nWrite NO MORE THAN THREE WORDS for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [
@@ -306,7 +306,7 @@ const TEST_DATA_24 = {
                     },
                     {
                         "id": 35,
-                        "text": "What event in 1837 is mentioned alongside the beginning of *Oliver Twist*?",
+                        "text": "What event in 1837 is mentioned alongside the beginning of Oliver Twist?",
                         "type": "radio",
                         "options": [
                             {
@@ -327,7 +327,7 @@ const TEST_DATA_24 = {
             },
             {
                 "title": "<strong>Questions 36 – 40</strong>",
-                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the timeline below.",
+                "instructions": "<strong>Questions 36-40</strong>\n\nComplete the timeline below.\nWrite NO MORE THAN THREE WORDS AND/OR A YEAR for each answer.",
                 "formContent": {
                     "title": "",
                     "items": [

@@ -331,6 +331,8 @@ const TEST_DATA = {
     }
 };
 
+window.TEST_DATA = TEST_DATA;
+
 // 获取测试数据的函数
 function getTestData() {
     return TEST_DATA;
@@ -343,9 +345,8 @@ window.getTestData = getTestData;
 
 // --- js/test-answers.js ---
 ;(function(){
-// 测试标准答案
+// Test 1 标准答案
 const standardAnswers = {
-    // Section 1 答案 (1-10)
     1: "Club",
     2: "male",
     3: "drive",
@@ -353,11 +354,9 @@ const standardAnswers = {
     5: "August",
     6: "dinner",
     7: "25",
-    8: "16", // 或者设置为接受两种格式 ["16", "sixteen"]
+    8: "16",
     9: "modern",
     10: "hospital",
-    
-    // Section 2 答案 (11-20)
     11: "C",
     12: "A",
     13: "A",
@@ -368,20 +367,13 @@ const standardAnswers = {
     18: "I",
     19: "A",
     20: "E",
-    
-    // Section 3 答案 (21-30)
     21: "B",
     22: "A",
     23: "B",
     24: "A",
-    25: ["C", "E"], // 25&26题为CE
-    26: ["C", "E"],
-    27: ["A", "D"], // 27&28题为AD
-    28: ["A", "D"],
-    29: ["B", "E"], // 29&30题为BE
-    30: ["B", "E"],
-    
-    // Section 4 答案 (31-40)
+    "25-26": ["C", "E"],
+    "27-28": ["A", "D"],
+    "29-30": ["B", "E"],
     31: "flexible",
     32: "film",
     33: "gas",
@@ -394,7 +386,6 @@ const standardAnswers = {
     40: "medical"
 };
 
-// 雅思听力分数换算表
 const listeningScoreTable = {
     40: 9.0,
     39: 9.0,
@@ -439,15 +430,19 @@ const listeningScoreTable = {
     0: 0.0
 };
 
-// 获取标准答案
 function getStandardAnswers() {
     return standardAnswers;
 }
 
-// 获取雅思分数
 function getIeltsScore(correctCount) {
     return listeningScoreTable[correctCount] || 0;
-} 
+}
+
+window.standardAnswers = standardAnswers;
+window.listeningScoreTable = listeningScoreTable;
+window.getStandardAnswers = getStandardAnswers;
+window.getIeltsScore = getIeltsScore;
+
 })();
 
 // --- js/test-renderer.js ---
@@ -458,9 +453,8 @@ function getIeltsScore(correctCount) {
 
     let currentTestData = null;
 
-    // 等待DOM和数据加载完成
     document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(renderAllSections, 100);
+        window.setTimeout(renderAllSections, 100);
     });
 
     function renderAllSections() {
@@ -471,97 +465,111 @@ function getIeltsScore(correctCount) {
             return;
         }
 
-        console.log('开始渲染题目...');
-
-        // 渲染全部Section（1-4）
-        for (let i = 1; i <= 4; i++) {
-            const sectionData = currentTestData['section' + i];
-            if (sectionData) {
-                renderSection(i, sectionData);
-            }
+        for (let section = 1; section <= 4; section++) {
+            const sectionData = currentTestData[`section${section}`];
+            if (!sectionData) continue;
+            renderSection(section, sectionData);
         }
 
-        // 绑定动态生成题目的保存逻辑
         bindAnswerInputs();
-
         console.log('题目渲染完成');
     }
 
-    function resolveCurrentTestData() {
-        var path = window.location.pathname.toLowerCase();
+    function readGlobalBinding(name) {
+        if (!name) return undefined;
+        if (typeof window[name] !== 'undefined') return window[name];
 
-        // Dynamic test number detection: match testN where N is any number
-        var m = path.match(/test(\d+)/);
-        if (m) {
-            var num = parseInt(m[1], 10);
-            var varName = 'TEST_DATA_' + num;
-            if (typeof window[varName] !== 'undefined') return window[varName];
+        try {
+            return Function(`return typeof ${name} !== "undefined" ? ${name} : undefined;`)();
+        } catch (_) {
+            return undefined;
+        }
+    }
+
+    function resolveCurrentTestData() {
+        const path = window.location.pathname.toLowerCase();
+        const match = path.match(/test(\d+)/);
+
+        if (match) {
+            return readGlobalBinding(`TEST_DATA_${parseInt(match[1], 10)}`);
         }
 
-        // Fallback to legacy global
-        if (typeof TEST_DATA !== 'undefined') return TEST_DATA;
+        return readGlobalBinding('TEST_DATA');
+    }
 
-        return null;
+    function shouldPreserveInlineContent(container) {
+        if (!container) return false;
+
+        return Array.from(container.children).some(function(child) {
+            if (!child) return false;
+            if (child.classList && child.classList.contains('section-action-row')) return false;
+            return child.textContent.trim() !== '';
+        });
     }
 
     function renderSection(sectionNum, data) {
-        const container = document.querySelector(`#section-${sectionNum} .questions`);
+        const sectionElement = document.getElementById(`section-${sectionNum}`);
+        const container = sectionElement ? sectionElement.querySelector('.questions') : null;
+
         if (!container) {
             console.warn(`Section ${sectionNum} 容器未找到`);
             return;
         }
 
-        let html = `<h2 class="section-title">${data.title || 'Section ' + sectionNum}</h2>`;
+        if (shouldPreserveInlineContent(container)) {
+            ensureSectionSaveButton(sectionNum, sectionElement);
+            return;
+        }
+
+        let html = `<h2 class="section-title">${data.title || `Section ${sectionNum}`}</h2>`;
 
         if (data.instructions) {
             html += `<div class="instructions">${formatMultiline(data.instructions)}</div>`;
         }
 
-        // 渲染parts（如果有）
         if (Array.isArray(data.parts)) {
-            data.parts.forEach(part => {
+            data.parts.forEach(function(part) {
                 html += renderPart(part);
             });
         }
 
-        // 渲染formContent（如果有）
-        if (data.formContent) {
-            html += renderFormContent(data.formContent);
-        }
-
-        // 渲染section级别特殊结构
-        if (data.tableData) {
-            html += renderTableData(data.tableData);
-        }
-
-        if (data.summaryContent) {
-            html += renderSummaryContent(data.summaryContent);
-        }
-
-        if (data.boxContent) {
-            html += renderBoxContent(data.boxContent);
-        }
-
-        // 渲染questions（如果有）
-        if (Array.isArray(data.questions)) {
-            html += renderQuestions(data.questions);
-        }
+        if (data.formContent) html += renderFormContent(data.formContent);
+        if (data.tableData) html += renderTableData(data.tableData);
+        if (data.summaryContent) html += renderSummaryContent(data.summaryContent);
+        if (data.boxContent) html += renderBoxContent(data.boxContent);
+        if (Array.isArray(data.questions)) html += renderQuestions(data.questions);
 
         container.innerHTML = html;
+        ensureSectionSaveButton(sectionNum, sectionElement);
+    }
+
+    function ensureSectionSaveButton(sectionNum, sectionElement) {
+        if (!sectionElement || sectionElement.querySelector('.section-save-btn')) return;
+
+        const container = sectionElement.querySelector('.questions');
+        if (!container) return;
+
+        const actionRow = document.createElement('div');
+        actionRow.className = 'section-action-row';
+        actionRow.innerHTML = `<button type="button" class="submit-answers-btn section-save-btn" data-section="${sectionNum}">保存本 Section</button>`;
+        container.appendChild(actionRow);
+
+        const button = actionRow.querySelector('.section-save-btn');
+        if (button) {
+            button.addEventListener('click', function() {
+                if (typeof window.saveSectionAnswers === 'function') {
+                    window.saveSectionAnswers(sectionNum);
+                }
+            });
+        }
     }
 
     function renderPart(part) {
         let html = '<div class="question-part">';
 
-        if (part.title) {
-            html += `<h3 class="part-title">${part.title}</h3>`;
-        }
+        if (part.title) html += `<h3 class="part-title">${part.title}</h3>`;
+        if (part.instructions) html += `<div class="instructions">${formatMultiline(part.instructions)}</div>`;
 
-        if (part.instructions) {
-            html += `<div class="instructions">${formatMultiline(part.instructions)}</div>`;
-        }
-
-        // 渲染地图（如果有）
         if (part.mapContent) {
             html += '<div class="map-container">';
             html += `<h4>${part.mapContent.title || 'Map'}</h4>`;
@@ -573,22 +581,11 @@ function getIeltsScore(correctCount) {
             html += '</div>';
         }
 
-        if (part.tableData) {
-            html += renderTableData(part.tableData);
-        }
-
-        if (part.summaryContent) {
-            html += renderSummaryContent(part.summaryContent);
-        }
-
-        if (part.boxContent) {
-            html += renderBoxContent(part.boxContent);
-        }
-
-        // 渲染问题
-        if (Array.isArray(part.questions)) {
-            html += renderQuestions(part.questions);
-        }
+        if (part.formContent) html += renderFormContent(part.formContent);
+        if (part.tableData) html += renderTableData(part.tableData);
+        if (part.summaryContent) html += renderSummaryContent(part.summaryContent);
+        if (part.boxContent) html += renderBoxContent(part.boxContent);
+        if (Array.isArray(part.questions)) html += renderQuestions(part.questions);
 
         html += '</div>';
         return html;
@@ -597,12 +594,11 @@ function getIeltsScore(correctCount) {
     function renderFormContent(formContent) {
         let html = '<div class="form-content">';
 
-        if (formContent.title) {
-            html += `<h3>${formContent.title}</h3>`;
-        }
+        if (formContent.title) html += `<h3>${formContent.title}</h3>`;
+        if (formContent.subtitle) html += `<div class="form-subtitle">${formatMultiline(formContent.subtitle)}</div>`;
 
         if (Array.isArray(formContent.items)) {
-            formContent.items.forEach(item => {
+            formContent.items.forEach(function(item) {
                 html += renderFormItem(item);
             });
         }
@@ -612,44 +608,41 @@ function getIeltsScore(correctCount) {
     }
 
     function renderFormItem(item) {
-        let text = replaceQuestionPlaceholders(item.text || '');
-        text = formatMultiline(text);
-
+        let text = formatMultiline(replaceQuestionPlaceholders(item.text || ''));
         let className = 'question-item';
-        if (item.type) {
-            className += ` ${item.type}-item`;
-        }
 
+        if (item.type) className += ` ${item.type}-item`;
         return `<div class="${className}"><label>${text}</label></div>`;
     }
 
     function renderQuestions(questions) {
         let html = '<div class="questions-list">';
 
-        questions.forEach(q => {
+        questions.forEach(function(question) {
             html += '<div class="question-item">';
-            html += `<label><strong>${q.id}.</strong> ${replaceQuestionPlaceholders(q.text || '')}</label>`;
+            html += `<label><strong>${question.id}.</strong> ${replaceQuestionPlaceholders(question.text || '')}</label>`;
 
-            if (q.type === 'radio' && Array.isArray(q.options)) {
+            if (question.type === 'radio' && Array.isArray(question.options)) {
                 html += '<div class="options">';
-                q.options.forEach(opt => {
+                question.options.forEach(function(option) {
                     html += `<label class="option">
-                        <input type="radio" name="q${q.id}" value="${opt.value}" class="answer-input" data-question="${q.id}">
-                        <span><strong>${opt.value}</strong> ${opt.text}</span>
+                        <input type="radio" name="q${question.id}" value="${option.value}" class="answer-input" data-question="${question.id}">
+                        <span><strong>${option.value}</strong> ${option.text}</span>
                     </label>`;
                 });
                 html += '</div>';
-            } else if (q.type === 'checkbox' && Array.isArray(q.options)) {
+            } else if (question.type === 'checkbox' && Array.isArray(question.options)) {
+                const maxSelections = question.maxSelections || inferSelectionLimit(question.id);
                 html += '<div class="options">';
-                q.options.forEach(opt => {
+                question.options.forEach(function(option) {
                     html += `<label class="option">
-                        <input type="checkbox" name="q${q.id}" value="${opt.value}" class="answer-input" data-question="${q.id}">
-                        <span><strong>${opt.value}</strong> ${opt.text}</span>
+                        <input type="checkbox" name="q${question.id}" value="${option.value}" class="answer-input" data-question="${question.id}" data-max-selections="${maxSelections}">
+                        <span><strong>${option.value}</strong> ${option.text}</span>
                     </label>`;
                 });
                 html += '</div>';
-            } else if (q.type === 'text' || q.type === 'fill_blank' || !q.type) {
-                html += `<input type="text" name="q${q.id}" class="answer-input" data-question="${q.id}" placeholder="${q.placeholder || 'your answer'}">`;
+            } else {
+                html += `<input type="text" name="q${question.id}" class="answer-input" data-question="${question.id}" placeholder="${question.placeholder || 'your answer'}">`;
             }
 
             html += '</div>';
@@ -659,18 +652,22 @@ function getIeltsScore(correctCount) {
         return html;
     }
 
+    function inferSelectionLimit(questionId) {
+        const match = String(questionId).match(/^(\d+)\s*-\s*(\d+)$/);
+        if (!match) return 2;
+        return Math.max(1, parseInt(match[2], 10) - parseInt(match[1], 10) + 1);
+    }
+
     function renderTableData(tableData) {
         let html = '<div class="table-container">';
 
-        if (tableData.title) {
-            html += `<h4>${tableData.title}</h4>`;
-        }
+        if (tableData.title) html += `<h4>${tableData.title}</h4>`;
 
         html += '<table class="info-table">';
 
         if (Array.isArray(tableData.headers) && tableData.headers.length > 0) {
             html += '<thead><tr>';
-            tableData.headers.forEach(header => {
+            tableData.headers.forEach(function(header) {
                 html += `<th>${header}</th>`;
             });
             html += '</tr></thead>';
@@ -678,9 +675,9 @@ function getIeltsScore(correctCount) {
 
         if (Array.isArray(tableData.rows) && tableData.rows.length > 0) {
             html += '<tbody>';
-            tableData.rows.forEach(row => {
+            tableData.rows.forEach(function(row) {
                 html += '<tr>';
-                row.forEach(cell => {
+                row.forEach(function(cell) {
                     html += `<td>${replaceQuestionPlaceholders(String(cell))}</td>`;
                 });
                 html += '</tr>';
@@ -694,29 +691,22 @@ function getIeltsScore(correctCount) {
 
     function renderSummaryContent(summaryContent) {
         let html = '<div class="summary-content">';
-        if (summaryContent.title) {
-            html += `<h4>${summaryContent.title}</h4>`;
-        }
-        if (summaryContent.text) {
-            html += `<div class="summary-text">${formatMultiline(replaceQuestionPlaceholders(summaryContent.text))}</div>`;
-        }
+        if (summaryContent.title) html += `<h4>${summaryContent.title}</h4>`;
+        if (summaryContent.text) html += `<div class="summary-text">${formatMultiline(replaceQuestionPlaceholders(summaryContent.text))}</div>`;
         html += '</div>';
         return html;
     }
 
     function renderBoxContent(boxContent) {
-        // 支持字符串和对象两种结构
         if (typeof boxContent === 'string') {
             return `<div class="box-content"><pre>${boxContent}</pre></div>`;
         }
 
         let html = '<div class="box-content">';
-        if (boxContent.title) {
-            html += `<h4>${boxContent.title}</h4>`;
-        }
+        if (boxContent.title) html += `<h4>${boxContent.title}</h4>`;
 
         if (Array.isArray(boxContent.content)) {
-            boxContent.content.forEach(item => {
+            boxContent.content.forEach(function(item) {
                 if (!item) return;
 
                 if (item.type === 'header') {
@@ -743,9 +733,8 @@ function getIeltsScore(correctCount) {
     }
 
     function replaceQuestionPlaceholders(text) {
-        // 将 [数字] 占位符替换为输入框
-        return text.replace(/\[(\d+)\]/g, function(match, num) {
-            return `<input type="text" name="q${num}" class="answer-input" data-question="${num}" placeholder="your answer">`;
+        return String(text).replace(/\[(\d+)\]/g, function(match, number) {
+            return `<input type="text" name="q${number}" class="answer-input" data-question="${number}" placeholder="your answer">`;
         });
     }
 
@@ -758,25 +747,15 @@ function getIeltsScore(correctCount) {
         const storageKey = `ielts-test${testNum}-answers`;
         const savedAnswers = JSON.parse(localStorage.getItem(storageKey) || '{}');
 
-        document.querySelectorAll('.answer-input').forEach(input => {
+        document.querySelectorAll('.answer-input').forEach(function(input) {
             const questionId = input.dataset.question;
-            const savedValue = savedAnswers[questionId];
+            if (!questionId) return;
 
-            // 加载已保存的答案
-            if (savedValue !== undefined) {
-                if (input.type === 'radio') {
-                    if (input.value === savedValue) input.checked = true;
-                } else if (input.type === 'checkbox') {
-                    if (Array.isArray(savedValue) && savedValue.includes(input.value)) {
-                        input.checked = true;
-                    }
-                } else {
-                    input.value = savedValue;
-                }
-                input.classList.add('answered');
-            }
+            applySavedValue(input, savedAnswers[questionId]);
 
-            // 文本输入：实时保存
+            if (input.dataset.answerBound === 'true') return;
+            input.dataset.answerBound = 'true';
+
             if (input.type === 'text') {
                 input.addEventListener('input', function() {
                     const answers = JSON.parse(localStorage.getItem(storageKey) || '{}');
@@ -787,7 +766,6 @@ function getIeltsScore(correctCount) {
                 return;
             }
 
-            // 单选、多选：change 保存
             input.addEventListener('change', function() {
                 const answers = JSON.parse(localStorage.getItem(storageKey) || '{}');
                 const qId = this.dataset.question;
@@ -796,9 +774,26 @@ function getIeltsScore(correctCount) {
                     answers[qId] = this.value;
                 } else if (this.type === 'checkbox') {
                     const checkedValues = Array.from(document.querySelectorAll('.answer-input[type="checkbox"]'))
-                        .filter(el => el.dataset.question === qId && el.checked)
-                        .map(el => el.value);
-                    answers[qId] = checkedValues;
+                        .filter(function(element) {
+                            return element.dataset.question === qId && element.checked;
+                        })
+                        .map(function(element) {
+                            return element.value;
+                        });
+
+                    const limit = parseInt(this.dataset.maxSelections || '0', 10);
+                    if (limit > 0 && checkedValues.length > limit) {
+                        this.checked = false;
+                        return;
+                    }
+
+                    answers[qId] = Array.from(document.querySelectorAll('.answer-input[type="checkbox"]'))
+                        .filter(function(element) {
+                            return element.dataset.question === qId && element.checked;
+                        })
+                        .map(function(element) {
+                            return element.value;
+                        });
                 }
 
                 localStorage.setItem(storageKey, JSON.stringify(answers));
@@ -807,13 +802,28 @@ function getIeltsScore(correctCount) {
         });
     }
 
-    function detectTestNumber() {
-        var path = window.location.pathname.toLowerCase();
-        var m = path.match(/test(\d+)/);
-        if (m) return parseInt(m[1], 10);
-        return 1;
+    function applySavedValue(input, savedValue) {
+        if (savedValue === undefined) return;
+
+        if (input.type === 'radio') {
+            if (input.value === savedValue) input.checked = true;
+        } else if (input.type === 'checkbox') {
+            if (Array.isArray(savedValue) && savedValue.includes(input.value)) {
+                input.checked = true;
+            }
+        } else {
+            input.value = savedValue;
+        }
+
+        input.classList.add('answered');
     }
 
+    function detectTestNumber() {
+        const path = window.location.pathname.toLowerCase();
+        const match = path.match(/test(\d+)/);
+        if (match) return parseInt(match[1], 10);
+        return 1;
+    }
 })();
 
 })();
@@ -825,6 +835,9 @@ function getIeltsScore(correctCount) {
 (function() {
     'use strict';
 
+    // Signal that the newer unified test audio controller owns the page.
+    window.__IELTS_USE_TEST_INIT_AUDIO__ = true;
+
     function detectTestNumber() {
         var path = window.location.pathname.toLowerCase();
         var m = path.match(/test(\d+)/);
@@ -834,12 +847,57 @@ function getIeltsScore(correctCount) {
 
     const testNumber = detectTestNumber();
     const storageKey = `ielts-test${testNumber}-answers`;
+    const resultStorageKey = `ielts-test${testNumber}-result`;
+    const AUDIO_R2_BASE_URL = 'https://audio.ieltslisteningtests.com/audio/';
+    const defaultListeningScoreTable = {
+        40: 9.0,
+        39: 9.0,
+        38: 8.5,
+        37: 8.5,
+        36: 8.0,
+        35: 8.0,
+        34: 7.5,
+        33: 7.5,
+        32: 7.0,
+        31: 7.0,
+        30: 7.0,
+        29: 6.5,
+        28: 6.5,
+        27: 6.5,
+        26: 6.0,
+        25: 6.0,
+        24: 6.0,
+        23: 6.0,
+        22: 5.5,
+        21: 5.5,
+        20: 5.5,
+        19: 5.0,
+        18: 5.0,
+        17: 5.0,
+        16: 5.0,
+        15: 4.5,
+        14: 4.5,
+        13: 4.5,
+        12: 4.0,
+        11: 4.0,
+        10: 4.0,
+        9: 3.5,
+        8: 3.5,
+        7: 3.5,
+        6: 3.5,
+        5: 3.0,
+        4: 3.0,
+        3: 2.5,
+        2: 2.0,
+        1: 1.0,
+        0: 0.0
+    };
 
     const TEST_AUDIO_CONFIG = {
         1: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test1/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test1/',
+            localPath: `${AUDIO_R2_BASE_URL}test1/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test1/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}test1/`,
             files: [
                 'Part1 Amateur Dramatic Society.m4a',
                 'Part2 Talk to new employees at a strawberry farm.m4a',
@@ -848,9 +906,9 @@ function getIeltsScore(correctCount) {
             ]
         },
         2: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test2/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test2/',
+            localPath: `${AUDIO_R2_BASE_URL}test2/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test2/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}test2/`,
             files: [
                 'Part1 Rental Property Application Form.m4a',
                 'Part2 Queensland Festival.m4a',
@@ -859,9 +917,9 @@ function getIeltsScore(correctCount) {
             ]
         },
         3: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test3/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test3/',
+            localPath: `${AUDIO_R2_BASE_URL}test3/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test3/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}test3/`,
             files: [
                 'Part1 Kiwi Air Customer Complaint Form.m4a',
                 'Part2 Spring Festival.m4a',
@@ -870,15 +928,15 @@ function getIeltsScore(correctCount) {
             ]
         },
         4: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/test4/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test4/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test4/',
+            localPath: `${AUDIO_R2_BASE_URL}test4/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test4/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}test4/`,
             files: ['Part1_Windward_Apartments.m4a', 'Part2.m4a', 'Part3.m4a', 'Part4.m4a']
         },
         5: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/test5/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test5/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test5/',
+            localPath: `${AUDIO_R2_BASE_URL}test5/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test5/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}test5/`,
             files: [
                 'test5_Part1_Winsham_Farm.m4a',
                 'test5_Part2_Queensland_Festival.m4a',
@@ -887,9 +945,9 @@ function getIeltsScore(correctCount) {
             ]
         },
         6: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/test6/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/test6/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/test6/',
+            localPath: `${AUDIO_R2_BASE_URL}test6/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}test6/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}test6/`,
             files: [
                 'Part1_Amateur_Dramatic_Society.m4a',
                 'Part2_Clifton_Bird_Park.m4a',
@@ -898,9 +956,9 @@ function getIeltsScore(correctCount) {
             ]
         },
         7: {
-            localPath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
-            absolutePath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
-            cdnPath: 'https://audio.ieltslisteningtests.com/audio/c20-test4/',
+            localPath: `${AUDIO_R2_BASE_URL}c20-test4/`,
+            absolutePath: `${AUDIO_R2_BASE_URL}c20-test4/`,
+            cdnPath: `${AUDIO_R2_BASE_URL}c20-test4/`,
             files: ['c20_T4S1_48k.mp3', 'c20_T4S2_48k.mp3', 'c20_T4S3_48k.mp3', 'c20_T4S4_48k.mp3']
         }
     };
@@ -916,6 +974,8 @@ function getIeltsScore(correctCount) {
         initSectionTabs();
         initAnswerSaving();
         loadSavedAnswers();
+        injectGlobalSubmitButton();
+        bindResultModal();
         checkServiceWorkerUpdate();
 
         console.log(`IELTS听力测试 ${testNumber} 初始化完成`);
@@ -940,6 +1000,8 @@ function getIeltsScore(correctCount) {
             return;
         }
 
+        audioPlayer.crossOrigin = 'anonymous';
+        applyPreferredAudioSource(section, audioPlayer);
         initializeRecoveryState(section, audioPlayer);
         let isPlaying = false;
 
@@ -1056,6 +1118,10 @@ function getIeltsScore(correctCount) {
             if (normalized) {
                 candidates.push(normalized);
             }
+            const remote = toR2AudioUrl(src);
+            if (remote) {
+                candidates.push(remote);
+            }
         });
 
         if (config && config.files && config.files[section - 1]) {
@@ -1084,6 +1150,45 @@ function getIeltsScore(correctCount) {
         });
 
         return unique;
+    }
+
+    function toR2AudioUrl(src) {
+        if (!src) return '';
+        const value = String(src);
+        if (value.startsWith(AUDIO_R2_BASE_URL)) return value;
+
+        const match = value.match(/(?:https?:\/\/[^/]+)?(?:\.\.\/|\/)?audio\/(.+)$/);
+        if (!match) return '';
+
+        return `${AUDIO_R2_BASE_URL}${match[1]}`;
+    }
+
+    function getConfiguredRemoteAudioUrl(section, config) {
+        if (!config || !config.files || !config.files[section - 1] || !config.cdnPath) return '';
+        return config.cdnPath + encodeURIComponent(config.files[section - 1]);
+    }
+
+    function applyPreferredAudioSource(section, audioPlayer) {
+        const config = TEST_AUDIO_CONFIG[testNumber];
+        const currentAttrSrc = audioPlayer.getAttribute('src') || '';
+        const preferredSrc =
+            getConfiguredRemoteAudioUrl(section, config) ||
+            toR2AudioUrl(currentAttrSrc) ||
+            toR2AudioUrl(audioPlayer.currentSrc);
+
+        if (!preferredSrc) return;
+
+        if (!audioPlayer.getAttribute('data-local-src') && currentAttrSrc) {
+            audioPlayer.setAttribute('data-local-src', currentAttrSrc);
+        }
+
+        const corsWasMissing = audioPlayer.crossOrigin !== 'anonymous';
+        audioPlayer.crossOrigin = 'anonymous';
+
+        if (corsWasMissing || stripQuery(currentAttrSrc) !== stripQuery(preferredSrc)) {
+            audioPlayer.src = preferredSrc;
+            audioPlayer.load();
+        }
     }
 
     function normalizeAudioUrl(src) {
@@ -1299,6 +1404,9 @@ function getIeltsScore(correctCount) {
 
     function initAnswerSaving() {
         document.querySelectorAll('.answer-input').forEach(function(input) {
+            if (input.dataset.answerBound === 'true') return;
+            input.dataset.answerBound = 'true';
+
             if (input.type === 'text') {
                 input.addEventListener('input', function() {
                     saveTextAnswer(this.dataset.question, this.value);
@@ -1415,19 +1523,409 @@ function getIeltsScore(correctCount) {
         }
     }
 
+    function readGlobalBinding(name) {
+        if (!name) return undefined;
+        if (typeof window[name] !== 'undefined') return window[name];
+
+        try {
+            return Function(`return typeof ${name} !== "undefined" ? ${name} : undefined;`)();
+        } catch (_) {
+            return undefined;
+        }
+    }
+
+    function getAnswerKeyForTest() {
+        return readGlobalBinding(`standardAnswers${testNumber}`) || readGlobalBinding('standardAnswers');
+    }
+
+    function getListeningScoreTableForTest() {
+        return (
+            readGlobalBinding(`listeningScoreTable${testNumber}`) ||
+            readGlobalBinding('listeningScoreTable') ||
+            defaultListeningScoreTable
+        );
+    }
+
+    function parseQuestionRange(key) {
+        const text = String(key).trim();
+        const rangeMatch = text.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (rangeMatch) {
+            return {
+                start: parseInt(rangeMatch[1], 10),
+                end: parseInt(rangeMatch[2], 10)
+            };
+        }
+
+        const numberMatch = text.match(/^(\d+)$/);
+        if (numberMatch) {
+            const value = parseInt(numberMatch[1], 10);
+            return { start: value, end: value };
+        }
+
+        return null;
+    }
+
+    function normalizeText(value) {
+        if (value === null || value === undefined) return '';
+
+        return String(value)
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, ' ')
+            .replace(/^[,.;:()\[\]\s]+|[,.;:()\[\]\s]+$/g, '');
+    }
+
+    function parseAlternatives(value) {
+        if (Array.isArray(value)) {
+            return value.map(normalizeText).filter(Boolean);
+        }
+
+        const text = String(value === null || value === undefined ? '' : value);
+        if (!text.trim()) return [];
+
+        return text
+            .split(/\s*\/\s*|\s*\|\s*|\s*;\s*/)
+            .map(normalizeText)
+            .filter(Boolean);
+    }
+
+    function splitExpectedRangeValues(expected, count) {
+        if (Array.isArray(expected)) {
+            if (expected.length === count) return expected;
+            return expected.slice(0, count);
+        }
+
+        const alternatives = parseAlternatives(expected);
+        if (alternatives.length === count) return alternatives;
+
+        const compact = normalizeText(expected).replace(/\s+/g, '');
+        if (compact.length === count) {
+            return compact.split('');
+        }
+
+        return [];
+    }
+
+    function stringifyAnswer(value) {
+        if (Array.isArray(value)) return value.join(', ');
+        return value === null || value === undefined ? '' : String(value);
+    }
+
+    function expandAnswerKey(answerKey) {
+        const entries = [];
+
+        Object.entries(answerKey || {}).forEach(function(entry) {
+            const key = entry[0];
+            const expected = entry[1];
+            const range = parseQuestionRange(key);
+
+            if (!range) return;
+
+            if (range.start !== range.end) {
+                const values = splitExpectedRangeValues(expected, range.end - range.start + 1);
+                for (let questionNumber = range.start; questionNumber <= range.end; questionNumber++) {
+                    const index = questionNumber - range.start;
+                    entries.push({
+                        questionNumber: questionNumber,
+                        sourceKey: key,
+                        expected: values[index] !== undefined ? values[index] : expected
+                    });
+                }
+                return;
+            }
+
+            entries.push({
+                questionNumber: range.start,
+                sourceKey: key,
+                expected: expected
+            });
+        });
+
+        return entries.sort(function(a, b) {
+            return a.questionNumber - b.questionNumber;
+        });
+    }
+
+    function getUserAnswerForEntry(entry, answers) {
+        if (Object.prototype.hasOwnProperty.call(answers, entry.sourceKey)) {
+            return answers[entry.sourceKey];
+        }
+
+        const numericKey = String(entry.questionNumber);
+        if (Object.prototype.hasOwnProperty.call(answers, numericKey)) {
+            return answers[numericKey];
+        }
+
+        return '';
+    }
+
+    function isAnswered(value) {
+        if (Array.isArray(value)) return value.length > 0;
+        return normalizeText(value) !== '';
+    }
+
+    function compareAnswer(userAnswer, expected) {
+        if (Array.isArray(expected)) {
+            const expectedValues = expected.map(normalizeText).filter(Boolean);
+            const actualValues = Array.isArray(userAnswer)
+                ? userAnswer.map(normalizeText).filter(Boolean)
+                : parseAlternatives(userAnswer);
+
+            if (actualValues.length === 0 || expectedValues.length === 0) return false;
+            return expectedValues.every(function(item) {
+                return actualValues.includes(item);
+            });
+        }
+
+        const expectedAlternatives = parseAlternatives(expected);
+        if (expectedAlternatives.length === 0) return false;
+
+        if (Array.isArray(userAnswer)) {
+            const actualValues = userAnswer.map(normalizeText).filter(Boolean);
+            return actualValues.some(function(item) {
+                return expectedAlternatives.includes(item);
+            });
+        }
+
+        return expectedAlternatives.includes(normalizeText(userAnswer));
+    }
+
+    function getSectionForQuestion(questionNumber) {
+        if (questionNumber <= 10) return 1;
+        if (questionNumber <= 20) return 2;
+        if (questionNumber <= 30) return 3;
+        return 4;
+    }
+
+    function countAnsweredQuestions(entries, answers) {
+        return entries.filter(function(entry) {
+            return isAnswered(getUserAnswerForEntry(entry, answers));
+        }).length;
+    }
+
+    function lookupBandScore(correctCount, table) {
+        const safeScore = Math.max(0, Math.min(40, parseInt(correctCount, 10) || 0));
+        if (Object.prototype.hasOwnProperty.call(table, safeScore)) {
+            return table[safeScore];
+        }
+        return defaultListeningScoreTable[safeScore] || 0;
+    }
+
+    function buildImprovementTips(sectionScores, answeredCount) {
+        const tips = [];
+
+        if (answeredCount < 40) {
+            tips.push(`还有 ${40 - answeredCount} 题未作答，建议优先优化时间分配。`);
+        }
+
+        Object.keys(sectionScores).forEach(function(key) {
+            const section = sectionScores[key];
+            const accuracy = section.total === 0 ? 0 : section.correct / section.total;
+            if (accuracy < 0.6) {
+                tips.push(`Section ${section.section} 正确率偏低，建议回放该部分音频并复盘干扰项。`);
+            }
+        });
+
+        if (tips.length === 0) {
+            tips.push('整体表现稳定，建议继续通过限时练习巩固节奏与拼写准确率。');
+        }
+
+        return tips;
+    }
+
+    function renderSectionResults(result) {
+        const sectionResultsContainer = document.getElementById('section-results');
+        if (!sectionResultsContainer) return;
+
+        const html = result.sectionOrder.map(function(sectionKey) {
+            const section = result.sectionScores[sectionKey];
+            const detailsHtml = section.details.map(function(detail) {
+                return `<div class="question-result ${detail.status}">
+                    <div class="question-result__head">
+                        <span class="question-result__number">Q${detail.questionNumber}</span>
+                        <span class="question-result__status">${detail.status === 'correct' ? '对' : (detail.status === 'unanswered' ? '未答' : '错')}</span>
+                    </div>
+                    <div class="question-result__meta">你的答案：${escapeHtml(detail.userAnswer || '未作答')}</div>
+                    <div class="question-result__meta">正确答案：${escapeHtml(detail.correctAnswer)}</div>
+                </div>`;
+            }).join('');
+
+            return `<div class="section-result">
+                <span class="section-name">Section ${section.section}</span>
+                <span class="section-score">${section.correct}/${section.total}</span>
+            </div>
+            <div class="question-results">${detailsHtml}</div>`;
+        }).join('');
+
+        const tipsHtml = result.tips.map(function(tip) {
+            return `<li>${escapeHtml(tip)}</li>`;
+        }).join('');
+
+        sectionResultsContainer.innerHTML = `${html}
+            <div class="result-suggestions">
+                <h4>改进建议</h4>
+                <ul>${tipsHtml}</ul>
+            </div>`;
+    }
+
+    function escapeHtml(value) {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function showResultModal() {
+        const modal = document.getElementById('result-modal');
+        if (modal) modal.classList.add('show');
+    }
+
+    function hideResultModal() {
+        const modal = document.getElementById('result-modal');
+        if (modal) modal.classList.remove('show');
+    }
+
+    function bindResultModal() {
+        const modal = document.getElementById('result-modal');
+        const closeButton = document.getElementById('close-result');
+        const retryButton = document.getElementById('retry-btn');
+
+        if (closeButton && closeButton.dataset.bound !== 'true') {
+            closeButton.dataset.bound = 'true';
+            closeButton.addEventListener('click', hideResultModal);
+        }
+
+        if (modal && modal.dataset.bound !== 'true') {
+            modal.dataset.bound = 'true';
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) hideResultModal();
+            });
+        }
+
+        if (retryButton && retryButton.dataset.bound !== 'true') {
+            retryButton.dataset.bound = 'true';
+            retryButton.addEventListener('click', function() {
+                const confirmed = window.confirm('重新测试会清除当前答案和成绩，是否继续？');
+                if (!confirmed) return;
+
+                localStorage.removeItem(storageKey);
+                localStorage.removeItem(resultStorageKey);
+                window.location.reload();
+            });
+        }
+    }
+
+    function injectGlobalSubmitButton() {
+        if (document.getElementById('submit-all-answers-btn')) return;
+
+        const sectionTabs = document.querySelector('.section-tabs');
+        if (!sectionTabs || !sectionTabs.parentNode) return;
+
+        const actionWrap = document.createElement('div');
+        actionWrap.className = 'test-actions';
+        actionWrap.innerHTML = '<button type="button" class="submit-answers-btn submit-all-answers-btn" id="submit-all-answers-btn">提交全部答案</button>';
+        sectionTabs.parentNode.insertBefore(actionWrap, sectionTabs.nextSibling);
+
+        const button = document.getElementById('submit-all-answers-btn');
+        if (button) {
+            button.addEventListener('click', function() {
+                window.submitAnswers();
+            });
+        }
+    }
+
+    window.saveSectionAnswers = function(sectionNum) {
+        const sectionElement = document.getElementById(`section-${sectionNum}`);
+        if (!sectionElement) return;
+
+        const answeredCount = Array.from(sectionElement.querySelectorAll('.answer-input')).filter(function(input) {
+            if (input.type === 'radio' || input.type === 'checkbox') return input.checked;
+            return String(input.value || '').trim() !== '';
+        }).length;
+
+        localStorage.setItem(
+            `ielts-test${testNumber}-section${sectionNum}-savedAt`,
+            JSON.stringify({ answeredCount: answeredCount, savedAt: Date.now() })
+        );
+
+        const button = sectionElement.querySelector('.section-save-btn');
+        if (button) {
+            const originalText = button.textContent;
+            button.textContent = `Section ${sectionNum} 已保存`;
+            window.setTimeout(function() {
+                button.textContent = originalText;
+            }, 1200);
+        }
+    };
+
     window.submitAnswers = function() {
         const answers = JSON.parse(localStorage.getItem(storageKey) || '{}');
-        const answeredCount = Object.keys(answers).length;
+        const answerKey = getAnswerKeyForTest();
+
+        if (!answerKey) {
+            alert(`Test ${testNumber} 的标准答案尚未加载，无法评分。`);
+            return;
+        }
+
+        const entries = expandAnswerKey(answerKey);
+        const answeredCount = countAnsweredQuestions(entries, answers);
 
         if (answeredCount === 0) {
             alert('请先回答一些题目再提交！');
             return;
         }
 
-        const result = `Test ${testNumber} 答题完成！\n\n已完成题目: ${answeredCount}/40\n\n请点击确定查看详细结果。`;
-        alert(result);
+        const sectionScores = {
+            section1: { section: 1, correct: 0, total: 10, details: [] },
+            section2: { section: 2, correct: 0, total: 10, details: [] },
+            section3: { section: 3, correct: 0, total: 10, details: [] },
+            section4: { section: 4, correct: 0, total: 10, details: [] }
+        };
 
-        console.log('答案已提交:', answers);
+        let correctCount = 0;
+
+        entries.forEach(function(entry) {
+            const userAnswer = getUserAnswerForEntry(entry, answers);
+            const isCorrect = compareAnswer(userAnswer, entry.expected);
+            const sectionKey = `section${getSectionForQuestion(entry.questionNumber)}`;
+
+            if (isCorrect) {
+                correctCount += 1;
+                sectionScores[sectionKey].correct += 1;
+            }
+
+            sectionScores[sectionKey].details.push({
+                questionNumber: entry.questionNumber,
+                userAnswer: stringifyAnswer(userAnswer),
+                correctAnswer: stringifyAnswer(entry.expected),
+                status: isAnswered(userAnswer) ? (isCorrect ? 'correct' : 'incorrect') : 'unanswered'
+            });
+        });
+
+        const listeningScoreTable = getListeningScoreTableForTest();
+        const bandScore = lookupBandScore(correctCount, listeningScoreTable);
+        const result = {
+            correctCount: correctCount,
+            answeredCount: answeredCount,
+            bandScore: bandScore,
+            sectionScores: sectionScores,
+            sectionOrder: ['section1', 'section2', 'section3', 'section4'],
+            tips: buildImprovementTips(sectionScores, answeredCount),
+            submittedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(resultStorageKey, JSON.stringify(result));
+
+        const correctCountEl = document.getElementById('correct-count');
+        const ieltsScoreEl = document.getElementById('ielts-score');
+        if (correctCountEl) correctCountEl.textContent = String(correctCount);
+        if (ieltsScoreEl) ieltsScoreEl.textContent = bandScore.toFixed(1);
+
+        renderSectionResults(result);
+        bindResultModal();
+        showResultModal();
     };
 
     window.switchToSection = switchToSection;
@@ -3009,18 +3507,20 @@ if (typeof window !== 'undefined') {
         if (score >= 39) return 9.0;
         if (score >= 37) return 8.5;
         if (score >= 35) return 8.0;
-        if (score >= 32) return 7.5;
+        if (score >= 33) return 7.5;
         if (score >= 30) return 7.0;
         if (score >= 27) return 6.5;
         if (score >= 23) return 6.0;
-        if (score >= 18) return 5.5;
-        if (score >= 15) return 5.0;
-        if (score >= 11) return 4.5;
-        if (score >= 8) return 4.0;
-        if (score >= 5) return 3.5;
-        if (score >= 2) return 3.0;
-        if (score >= 1) return 2.5;
-        return 2.0;
+        if (score >= 20) return 5.5;
+        if (score >= 16) return 5.0;
+        if (score >= 13) return 4.5;
+        if (score >= 10) return 4.0;
+        if (score >= 6) return 3.5;
+        if (score >= 4) return 3.0;
+        if (score >= 3) return 2.5;
+        if (score >= 2) return 2.0;
+        if (score >= 1) return 1.0;
+        return 0.0;
     }
 
     function buildProblemAreas(sectionScores, sectionAnalysis) {
@@ -3105,7 +3605,6 @@ if (typeof window !== 'undefined') {
         calculate
     };
 })();
-
 
 })();
 
